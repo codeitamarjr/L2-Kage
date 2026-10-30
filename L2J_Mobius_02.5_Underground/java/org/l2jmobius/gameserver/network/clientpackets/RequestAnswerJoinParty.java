@@ -68,7 +68,8 @@ public class RequestAnswerJoinParty extends ClientPacket
 		
 		final Party party = request.getParty();
 		final Party requestorParty = requestor.getParty();
-		if ((requestorParty != null) && (requestorParty != party))
+		// The requestor joined another party, or this one was disbanded or left while the invite was open.
+		if (((requestorParty != null) && (requestorParty != party)) || !party.containsPlayer(requestor))
 		{
 			return;
 		}
