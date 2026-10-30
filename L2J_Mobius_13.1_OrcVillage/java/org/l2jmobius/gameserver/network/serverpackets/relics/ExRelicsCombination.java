@@ -279,7 +279,7 @@ public class ExRelicsCombination extends ServerPacket
 					}
 					
 					newRelic.setRelicCount(1);
-					newRelic.setRelicIndex(300 + unconfirmedRelics.size()); // Need to update this to increase last 300+ index.
+					newRelic.setRelicIndex(_player.getNextPendingRelicIndex(newRelic.getRelicId()));
 					newRelic.setRelicSummonTime(System.currentTimeMillis());
 					storedRelics.add(newRelic);
 					_player.sendPacket(new ExRelicsExchangeList(_player)); // Update relic exchange/confirm list.

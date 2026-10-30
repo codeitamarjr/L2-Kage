@@ -25,24 +25,36 @@ package org.l2jmobius.gameserver.entity.actor.holders.player;
  */
 public class PlayerRelicData
 {
-	private final int _relicId;
+	private int _relicId;
 	private int _relicLevel;
 	private int _relicCount;
 	private int _relicIndex;
 	private long _relicSummonTime;
+	private int _replaceAttemptsUsed;
 	
 	public PlayerRelicData(int relicId, int relicLevel, int relicCount, int relicIndex, long relicSummonTime)
+	{
+		this(relicId, relicLevel, relicCount, relicIndex, relicSummonTime, 0);
+	}
+	
+	public PlayerRelicData(int relicId, int relicLevel, int relicCount, int relicIndex, long relicSummonTime, int replaceAttemptsUsed)
 	{
 		_relicId = relicId;
 		_relicLevel = relicLevel;
 		_relicCount = relicCount;
 		_relicIndex = relicIndex;
 		_relicSummonTime = relicSummonTime;
+		_replaceAttemptsUsed = replaceAttemptsUsed;
 	}
 	
 	public int getRelicId()
 	{
 		return _relicId;
+	}
+	
+	public int getReplaceAttemptsUsed()
+	{
+		return _replaceAttemptsUsed;
 	}
 	
 	public int getRelicLevel()
@@ -63,6 +75,16 @@ public class PlayerRelicData
 	public long getRelicSummonTime()
 	{
 		return _relicSummonTime;
+	}
+	
+	public void setRelicId(int relicId)
+	{
+		_relicId = relicId;
+	}
+	
+	public void setReplaceAttemptsUsed(int attempts)
+	{
+		_replaceAttemptsUsed = attempts;
 	}
 	
 	public void setRelicLevel(int level)

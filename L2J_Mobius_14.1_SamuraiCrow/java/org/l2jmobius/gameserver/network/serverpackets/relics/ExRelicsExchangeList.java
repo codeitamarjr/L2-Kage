@@ -29,7 +29,6 @@ import org.l2jmobius.gameserver.data.xml.RelicData;
 import org.l2jmobius.gameserver.entity.actor.Player;
 import org.l2jmobius.gameserver.entity.actor.enums.player.RelicGrade;
 import org.l2jmobius.gameserver.entity.actor.holders.player.PlayerRelicData;
-import org.l2jmobius.gameserver.mechanics.variables.AccountVariables;
 import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
@@ -51,37 +50,29 @@ public class ExRelicsExchangeList extends ServerPacket
 	{
 		ServerPackets.EX_RELICS_EXCHANGE_LIST.writeId(this, buffer);
 		
-		// Max attempts are now loaded from RelicData.xml instead of config.
-		final int maxBGradeAttempts = RelicData.getInstance().getReplaceAttempts(RelicGrade.BGRADE);
-		final int maxAGradeAttempts = RelicData.getInstance().getReplaceAttempts(RelicGrade.AGRADE);
-		
-		final int attemptsRemainingCountBgrade = Math.max(0, _player.getAccountVariables().getInt(AccountVariables.B_GRADE_RELIC_ATEMPTS, maxBGradeAttempts));
-		final int attemptsRemainingCountAgrade = Math.max(0, _player.getAccountVariables().getInt(AccountVariables.A_GRADE_RELIC_ATEMPTS, maxAGradeAttempts));
 		final int maxRelicsOnConfirmationList = RelicSystemConfig.RELIC_UNCONFIRMED_LIST_LIMIT;
 		final long defaultReplacementTime = RelicSystemConfig.RELIC_UNCONFIRMED_TIME_LIMIT * 86400000L; // 1 day in ms
-		
-		long relicSummonTime = 0;
-		final List<Integer> unconfirmedRelics = new ArrayList<>();
+		final List<PlayerRelicData> unconfirmedRelics = new ArrayList<>();
 		for (PlayerRelicData relic : _player.getRelics())
 		{
-			if ((relic.getRelicIndex() >= 300) && (relic.getRelicCount() == 1)) // Unconfirmed relics are set on summon to index 300 and up.
+			if ((relic.getRelicIndex() >= 300) && (relic.getRelicCount() == 1))
 			{
-				unconfirmedRelics.add(relic.getRelicId());
-				relicSummonTime = relic.getRelicSummonTime();
+				unconfirmedRelics.add(relic);
 			}
 		}
 		
 		buffer.writeInt(maxRelicsOnConfirmationList);
-		buffer.writeInt(unconfirmedRelics.size()); // Confirmation relics array size.
+		buffer.writeInt(unconfirmedRelics.size());
 		for (int i = 0; i < unconfirmedRelics.size(); i++)
 		{
-			final RelicGrade unconfirmedRelicGrade = RelicData.getInstance().getRelic(unconfirmedRelics.get(i)).getGrade();
-			final int maxAttemptsForGrade = RelicData.getInstance().getReplaceAttempts(unconfirmedRelicGrade);
+			final PlayerRelicData relic = unconfirmedRelics.get(i);
+			final RelicGrade grade = RelicData.getInstance().getRelic(relic.getRelicId()).getGrade();
+			final int maxAttempts = RelicData.getInstance().getReplaceAttempts(grade);
 			buffer.writeInt(i); // List position.
-			buffer.writeInt(unconfirmedRelics.get(i)); // Relic Id.
-			buffer.writeInt(unconfirmedRelicGrade == RelicGrade.BGRADE ? attemptsRemainingCountBgrade : attemptsRemainingCountAgrade); // Exchange attempts remaining.
-			buffer.writeInt(maxAttemptsForGrade); // Exchange attempts max (from XML).
-			buffer.writeInt((int) ((relicSummonTime + defaultReplacementTime) / 1000)); // Replacement Time.
+			buffer.writeInt(relic.getRelicId());
+			buffer.writeInt(Math.max(0, maxAttempts - relic.getReplaceAttemptsUsed()));
+			buffer.writeInt(maxAttempts);
+			buffer.writeInt((int) ((relic.getRelicSummonTime() + defaultReplacementTime) / 1000));
 		}
 	}
 }

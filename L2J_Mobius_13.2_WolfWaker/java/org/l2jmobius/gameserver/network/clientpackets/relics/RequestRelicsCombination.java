@@ -37,6 +37,7 @@ import org.l2jmobius.gameserver.entity.actor.enums.player.RelicGrade;
 import org.l2jmobius.gameserver.entity.actor.holders.player.PlayerRelicData;
 import org.l2jmobius.gameserver.entity.item.enums.ItemProcessType;
 import org.l2jmobius.gameserver.entity.item.holders.ItemHolder;
+import org.l2jmobius.gameserver.mechanics.variables.AccountVariables;
 import org.l2jmobius.gameserver.mechanics.variables.PlayerVariables;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
@@ -131,6 +132,12 @@ public class RequestRelicsCombination extends ClientPacket
 			player.sendPacket(SystemMessageId.SUMMON_COMPOUND_IS_UNAVAILABLE_AS_YOU_HAVE_MORE_THAN_100_UNCONFIRMED_RELICS);
 			return;
 		}
+		// Reserve enough slots for a batch where every C/B-grade compound upgrades.
+		if (((grade == RelicGrade.CGRADE) || (grade == RelicGrade.BGRADE)) && (compoundAttempts > (RelicSystemConfig.RELIC_UNCONFIRMED_LIST_LIMIT - unconfirmedRelics.size())))
+		{
+			player.sendPacket(SystemMessageId.SUMMON_COMPOUND_IS_UNAVAILABLE_AS_YOU_HAVE_MORE_THAN_100_UNCONFIRMED_RELICS);
+			return;
+		}
 		
 		if (!player.destroyItemByItemId(ItemProcessType.FEE, feeHolder.getId(), feeHolder.getCount() * compoundAttempts, player, true))
 		{
@@ -146,6 +153,7 @@ public class RequestRelicsCombination extends ClientPacket
 			player.sendMessage("Compound Fee Holder COUNT: " + feeHolder.getCount());
 		}
 		
+		int earnedPityPoints = 0;
 		int ingredientIndex = 0;
 		for (int ingredientId : _ingredientIds)
 		{
@@ -191,16 +199,27 @@ public class RequestRelicsCombination extends ClientPacket
 				}
 			}
 			
-			// Increment pity counter for C and B grade only.
+			// Earn a pity point only when a C/B compound fails to upgrade.
 			final String pityKey = (_relicsUsedGrade == RelicGrade.CGRADE.ordinal()) ? PlayerVariables.RELICS_COMPOUNDING_POINTS_C_GRADE : (_relicsUsedGrade == RelicGrade.BGRADE.ordinal()) ? PlayerVariables.RELICS_COMPOUNDING_POINTS_B_GRADE : null;
-			if (pityKey != null)
+			if ((pityKey != null) && !result.getKey())
 			{
 				final int currentPity = player.getVariables().getInt(pityKey, 0);
 				if (currentPity < RelicData.getInstance().getGuaranteedCompoundMaxPoints())
 				{
 					player.getVariables().set(pityKey, currentPity + 1);
+					earnedPityPoints++;
 					player.getVariables().storeMe();
 				}
+			}
+			
+			// B/A compound rewards must be confirmed before registration.
+			final RelicDataHolder obtainedRelic = RelicData.getInstance().getRelic(obtainedRelicId);
+			if ((obtainedRelic != null) && ((obtainedRelic.getGrade() == RelicGrade.BGRADE) || (obtainedRelic.getGrade() == RelicGrade.AGRADE)))
+			{
+				storedRelics.add(new PlayerRelicData(obtainedRelicId, 0, 1, player.getNextPendingRelicIndex(obtainedRelicId), System.currentTimeMillis()));
+				player.getAccountVariables().set(AccountVariables.UNCONFIRMED_RELICS_COUNT, player.getAccountVariables().getInt(AccountVariables.UNCONFIRMED_RELICS_COUNT, 0) + 1);
+				player.getAccountVariables().storeMe();
+				continue;
 			}
 			
 			PlayerRelicData existingRelic = null;
@@ -262,7 +281,7 @@ public class RequestRelicsCombination extends ClientPacket
 			final int maxPoints = RelicData.getInstance().getGuaranteedCompoundMaxPoints();
 			final int pointsPerAttempt = RelicData.getInstance().getGuaranteedCompoundPointsPerAttempt();
 			final int attemptsAvailable = pointsPerAttempt > 0 ? currentPity / pointsPerAttempt : 0;
-			player.sendMessage("Guaranteed compound points [" + RelicGrade.values()[_relicsUsedGrade] + "]: " + currentPity + "/" + maxPoints + " (" + compoundAttempts + " added this session, " + attemptsAvailable + " guaranteed attempt(s) ready)");
+			player.sendMessage("Guaranteed compound points [" + RelicGrade.values()[_relicsUsedGrade] + "]: " + currentPity + "/" + maxPoints + " (" + earnedPityPoints + " added this session, " + attemptsAvailable + " guaranteed attempt(s) ready)");
 		}
 		player.sendPacket(new ExRelicsCombination(player, successCompoundIds, failCompoundIds));
 		player.sendPacket(new ExRelicsList(player)); // Update confirmed relic list relics count.

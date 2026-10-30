@@ -510,8 +510,12 @@ public class Player extends Playable
 	private static final String RESTORE_COLLECTION_FAVORITE = "SELECT * FROM collection_favorites WHERE accountName=?";
 	
 	// Character Relics list
-	private static final String INSERT_RELICS = "REPLACE INTO relics (`accountName`, `relicId`, `relicLevel`, `relicCount`, `relicIndex`, `relicSummonTime`) VALUES (?, ?, ?, ?, ?, ?)";
-	private static final String RESTORE_RELICS = "SELECT * FROM relics WHERE accountName=? ORDER BY `relicId`";
+	private static final String INSERT_RELICS = "REPLACE INTO relics (`accountName`, `relicId`, `relicLevel`, `relicCount`, `relicIndex`, `relicSummonTime`, `replaceAttemptsUsed`) VALUES (?, ?, ?, ?, ?, ?, ?)";
+	private static final String REPLACE_PENDING_RELIC = "UPDATE relics SET relicId=?, relicIndex=?, replaceAttemptsUsed=? WHERE accountName=? AND relicId=? AND relicIndex=? AND relicCount=1 AND replaceAttemptsUsed=?";
+	private static final String CONFIRM_PENDING_RELIC = "UPDATE relics SET relicIndex=0, relicCount=0, relicSummonTime=0, replaceAttemptsUsed=0 WHERE accountName=? AND relicId=? AND relicIndex=? AND relicCount=1";
+	private static final String INCREMENT_REGISTERED_RELIC = "UPDATE relics SET relicCount=relicCount+1 WHERE accountName=? AND relicId=? AND relicIndex=0";
+	private static final String DELETE_PENDING_RELIC = "DELETE FROM relics WHERE accountName=? AND relicId=? AND relicIndex=? AND relicCount=1";
+	private static final String RESTORE_RELICS = "SELECT * FROM relics WHERE accountName=? ORDER BY `relicId`, `relicIndex`";
 	private static final String DELETE_RELICS = "DELETE FROM relics WHERE accountName=? AND relicId=? AND relicLevel=? AND relicCount=? AND relicIndex=? AND relicSummonTime=?";
 	
 	// Character Relics Collections list
@@ -17395,6 +17399,259 @@ public class Player extends Playable
 		return _relics;
 	}
 	
+	/**
+	 * Resolves the pending list position used by the relic exchange packets.
+	 * @param index The position of the relic in the confirmation list.
+	 * @param relicId The relic expected at that position.
+	 * @return The pending {@code PlayerRelicData}, or {@code null} when the position does not hold that relic.
+	 */
+	public PlayerRelicData getPendingRelic(int index, int relicId)
+	{
+		if (index < 0)
+		{
+			return null;
+		}
+		
+		int position = 0;
+		for (PlayerRelicData relic : _relics)
+		{
+			if ((relic.getRelicIndex() >= 300) && (relic.getRelicCount() == 1))
+			{
+				if (position++ == index)
+				{
+					return relic.getRelicId() == relicId ? relic : null;
+				}
+			}
+		}
+		return null;
+	}
+	
+	/**
+	 * Allocates an unoccupied pending index for a relic.
+	 * @param relicId The relic that needs a pending index.
+	 * @return The first free index starting from 300.
+	 */
+	public int getNextPendingRelicIndex(int relicId)
+	{
+		int index = 300;
+		boolean used;
+		do
+		{
+			used = false;
+			for (PlayerRelicData relic : _relics)
+			{
+				if ((relic.getRelicId() == relicId) && (relic.getRelicIndex() == index))
+				{
+					used = true;
+					index++;
+					break;
+				}
+			}
+		}
+		while (used);
+		return index;
+	}
+	
+	/**
+	 * Replaces a single pending relic, keeping its acquisition time and its own attempt history.<br>
+	 * The database update is prepared before the fee is charged and an unsuccessful charge rolls it back.
+	 * @param relic The pending relic being replaced.
+	 * @param obtainedRelicId The relic that takes its place.
+	 * @param fee The fee charged for this attempt.
+	 * @param expectedAttempts The attempts the relic had used when the replacement was rolled.
+	 * @return {@code true} when the relic was replaced and the fee was paid.
+	 */
+	public boolean replacePendingRelic(PlayerRelicData relic, int obtainedRelicId, ItemHolder fee, int expectedAttempts)
+	{
+		synchronized (_relics)
+		{
+			if (!_relics.contains(relic) || (relic.getRelicIndex() < 300) || (relic.getRelicCount() != 1) || (relic.getReplaceAttemptsUsed() != expectedAttempts))
+			{
+				return false;
+			}
+			
+			final int oldRelicId = relic.getRelicId();
+			final int oldIndex = relic.getRelicIndex();
+			final int newIndex = obtainedRelicId == oldRelicId ? oldIndex : getNextPendingRelicIndex(obtainedRelicId);
+			final int nextAttempts = expectedAttempts + 1;
+			boolean feePaid = false;
+			boolean committed = false;
+			try (Connection con = DatabaseFactory.getConnection())
+			{
+				con.setAutoCommit(false);
+				try
+				{
+					try (PreparedStatement statement = con.prepareStatement(REPLACE_PENDING_RELIC))
+					{
+						statement.setInt(1, obtainedRelicId);
+						statement.setInt(2, newIndex);
+						statement.setInt(3, nextAttempts);
+						statement.setString(4, getAccountName());
+						statement.setInt(5, oldRelicId);
+						statement.setInt(6, oldIndex);
+						statement.setInt(7, expectedAttempts);
+						if (statement.executeUpdate() != 1)
+						{
+							con.rollback();
+							return false;
+						}
+					}
+					
+					if (!destroyItemByItemId(ItemProcessType.FEE, fee.getId(), fee.getCount(), this, true))
+					{
+						con.rollback();
+						return false;
+					}
+					feePaid = true;
+					con.commit();
+					committed = true;
+				}
+				catch (Exception e)
+				{
+					try
+					{
+						con.rollback();
+					}
+					catch (SQLException rollbackError)
+					{
+						e.addSuppressed(rollbackError);
+					}
+					throw e;
+				}
+			}
+			catch (Exception e)
+			{
+				LOGGER.log(Level.SEVERE, "Relic replacement database error for account " + getAccountName(), e);
+				// A close failure after a successful commit must not trigger a refund.
+				if (!committed)
+				{
+					if (feePaid)
+					{
+						try
+						{
+							if (addItem(ItemProcessType.REWARD, fee.getId(), fee.getCount(), this, true) == null)
+							{
+								LOGGER.severe("Relic replacement fee refund failed for account " + getAccountName() + ", item " + fee.getId());
+							}
+						}
+						catch (Exception refundError)
+						{
+							LOGGER.log(Level.SEVERE, "Could not refund relic replacement fee for account " + getAccountName(), refundError);
+						}
+					}
+					return false;
+				}
+			}
+			relic.setRelicId(obtainedRelicId);
+			relic.setRelicIndex(newIndex);
+			relic.setReplaceAttemptsUsed(nextAttempts);
+			return true;
+		}
+	}
+	
+	/**
+	 * Confirms only the selected pending copy.<br>
+	 * The database updates are committed together before memory changes.
+	 * @param pendingRelic The pending relic being confirmed.
+	 * @return The registered relic on success, {@code null} on failure.
+	 */
+	public PlayerRelicData confirmPendingRelic(PlayerRelicData pendingRelic)
+	{
+		if (!_relics.contains(pendingRelic) || (pendingRelic.getRelicIndex() < 300) || (pendingRelic.getRelicCount() != 1))
+		{
+			return null;
+		}
+		
+		final PlayerRelicData registered = _relics.stream().filter(r -> (r.getRelicId() == pendingRelic.getRelicId()) && (r.getRelicIndex() == 0)).findFirst().orElse(null);
+		boolean committed = false;
+		try (Connection con = DatabaseFactory.getConnection())
+		{
+			con.setAutoCommit(false);
+			try
+			{
+				if (registered != null)
+				{
+					try (PreparedStatement statement = con.prepareStatement(INCREMENT_REGISTERED_RELIC))
+					{
+						statement.setString(1, getAccountName());
+						statement.setInt(2, pendingRelic.getRelicId());
+						if (statement.executeUpdate() != 1)
+						{
+							con.rollback();
+							return null;
+						}
+					}
+					try (PreparedStatement statement = con.prepareStatement(DELETE_PENDING_RELIC))
+					{
+						statement.setString(1, getAccountName());
+						statement.setInt(2, pendingRelic.getRelicId());
+						statement.setInt(3, pendingRelic.getRelicIndex());
+						if (statement.executeUpdate() != 1)
+						{
+							con.rollback();
+							return null;
+						}
+					}
+				}
+				else
+				{
+					try (PreparedStatement statement = con.prepareStatement(CONFIRM_PENDING_RELIC))
+					{
+						statement.setString(1, getAccountName());
+						statement.setInt(2, pendingRelic.getRelicId());
+						statement.setInt(3, pendingRelic.getRelicIndex());
+						if (statement.executeUpdate() != 1)
+						{
+							con.rollback();
+							return null;
+						}
+					}
+				}
+				con.commit();
+				committed = true;
+			}
+			catch (Exception e)
+			{
+				try
+				{
+					con.rollback();
+				}
+				catch (SQLException rollbackError)
+				{
+					e.addSuppressed(rollbackError);
+				}
+				throw e;
+			}
+		}
+		catch (Exception e)
+		{
+			LOGGER.log(Level.SEVERE, "Relic confirmation database error for account " + getAccountName(), e);
+			if (!committed)
+			{
+				return null;
+			}
+		}
+		
+		final PlayerRelicData result;
+		if (registered != null)
+		{
+			registered.setRelicCount(registered.getRelicCount() + 1);
+			_relics.remove(pendingRelic);
+			result = registered;
+		}
+		else
+		{
+			pendingRelic.setRelicIndex(0);
+			pendingRelic.setRelicCount(0);
+			pendingRelic.setRelicSummonTime(0);
+			pendingRelic.setReplaceAttemptsUsed(0);
+			result = pendingRelic;
+		}
+		getAccountVariables().set(AccountVariables.UNCONFIRMED_RELICS_COUNT, Math.max(0, getAccountVariables().getInt(AccountVariables.UNCONFIRMED_RELICS_COUNT, 0) - 1));
+		getAccountVariables().storeMe();
+		return result;
+	}
+	
 	public Collection<PlayerRelicCollectionData> getRelicCollections()
 	{
 		return _relicCollections;
@@ -17475,6 +17732,7 @@ public class Player extends Playable
 					st.setInt(4, data.getRelicCount());
 					st.setInt(5, data.getRelicIndex());
 					st.setLong(6, data.getRelicSummonTime());
+					st.setInt(7, data.getReplaceAttemptsUsed());
 					st.addBatch();
 				}
 				catch (Exception e)
@@ -17512,7 +17770,7 @@ public class Player extends Playable
 					final RelicDataHolder holder = RelicData.getInstance().getRelic(relicId);
 					if (holder != null)
 					{
-						_relics.add(new PlayerRelicData(relicId, relicLevel, relicCount, relicIndex, relicSummonTime));
+						_relics.add(new PlayerRelicData(relicId, relicLevel, relicCount, relicIndex, relicSummonTime, rset.getInt("replaceAttemptsUsed")));
 						// giveRelicSkill(holder);
 					}
 				}

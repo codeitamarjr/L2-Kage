@@ -20,7 +20,6 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.relics;
 
-import java.util.Collection;
 import java.util.List;
 
 import org.l2jmobius.commons.network.buffer.WriteBuffer;
@@ -29,8 +28,7 @@ import org.l2jmobius.gameserver.config.RelicSystemConfig;
 import org.l2jmobius.gameserver.data.xml.RelicData;
 import org.l2jmobius.gameserver.entity.actor.Player;
 import org.l2jmobius.gameserver.entity.actor.holders.player.PlayerRelicData;
-import org.l2jmobius.gameserver.entity.item.enums.ItemProcessType;
-import org.l2jmobius.gameserver.mechanics.variables.AccountVariables;
+import org.l2jmobius.gameserver.entity.item.holders.ItemHolder;
 import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
@@ -60,117 +58,47 @@ public class ExRelicsExchange extends ServerPacket
 		
 		int attemptsRemaining = 0;
 		int maxAttempts = 0;
-		int obtainedRelicId = 0;
-		final int unconfirmedRelicGrade = RelicData.getInstance().getRelic(_relicId).getGrade();
-		switch (unconfirmedRelicGrade)
+		final PlayerRelicData pendingRelic = _player.getPendingRelic(_index, _relicId);
+		if (pendingRelic != null)
 		{
-			case 4:
+			int obtainedRelicId = 0;
+			List<ItemHolder> feeList = null;
+			switch (RelicData.getInstance().getRelic(_relicId).getGrade())
 			{
-				maxAttempts = RelicSystemConfig.RELIC_REPLACE_ATTEMPTS_B_GRADE;
-				attemptsRemaining = _player.getAccountVariables().getInt(AccountVariables.B_GRADE_RELIC_ATEMPTS, maxAttempts); // Exchange attempts remaining
-				if (Rnd.get(100) < (RelicSystemConfig.RELIC_REPLACE_ATTEMPTS_CHANCE_SHINING_B_GRADE))
+				case 4:
 				{
-					obtainedRelicId = getRandomRelicId(_relicId, RelicSystemConfig.B_GRADE_SHINING_RELICS);
-					_success = true;
+					maxAttempts = RelicSystemConfig.RELIC_REPLACE_ATTEMPTS_B_GRADE;
+					feeList = RelicSystemConfig.RELIC_REPLACE_ATTEMPTS_FEES_B_GRADE;
+					obtainedRelicId = getRandomRelicId(_relicId, Rnd.get(100) < RelicSystemConfig.RELIC_REPLACE_ATTEMPTS_CHANCE_SHINING_B_GRADE ? RelicSystemConfig.B_GRADE_SHINING_RELICS : RelicSystemConfig.B_GRADE_COMMON_RELICS);
 					break;
+				}
+				case 5:
+				{
+					maxAttempts = RelicSystemConfig.RELIC_REPLACE_ATTEMPTS_A_GRADE;
+					feeList = RelicSystemConfig.RELIC_REPLACE_ATTEMPTS_FEES_A_GRADE;
+					obtainedRelicId = getRandomRelicId(_relicId, RelicSystemConfig.A_GRADE_COMMON_RELICS);
+					break;
+				}
+			}
+			
+			// Attempts are counted per pending relic and the fee grows with each attempt used on it.
+			final int usedAttempts = pendingRelic.getReplaceAttemptsUsed();
+			attemptsRemaining = Math.max(0, maxAttempts - usedAttempts);
+			if ((obtainedRelicId != 0) && (attemptsRemaining > 0) && (feeList != null) && !feeList.isEmpty())
+			{
+				final ItemHolder fee = feeList.get(Math.min(usedAttempts, feeList.size() - 1));
+				if (_player.replacePendingRelic(pendingRelic, obtainedRelicId, fee, usedAttempts))
+				{
+					_relicId = obtainedRelicId;
+					attemptsRemaining--;
+					_success = true;
 				}
 				
-				obtainedRelicId = getRandomRelicId(_relicId, RelicSystemConfig.B_GRADE_COMMON_RELICS);
-				_success = true;
-				break;
-			}
-			case 5:
-			{
-				maxAttempts = RelicSystemConfig.RELIC_REPLACE_ATTEMPTS_A_GRADE;
-				attemptsRemaining = _player.getAccountVariables().getInt(AccountVariables.A_GRADE_RELIC_ATEMPTS, maxAttempts); // Exchange attempts remaining
-				obtainedRelicId = getRandomRelicId(_relicId, RelicSystemConfig.A_GRADE_COMMON_RELICS);
-				_success = true;
-				break;
-			}
-		}
-		
-		final Collection<PlayerRelicData> storedRelics = _player.getRelics();
-		
-		// Check if the relic with the same ID exists.
-		PlayerRelicData unconfirmedRelic = null;
-		for (PlayerRelicData relic : storedRelics)
-		{
-			if ((relic.getRelicId() == _relicId) && (relic.getRelicIndex() >= 300) && (relic.getRelicCount() != 0)) // Only relics with index >= 300 can be exchanged.
-			{
-				unconfirmedRelic = relic;
-				break;
-			}
-		}
-		
-		final PlayerRelicData newRelic = new PlayerRelicData(obtainedRelicId, 0, 1, 300, System.currentTimeMillis());
-		if (unconfirmedRelic != null)
-		{
-			// Decrease the count of the existing relic
-			unconfirmedRelic.setRelicCount(unconfirmedRelic.getRelicCount() - 1);
-			_relicId = newRelic.getRelicId();
-			storedRelics.add(newRelic);
-			
-			if (unconfirmedRelicGrade == 4)
-			{
-				_player.getAccountVariables().set(AccountVariables.B_GRADE_RELIC_ATEMPTS, _player.getAccountVariables().getInt(AccountVariables.B_GRADE_RELIC_ATEMPTS, RelicSystemConfig.RELIC_REPLACE_ATTEMPTS_B_GRADE) - 1);
-				attemptsRemaining = attemptsRemaining - 1;
-			}
-			else
-			{
-				_player.getAccountVariables().set(AccountVariables.A_GRADE_RELIC_ATEMPTS, _player.getAccountVariables().getInt(AccountVariables.A_GRADE_RELIC_ATEMPTS, RelicSystemConfig.RELIC_REPLACE_ATTEMPTS_A_GRADE) - 1);
-				attemptsRemaining = attemptsRemaining - 1;
-			}
-			
-			_player.getAccountVariables().storeMe();
-			_player.storeRelics();
-			int currentBGradeAttempts = _player.getAccountVariables().getInt(AccountVariables.B_GRADE_RELIC_ATEMPTS, RelicSystemConfig.RELIC_REPLACE_ATTEMPTS_B_GRADE);
-			int currentAGradeAttempts = _player.getAccountVariables().getInt(AccountVariables.A_GRADE_RELIC_ATEMPTS, RelicSystemConfig.RELIC_REPLACE_ATTEMPTS_A_GRADE);
-			int replacementItemId = 0;
-			Long replacementFee = 0L;
-			switch (unconfirmedRelicGrade)
-			{
-				case 4: // B Grade Relics
+				if (RelicSystemConfig.RELIC_SYSTEM_DEBUG_ENABLED)
 				{
-					for (int i = 0; i <= RelicSystemConfig.RELIC_REPLACE_ATTEMPTS_FEES_B_GRADE.size(); i++)
-					{
-						if ((currentBGradeAttempts + 1) == (RelicSystemConfig.RELIC_REPLACE_ATTEMPTS_FEES_B_GRADE.size() - i))
-						{
-							if (RelicSystemConfig.RELIC_SYSTEM_DEBUG_ENABLED)
-							{
-								_player.sendMessage("Fees list size:" + RelicSystemConfig.RELIC_REPLACE_ATTEMPTS_FEES_B_GRADE.size());
-								_player.sendMessage("currentBGradeAttempts value: " + currentBGradeAttempts);
-								_player.sendMessage("index value: " + i);
-							}
-							
-							replacementItemId = RelicSystemConfig.RELIC_REPLACE_ATTEMPTS_FEES_B_GRADE.get(i).getId();
-							replacementFee = RelicSystemConfig.RELIC_REPLACE_ATTEMPTS_FEES_B_GRADE.get(i).getCount();
-						}
-					}
-					break;
-				}
-				case 5: // A Grade Relics
-				{
-					for (int i = 0; i <= RelicSystemConfig.RELIC_REPLACE_ATTEMPTS_FEES_A_GRADE.size(); i++)
-					{
-						if ((currentAGradeAttempts + 1) == (RelicSystemConfig.RELIC_REPLACE_ATTEMPTS_FEES_A_GRADE.size() - i))
-						{
-							if (RelicSystemConfig.RELIC_SYSTEM_DEBUG_ENABLED)
-							{
-								_player.sendMessage("Fees list size:" + RelicSystemConfig.RELIC_REPLACE_ATTEMPTS_FEES_A_GRADE.size());
-								_player.sendMessage("currentBGradeAttempts value: " + currentAGradeAttempts);
-								_player.sendMessage("index value: " + i);
-							}
-							
-							replacementItemId = RelicSystemConfig.RELIC_REPLACE_ATTEMPTS_FEES_A_GRADE.get(i).getId();
-							replacementFee = RelicSystemConfig.RELIC_REPLACE_ATTEMPTS_FEES_A_GRADE.get(i).getCount();
-						}
-					}
-					break;
+					_player.sendMessage("Replace fee item: " + fee.getId() + " x" + fee.getCount());
 				}
 			}
-			
-			_player.destroyItemByItemId(ItemProcessType.FEE, replacementItemId, replacementFee, _player, true);
-			_player.getAccountVariables().storeMe();
 		}
 		
 		buffer.writeInt(_index);
