@@ -94,9 +94,6 @@ export function ShopBar({ query, onQuery }: { query?: string; onQuery?: (query: 
                     <Link href="/treasury" className="shop-tab" aria-current={component.startsWith('treasury/') ? 'page' : undefined}>
                         {t('Treasury', 'Tesouro')}
                     </Link>
-                    <Link href="/account/orders" className="shop-tab">
-                        {t('My orders', 'Meus pedidos')}
-                    </Link>
                 </nav>
                 <form className="shop-search" role="search" onSubmit={submit}>
                     <input

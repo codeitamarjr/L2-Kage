@@ -1,5 +1,6 @@
 import { Link } from '@inertiajs/react';
 import { useMemo, useState } from 'react';
+import PageHero from '@/components/page-hero';
 import { ProductCard, ShopBar } from '@/components/store';
 import { languageTag, pick, useLocale, useT, type Localized } from '@/i18n';
 import type { StoreCard } from '@/types';
@@ -51,7 +52,7 @@ function LCoinInfo({ products, lcoin }: Pick<Props, 'products' | 'lcoin'>) {
 
     return (
         <div className="shop-info">
-            <h1 className="shop-heading">L-Coin</h1>
+            <h2 className="shop-heading text-gold">L-Coin</h2>
             <p>
                 {t(
                     'Prices are paid from a character’s bag (not the warehouse), and the site shows the last save: every 5 minutes while you play, and when you log out.',
@@ -71,7 +72,7 @@ function LCoinInfo({ products, lcoin }: Pick<Props, 'products' | 'lcoin'>) {
 }
 
 /**
- * The Treasury (/treasury), laid out like an official game store: a category tree beside a grid of products, each
+ * The Treasury (/treasury), under the site's banner and laid out like an official game store: a category tree beside a grid of products, each
  * opening its own page with the purchase panel (treasury/show). Filters live in the address so they can be shared and
  * survive the back button; the quick search filters what is already on the page.
  */
@@ -113,6 +114,15 @@ export default function TreasuryIndex({ products, filter, owned, suggested, lcoi
 
     return (
         <div className="shop">
+            <PageHero
+                video={{ src: '/assets/video/treasury.mp4', poster: '/assets/packages-chest.webp' }}
+                kicker={t('Gifts, passes & packages', 'Presentes, passes e pacotes')}
+                title={t('The Treasury', 'O Tesouro')}
+                tagline={t(
+                    'A gift from Einhasad every week, the pacts of the season and arms forged for every calling of Aden.',
+                    'Um presente de Einhasad toda semana, os pactos da temporada e armas forjadas para cada vocação de Aden.',
+                )}
+            />
             <ShopBar query={query} onQuery={setQuery} />
             <div className="shop-layout">
                 <nav className="shop-side" aria-label={t('Categories', 'Categorias')}>

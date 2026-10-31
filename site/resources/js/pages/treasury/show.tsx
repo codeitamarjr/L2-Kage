@@ -261,7 +261,7 @@ export default function TreasuryShow({ product, buyer }: Props) {
     ];
 
     return (
-        <div className="shop">
+        <div className="shop is-plain">
             <ShopBar />
             <div className="shop-product">
                 <div className="shop-product-main">
@@ -272,7 +272,7 @@ export default function TreasuryShow({ product, buyer }: Props) {
                             </svg>
                             {t('Back', 'Voltar')}
                         </Link>
-                        <h1>{pick(locale, product.name)}</h1>
+                        <h1 className="text-gold">{pick(locale, product.name)}</h1>
                     </header>
 
                     <div className="shop-product-tabs" role="tablist">
