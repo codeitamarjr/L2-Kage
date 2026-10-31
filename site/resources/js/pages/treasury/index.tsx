@@ -86,11 +86,9 @@ export default function TreasuryIndex({ products, filter, owned, suggested, lcoi
     // Choosing a category, or arriving from elsewhere (Back from a product, the home page), goes straight to the products, past the banner.
     useEffect(() => {
         if (window.location.hash === '#store') {
-            requestAnimationFrame(() => {
-                const top = document.getElementById('store')?.getBoundingClientRect().top ?? 0;
+            const top = document.getElementById('store')?.getBoundingClientRect().top ?? 0;
 
-                window.scrollTo({ top: window.scrollY + top - HEADER_HEIGHT, behavior: 'instant' });
-            });
+            window.scrollTo({ top: window.scrollY + top - HEADER_HEIGHT, behavior: 'instant' });
         }
     }, [filter.category, filter.group]);
 

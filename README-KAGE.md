@@ -301,6 +301,11 @@ player can claim again. The landing page shows a banner for both passes while
 the Kage Pass is open, and the Passes page (`/passes`) explains both, with
 every number read from the server's config.
 
+**L-Coin Store (in game).** `overrides/game/data/LimitShop.xml` sets what is
+sold, prices and limits, including monthly pass kits. The client's own product
+list sets card names, tabs and ribbons, so a change usually needs both sides.
+See [docs/LCOIN-STORE.md](docs/LCOIN-STORE.md).
+
 ## Updates and backups
 
 Back up the following before updating:

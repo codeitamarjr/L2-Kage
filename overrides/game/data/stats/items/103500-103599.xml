@@ -1,0 +1,1770 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/items.xsd">
+	<item id="103500" name="Rare Accessory Pack (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.bm_gold_lure_special_box" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="95327" min="1" max="1" chance="20" /> <!-- Queen Ant's Ring - Sealed -->
+			<item id="95328" min="1" max="1" chance="20" /> <!-- Orfen's Earring - Sealed -->
+			<item id="95330" min="1" max="1" chance="20" /> <!-- Baium's Ring - Sealed -->
+			<item id="95331" min="1" max="1" chance="20" /> <!-- Zaken's Earring - Sealed -->
+			<item id="95333" min="1" max="1" chance="20" /> <!-- Frintezza's Necklace - Sealed -->
+		</capsuled_items>
+	</item>
+	<item id="103501" name="Doll Summon Coupon (Common - Heroic) - 1-time (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to summon 1 doll from <font color=DDDDDD>common</font> to <font color=FF6666>heroic</font> grade. Some dolls cannot be summoned. -->
+		<set name="icon" val="icon.doll_summon_1_ticket_lv1" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="LIQUID" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+	</item>
+	<item id="103502" name="Doll Summon Coupon (Common - Heroic) - 11-time (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to summon 11 dolls from <font color=DDDDDD>common</font> to <font color=FF6666>heroic</font> grade. Some dolls cannot be summoned. -->
+		<set name="icon" val="icon.doll_summon_11_ticket_lv1" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="LIQUID" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="RelicSummonCoupon" /> <!-- L2 Kage: upstream left this out, so the coupon did nothing -->
+	</item>
+	<item id="103503" name="Package: Hardin's Soul Crystal Lv. 1 (500 pcs.) (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.aden_rune_high_i01" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="95803" min="500" max="500" chance="100" /> <!-- Hardin's Soul Crystal Lv. 1 -->
+		</capsuled_items>
+	</item>
+	<item id="103504" name="Package: Hardin's Soul Crystal Lv. 1 (100 pcs.) (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.aden_rune_high_i01" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="95803" min="100" max="100" chance="100" /> <!-- Hardin's Soul Crystal Lv. 1 -->
+		</capsuled_items>
+	</item>
+	<item id="103505" name="Package: Hardin's Soul Crystal Lv. 1 (50 pcs.) (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.aden_rune_high_i01" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="95803" min="50" max="50" chance="100" /> <!-- Hardin's Soul Crystal Lv. 1 -->
+		</capsuled_items>
+	</item>
+	<item id="103506" name="Package: Hardin's Soul Crystal Lv. 1 (20 pcs.) (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.aden_rune_high_i01" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="95803" min="20" max="20" chance="100" /> <!-- Hardin's Soul Crystal Lv. 1 -->
+		</capsuled_items>
+	</item>
+	<item id="103507" name="Package: Aden's Soul Crystal Lv. 1 - Weapon (500 pcs.) (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.aden_rune_i01" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="95783" min="500" max="500" chance="100" /> <!-- Aden's Soul Crystal Lv. 1 - Weapon -->
+		</capsuled_items>
+	</item>
+	<item id="103508" name="Package: Aden's Soul Crystal Lv. 1 - Weapon (200 pcs.) (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.aden_rune_i01" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="95783" min="200" max="200" chance="100" /> <!-- Aden's Soul Crystal Lv. 1 - Weapon -->
+		</capsuled_items>
+	</item>
+	<item id="103509" name="Package: Aden's Soul Crystal Lv. 1 - Weapon (100 pcs.) (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.aden_rune_i01" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="95783" min="100" max="100" chance="100" /> <!-- Aden's Soul Crystal Lv. 1 - Weapon -->
+		</capsuled_items>
+	</item>
+	<item id="103510" name="Package: Aden's Soul Crystal Lv. 1 - Weapon (50 pcs.) (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.aden_rune_i01" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="95783" min="50" max="50" chance="100" /> <!-- Aden's Soul Crystal Lv. 1 - Weapon -->
+		</capsuled_items>
+	</item>
+	<item id="103511" name="Package: Aden's Soul Crystal Lv. 1 - Armor (500 pcs.) (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.aden_rune_am_i01" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="96901" min="500" max="500" chance="100" /> <!-- Aden's Soul Crystal Lv. 1 - Armor -->
+		</capsuled_items>
+	</item>
+	<item id="103512" name="Package: Aden's Soul Crystal Lv. 1 - Armor (200 pcs.) (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.aden_rune_am_i01" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="96901" min="200" max="200" chance="100" /> <!-- Aden's Soul Crystal Lv. 1 - Armor -->
+		</capsuled_items>
+	</item>
+	<item id="103513" name="Package: Aden's Soul Crystal Lv. 1 - Armor (100 pcs.) (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.aden_rune_am_i01" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="96901" min="100" max="100" chance="100" /> <!-- Aden's Soul Crystal Lv. 1 - Armor -->
+		</capsuled_items>
+	</item>
+	<item id="103514" name="Package: Aden's Soul Crystal Lv. 1 - Armor (50 pcs.) (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.aden_rune_am_i01" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="96901" min="50" max="50" chance="100" /> <!-- Aden's Soul Crystal Lv. 1 - Armor -->
+		</capsuled_items>
+	</item>
+	<item id="103515" name="Soul Crystal Challenge Coupon (Hardin) (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Use it to obtain Hardin's Soul Crystal (500 pcs.) through special craft. -->
+		<set name="icon" val="icon.bm_ensoul_stone_ticket_i00" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="LIQUID" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+	</item>
+	<item id="103516" name="Soul Crystal Challenge Coupon (Weapon) (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Use it to obtain Aden's Soul Crystal - Weapon (500 pcs.) through special craft. -->
+		<set name="icon" val="icon.bm_ensoul_stone_ticket_i00" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="LIQUID" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+	</item>
+	<item id="103517" name="Soul Crystal Challenge Coupon (Armor) (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Use it to obtain Aden's Soul Crystal - Armor (500 pcs.) through special craft. -->
+		<set name="icon" val="icon.bm_ensoul_stone_ticket_i00" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="LIQUID" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+	</item>
+	<item id="103518" name="Package: Doll Summon Coupon (Common - Heroic) - 11-time (5 pcs.) (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.bless_doll_summon_11_ticket_lv1" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="103502" min="5" max="5" chance="100" /> <!-- Doll Summon Coupon (Common - Heroic) - 11-time (Time-limited) - Sealed -->
+		</capsuled_items>
+	</item>
+	<item id="103519" name="Legendary Spellbook Coupon" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain 1 Legendary Spellbook <font color=ff6666>(unexchangeable)</font> of your choice. -->
+		<set name="icon" val="icon.ev_sb_5_trade_ticket" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="LIQUID" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+	</item>
+	<item id="103520" name="Shining Iron Treasure Chest" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.etc_treasure_box_i00" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="PAPER" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="2" />
+		<set name="extractableCountMax" val="2" />
+		<capsuled_items>
+			<item id="98040" min="1" max="1" chance="6.538462" /> <!-- Transcendent Upgrade Stone - Sealed -->
+			<item id="101531" min="1" max="1" chance="6.538462" /> <!-- Greater Upgrade Stone - Sealed -->
+			<item id="101541" min="1" max="1" chance="6.538462" /> <!-- Stable Scroll: Enchant Weapon - Sealed -->
+			<item id="101542" min="1" max="1" chance="6.538462" /> <!-- Stable Scroll: Enchant Armor - Sealed -->
+			<item id="103403" min="1" max="1" chance="6.538462" /> <!-- Scroll of Blessing - Special -->
+			<item id="98136" min="1" max="1" chance="6.538462" /> <!-- Aden Essence -->
+			<item id="98137" min="1" max="1" chance="6.538462" /> <!-- Evil Energy -->
+			<item id="98139" min="1" max="1" chance="6.538462" /> <!-- Cursed Holy Grail -->
+			<item id="98141" min="1" max="1" chance="6.538462" /> <!-- Tobald's Prophesy - 1st Page -->
+			<item id="98142" min="1" max="1" chance="6.538462" /> <!-- Tobald's Prophesy - 2nd Page -->
+			<item id="98143" min="1" max="1" chance="6.538462" /> <!-- Tobald's Prophesy - 3rd Page -->
+			<item id="98145" min="1" max="1" chance="6.538462" /> <!-- Tobald's Prophesy - 5th Page -->
+			<item id="98150" min="1" max="1" chance="6.538462" /> <!-- Tobald's Prophesy -->
+			<item id="97597" min="5" max="5" chance="100" /> <!-- Selected Jewel Coupon - Sealed -->
+		</capsuled_items>
+	</item>
+	<item id="103521" name="+2 Rare Accessory Pack (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.bm_sayha_silver_present" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="100006" min="1" max="1" chance="16.666667" /> <!-- Package: +2 Antharas' Earring (Sealed) - Sealed -->
+			<item id="100007" min="1" max="1" chance="16.666667" /> <!-- Package: +2 Frintezza's Necklace (Sealed) - Sealed -->
+			<item id="100008" min="1" max="1" chance="16.666667" /> <!-- Package: +2 Baium's Ring (Sealed) - Sealed -->
+			<item id="100010" min="1" max="1" chance="16.666667" /> <!-- Package: +2 Zaken's Earring (Sealed) - Sealed -->
+			<item id="100011" min="1" max="1" chance="16.666667" /> <!-- Package: +2 Queen Ant's Ring (Sealed) - Sealed -->
+			<item id="100012" min="1" max="1" chance="16.666667" /> <!-- Package: +2 Orfen's Earring (Sealed) - Sealed -->
+		</capsuled_items>
+	</item>
+	<item id="103522" name="Challenge Pack: Ferion Doll (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.figure_box" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="101390" min="1" max="1" chance="20" /> <!-- Enhanced Doll Summon Coupon - Ferion - Sealed -->
+			<item id="101391" min="1" max="1" chance="20" /> <!-- Superior Doll Summon Coupon - Ferion - Sealed -->
+			<item id="101392" min="1" max="1" chance="20" /> <!-- Rare Doll Summon Coupon - Ferion - Sealed -->
+			<item id="101393" min="1" max="1" chance="20" /> <!-- Heroic Doll Summon Coupon - Ferion - Sealed -->
+			<item id="103233" min="10" max="10" chance="20" /> <!-- Doll Summon Coupon (Common - Heroic) - 11-time - Sealed -->
+		</capsuled_items>
+	</item>
+	<item id="103523" name="Challenge Pack: Andreas van Halter Doll (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.figure_box" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="100903" min="1" max="1" chance="20" /> <!-- Enhanced Doll Summon Coupon - Andreas van Halter - Sealed -->
+			<item id="100914" min="1" max="1" chance="20" /> <!-- Superior Doll Summon Coupon - Andreas van Halter - Sealed -->
+			<item id="100925" min="1" max="1" chance="20" /> <!-- Rare Doll Summon Coupon - Andreas van Halter - Sealed -->
+			<item id="100936" min="1" max="1" chance="20" /> <!-- Heroic Doll Summon Coupon - Andreas van Halter - Sealed -->
+			<item id="103233" min="10" max="10" chance="20" /> <!-- Doll Summon Coupon (Common - Heroic) - 11-time - Sealed -->
+		</capsuled_items>
+	</item>
+	<item id="103524" name="Challenge Pack: Kelbim Doll (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.figure_box" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="100904" min="1" max="1" chance="20" /> <!-- Enhanced Doll Summon Coupon - Kelbim - Sealed -->
+			<item id="100915" min="1" max="1" chance="20" /> <!-- Superior Doll Summon Coupon - Kelbim - Sealed -->
+			<item id="100926" min="1" max="1" chance="20" /> <!-- Rare Doll Summon Coupon - Kelbim - Sealed -->
+			<item id="100937" min="1" max="1" chance="20" /> <!-- Heroic Doll Summon Coupon - Kelbim - Sealed -->
+			<item id="103233" min="10" max="10" chance="20" /> <!-- Doll Summon Coupon (Common - Heroic) - 11-time - Sealed -->
+		</capsuled_items>
+	</item>
+	<item id="103525" name="Craft Coupon - January Special Pass (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Can be used to obtain Greater Upgrade Stone or Doll Summon Coupon through the account-limited craft. -->
+		<set name="icon" val="icon.bm_challenger_wp_ench_ticket" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="LIQUID" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+	</item>
+	<item id="103526" name="Selection Coupon: Item for Special Zones' Prolongation (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain 1 useful item of your choice. -->
+		<set name="icon" val="icon.etc_level_bustup_ticket_i02" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="LIQUID" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+	</item>
+	<item id="103527" name="Selection Coupon: Superior Doll - January Special Pass (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to choose 1 doll <font color=FF9955>from common to superior grade</font>. -->
+		<set name="icon" val="icon.doll_summon_1_ticket_fixed_lv3_2" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="LIQUID" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+	</item>
+	<item id="103528" name="Selection Coupon: Rare Doll - January Special Pass (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to summon 1 <font color=5599FF>rare doll</font> of your choice, or to use the item as a material for crafting an account-limited January pass. Some dolls cannot be summoned. -->
+		<set name="icon" val="icon.doll_summon_1_ticket_fixed_lv4" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="LIQUID" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+	</item>
+	<item id="103529" name="Selection Coupon: Heroic Doll - January Special Pass (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to summon <font color=FF6666>1 heroic doll</font>. Some dolls cannot be summoned. -->
+		<set name="icon" val="icon.doll_summon_1_ticket_fixed_lv5" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="LIQUID" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+	</item>
+	<item id="103530" name="Package: +6 Zaken's Blood Sword" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain +6 Zaken's Blood Sword <font color=00FF00>(exchangeable)</font>. <font color=eeaa22><Recommended classes>. Samurai. Death Knight. Phoenix Knight. Hell Knight. Eva's Templar. Shillien Templar. Divine Templar</font> -->
+		<set name="icon" val="icon.special_weapon_onehandsword" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="92404" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" /> <!-- Zaken's Blood Sword -->
+		</capsuled_items>
+	</item>
+	<item id="103531" name="Package: +6 Core's Plasmic Bow" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain +6 Core's Plasmic Bow <font color=00FF00>(exchangeable)</font>. <font color=eeaa22><Recommended classes>. Sagittarius. Moonlight Sentinel. Ghost Sentinel. Trickster</font> -->
+		<set name="icon" val="icon.weapon_karupis_i00" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="92405" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" /> <!-- Core's Plasmic Bow -->
+		</capsuled_items>
+	</item>
+	<item id="103532" name="Package: +6 Orfen's Venom Sword" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain +6 Orfen's Venom Sword <font color=00FF00>(exchangeable)</font>. <font color=eeaa22><Recommended class>. Titan</font> -->
+		<set name="icon" val="icon.weapon_the_two_handed_sword_of_hero_i01" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="92407" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" /> <!-- Orfen's Venom Sword -->
+		</capsuled_items>
+	</item>
+	<item id="103533" name="Package: +6 Baium's Thunder Breaker" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain +6 Baium's Thunder Breaker <font color=00FF00>(exchangeable)</font>. <font color=eeaa22><Recommended classes>. Blood Rose. Assassin. Adventurer. Wind Rider. Ghost Hunter</font> -->
+		<set name="icon" val="icon.weapon_terakan_i00" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="92408" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" /> <!-- Baium's Thunder Breaker -->
+		</capsuled_items>
+	</item>
+	<item id="103534" name="Package: +6 Queen Ant's Stone Breaker" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain +6 Queen Ant's Stone Breaker <font color=00FF00>(exchangeable)</font>. <font color=eeaa22><Recommended classes>. Archmage. Mystic Muse. Storm Screamer. Soultaker. Arcana Lord. Spectral Master. Dominator. Doomcryer. Cardinal. Eva's Saint. Shillien Saint</font> -->
+		<set name="icon" val="icon.special_weapon_onehandblunt" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="92421" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" /> <!-- Queen Ant's Stone Breaker -->
+		</capsuled_items>
+	</item>
+	<item id="103535" name="Package: +6 Anakim's Divine Pistols" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain +6 Anakim's Divine Pistols <font color=00FF00>(exchangeable)</font>. <font color=eeaa22><Recommended class>. Storm Blaster</font> -->
+		<set name="icon" val="icon.shooter_boss_anakim" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="94888" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" /> <!-- Anakim's Divine Pistols -->
+		</capsuled_items>
+	</item>
+	<item id="103536" name="Package: +6 Beleth's Soul Eater" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain +6 Beleth's Soul Eater <font color=00FF00>(exchangeable)</font>. <font color=eeaa22><Recommended classes>. Element Weaver. Apostle. Elemental Master. Archmage. Mystic Muse. Storm Screamer. Soultaker. Arcana Lord. Spectral Master. Dominator. Doomcryer. Cardinal. Eva's Saint. Shillien Saint</font> -->
+		<set name="icon" val="icon.staff_of_bereth" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="96268" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" /> <!-- Beleth's Soul Eater -->
+		</capsuled_items>
+	</item>
+	<item id="103537" name="Package: +6 Gorde's Flame Spear" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain +6 Gorde's Flame Spear <font color=00FF00>(exchangeable)</font>. <font color=eeaa22><Recommended classes>. Dreadnought. Vanguard Rider</font> -->
+		<set name="icon" val="icon.weapon_r110_spear_i00" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="97301" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" /> <!-- Gorde's Flame Spear -->
+		</capsuled_items>
+	</item>
+	<item id="103538" name="Package: +6 Galaxia's Ancient Sword" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain +6 Galaxia's Ancient Sword <font color=00FF00>(exchangeable)</font>. <font color=eeaa22><Recommended class>. Doombringer</font> -->
+		<set name="icon" val="icon.weapon_dynasty_ancient_sword_i00" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="97956" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" /> <!-- Galaxia's Ancient Sword -->
+		</capsuled_items>
+	</item>
+	<item id="103539" name="Package: +6 Phiriel's Rapier" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain +6 Phiriel's Rapier <font color=00FF00>(exchangeable)</font>. <font color=eeaa22><Recommended class>. Soul Hound</font> -->
+		<set name="icon" val="icon.weapon_heavenstair_rapier_i00" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="97958" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" /> <!-- Phiriel's Rapier -->
+		</capsuled_items>
+	</item>
+	<item id="103540" name="Package: +6 Anais' Fists" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain +6 Anais' Fists <font color=00FF00>(exchangeable)</font>. <font color=eeaa22><Recommended classes>. Warg. Grand Khavatari</font> -->
+		<set name="icon" val="icon.weapon_vesper_fighter_i00" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="97960" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" /> <!-- Anais' Fists -->
+		</capsuled_items>
+	</item>
+	<item id="103541" name="Package: +6 Juriel's Dual Swords" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain +6 Juriel's Dual Swords <font color=00FF00>(exchangeable)</font>. <font color=eeaa22><Recommended classes>. Duelist. Sword Muse. Spectral Dancer</font> -->
+		<set name="icon" val="BranchSys2.icon.br_wp_astarot_i00" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="97962" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" /> <!-- Juriel's Dual Swords -->
+		</capsuled_items>
+	</item>
+	<item id="103542" name="Package: +6 Ice Crystal Breastplate" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain +6 Ice Crystal Breastplate <font color=00FF00>(exchangeable)</font>. -->
+		<set name="icon" val="icon.armor_t94_u_i01" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="93139" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" /> <!-- Ice Crystal Breastplate -->
+		</capsuled_items>
+	</item>
+	<item id="103543" name="Package: +6 Ice Crystal Gaiters" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain +6 Ice Crystal Gaiters <font color=00FF00>(exchangeable)</font>. -->
+		<set name="icon" val="icon.armor_t94_l_i01" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="93140" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" /> <!-- Ice Crystal Gaiters -->
+		</capsuled_items>
+	</item>
+	<item id="103544" name="Package: +6 Leather Armor of Lightning" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain +6 Leather Armor of Lightning <font color=00FF00>(exchangeable)</font>. -->
+		<set name="icon" val="icon.armor_t101_u_i00" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="93315" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" /> <!-- Leather Armor of Lightning -->
+		</capsuled_items>
+	</item>
+	<item id="103545" name="Package: +6 Leather Leggings of Lightning" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain +6 Leather Leggings of Lightning <font color=00FF00>(exchangeable)</font>. -->
+		<set name="icon" val="icon.armor_t102_l_i00" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="93316" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" /> <!-- Leather Leggings of Lightning -->
+		</capsuled_items>
+	</item>
+	<item id="103546" name="Package: +6 Flaming Tunic" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain +6 Flaming Tunic <font color=00FF00>(exchangeable)</font>. -->
+		<set name="icon" val="icon.armor_t96_u_i03" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="93733" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" /> <!-- Flaming Tunic -->
+		</capsuled_items>
+	</item>
+	<item id="103547" name="Package: +6 Flaming Stockings" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain +6 Flaming Stockings <font color=00FF00>(exchangeable)</font>. -->
+		<set name="icon" val="icon.armor_t96_l_i03" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="93734" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" /> <!-- Flaming Stockings -->
+		</capsuled_items>
+	</item>
+	<item id="103548" name="Package: +6 Helmet of Mana" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain +6 Helmet of Mana <font color=00FF00>(exchangeable)</font>. -->
+		<set name="icon" val="icon.armor_leather_helmet_i00" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="94083" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" /> <!-- Helmet of Mana -->
+		</capsuled_items>
+	</item>
+	<item id="103549" name="Package: +6 Stun Gauntlets" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain +6 Stun Gauntlets <font color=00FF00>(exchangeable)</font>. -->
+		<set name="icon" val="icon.armor_t96_g_i03" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="94263" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" /> <!-- Stun Gauntlets -->
+		</capsuled_items>
+	</item>
+	<item id="103550" name="Package: +6 Gloves of Silence" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain +6 Gloves of Silence <font color=00FF00>(exchangeable)</font>. -->
+		<set name="icon" val="icon.armor_t94_g_i01" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="93075" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" /> <!-- Gloves of Silence -->
+		</capsuled_items>
+	</item>
+	<item id="103551" name="Package: +6 Boots of Evasion" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain +6 Boots of Evasion <font color=00FF00>(exchangeable)</font>. -->
+		<set name="icon" val="icon.armor_t100_b_i00" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="94085" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" /> <!-- Boots of Evasion -->
+		</capsuled_items>
+	</item>
+	<item id="103552" name="Package: +6 Sigil of Inevitability" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain +6 Sigil of Inevitability <font color=00FF00>(exchangeable)</font>. -->
+		<set name="icon" val="icon.elos_i00" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="94299" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" /> <!-- Sigil of Inevitability -->
+		</capsuled_items>
+	</item>
+	<item id="103553" name="Package: +6 Shield of Vengeance" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain +6 Shield of Vengeance <font color=00FF00>(exchangeable)</font>. -->
+		<set name="icon" val="icon.shield_of_revenge" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="94301" min="1" max="1" minEnchant="6" maxEnchant="6" chance="100" /> <!-- Shield of Vengeance -->
+		</capsuled_items>
+	</item>
+	<item id="103554" name="+6 Boss Weapon Coupon (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain 1 Boss weapon enchanted to +6 <font color=00FF00>(exchangeable)</font> of your choice. -->
+		<set name="icon" val="icon.boss_weapon_ticket_i00" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="LIQUID" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+	</item>
+	<item id="103555" name="+6 Special Armor Coupon (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain 1 +6 Special Armor <font color=00FF00>(exchangeable)</font> of your choice. -->
+		<set name="icon" val="icon.rare_armor_ticket_i00" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="LIQUID" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+	</item>
+	<item id="103556" name="Christmas Gift Box (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="BranchSys.br_gold_box_i00" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="100602" min="1" max="1" chance="100" /> <!-- Transcendent Upgrade Stone (Time-limited) - Sealed -->
+			<item id="101347" min="1" max="1" chance="100" /> <!-- Weekly Supply Pack (Time-limited) - Sealed -->
+			<item id="103567" min="1" max="1" chance="100" /> <!-- Doll Summon Coupon (Common - Heroic) - 11-time (Time-limited) - Sealed -->
+		</capsuled_items>
+	</item>
+	<item id="103557" name="Christmas Gift Box (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="BranchSys.br_gold_box_i00" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="101347" min="1" max="1" chance="100" /> <!-- Weekly Supply Pack (Time-limited) - Sealed -->
+			<item id="101534" min="1" max="1" chance="100" /> <!-- Greater Upgrade Stone (Time-limited) - Sealed -->
+			<item id="103567" min="1" max="1" chance="100" /> <!-- Doll Summon Coupon (Common - Heroic) - 11-time (Time-limited) - Sealed -->
+		</capsuled_items>
+	</item>
+	<item id="103558" name="+5 Head Accessory Pack (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.etc_pi_gift_box_i02" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="94618" min="1" max="1" chance="33.333333" /> <!-- Package: +5 Circlet of Hero - Sealed -->
+			<item id="98031" min="1" max="1" chance="33.333333" /> <!-- Package: +5 Piercing Mask - Sealed -->
+			<item id="102298" min="1" max="1" chance="33.333333" /> <!-- Package: +5 Phantom Mask - Sealed -->
+		</capsuled_items>
+	</item>
+	<item id="103559" name="+7 Talisman Pack (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.etc_pi_gift_box_i04" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="92449" min="1" max="1" chance="20" /> <!-- +7 Talisman of Aden Pack - Sealed -->
+			<item id="92457" min="1" max="1" chance="20" /> <!-- +7 Talisman of Eva Pack - Sealed -->
+			<item id="92466" min="1" max="1" chance="20" /> <!-- +7 Talisman of Speed Pack - Sealed -->
+			<item id="100562" min="1" max="1" chance="20" /> <!-- Package: +7 Heavenly Talisman - Sealed -->
+			<item id="94094" min="1" max="1" chance="20" /> <!-- +7 Talisman of Authority Pack - Sealed -->
+		</capsuled_items>
+	</item>
+	<item id="103560" name="+5 Talisman Pack (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.etc_pi_gift_box_i04" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="92447" min="1" max="1" chance="25" /> <!-- +5 Talisman of Aden Pack - Sealed -->
+			<item id="92455" min="1" max="1" chance="25" /> <!-- +5 Talisman of Eva Pack - Sealed -->
+			<item id="92464" min="1" max="1" chance="25" /> <!-- +5 Talisman of Speed Pack - Sealed -->
+			<item id="97953" min="1" max="1" chance="25" /> <!-- +5 Talisman of Authority Pack - Sealed -->
+		</capsuled_items>
+	</item>
+	<item id="103561" name="Augmenting Stone Pack (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.etc_treasure_box_i01" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="94210" min="1" max="1" chance="12.5" /> <!-- Augmenting Stone: Weapon - Sealed -->
+			<item id="94212" min="1" max="1" chance="12.5" /> <!-- Augmenting Stone: Armor - Sealed -->
+			<item id="94424" min="1" max="1" chance="12.5" /> <!-- Augmenting Stone: Accessory - Sealed -->
+			<item id="97444" min="1" max="1" chance="12.5" /> <!-- Blessed Augmenting Stone: Weapon - Sealed -->
+			<item id="97445" min="1" max="1" chance="12.5" /> <!-- Blessed Augmenting Stone: Armor - Sealed -->
+			<item id="97447" min="1" max="1" chance="12.5" /> <!-- Blessed Augmenting Stone: Accessory - Sealed -->
+			<item id="97788" min="1" max="1" chance="12.5" /> <!-- Augmenting Stone: Special Equipment - Sealed -->
+			<item id="97790" min="1" max="1" chance="12.5" /> <!-- Blessed Augmenting Stone: Special Equipment - Sealed -->
+		</capsuled_items>
+	</item>
+	<item id="103562" name="Selection Coupon Pack: Armor (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.etc_treasure_box_i11" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="103569" min="1" max="1" chance="33.333333" /> <!-- Selection Coupon: Armor - Base - Sealed -->
+			<item id="103569" min="3" max="3" chance="33.333333" /> <!-- Selection Coupon: Armor - Base - Sealed -->
+			<item id="103569" min="5" max="5" chance="33.333333" /> <!-- Selection Coupon: Armor - Base - Sealed -->
+		</capsuled_items>
+	</item>
+	<item id="103563" name="Selection Coupon Pack: Weapon (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.etc_treasure_box_i09" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="103568" min="1" max="1" chance="33.333333" /> <!-- Selection Coupon: Weapon - Base - Sealed -->
+			<item id="103568" min="3" max="3" chance="33.333333" /> <!-- Selection Coupon: Weapon - Base - Sealed -->
+			<item id="103568" min="5" max="5" chance="33.333333" /> <!-- Selection Coupon: Weapon - Base - Sealed -->
+		</capsuled_items>
+	</item>
+	<item id="103564" name="Selection Coupon Pack: Armor (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.etc_treasure_box_i11" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="101869" min="1" max="1" chance="33.333333" /> <!-- Selection Coupon: Armor - Sealed -->
+			<item id="101869" min="3" max="3" chance="33.333333" /> <!-- Selection Coupon: Armor - Sealed -->
+			<item id="101869" min="5" max="5" chance="33.333333" /> <!-- Selection Coupon: Armor - Sealed -->
+		</capsuled_items>
+	</item>
+	<item id="103565" name="Selection Coupon Pack: Weapon (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.etc_treasure_box_i09" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="101870" min="1" max="1" chance="33.333333" /> <!-- Selection Coupon: Weapon - Sealed -->
+			<item id="101870" min="3" max="3" chance="33.333333" /> <!-- Selection Coupon: Weapon - Sealed -->
+			<item id="101870" min="5" max="5" chance="33.333333" /> <!-- Selection Coupon: Weapon - Sealed -->
+		</capsuled_items>
+	</item>
+	<item id="103566" name="Doll Summon Coupon (Common - Heroic) - 1-time (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to summon 1 doll from <font color=DDDDDD>common</font> to <font color=FF6666>heroic</font> grade. Some dolls cannot be summoned. -->
+		<set name="icon" val="icon.bless_doll_summon_1_ticket_lv1" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="LIQUID" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="RelicSummonCoupon" />
+	</item>
+	<item id="103567" name="Doll Summon Coupon (Common - Heroic) - 11-time (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to summon 11 dolls from <font color=DDDDDD>common</font> to <font color=FF6666>heroic</font> grade. Some dolls cannot be summoned. -->
+		<set name="icon" val="icon.bless_doll_summon_11_ticket_lv1" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="LIQUID" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="RelicSummonCoupon" />
+	</item>
+	<item id="103568" name="Selection Coupon: Weapon" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain a useful item of your choice. -->
+		<set name="icon" val="icon.boss_weapon_ticket_i00" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="PAPER" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+	</item>
+	<item id="103569" name="Selection Coupon: Armor" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain a useful item of your choice. -->
+		<set name="icon" val="icon.rare_armor_ticket_i00" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="PAPER" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+	</item>
+	<item id="103570" name="New Year Coupon 2025 (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain 1 useful item of your choice, or to use the item as a material for special craft. -->
+		<set name="icon" val="icon.year_ticket_i00" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="LIQUID" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+	</item>
+	<item id="103571" name="Package: New Year Coupon 2025 (2000 pcs.) (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.year_ticket_i00" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="103570" min="2000" max="2000" chance="100" /> <!-- New Year Coupon 2025 (Time-limited) - Sealed -->
+		</capsuled_items>
+	</item>
+	<item id="103572" name="Package: New Year Coupon 2025 (1000 pcs.) (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.year_ticket_i00" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="103570" min="1000" max="1000" chance="100" /> <!-- New Year Coupon 2025 (Time-limited) - Sealed -->
+		</capsuled_items>
+	</item>
+	<item id="103573" name="Package: New Year Coupon 2025 (500 pcs.) (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.year_ticket_i00" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="103570" min="500" max="500" chance="100" /> <!-- New Year Coupon 2025 (Time-limited) - Sealed -->
+		</capsuled_items>
+	</item>
+	<item id="103574" name="New Year Pack 2025 (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.bm_sayha_blessed_box" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="2" />
+		<set name="extractableCountMax" val="2" />
+		<capsuled_items>
+			<item id="92314" min="10" max="10" chance="2.040816" /> <!-- Giran Seal -->
+			<item id="92314" min="5" max="5" chance="2.040816" /> <!-- Giran Seal -->
+			<item id="92314" min="2" max="2" chance="2.040816" /> <!-- Giran Seal -->
+			<item id="93255" min="1" max="1" chance="2.040816" /> <!-- Blessed Scroll: Enchant Weapon -->
+			<item id="93256" min="1" max="1" chance="2.040816" /> <!-- Blessed Scroll: Enchant Armor -->
+			<item id="93739" min="1" max="1" chance="2.040816" /> <!-- Package: Giran Seal (1000 pcs.) - Sealed -->
+			<item id="94120" min="1" max="1" chance="2.040816" /> <!-- Package: Talisman of Baium - Sealed -->
+			<item id="94186" min="1" max="1" chance="2.040816" /> <!-- Augmenting Stone: Weapon -->
+			<item id="94188" min="1" max="1" chance="2.040816" /> <!-- Augmenting Stone: Armor -->
+			<item id="94329" min="1" max="1" chance="2.040816" /> <!-- Package: Giran Seal (500 pcs.) - Sealed -->
+			<item id="94383" min="1" max="1" chance="2.040816" /> <!-- Scroll: Enchant Rare Accessories -->
+			<item id="94385" min="1" max="1" chance="2.040816" /> <!-- Improved Scroll: Enchant Rare Accessories -->
+			<item id="94423" min="1" max="1" chance="2.040816" /> <!-- Augmenting Stone: Accessory -->
+			<item id="95822" min="1" max="1" chance="2.040816" /> <!-- Hardin's Soul Crystal Lv. 20 -->
+			<item id="96300" min="1" max="1" chance="2.040816" /> <!-- Spellbook: Dragon Slayer -->
+			<item id="97787" min="1" max="1" chance="2.040816" /> <!-- Augmenting Stone: Special Equipment -->
+			<item id="98040" min="1" max="1" chance="2.040816" /> <!-- Transcendent Upgrade Stone - Sealed -->
+			<item id="100754" min="1" max="1" chance="2.040816" /> <!-- Package: Transcendent Upgrade Stone (10 pcs.) (Time-limited) - Sealed -->
+			<item id="101371" min="1" max="1" chance="2.040816" /> <!-- Package: Giran Seal (5000 pcs.) - Sealed -->
+			<item id="103571" min="1" max="1" chance="2.040816" /> <!-- Package: New Year Coupon 2025 (2000 pcs.) (Time-limited) - Sealed -->
+			<item id="103572" min="1" max="1" chance="2.040816" /> <!-- Package: New Year Coupon 2025 (1000 pcs.) (Time-limited) - Sealed -->
+			<item id="103573" min="1" max="1" chance="2.040816" /> <!-- Package: New Year Coupon 2025 (500 pcs.) (Time-limited) - Sealed -->
+			<item id="6660" min="1" max="1" chance="2.040816" /> <!-- Queen Ant's Ring -->
+			<item id="6661" min="1" max="1" chance="2.040816" /> <!-- Orfen's Earring -->
+			<item id="6662" min="1" max="1" chance="2.040816" /> <!-- Core's Ring -->
+			<item id="49580" min="1" max="1" chance="2.040816" /> <!-- Baium's Ring -->
+			<item id="90763" min="1" max="1" chance="2.040816" /> <!-- Zaken's Earring -->
+			<item id="90992" min="1" max="1" chance="2.040816" /> <!-- Antharas' Earring -->
+			<item id="91076" min="10" max="10" chance="2.040816" /> <!-- Venir's Talisman Fragment -->
+			<item id="91550" min="1" max="1" chance="2.040816" /> <!-- Frintezza's Necklace -->
+			<item id="96600" min="1" max="1" chance="2.040816" /> <!-- Beleth's Ring -->
+			<item id="96613" min="1" max="1" chance="2.040816" /> <!-- Spellbook: Expanded Potential of Dyes -->
+			<item id="96623" min="5" max="5" chance="2.040816" /> <!-- Dye Booster -->
+			<item id="97925" min="1" max="1" chance="2.040816" /> <!-- +6 Armor of Protection Coupon (Time-limited) - Sealed -->
+			<item id="98932" min="1" max="1" chance="2.040816" /> <!-- Aztacan's Earring -->
+			<item id="100053" min="1" max="1" chance="2.040816" /> <!-- Heroic Spellbook Coupon - Sealed -->
+			<item id="100225" min="1" max="1" chance="2.040816" /> <!-- +6 Frost Lord's Weapon Coupon (Time-limited) - Sealed -->
+			<item id="100370" min="1" max="1" chance="2.040816" /> <!-- Ferion's Necklace -->
+			<item id="102976" min="1" max="1" chance="2.040816" /> <!-- Legendary Spellbook Coupon - Sealed -->
+			<item id="103570" min="20" max="20" chance="2.040816" /> <!-- New Year Coupon 2025 (Time-limited) - Sealed -->
+			<item id="103570" min="10" max="10" chance="2.040816" /> <!-- New Year Coupon 2025 (Time-limited) - Sealed -->
+			<item id="103570" min="5" max="5" chance="2.040816" /> <!-- New Year Coupon 2025 (Time-limited) - Sealed -->
+			<item id="103570" min="3" max="3" chance="2.040816" /> <!-- New Year Coupon 2025 (Time-limited) - Sealed -->
+			<item id="103570" min="2" max="2" chance="2.040816" /> <!-- New Year Coupon 2025 (Time-limited) - Sealed -->
+			<item id="96936" min="1" max="1" chance="2.040816" /> <!-- Berserker's Shield -->
+			<item id="96937" min="1" max="1" chance="2.040816" /> <!-- Berserker's Sigil -->
+			<item id="100214" min="1" max="1" chance="2.040816" /> <!-- Wild Wind Helmet -->
+			<item id="100780" min="1" max="1" chance="2.040816" /> <!-- Red Flame Gauntlets -->
+			<item id="103255" min="1" max="1" chance="2.040816" /> <!-- Sea Boots -->
+			<item id="103570" min="1" max="1" chance="100" /> <!-- New Year Coupon 2025 (Time-limited) - Sealed -->
+		</capsuled_items>
+	</item>
+	<item id="103575" name="Jewelry Box Lv. 7-8 (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.etc_bm_jewelbox_shhadai" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="97701" min="1" max="1" chance="8.333333" /> <!-- Opal Jewelry Box Lv. 7 - Sealed -->
+			<item id="97702" min="1" max="1" chance="8.333333" /> <!-- Opal Jewelry Box Lv. 8 - Sealed -->
+			<item id="97704" min="1" max="1" chance="8.333333" /> <!-- Amber Jewelry Box Lv. 7 - Sealed -->
+			<item id="97705" min="1" max="1" chance="8.333333" /> <!-- Amber Jewelry Box Lv. 8 - Sealed -->
+			<item id="102843" min="1" max="1" chance="8.333333" /> <!-- Ruby Jewelry Box Lv. 7 - Sealed -->
+			<item id="102844" min="1" max="1" chance="8.333333" /> <!-- Ruby Jewelry Box Lv. 8 - Sealed -->
+			<item id="102853" min="1" max="1" chance="8.333333" /> <!-- Emerald Jewelry Box Lv. 7 - Sealed -->
+			<item id="102854" min="1" max="1" chance="8.333333" /> <!-- Emerald Jewelry Box Lv. 8 - Sealed -->
+			<item id="102863" min="1" max="1" chance="8.333333" /> <!-- Sapphire Jewelry Box Lv. 7 - Sealed -->
+			<item id="102864" min="1" max="1" chance="8.333333" /> <!-- Sapphire Jewelry Box Lv. 8 - Sealed -->
+			<item id="102873" min="1" max="1" chance="8.333333" /> <!-- Aquamarine Jewelry Box Lv. 7 - Sealed -->
+			<item id="102874" min="1" max="1" chance="8.333333" /> <!-- Aquamarine Jewelry Box Lv. 8 - Sealed -->
+		</capsuled_items>
+	</item>
+	<item id="103576" name="Guardian Contract: Glassika" type="EtcItem">
+		<!-- Can be used to summon Glassia. <font color=ff6666>Cannot be stored in the warehouse.</font> -->
+		<set name="icon" val="icon.glassica_contract" />
+		<set name="default_action" val="SKILL_MAINTAIN" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="LEATHER" />
+		<set name="weight" val="890" />
+		<set name="price" val="2000000" />
+		<set name="is_dropable" val="false" />
+		<set name="is_depositable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="etcitem_type" val="PET_COLLAR" />
+		<set name="handler" val="SummonItems" />
+		<skills>
+			<skill id="2046" level="1" /> <!-- Summon Guardian -->
+		</skills>
+	</item>
+	<item id="103577" name="Guardian Contract: Orbit" type="EtcItem">
+		<!-- Can be used to summon Orbit. <font color=ff6666>Cannot be stored in the warehouse.</font> -->
+		<set name="icon" val="icon.orbita_contract" />
+		<set name="default_action" val="SKILL_MAINTAIN" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="LEATHER" />
+		<set name="weight" val="890" />
+		<set name="price" val="2000000" />
+		<set name="is_dropable" val="false" />
+		<set name="is_depositable" val="false" />
+		<set name="is_sellable" val="false" />
+	</item>
+	<item id="103578" name="Sealed Contract: Glassika" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.glassica_contract" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="103576" min="1" max="1" minEnchant="1" maxEnchant="1" chance="100" /> <!-- Guardian Contract: Glassia -->
+		</capsuled_items>
+	</item>
+	<item id="103579" name="Sealed Contract: Orbit" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.orbita_contract" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="103577" min="1" max="1" minEnchant="1" maxEnchant="1" chance="100" /> <!-- Guardian Contract: Orbit -->
+		</capsuled_items>
+	</item>
+	<item id="103580" name="Blue Snake's Precious Gift Box (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.bm_sayha_gold_present" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="94210" min="1" max="1" chance="11.111111" /> <!-- Augmenting Stone: Weapon - Sealed -->
+			<item id="94212" min="1" max="1" chance="11.111111" /> <!-- Augmenting Stone: Armor - Sealed -->
+			<item id="94424" min="1" max="1" chance="11.111111" /> <!-- Augmenting Stone: Accessory - Sealed -->
+			<item id="97788" min="1" max="1" chance="11.111111" /> <!-- Augmenting Stone: Special Equipment - Sealed -->
+			<item id="101383" min="1" max="1" chance="11.111111" /> <!-- Improved Scroll: Enchant Armor (Time-limited) - Sealed -->
+			<item id="101385" min="1" max="1" chance="11.111111" /> <!-- Cursed Scroll: Enchant Armor (Time-limited) - Sealed -->
+			<item id="100111" min="1" max="1" chance="11.111111" /> <!-- Frost Lord's Weapon Coupon (Sealed) (Time-limited) - Sealed -->
+			<item id="100722" min="1" max="1" chance="11.111111" /> <!-- Dye Booster - Sealed -->
+			<item id="102704" min="1" max="1" chance="11.111111" /> <!-- Armor of Protection Coupon (Sealed) (Time-limited) - Sealed -->
+		</capsuled_items>
+	</item>
+	<item id="103581" name="Blue Snake's Gift Box (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.bm_sayha_silver_present" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="4" />
+		<set name="extractableCountMax" val="4" />
+		<capsuled_items>
+			<item id="91767" min="1" max="1" chance="20" /> <!-- Enchant Kit: Talisman of Aden - Sealed -->
+			<item id="92020" min="1" max="1" chance="20" /> <!-- Enchant Kit: Talisman of Eva - Sealed -->
+			<item id="93330" min="1" max="1" chance="20" /> <!-- Enchant Kit: Talisman of Authority - Sealed -->
+			<item id="93685" min="1" max="1" chance="20" /> <!-- Enchant Kit: Talisman of Speed - Sealed -->
+			<item id="103580" min="1" max="1" chance="20" /> <!-- Blue Snake's Precious Gift Box (Time-limited) - Sealed -->
+			<item id="101532" min="1" max="1" chance="100" /> <!-- Blue Snake's Scale (Time-limited) - Sealed -->
+			<item id="3031" min="100" max="100" chance="100" /> <!-- Spirit Ore - Sealed -->
+			<item id="98697" min="50" max="50" chance="100" /> <!-- Soulshot Ticket (Time-limited) - Sealed -->
+		</capsuled_items>
+	</item>
+	<item id="103582" name="Challenge Pack: +4 Rare Accessory (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.bm_sayha_gold_present" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="100017" min="1" max="1" chance="10" /> <!-- Package: +3 Frintezza's Necklace (Sealed) - Sealed -->
+			<item id="100018" min="1" max="1" chance="10" /> <!-- Package: +3 Baium's Ring (Sealed) - Sealed -->
+			<item id="100020" min="1" max="1" chance="10" /> <!-- Package: +3 Zaken's Earring (Sealed) - Sealed -->
+			<item id="100021" min="1" max="1" chance="10" /> <!-- Package: +3 Queen Ant's Ring (Sealed) - Sealed -->
+			<item id="100022" min="1" max="1" chance="10" /> <!-- Package: +3 Orfen's Earring (Sealed) - Sealed -->
+			<item id="100318" min="1" max="1" chance="10" /> <!-- Package: +4 Baium's Ring (Sealed) - Sealed -->
+			<item id="100320" min="1" max="1" chance="10" /> <!-- Package: +4 Queen Ant's Ring (Sealed) - Sealed -->
+			<item id="101842" min="1" max="1" chance="10" /> <!-- Package: +4 Frintezza's Necklace (Sealed) - Sealed -->
+			<item id="101849" min="1" max="1" chance="10" /> <!-- Package: +4 Zaken's Earring (Sealed) - Sealed -->
+			<item id="101853" min="1" max="1" chance="10" /> <!-- Package: +4 Orfen's Earring (Sealed) - Sealed -->
+		</capsuled_items>
+	</item>
+	<item id="103583" name="Challenge Pack: Giran Seal (5000 pcs.) (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.etc_royal_seal_of_lord_i04" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="93739" min="1" max="1" chance="50" /> <!-- Package: Giran Seal (1000 pcs.) - Sealed -->
+			<item id="101371" min="1" max="1" chance="50" /> <!-- Package: Giran Seal (5000 pcs.) - Sealed -->
+		</capsuled_items>
+	</item>
+	<item id="103584" name="Challenge Pack: Package: Einhasad's Pendant Lv. 5 (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="Icon.bm_pendant_pve_white_pack" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="94261" min="1" max="1" chance="50" /> <!-- Package: Einhasad's Pendant Lv. 4 - Sealed -->
+			<item id="94262" min="1" max="1" chance="50" /> <!-- Package: Einhasad's Pendant Lv. 5 - Sealed -->
+		</capsuled_items>
+	</item>
+	<item id="103585" name="Blue Snake's Craft Coupon (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Can be used to obtain various items in special craft section or as a material to acquire common craft points. -->
+		<set name="icon" val="icon.blue_save_r" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="LIQUID" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+	</item>
+	<item id="103586" name="+0 ~ +1 Rare Accessory Pack (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.bm_sayha_gold_present" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="PAPER" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="93845" min="1" max="1" chance="10" /> <!-- Package: Queen Ant's Ring - Sealed -->
+			<item id="93846" min="1" max="1" chance="10" /> <!-- Package: Orfen's Earring - Sealed -->
+			<item id="93851" min="1" max="1" chance="10" /> <!-- Package: Baium's Ring - Sealed -->
+			<item id="93852" min="1" max="1" chance="10" /> <!-- Package: Zaken's Earring - Sealed -->
+			<item id="94387" min="1" max="1" chance="10" /> <!-- Package: +1 Queen Ant's Ring - Sealed -->
+			<item id="94392" min="1" max="1" chance="10" /> <!-- Package: +1 Orfen's Earring - Sealed -->
+			<item id="94402" min="1" max="1" chance="10" /> <!-- Package: +1 Baium's Ring - Sealed -->
+			<item id="94407" min="1" max="1" chance="10" /> <!-- Package: +1 Zaken's Earring - Sealed -->
+			<item id="94412" min="1" max="1" chance="10" /> <!-- Package: +1 Frintezza's Necklace - Sealed -->
+			<item id="94426" min="1" max="1" chance="10" /> <!-- Package: Frintezza's Necklace - Sealed -->
+		</capsuled_items>
+	</item>
+	<item id="103587" name="+0 ~ +1 Sealed Rare Accessory Pack (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.bm_sayha_silver_present" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="PAPER" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="100317" min="1" max="1" chance="10" /> <!-- Package: +1 Baium's Ring (Sealed) - Sealed -->
+			<item id="100319" min="1" max="1" chance="10" /> <!-- Package: +1 Queen Ant's Ring (Sealed) - Sealed -->
+			<item id="101529" min="1" max="1" chance="10" /> <!-- Package: Queen Ant's Ring (Sealed) - Sealed -->
+			<item id="101553" min="1" max="1" chance="10" /> <!-- Package: Frintezza's Necklace (Sealed) - Sealed -->
+			<item id="101554" min="1" max="1" chance="10" /> <!-- Package: Baium's Ring (Sealed) - Sealed -->
+			<item id="101557" min="1" max="1" chance="10" /> <!-- Package: Zaken's Earring (Sealed) - Sealed -->
+			<item id="101558" min="1" max="1" chance="10" /> <!-- Package: Orfen's Earring (Sealed) - Sealed -->
+			<item id="101841" min="1" max="1" chance="10" /> <!-- Package: +1 Frintezza's Necklace (Sealed) - Sealed -->
+			<item id="101848" min="1" max="1" chance="10" /> <!-- Package: +1 Zaken's Earring (Sealed) - Sealed -->
+			<item id="101852" min="1" max="1" chance="10" /> <!-- Package: +1 Orfen's Earring (Sealed) - Sealed -->
+		</capsuled_items>
+	</item>
+	<item id="103588" name="Blue Snake's Weapon Pack (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.etc_treasure_box_i09" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="PAPER" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="97661" min="1" max="1" chance="50" /> <!-- +5 Boss Weapon Coupon (Sealed) (Time-limited) - Sealed -->
+			<item id="102521" min="1" max="1" chance="50" /> <!-- +5 Frost Lord's Weapon Coupon (Sealed) (Time-limited) - Sealed -->
+		</capsuled_items>
+	</item>
+	<item id="103589" name="Blue Snake's Armor Pack (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.etc_treasure_box_i11" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="PAPER" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="98044" min="1" max="1" chance="50" /> <!-- +5 Special Armor Coupon (Sealed) (Time-limited) - Sealed -->
+			<item id="102522" min="1" max="1" chance="50" /> <!-- +5 Armor of Protection Coupon (Sealed) (Time-limited) - Sealed -->
+		</capsuled_items>
+	</item>
+	<item id="103590" name="Shining Iron Treasure Chest" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.etc_treasure_box_i00" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="PAPER" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="2" />
+		<set name="extractableCountMax" val="2" />
+		<capsuled_items>
+			<item id="98040" min="1" max="1" chance="6.538462" /> <!-- Transcendent Upgrade Stone - Sealed -->
+			<item id="101531" min="1" max="1" chance="6.538462" /> <!-- Greater Upgrade Stone - Sealed -->
+			<item id="101541" min="1" max="1" chance="6.538462" /> <!-- Stable Scroll: Enchant Weapon - Sealed -->
+			<item id="101542" min="1" max="1" chance="6.538462" /> <!-- Stable Scroll: Enchant Armor - Sealed -->
+			<item id="103403" min="1" max="1" chance="6.538462" /> <!-- Scroll of Blessing - Special -->
+			<item id="98136" min="1" max="1" chance="6.538462" /> <!-- Aden Essence -->
+			<item id="98137" min="1" max="1" chance="6.538462" /> <!-- Evil Energy -->
+			<item id="98139" min="1" max="1" chance="6.538462" /> <!-- Cursed Holy Grail -->
+			<item id="98141" min="1" max="1" chance="6.538462" /> <!-- Tobald's Prophesy - 1st Page -->
+			<item id="98142" min="1" max="1" chance="6.538462" /> <!-- Tobald's Prophesy - 2nd Page -->
+			<item id="98143" min="1" max="1" chance="6.538462" /> <!-- Tobald's Prophesy - 3rd Page -->
+			<item id="98145" min="1" max="1" chance="6.538462" /> <!-- Tobald's Prophesy - 5th Page -->
+			<item id="98150" min="1" max="1" chance="6.538462" /> <!-- Tobald's Prophesy -->
+			<item id="97597" min="5" max="5" chance="100" /> <!-- Selected Jewel Coupon - Sealed -->
+		</capsuled_items>
+	</item>
+	<item id="103591" name="Package: Spirit Agathion Exchange Coupon (100 pcs.)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.bm_agathion_ticket_i00" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="94732" min="100" max="100" chance="100" /> <!-- Spirit Agathion Exchange Coupon - Sealed -->
+		</capsuled_items>
+	</item>
+	<item id="103592" name="Package: Spirit Agathion (5-100 pcs.)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.bm_agathion_ticket_i00" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="94732" min="5" max="5" chance="20" /> <!-- Spirit Agathion Exchange Coupon - Sealed -->
+			<item id="94732" min="10" max="10" chance="20" /> <!-- Spirit Agathion Exchange Coupon - Sealed -->
+			<item id="94732" min="20" max="20" chance="20" /> <!-- Spirit Agathion Exchange Coupon - Sealed -->
+			<item id="94732" min="50" max="50" chance="20" /> <!-- Spirit Agathion Exchange Coupon - Sealed -->
+			<item id="103591" min="1" max="1" chance="20" /> <!-- Package: Spirit Agathion Exchange Coupon (100 pcs.) - Sealed -->
+		</capsuled_items>
+	</item>
+	<item id="103593" name="Ifrit's Magic Stone Pack" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.etc_treasure_box_i03" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="PAPER" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="94210" min="3" max="3" chance="3.703704" /> <!-- Augmenting Stone: Weapon - Sealed -->
+			<item id="94210" min="10" max="10" chance="3.703704" /> <!-- Augmenting Stone: Weapon - Sealed -->
+			<item id="94210" min="30" max="30" chance="3.703704" /> <!-- Augmenting Stone: Weapon - Sealed -->
+			<item id="94212" min="3" max="3" chance="3.703704" /> <!-- Augmenting Stone: Armor - Sealed -->
+			<item id="94212" min="10" max="10" chance="3.703704" /> <!-- Augmenting Stone: Armor - Sealed -->
+			<item id="94212" min="30" max="30" chance="3.703704" /> <!-- Augmenting Stone: Armor - Sealed -->
+			<item id="94424" min="3" max="3" chance="3.703704" /> <!-- Augmenting Stone: Accessory - Sealed -->
+			<item id="94424" min="10" max="10" chance="3.703704" /> <!-- Augmenting Stone: Accessory - Sealed -->
+			<item id="94424" min="30" max="30" chance="3.703704" /> <!-- Augmenting Stone: Accessory - Sealed -->
+			<item id="97444" min="2" max="2" chance="3.703704" /> <!-- Blessed Augmenting Stone: Weapon - Sealed -->
+			<item id="97444" min="5" max="5" chance="3.703704" /> <!-- Blessed Augmenting Stone: Weapon - Sealed -->
+			<item id="97444" min="10" max="10" chance="3.703704" /> <!-- Blessed Augmenting Stone: Weapon - Sealed -->
+			<item id="97445" min="2" max="2" chance="3.703704" /> <!-- Blessed Augmenting Stone: Armor - Sealed -->
+			<item id="97445" min="5" max="5" chance="3.703704" /> <!-- Blessed Augmenting Stone: Armor - Sealed -->
+			<item id="97445" min="10" max="10" chance="3.703704" /> <!-- Blessed Augmenting Stone: Armor - Sealed -->
+			<item id="97447" min="2" max="2" chance="3.703704" /> <!-- Blessed Augmenting Stone: Accessory - Sealed -->
+			<item id="97447" min="5" max="5" chance="3.703704" /> <!-- Blessed Augmenting Stone: Accessory - Sealed -->
+			<item id="97447" min="10" max="10" chance="3.703704" /> <!-- Blessed Augmenting Stone: Accessory - Sealed -->
+			<item id="97788" min="3" max="3" chance="3.703704" /> <!-- Augmenting Stone: Special Equipment - Sealed -->
+			<item id="97788" min="10" max="10" chance="3.703704" /> <!-- Augmenting Stone: Special Equipment - Sealed -->
+			<item id="97788" min="30" max="30" chance="3.703704" /> <!-- Augmenting Stone: Special Equipment - Sealed -->
+			<item id="97790" min="2" max="2" chance="3.703704" /> <!-- Blessed Augmenting Stone: Special Equipment - Sealed -->
+			<item id="97790" min="5" max="5" chance="3.703704" /> <!-- Blessed Augmenting Stone: Special Equipment - Sealed -->
+			<item id="97790" min="10" max="10" chance="3.703704" /> <!-- Blessed Augmenting Stone: Special Equipment - Sealed -->
+			<item id="98039" min="1" max="1" chance="3.703704" /> <!-- Transcendent Upgrade Stone -->
+			<item id="101530" min="1" max="1" chance="3.703704" /> <!-- Greater Upgrade Stone -->
+			<item id="103403" min="1" max="1" chance="3.703704" /> <!-- Scroll of Blessing - Special -->
+		</capsuled_items>
+	</item>
+	<item id="103594" name="+5 ~ +7 Red Flame Gauntlets Pack" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.armor_t702_g_i00" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="100780" min="1" max="1" minEnchant="7" maxEnchant="7" chance="33.333333" /> <!-- Red Flame Gauntlets -->
+			<item id="100780" min="1" max="1" minEnchant="6" maxEnchant="6" chance="33.333333" /> <!-- Red Flame Gauntlets -->
+			<item id="100780" min="1" max="1" minEnchant="5" maxEnchant="5" chance="33.333333" /> <!-- Red Flame Gauntlets -->
+		</capsuled_items>
+	</item>
+	<item id="103595" name="+5 ~ +7 Wild Wind Helmet Pack" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.armor_leather_helmet_i00" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="100214" min="1" max="1" minEnchant="7" maxEnchant="7" chance="33.333333" /> <!-- Wild Wind Helmet -->
+			<item id="100214" min="1" max="1" minEnchant="6" maxEnchant="6" chance="33.333333" /> <!-- Wild Wind Helmet -->
+			<item id="100214" min="1" max="1" minEnchant="5" maxEnchant="5" chance="33.333333" /> <!-- Wild Wind Helmet -->
+		</capsuled_items>
+	</item>
+	<item id="103596" name="+5 ~ +7 Sea Boots Pack" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.armor_L_light_shoes" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="103255" min="1" max="1" minEnchant="7" maxEnchant="7" chance="33.333333" /> <!-- Sea Boots -->
+			<item id="103255" min="1" max="1" minEnchant="6" maxEnchant="6" chance="33.333333" /> <!-- Sea Boots -->
+			<item id="103255" min="1" max="1" minEnchant="5" maxEnchant="5" chance="33.333333" /> <!-- Sea Boots -->
+		</capsuled_items>
+	</item>
+	<item id="103597" name="Fafurion's Treasure Chest" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.event_hero_treasure_box_blue" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="PAPER" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="3" />
+		<set name="extractableCountMax" val="3" />
+		<capsuled_items>
+			<item id="94184" min="1" max="1" chance="14.285714" /> <!-- Scroll of Blessing - Weapon -->
+			<item id="94210" min="1" max="1" chance="14.285714" /> <!-- Augmenting Stone: Weapon - Sealed -->
+			<item id="94212" min="1" max="1" chance="14.285714" /> <!-- Augmenting Stone: Armor - Sealed -->
+			<item id="94424" min="1" max="1" chance="14.285714" /> <!-- Augmenting Stone: Accessory - Sealed -->
+			<item id="97338" min="1" max="1" chance="14.285714" /> <!-- Scroll of Blessing - Armor -->
+			<item id="97788" min="1" max="1" chance="14.285714" /> <!-- Augmenting Stone: Special Equipment - Sealed -->
+			<item id="103403" min="1" max="1" chance="14.285714" /> <!-- Scroll of Blessing - Special -->
+			<item id="94383" min="1" max="1" chance="8.5" /> <!-- Scroll: Enchant Rare Accessories -->
+			<item id="94385" min="1" max="1" chance="8.5" /> <!-- Improved Scroll: Enchant Rare Accessories -->
+			<item id="98039" min="1" max="1" chance="8.5" /> <!-- Transcendent Upgrade Stone -->
+			<item id="101531" min="1" max="1" chance="8.5" /> <!-- Greater Upgrade Stone - Sealed -->
+			<item id="101809" min="1" max="1" chance="8.5" /> <!-- Stable Scroll: Enchant Weapon -->
+			<item id="101810" min="1" max="1" chance="8.5" /> <!-- Stable Scroll: Enchant Armor -->
+			<item id="102208" min="1" max="1" chance="8.5" /> <!-- +5 ~ +7 Random Boss Weapon Pack - Sealed -->
+			<item id="103215" min="1" max="1" chance="8.5" /> <!-- +6 ~ +8 Special Armor Pack - Sealed -->
+			<item id="98136" min="1" max="1" chance="8.5" /> <!-- Aden Essence -->
+			<item id="100053" min="1" max="1" chance="8.5" /> <!-- Heroic Spellbook Coupon - Sealed -->
+			<item id="97147" min="1" max="1" chance="100" /> <!-- Hidden Power Booster - Sealed -->
+		</capsuled_items>
+	</item>
+	<item id="103598" name="Fafurion's Glittering Treasure Chest" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.event_hero_treasure_box_blue" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="PAPER" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="3" />
+		<set name="extractableCountMax" val="3" />
+		<capsuled_items>
+			<item id="94383" min="1" max="1" chance="7.692308" /> <!-- Scroll: Enchant Rare Accessories -->
+			<item id="94385" min="1" max="1" chance="7.692308" /> <!-- Improved Scroll: Enchant Rare Accessories -->
+			<item id="97444" min="1" max="1" chance="7.692308" /> <!-- Blessed Augmenting Stone: Weapon - Sealed -->
+			<item id="97445" min="1" max="1" chance="7.692308" /> <!-- Blessed Augmenting Stone: Armor - Sealed -->
+			<item id="97447" min="1" max="1" chance="7.692308" /> <!-- Blessed Augmenting Stone: Accessory - Sealed -->
+			<item id="97790" min="1" max="1" chance="7.692308" /> <!-- Blessed Augmenting Stone: Special Equipment - Sealed -->
+			<item id="98039" min="1" max="1" chance="7.692308" /> <!-- Transcendent Upgrade Stone -->
+			<item id="101809" min="1" max="1" chance="7.692308" /> <!-- Stable Scroll: Enchant Weapon -->
+			<item id="101810" min="1" max="1" chance="7.692308" /> <!-- Stable Scroll: Enchant Armor -->
+			<item id="102208" min="1" max="1" chance="7.692308" /> <!-- +5 ~ +7 Random Boss Weapon Pack - Sealed -->
+			<item id="103215" min="1" max="1" chance="7.692308" /> <!-- +6 ~ +8 Special Armor Pack - Sealed -->
+			<item id="98136" min="1" max="1" chance="7.692308" /> <!-- Aden Essence -->
+			<item id="100053" min="1" max="1" chance="7.692308" /> <!-- Heroic Spellbook Coupon - Sealed -->
+			<item id="101531" min="1" max="1" chance="100" /> <!-- Greater Upgrade Stone - Sealed -->
+			<item id="97147" min="1" max="1" chance="100" /> <!-- Hidden Power Booster - Sealed -->
+		</capsuled_items>
+	</item>
+	<item id="103599" name="Fafurion's Treasure Chest" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.event_hero_treasure_box_blue" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="PAPER" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="3" />
+		<set name="extractableCountMax" val="3" />
+		<capsuled_items>
+			<item id="94184" min="1" max="1" chance="14.285714" /> <!-- Scroll of Blessing - Weapon -->
+			<item id="94210" min="1" max="1" chance="14.285714" /> <!-- Augmenting Stone: Weapon - Sealed -->
+			<item id="94212" min="1" max="1" chance="14.285714" /> <!-- Augmenting Stone: Armor - Sealed -->
+			<item id="94424" min="1" max="1" chance="14.285714" /> <!-- Augmenting Stone: Accessory - Sealed -->
+			<item id="97338" min="1" max="1" chance="14.285714" /> <!-- Scroll of Blessing - Armor -->
+			<item id="97788" min="1" max="1" chance="14.285714" /> <!-- Augmenting Stone: Special Equipment - Sealed -->
+			<item id="103403" min="1" max="1" chance="14.285714" /> <!-- Scroll of Blessing - Special -->
+			<item id="94383" min="1" max="1" chance="8.5" /> <!-- Scroll: Enchant Rare Accessories -->
+			<item id="94385" min="1" max="1" chance="8.5" /> <!-- Improved Scroll: Enchant Rare Accessories -->
+			<item id="98039" min="1" max="1" chance="8.5" /> <!-- Transcendent Upgrade Stone -->
+			<item id="101531" min="1" max="1" chance="8.5" /> <!-- Greater Upgrade Stone - Sealed -->
+			<item id="101809" min="1" max="1" chance="8.5" /> <!-- Stable Scroll: Enchant Weapon -->
+			<item id="101810" min="1" max="1" chance="8.5" /> <!-- Stable Scroll: Enchant Armor -->
+			<item id="102208" min="1" max="1" chance="8.5" /> <!-- +5 ~ +7 Random Boss Weapon Pack - Sealed -->
+			<item id="103215" min="1" max="1" chance="8.5" /> <!-- +6 ~ +8 Special Armor Pack - Sealed -->
+			<item id="98136" min="1" max="1" chance="8.5" /> <!-- Aden Essence -->
+			<item id="100053" min="1" max="1" chance="8.5" /> <!-- Heroic Spellbook Coupon - Sealed -->
+			<item id="100722" min="1" max="1" chance="100" /> <!-- Dye Booster - Sealed -->
+		</capsuled_items>
+	</item>
+</list>

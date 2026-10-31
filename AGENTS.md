@@ -14,6 +14,8 @@ Last updated: 31 Oct 2026. Check anything below against the code before relying 
 | `overrides/game/` | Files copied over the game server each time it starts |
 | `site/` | Laravel 13, Inertia, React 19, Filament 5 |
 | `LISTING-KIT.md` | Text and site list for server toplists |
+| `docs/` | Guides for recurring work: writing news, the L-Coin Store |
+| `tools/lcoin-store/` | Builds and checks the client's L-Coin Store list |
 
 Production is the Raspberry Pi. The Mac runs a second copy of the stack. Website: https://l2-kage.itjunior.dev
 
@@ -61,6 +63,17 @@ Upstream's `SquashEvent`, reactivated through `overrides/game/data/scripts/event
 - Home page: the section after Happening Now shows the 3 latest posts, hidden when there are none. `FeaturedBanner` shows the latest post marked as featured until its "Until" date.
 - Uploaded images are in `data/site-uploads` on each host, mounted at `storage/app/public`. They aren't in git, so back them up with the database. The hosts have separate databases and uploads, so a post made in the Mac's admin panel doesn't reach the Pi.
 
+**Geodata**
+- On the Mac: on, 224 regions in `data/geodata`.
+- On the Pi: off. Tried on 31 Oct 2026 with `-Xmx6g`; rolled back after about 7 minutes because swap fell to about 300 MB free of 8 GB and Bartz was pushed out of memory (3 GB down to about 0.5 GB). Geodata had loaded, but startup had not finished. The Java heap is back to `-Xms1g -Xmx3g`.
+- The files are parked on the Pi at `~/l2-kage/data/geodata-off` (and the zip is in `data/`). The earlier settings are in `.env.before-geodata`. Do not move the files back while Bartz runs on the same Pi: geodata needs about 5.5 GB for Kage, and 7.75 GB of memory can't hold that plus Bartz.
+- When watching memory on the Pi, watch swap free too. ZGC's heap is shared memory, so "available" stayed high while swap ran out.
+
+**L-Coin Store**
+- **Changing it: read [docs/LCOIN-STORE.md](docs/LCOIN-STORE.md) first.** It has the steps, field meanings, the catalogue and the mistakes to avoid.
+- `overrides/game/data/LimitShop.xml` decides what sells, prices and limits. The client's `LCoinShopProduct_ClassicAden-<lang>.dat` decides card names, tabs, ribbons and limit labels. `tools/lcoin-store/` checks items and can build the second from the first plus `cards.json`.
+- Status: 8 products added on the Pi on 31 Oct 2026. The client rejects rewritten `.dat` files as corrupt (plain, `v211` and `v111` tested through login), so originals are back and no client has new cards. Don't retry this without patching, which this project doesn't do. Products 860-864 and others new to the client show no name and "Unlimited", but still sell with their real limits. Products the client already has cards for display correctly in game, confirmed by the owner's screenshot. Buying in game is not confirmed.
+
 **Toplists**
 
 | Site | Status |
@@ -72,6 +85,7 @@ Upstream's `SquashEvent`, reactivated through `overrides/game/data/scripts/event
 
 - **Website:** rebuild the `site` image and run `docker compose up -d --no-deps site` on the Mac. For the Pi, build for `linux/arm64`, `docker save`, copy it over, `docker load`, then `docker compose up -d site` in `~/l2-kage`.
 - **Game config or scripts:** copy the file to the same path under `~/l2-kage/` on the Pi, then `docker compose restart game` on each host. A restart disconnects players, so check who is online first and tell the owner.
+- **L-Coin Store or other client data:** follow `docs/LCOIN-STORE.md`. A server restart alone doesn't change what the client shows, and the client's files can't be changed.
 - **Java scripts:** compile-check first. A failed script can stop features such as website deliveries. Copy the file into the game container, then run `javac -proc:none -nowarn -d /tmp/x -cp /opt/l2j/libs/GameServer.jar <file>`.
 - **Verify rates:** `grep RateXp /opt/l2j/game/config/Rates.ini` in the game container, and read `rates` on the home page's Inertia data.
 
@@ -85,3 +99,8 @@ Upstream's `SquashEvent`, reactivated through `overrides/game/data/scripts/event
 - Cloudflare caches assets for 7 days. When replacing a file, use a new name or bump `?v=N`, and do not request the new URL until the new page is deployed.
 - Do not create third-party accounts or solve CAPTCHAs on toplists. The owner does those. Only tick form options that are true of the server.
 - Keep `LISTING-KIT.md` in line with the live rates, and update this file when the state above changes.
+- The game client runs on the owner's desktop, and they may be playing. Don't start or close it, and don't take screenshots of it: ask them to open it and share a screenshot. Before changing its files, check that `L2` isn't running.
+- Client `.dat` files belong to NCSOFT. Never commit or distribute them, and don't patch the client's signed binaries.
+- Never install an untested client file on the owner's only working client. Test on a separate copy, with their agreement, and treat your reasoning as unproven until the game has opened it through login: the login screen appears even with a rejected file.
+- Before selling or recommending an item, run `lcoin_store.py show <id>`. A name in the XML, or an item with no handler, doesn't tell you what the item does.
+- Another session may be working on the same hosts. Before a restart, read the recent game log and `git status`.

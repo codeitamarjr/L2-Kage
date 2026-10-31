@@ -1,0 +1,1471 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/items.xsd">
+	<item id="103200" name="+0 ~ +8 Special Equipment Pack (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain 1 piece of +0 ~ +8 special equipment. An anniversary gift. Double-click to obtain a generous reward. -->
+		<set name="icon" val="icon.bm_sayha_present" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="92450" min="1" max="1" chance="12.5" /> <!-- +8 Talisman of Aden Pack - Sealed -->
+			<item id="92458" min="1" max="1" chance="12.5" /> <!-- +8 Talisman of Eva Pack - Sealed -->
+			<item id="92467" min="1" max="1" chance="12.5" /> <!-- +8 Talisman of Speed Pack - Sealed -->
+			<item id="98904" min="1" max="1" chance="12.5" /> <!-- Package: +8 Circlet of Hero - Sealed -->
+			<item id="98954" min="1" max="1" chance="12.5" /> <!-- Package: +8 Agathion Dragon Egg - Sealed -->
+			<item id="102100" min="1" max="1" chance="12.5" /> <!-- Package: +8 Phantom Mask - Sealed -->
+			<item id="93730" min="1" max="1" chance="12.5" /> <!-- +8 Dragon Belt Pack - Sealed -->
+			<item id="97955" min="1" max="1" chance="12.5" /> <!-- +8 Talisman of Authority Pack - Sealed -->
+		</capsuled_items>
+	</item>
+	<item id="103201" name="Heroic Anais Doll Summon Coupon" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to summon the <font color=FF9955>heroic Anais Doll</font> with a 100% chance. -->
+		<set name="icon" val="icon.doll_summon_1_ticket_fixed_lv5" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="LIQUID" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+	</item>
+	<item id="103202" name="Heroic Galaxia Doll Summon Coupon" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to summon the <font color=FF9955>heroic Galaxia Doll</font> with a 100% chance. -->
+		<set name="icon" val="icon.doll_summon_1_ticket_fixed_lv5" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="LIQUID" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+	</item>
+	<item id="103203" name="Heroic Juriel Doll Summon Coupon" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to summon the <font color=FF9955>heroic Juriel Doll</font> with a 100% chance. -->
+		<set name="icon" val="icon.doll_summon_1_ticket_fixed_lv5" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="LIQUID" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+	</item>
+	<item id="103204" name="Heroic Phiriel Doll Summon Coupon" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to summon the <font color=FF9955>heroic Phiriel Doll</font> with a 100% chance. -->
+		<set name="icon" val="icon.doll_summon_1_ticket_fixed_lv5" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="LIQUID" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+	</item>
+	<item id="103205" name="Fafurion's Adena Box" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.etc_treasure_box_i00" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="PAPER" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="102376" min="1" max="1" chance="9.090909" /> <!-- Package: 1 Billion Adena - Sealed -->
+			<item id="102380" min="1" max="1" chance="9.090909" /> <!-- Package: 500 Million Adena - Sealed -->
+			<item id="102381" min="1" max="1" chance="9.090909" /> <!-- Package: 600 Million Adena - Sealed -->
+			<item id="102382" min="1" max="1" chance="9.090909" /> <!-- Package: 700 Million Adena - Sealed -->
+			<item id="102383" min="1" max="1" chance="9.090909" /> <!-- Package: 800 Million Adena - Sealed -->
+			<item id="57" min="30000000" max="30000000" chance="9.090909" /> <!-- Adena -->
+			<item id="57" min="50000000" max="50000000" chance="9.090909" /> <!-- Adena -->
+			<item id="57" min="100000000" max="100000000" chance="9.090909" /> <!-- Adena -->
+			<item id="57" min="200000000" max="200000000" chance="9.090909" /> <!-- Adena -->
+			<item id="57" min="300000000" max="300000000" chance="9.090909" /> <!-- Adena -->
+			<item id="57" min="400000000" max="400000000" chance="9.090909" /> <!-- Adena -->
+		</capsuled_items>
+	</item>
+	<item id="103206" name="Fafurion's Glittering Adena Box" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.etc_treasure_box_i00" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="PAPER" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="102377" min="1" max="1" chance="9.090909" /> <!-- Package: 2 Billion Adena - Sealed -->
+			<item id="102380" min="1" max="1" chance="9.090909" /> <!-- Package: 500 Million Adena - Sealed -->
+			<item id="102382" min="1" max="1" chance="9.090909" /> <!-- Package: 700 Million Adena - Sealed -->
+			<item id="102384" min="1" max="1" chance="9.090909" /> <!-- Package: 900 Million Adena - Sealed -->
+			<item id="102385" min="1" max="1" chance="9.090909" /> <!-- Package: 1.1 Billion Adena - Sealed -->
+			<item id="102386" min="1" max="1" chance="9.090909" /> <!-- Package: 1.3 Billion Adena - Sealed -->
+			<item id="102387" min="1" max="1" chance="9.090909" /> <!-- Package: 1.5 Billion Adena - Sealed -->
+			<item id="57" min="100000000" max="100000000" chance="9.090909" /> <!-- Adena -->
+			<item id="57" min="200000000" max="200000000" chance="9.090909" /> <!-- Adena -->
+			<item id="57" min="300000000" max="300000000" chance="9.090909" /> <!-- Adena -->
+			<item id="57" min="400000000" max="400000000" chance="9.090909" /> <!-- Adena -->
+		</capsuled_items>
+	</item>
+	<item id="103207" name="Fafurion's Treasure Chest" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.event_hero_treasure_box_blue" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="PAPER" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="2" />
+		<set name="extractableCountMax" val="2" />
+		<capsuled_items>
+			<item id="94210" min="1" max="1" chance="5.263158" /> <!-- Augmenting Stone: Weapon - Sealed -->
+			<item id="94212" min="1" max="1" chance="5.263158" /> <!-- Augmenting Stone: Armor - Sealed -->
+			<item id="94383" min="1" max="1" chance="5.263158" /> <!-- Scroll: Enchant Rare Accessories -->
+			<item id="94385" min="1" max="1" chance="5.263158" /> <!-- Improved Scroll: Enchant Rare Accessories -->
+			<item id="94424" min="1" max="1" chance="5.263158" /> <!-- Augmenting Stone: Accessory - Sealed -->
+			<item id="97444" min="1" max="1" chance="5.263158" /> <!-- Blessed Augmenting Stone: Weapon - Sealed -->
+			<item id="97445" min="1" max="1" chance="5.263158" /> <!-- Blessed Augmenting Stone: Armor - Sealed -->
+			<item id="97447" min="1" max="1" chance="5.263158" /> <!-- Blessed Augmenting Stone: Accessory - Sealed -->
+			<item id="97788" min="1" max="1" chance="5.263158" /> <!-- Augmenting Stone: Special Equipment - Sealed -->
+			<item id="97790" min="1" max="1" chance="5.263158" /> <!-- Blessed Augmenting Stone: Special Equipment - Sealed -->
+			<item id="98039" min="1" max="1" chance="5.263158" /> <!-- Transcendent Upgrade Stone -->
+			<item id="101531" min="1" max="1" chance="5.263158" /> <!-- Greater Upgrade Stone - Sealed -->
+			<item id="101809" min="1" max="1" chance="5.263158" /> <!-- Stable Scroll: Enchant Weapon -->
+			<item id="101810" min="1" max="1" chance="5.263158" /> <!-- Stable Scroll: Enchant Armor -->
+			<item id="102208" min="1" max="1" chance="5.263158" /> <!-- +5 ~ +7 Random Boss Weapon Pack - Sealed -->
+			<item id="103215" min="1" max="1" chance="5.263158" /> <!-- +6 ~ +8 Special Armor Pack - Sealed -->
+			<item id="98136" min="1" max="1" chance="5.263158" /> <!-- Aden Essence -->
+			<item id="100053" min="1" max="1" chance="5.263158" /> <!-- Heroic Spellbook Coupon - Sealed -->
+			<item id="102976" min="1" max="1" chance="5.263158" /> <!-- Legendary Spellbook Coupon - Sealed -->
+			<item id="100722" min="1" max="1" chance="100" /> <!-- Dye Booster - Sealed -->
+		</capsuled_items>
+	</item>
+	<item id="103208" name="Fafurion's Glittering Treasure Chest" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.event_hero_treasure_box_blue" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="PAPER" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="3" />
+		<set name="extractableCountMax" val="3" />
+		<capsuled_items>
+			<item id="94383" min="1" max="1" chance="5.882353" /> <!-- Scroll: Enchant Rare Accessories -->
+			<item id="94385" min="1" max="1" chance="5.882353" /> <!-- Improved Scroll: Enchant Rare Accessories -->
+			<item id="97444" min="1" max="1" chance="5.882353" /> <!-- Blessed Augmenting Stone: Weapon - Sealed -->
+			<item id="97445" min="1" max="1" chance="5.882353" /> <!-- Blessed Augmenting Stone: Armor - Sealed -->
+			<item id="97447" min="1" max="1" chance="5.882353" /> <!-- Blessed Augmenting Stone: Accessory - Sealed -->
+			<item id="97790" min="1" max="1" chance="5.882353" /> <!-- Blessed Augmenting Stone: Special Equipment - Sealed -->
+			<item id="98039" min="1" max="1" chance="5.882353" /> <!-- Transcendent Upgrade Stone -->
+			<item id="101809" min="1" max="1" chance="5.882353" /> <!-- Stable Scroll: Enchant Weapon -->
+			<item id="101810" min="1" max="1" chance="5.882353" /> <!-- Stable Scroll: Enchant Armor -->
+			<item id="102209" min="1" max="1" chance="5.882353" /> <!-- +6 ~ +8 Random Boss Weapon Pack - Sealed -->
+			<item id="103216" min="1" max="1" chance="5.882353" /> <!-- +6 ~ +8 Armor of Protection Pack - Sealed -->
+			<item id="98136" min="1" max="1" chance="5.882353" /> <!-- Aden Essence -->
+			<item id="98827" min="1" max="1" chance="5.882353" /> <!-- Immortal Ring - Sealed -->
+			<item id="100053" min="1" max="1" chance="5.882353" /> <!-- Heroic Spellbook Coupon - Sealed -->
+			<item id="102976" min="1" max="1" chance="5.882353" /> <!-- Legendary Spellbook Coupon - Sealed -->
+			<item id="100214" min="1" max="1" chance="5.882353" /> <!-- Wild Wind Helmet -->
+			<item id="100780" min="1" max="1" chance="5.882353" /> <!-- Red Flame Gauntlets -->
+			<item id="101531" min="1" max="1" chance="100" /> <!-- Greater Upgrade Stone - Sealed -->
+			<item id="100722" min="1" max="1" chance="100" /> <!-- Dye Booster - Sealed -->
+		</capsuled_items>
+	</item>
+	<item id="103209" name="Class Change Coupon (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to change your class and gender in a peaceful zone. If you have heroic/ legendary skills learnt, you can use Aden's Blessing to extract them. Note!. All skills and buffs will be reset. After the first class change, max SP are granted. All stat points are reset. All ranks are reset. Olympiad ranks and points are reset. Cannot be used outside of a peaceful zone. Cannot be used while changing equipment. -->
+		<set name="icon" val="icon.bm_payback_ticket_01" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="PAPER" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_destroyable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ClassChangeCoupon" />
+	</item>
+	<item id="103210" name="21st Anniversary Chrono Unitus" additionalName="Sealed" type="Weapon">
+		<!-- The 21st Anniversary Souvenir!. <font color=ff6666><Unavailable to Sylphs/ Vanguard Riders/ Assassins/ Blood Roses/ High Elves/ Samurais></font> -->
+		<set name="icon" val="icon.weapon_chrono_tambourine_i00" />
+		<set name="default_action" val="EQUIP" />
+		<set name="weapon_type" val="FIST" />
+		<set name="bodypart" val="lrhand" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="STEEL" />
+		<set name="soulshots" val="1" />
+		<set name="spiritshots" val="1" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<stats>
+			<stat type="pAtk">1</stat>
+			<stat type="mAtk">1</stat>
+			<stat type="pAtkSpd">325</stat>
+			<stat type="randomDamage">5</stat>
+			<stat type="pAtkRange">80</stat>
+		</stats>
+	</item>
+	<item id="103211" name="White Hat - Chronicles" additionalName="Sealed" type="Armor">
+		<!-- A chapeau that is given those who has been playing Lineage 2 for a long time. <font color=eeaa22>Equipped in the left head accessory slot.</font> -->
+		<set name="icon" val="BranchSys2.icon2.pi_silverchaperon" />
+		<set name="default_action" val="EQUIP" />
+		<set name="bodypart" val="hair" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="WOOD" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+	</item>
+	<item id="103212" name="Black Hat - Gracia" additionalName="Sealed" type="Armor">
+		<!-- A chapeau that is given those who has been playing Lineage 2 for a long time. <font color=eeaa22>Equipped in the left head accessory slot.</font> -->
+		<set name="icon" val="icon.npoint_black_hat" />
+		<set name="default_action" val="EQUIP" />
+		<set name="bodypart" val="hair" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="WOOD" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+	</item>
+	<item id="103213" name="Rad Hat - Destruction" additionalName="Sealed" type="Armor">
+		<!-- A chapeau that is given those who has been playing Lineage 2 for a long time. <font color=eeaa22>Equipped in the left head accessory slot.</font> -->
+		<set name="icon" val="icon.bm_romantic_chaperon_red" />
+		<set name="default_action" val="EQUIP" />
+		<set name="bodypart" val="hair" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="WOOD" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+	</item>
+	<item id="103214" name="Golden Hat - Aden" additionalName="Sealed" type="Armor">
+		<!-- A chapeau that is given those who has been playing Lineage 2 for a long time. <font color=eeaa22>Equipped in the left head accessory slot.</font> -->
+		<set name="icon" val="icon.bm_romantic_chaperon_gold" />
+		<set name="default_action" val="EQUIP" />
+		<set name="bodypart" val="hair" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="WOOD" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+	</item>
+	<item id="103215" name="+6 ~ +8 Special Armor Pack" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.present_of_destination_event" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="102169" min="1" max="1" chance="16.666667" /> <!-- Package: +6 ~ +8 Leather Armor of Lightning - Sealed -->
+			<item id="102170" min="1" max="1" chance="16.666667" /> <!-- Package: +6 ~ +8 Leather Leggings of Lightning - Sealed -->
+			<item id="102171" min="1" max="1" chance="16.666667" /> <!-- Package: +6 ~ +8 Ice Crystal Breastplate - Sealed -->
+			<item id="102172" min="1" max="1" chance="16.666667" /> <!-- Package: +6 ~ +8 Ice Crystal Gaiters - Sealed -->
+			<item id="102173" min="1" max="1" chance="16.666667" /> <!-- Package: +6 ~ +8 Flaming Tunic - Sealed -->
+			<item id="102174" min="1" max="1" chance="16.666667" /> <!-- Package: +6 ~ +8 Flaming Stockings - Sealed -->
+		</capsuled_items>
+	</item>
+	<item id="103216" name="+6 ~ +8 Armor of Protection Pack" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.event_hero_treasure_box_silver" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="102184" min="1" max="1" chance="11.111111" /> <!-- Package: +6 ~ +8 Breastplate of Protection - Sealed -->
+			<item id="102185" min="1" max="1" chance="11.111111" /> <!-- Package: +6 ~ +8 Gaiters of Protection - Sealed -->
+			<item id="102186" min="1" max="1" chance="11.111111" /> <!-- Package: +6 ~ +8 Leather Armor of Protection - Sealed -->
+			<item id="102187" min="1" max="1" chance="11.111111" /> <!-- Package: +6 ~ +8 Leather Leggings of Protection - Sealed -->
+			<item id="102188" min="1" max="1" chance="11.111111" /> <!-- Package: +6 ~ +8 Tunic of Protection - Sealed -->
+			<item id="102189" min="1" max="1" chance="11.111111" /> <!-- Package: +6 ~ +8 Stockings of Protection - Sealed -->
+			<item id="102190" min="1" max="1" chance="11.111111" /> <!-- Package: +6 ~ +8 Helmet of Protection - Sealed -->
+			<item id="102191" min="1" max="1" chance="11.111111" /> <!-- Package: +6 ~ +8 Gauntlets of Protection - Sealed -->
+			<item id="102192" min="1" max="1" chance="11.111111" /> <!-- Package: +6 ~ +8 Boots of Protection - Sealed -->
+		</capsuled_items>
+	</item>
+	<item id="103217" name="Wolf's Necklace Pack (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.ev_charge_box" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="94097" min="1" max="1" chance="100" /> <!-- Sealed Wolf's Necklace -->
+			<item id="97432" min="200" max="200" chance="100" /> <!-- Scroll: Boost Guardian's Attack - Sealed -->
+			<item id="97433" min="200" max="200" chance="100" /> <!-- Scroll: Boost Guardian's Defense - Sealed -->
+			<item id="98970" min="10000" max="10000" chance="100" /> <!-- Guardian's Combat Ration - Sealed -->
+		</capsuled_items>
+	</item>
+	<item id="103218" name="Project Wolf Support Pack (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.etc_grave_goods_i00" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="91840" min="200" max="200" chance="100" /> <!-- XP Growth Scroll (Time-limited) - Sealed -->
+			<item id="94380" min="200" max="200" chance="100" /> <!-- Scroll: Boost Attack (Time-limited) - Sealed -->
+			<item id="3031" min="10000" max="10000" chance="100" /> <!-- Spirit Ore - Sealed -->
+			<item id="90907" min="1000" max="1000" chance="100" /> <!-- Soulshot Ticket - Sealed -->
+		</capsuled_items>
+	</item>
+	<item id="103219" name="Wolf May Pass' Special Pack (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.etc_pi_gift_box_i02" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="3031" min="15000" max="15000" chance="100" /> <!-- Spirit Ore - Sealed -->
+			<item id="102934" min="1" max="1" chance="100" /> <!-- Doll Summon Coupon (Rare) - 1-time (Time-limited) - Sealed -->
+			<item id="103222" min="1" max="1" chance="100" /> <!-- Selection Coupon: +5 Talisman of Aden/ Eva/ Speed (Time-limited) - Sealed -->
+		</capsuled_items>
+	</item>
+	<item id="103220" name="Wolf October Pass' Special Pack (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.etc_pi_gift_box_i03" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="101531" min="10" max="10" chance="100" /> <!-- Greater Upgrade Stone - Sealed -->
+			<item id="103221" min="1" max="1" chance="100" /> <!-- Warg's Heroic Doll Pack (Time-limited) - Sealed -->
+			<item id="3031" min="30000" max="30000" chance="100" /> <!-- Spirit Ore - Sealed -->
+			<item id="103223" min="1" max="1" chance="100" /> <!-- Selection Coupon: Talisman of Baium and Enchant Scrolls (Time-limited) - Sealed -->
+		</capsuled_items>
+	</item>
+	<item id="103221" name="Wolf's Heroic Doll Pack (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="BranchSys.br_gold_box_i00" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="100929" min="1" max="1" chance="5.555556" /> <!-- Heroic Doll Summon Coupon - Core - Sealed -->
+			<item id="100930" min="1" max="1" chance="5.555556" /> <!-- Heroic Doll Summon Coupon - Frintezza - Sealed -->
+			<item id="100931" min="1" max="1" chance="5.555556" /> <!-- Heroic Doll Summon Coupon - Zaken - Sealed -->
+			<item id="100932" min="1" max="1" chance="5.555556" /> <!-- Heroic Doll Summon Coupon - Baium - Sealed -->
+			<item id="100933" min="1" max="1" chance="5.555556" /> <!-- Heroic Doll Summon Coupon - Antharas - Sealed -->
+			<item id="100934" min="1" max="1" chance="5.555556" /> <!-- Heroic Doll Summon Coupon - Behemoth - Sealed -->
+			<item id="100935" min="1" max="1" chance="5.555556" /> <!-- Heroic Doll Summon Coupon - Glakias - Sealed -->
+			<item id="100936" min="1" max="1" chance="5.555556" /> <!-- Heroic Doll Summon Coupon - Andreas van Halter - Sealed -->
+			<item id="100937" min="1" max="1" chance="5.555556" /> <!-- Heroic Doll Summon Coupon - Kelbim - Sealed -->
+			<item id="101393" min="1" max="1" chance="5.555556" /> <!-- Heroic Doll Summon Coupon - Ferion - Sealed -->
+			<item id="101581" min="1" max="1" chance="5.555556" /> <!-- Heroic Doll Summon Coupon - Vulcan - Sealed -->
+			<item id="101985" min="1" max="1" chance="5.555556" /> <!-- Heroic Doll Summon Coupon - Scarlet van Halisha - Sealed -->
+			<item id="102088" min="1" max="1" chance="5.555556" /> <!-- Heroic Doll Summon Coupon - Aztacan - Sealed -->
+			<item id="103202" min="1" max="1" chance="5.555556" /> <!-- Heroic Doll Summon Coupon - Galaxia - Sealed -->
+			<item id="103203" min="1" max="1" chance="5.555556" /> <!-- Heroic Doll Summon Coupon - Juriel - Sealed -->
+			<item id="103224" min="1" max="1" chance="5.555556" /> <!-- Selection Coupon: Heroic Doll - Anakim and Lilith (Time-limited) - Sealed -->
+			<item id="103225" min="1" max="1" chance="5.555556" /> <!-- Heroic Doll Selection Coupon: Queen Ant and Orfen (Time-limited) - Sealed -->
+			<item id="103226" min="1" max="1" chance="5.555556" /> <!-- Selection Coupon: Heroic Doll - Anais and Phiriel (Time-limited) - Sealed -->
+		</capsuled_items>
+	</item>
+	<item id="103222" name="Selection Coupon: +5 Talisman of Aden/ Eva/ Speed (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain 1 useful item of your choice. -->
+		<set name="icon" val="icon.bless_scroll" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="LIQUID" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+	</item>
+	<item id="103223" name="Selection Coupon: Talisman of Baium and Enchant Scrolls (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain 1 useful item of your choice. -->
+		<set name="icon" val="icon.baium_talisman_new_scroll" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="LIQUID" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+	</item>
+	<item id="103224" name="Heroic Doll Selection Coupon: Anakim and Lilith (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain 1 useful item of your choice. -->
+		<set name="icon" val="icon.doll_summon_1_ticket_fixed_lv5" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="LIQUID" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+	</item>
+	<item id="103225" name="Heroic Doll Selection Coupon: Queen Ant and Orfen (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain 1 useful item of your choice. -->
+		<set name="icon" val="icon.doll_summon_1_ticket_fixed_lv5" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="LIQUID" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+	</item>
+	<item id="103226" name="Heroic Doll Selection Coupon: Anais and Phiriel (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain 1 useful item of your choice. -->
+		<set name="icon" val="icon.doll_summon_1_ticket_fixed_lv5" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="LIQUID" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+	</item>
+	<item id="103227" name="+2 Rare Accessory Pack (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.bm_sayha_silver_present" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="100006" min="1" max="1" chance="10" /> <!-- Package: +2 Antharas' Earring (Sealed) - Sealed -->
+			<item id="100007" min="1" max="1" chance="10" /> <!-- Package: +2 Frintezza's Necklace (Sealed) - Sealed -->
+			<item id="100008" min="1" max="1" chance="10" /> <!-- Package: +2 Baium's Ring (Sealed) - Sealed -->
+			<item id="100009" min="1" max="1" chance="10" /> <!-- Package: +2 Beleth's Ring (Sealed) - Sealed -->
+			<item id="100010" min="1" max="1" chance="10" /> <!-- Package: +2 Zaken's Earring (Sealed) - Sealed -->
+			<item id="100011" min="1" max="1" chance="10" /> <!-- Package: +2 Queen Ant's Ring (Sealed) - Sealed -->
+			<item id="100012" min="1" max="1" chance="10" /> <!-- Package: +2 Orfen's Earring (Sealed) - Sealed -->
+			<item id="100013" min="1" max="1" chance="10" /> <!-- Package: +2 Core's Ring (Sealed) - Sealed -->
+			<item id="101633" min="1" max="1" chance="10" /> <!-- Package: +2 Ferion's Necklace (Sealed) - Sealed -->
+			<item id="101634" min="1" max="1" chance="10" /> <!-- Package: +2 Aztacan's Earring (Sealed) - Sealed -->
+		</capsuled_items>
+	</item>
+	<item id="103228" name="Selection Coupon: +5 Talisman (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain an item of your choice. <font color=EEAA22><Items for exchange></font>. +5 Talisman of Aden Pack (1 pc.) - 1 coupon required. +5 Talisman of Speed Pack (1 pc.) - 1 coupon required. +5 Talisman of Eva Pack (1 pc.) - 1 coupon required. +5 Talisman of Authority Pack (1 pc.) - 1 coupon required -->
+		<set name="icon" val="icon.bm_talisman_ticket" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="LIQUID" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+	</item>
+	<item id="103229" name="Enhanced Skill Enchant Charging Stone (10%)" additionalName="Sealed" type="EtcItem">
+		<!-- Recovers <font color=00FF00>10%</font> of enchant points for enhanced skills. -->
+		<set name="icon" val="icon.energy_condenser_i04" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="PAPER" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+	</item>
+	<item id="103230" name="Unique Skill Enchant Charging Stone (10%)" additionalName="Sealed" type="EtcItem">
+		<!-- Recovers <font color=00FF00>10%</font> of enchant points for unique skills. -->
+		<set name="icon" val="icon.energy_condenser_i05" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="PAPER" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+	</item>
+	<item id="103231" name="Rare Skill Enchant Charging Stone (10%)" additionalName="Sealed" type="EtcItem">
+		<!-- Recovers <font color=00FF00>10%</font> of enchant points for rare skills. -->
+		<set name="icon" val="icon.energy_condenser_i06" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="PAPER" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+	</item>
+	<item id="103232" name="Doll Summon Coupon (Common - Heroic) - 1-time" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to summon 1 doll from <font color=DDDDDD>common</font> to <font color=FF6666>heroic</font> grade. Some dolls cannot be summoned. -->
+		<set name="icon" val="icon.bless_doll_summon_1_ticket_lv1" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="LIQUID" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+	</item>
+	<item id="103233" name="Doll Summon Coupon (Common - Heroic) - 11-time" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to summon 11 dolls from <font color=DDDDDD>common</font> to <font color=FF6666>heroic</font> grade. Some dolls cannot be summoned. -->
+		<set name="icon" val="icon.bless_doll_summon_11_ticket_lv1" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="LIQUID" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="RelicSummonCoupon" /> <!-- L2 Kage: upstream left this out, so the coupon did nothing -->
+	</item>
+	<item id="103234" name="Package: Giran Seal (100 pcs.)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.etc_royal_seal_of_lord_i04" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="92314" min="100" max="100" chance="100" /> <!-- Giran Seal -->
+		</capsuled_items>
+	</item>
+	<item id="103235" name="Wolf's Starter Kit (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.bm_starter_package_i00" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="103237" min="1" max="1" chance="100" /> <!-- Wolf's Growth Gift Box (Time-limited) - Sealed -->
+			<item id="101961" min="1" max="1" chance="100" /> <!-- +6 Boss Weapon Coupon (Sealed) (Time-limited) - Sealed -->
+			<item id="102314" min="5" max="5" chance="100" /> <!-- +6 Special Armor Coupon (Sealed) (Time-limited) - Sealed -->
+			<item id="103239" min="3" max="3" chance="100" /> <!-- Wolf'd +7 Talisman Coupon (Time-limited) - Sealed -->
+		</capsuled_items>
+	</item>
+	<item id="103236" name="Wolf Class Support Kit (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.present_of_destination_event" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="103153" min="40000" max="40000" chance="100" /> <!-- Master's Collection Mark - Sealed -->
+			<item id="103221" min="1" max="1" chance="100" /> <!-- Warg's Heroic Doll Pack (Time-limited) - Sealed -->
+			<item id="103238" min="1" max="1" chance="100" /> <!-- Double Spellbook Set (Common - Rare) (Time-limited) - Sealed -->
+			<item id="103155" min="10" max="10" chance="100" /> <!-- 21st Anniversary Selection Coupon: Dye/ Hidden Power Upgrade (Time-limited) - Sealed -->
+			<item id="103233" min="10" max="10" chance="100" /> <!-- Doll Summon Coupon (Common - Heroic) - 11-time - Sealed -->
+		</capsuled_items>
+	</item>
+	<item id="103237" name="Wolf's Growth Gift Box (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.event_hero_treasure_box_blue" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="91840" min="200" max="200" chance="100" /> <!-- XP Growth Scroll (Time-limited) - Sealed -->
+			<item id="94380" min="200" max="200" chance="100" /> <!-- Scroll: Boost Attack (Time-limited) - Sealed -->
+			<item id="94381" min="200" max="200" chance="100" /> <!-- Scroll: Boost Defense (Time-limited) - Sealed -->
+			<item id="3031" min="20000" max="20000" chance="100" /> <!-- Spirit Ore - Sealed -->
+			<item id="90907" min="2000" max="2000" chance="100" /> <!-- Soulshot Ticket - Sealed -->
+			<item id="94780" min="500" max="500" chance="100" /> <!-- Growth Rune Fragment - Sealed -->
+		</capsuled_items>
+	</item>
+	<item id="103238" name="Double Spellbook Set (Common - Rare) (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.etc_treasure_box_i05" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+	</item>
+	<item id="103239" name="Wolf'd +7 Talisman Coupon (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain 1 useful item of your choice. -->
+		<set name="icon" val="icon.bm_talisman_ticket" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="LIQUID" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+	</item>
+	<item id="103240" name="Transcendent Shining Pack (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.sayha2017_box_i03" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="92401" min="1" max="1" chance="2.12766" /> <!-- Spellbook: White Guardian -->
+			<item id="93255" min="1" max="1" chance="2.12766" /> <!-- Blessed Scroll: Enchant Weapon -->
+			<item id="93256" min="1" max="1" chance="2.12766" /> <!-- Blessed Scroll: Enchant Armor -->
+			<item id="93739" min="1" max="1" chance="2.12766" /> <!-- Package: Giran Seal (1000 pcs.) - Sealed -->
+			<item id="94120" min="1" max="1" chance="2.12766" /> <!-- Package: Talisman of Baium - Sealed -->
+			<item id="94329" min="1" max="1" chance="2.12766" /> <!-- Package: Giran Seal (500 pcs.) - Sealed -->
+			<item id="94337" min="1" max="1" chance="2.12766" /> <!-- Package: Giran Seal (200 pcs.) - Sealed -->
+			<item id="94383" min="1" max="1" chance="2.12766" /> <!-- Scroll: Enchant Rare Accessories -->
+			<item id="94385" min="1" max="1" chance="2.12766" /> <!-- Improved Scroll: Enchant Rare Accessories -->
+			<item id="95783" min="2" max="2" chance="2.12766" /> <!-- Aden's Soul Crystal Lv. 1 - Weapon -->
+			<item id="95803" min="1" max="1" chance="2.12766" /> <!-- Hardin's Soul Crystal Lv. 1 -->
+			<item id="95822" min="1" max="1" chance="2.12766" /> <!-- Hardin's Soul Crystal Lv. 20 -->
+			<item id="96300" min="1" max="1" chance="2.12766" /> <!-- Spellbook: Dragon Slayer -->
+			<item id="96901" min="2" max="2" chance="2.12766" /> <!-- Aden's Soul Crystal Lv. 1 - Armor -->
+			<item id="97449" min="1" max="1" chance="2.12766" /> <!-- Scroll: Enchant Talisman of Baium - Sealed -->
+			<item id="97529" min="2" max="2" chance="2.12766" /> <!-- Package: Brooch Lv. 4 - Sealed -->
+			<item id="97538" min="2" max="2" chance="2.12766" /> <!-- Package: Talisman Bracelet Lv. 4 - Sealed -->
+			<item id="97547" min="2" max="2" chance="2.12766" /> <!-- Package: Agathion Bracelet Lv. 4 - Sealed -->
+			<item id="97787" min="1" max="1" chance="2.12766" /> <!-- Augmenting Stone: Special Equipment -->
+			<item id="98040" min="1" max="1" chance="2.12766" /> <!-- Transcendent Upgrade Stone - Sealed -->
+			<item id="100526" min="1" max="1" chance="2.12766" /> <!-- Package: Transcendent Upgrade Stone (100 pcs.) (Time-limited) - Sealed -->
+			<item id="100754" min="1" max="1" chance="2.12766" /> <!-- Package: Transcendent Upgrade Stone (10 pcs.) (Time-limited) - Sealed -->
+			<item id="101371" min="1" max="1" chance="2.12766" /> <!-- Package: Giran Seal (5000 pcs.) - Sealed -->
+			<item id="103234" min="1" max="1" chance="2.12766" /> <!-- Package: Giran Seal (100 pcs.) - Sealed -->
+			<item id="103242" min="1" max="1" chance="2.12766" /> <!-- Package: Transcendent Equipment Ticket (1000 pcs.) (Time-limited) - Sealed -->
+			<item id="103243" min="1" max="1" chance="2.12766" /> <!-- Package: Transcendent Equipment Ticket (2000 pcs.) (Time-limited) - Sealed -->
+			<item id="6660" min="1" max="1" chance="2.12766" /> <!-- Queen Ant's Ring -->
+			<item id="6661" min="1" max="1" chance="2.12766" /> <!-- Orfen's Earring -->
+			<item id="49580" min="1" max="1" chance="2.12766" /> <!-- Baium's Ring -->
+			<item id="90763" min="1" max="1" chance="2.12766" /> <!-- Zaken's Earring -->
+			<item id="90992" min="1" max="1" chance="2.12766" /> <!-- Antharas' Earring -->
+			<item id="91550" min="1" max="1" chance="2.12766" /> <!-- Frintezza's Necklace -->
+			<item id="96600" min="1" max="1" chance="2.12766" /> <!-- Beleth's Ring -->
+			<item id="96613" min="1" max="1" chance="2.12766" /> <!-- Spellbook: Expanded Potential of Dyes -->
+			<item id="97132" min="1" max="1" chance="2.12766" /> <!-- Armor of Protection Coupon - Sealed -->
+			<item id="97133" min="1" max="1" chance="2.12766" /> <!-- Frost Lord's Weapon Coupon - Sealed -->
+			<item id="98932" min="1" max="1" chance="2.12766" /> <!-- Aztacan's Earring -->
+			<item id="100053" min="1" max="1" chance="2.12766" /> <!-- Heroic Spellbook Coupon - Sealed -->
+			<item id="100370" min="1" max="1" chance="2.12766" /> <!-- Ferion's Necklace -->
+			<item id="102976" min="1" max="1" chance="2.12766" /> <!-- Legendary Spellbook Coupon - Sealed -->
+			<item id="103241" min="10" max="10" chance="2.12766" /> <!-- Transcendent Equipment Ticket (Time-limited) - Sealed -->
+			<item id="103241" min="6" max="6" chance="2.12766" /> <!-- Transcendent Equipment Ticket (Time-limited) - Sealed -->
+			<item id="103241" min="4" max="4" chance="2.12766" /> <!-- Transcendent Equipment Ticket (Time-limited) - Sealed -->
+			<item id="103241" min="2" max="2" chance="2.12766" /> <!-- Transcendent Equipment Ticket (Time-limited) - Sealed -->
+			<item id="96937" min="1" max="1" chance="2.12766" /> <!-- Berserker's Sigil -->
+			<item id="100214" min="1" max="1" chance="2.12766" /> <!-- Wild Wind Helmet -->
+			<item id="100780" min="1" max="1" chance="2.12766" /> <!-- Red Flame Gauntlets -->
+		</capsuled_items>
+	</item>
+	<item id="103241" name="Transcendent Armor Ticket (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain 1 useful item of your choice. -->
+		<set name="icon" val="icon.bm_challenger_wp_trade_ticket" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="LIQUID" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+	</item>
+	<item id="103242" name="Package: Transcendent Weapon Ticket (1000 pcs.) (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.bm_challenger_wp_trade_ticket" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="103241" min="1000" max="1000" chance="100" /> <!-- Transcendent Equipment Ticket (Time-limited) - Sealed -->
+		</capsuled_items>
+	</item>
+	<item id="103243" name="Package: Transcendent Weapon Ticket (2000 pcs.) (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.bm_challenger_wp_trade_ticket" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="103241" min="2000" max="2000" chance="100" /> <!-- Transcendent Equipment Ticket (Time-limited) - Sealed -->
+		</capsuled_items>
+	</item>
+	<item id="103244" name="W.O.L.F. Word Special Reward Pack (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.etc_pi_box_belief_pack" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="2" />
+		<set name="extractableCountMax" val="2" />
+		<capsuled_items>
+			<item id="94814" min="5" max="5" chance="28.333333" /> <!-- Transformation Scroll (Time-limited) - Sealed -->
+			<item id="95693" min="5" max="5" chance="28.333333" /> <!-- Not used - Sealed -->
+			<item id="103178" min="1" max="1" chance="28.333333" /> <!-- Package: Scroll: Boost Attack/ Defense and XP Scroll (5 pcs.) (Time-limited) - Sealed -->
+			<item id="98471" min="5" max="5" chance="100" /> <!-- Soulshot Ticket (Time-limited) - Sealed -->
+		</capsuled_items>
+	</item>
+	<item id="103245" name="V.A.R.K.A.S Word Special Reward Pack (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.etc_pi_box_love_pack" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="2" />
+		<set name="extractableCountMax" val="2" />
+		<capsuled_items>
+			<item id="97597" min="1" max="1" chance="28.333333" /> <!-- Selected Jewel Coupon - Sealed -->
+			<item id="98941" min="2" max="2" chance="28.333333" /> <!-- Package: Hunter's Earring - Sealed -->
+			<item id="98917" min="2" max="2" chance="28.333333" /> <!-- Talisman Coupon (Time-limited) - Sealed -->
+			<item id="98471" min="5" max="5" chance="100" /> <!-- Soulshot Ticket (Time-limited) - Sealed -->
+		</capsuled_items>
+	</item>
+	<item id="103246" name="L.I.N.E.A.G.E.2 Word Special Reward Pack (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.etc_pi_box_wish_pack" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="103153" min="3" max="3" chance="100" /> <!-- Master's Collection Mark - Sealed -->
+			<item id="97147" min="1" max="1" chance="100" /> <!-- Hidden Power Booster - Sealed -->
+			<item id="98471" min="20" max="20" chance="100" /> <!-- Soulshot Ticket (Time-limited) - Sealed -->
+			<item id="100722" min="1" max="1" chance="100" /> <!-- Dye Booster - Sealed -->
+		</capsuled_items>
+	</item>
+	<item id="103247" name="Heroic Zaken Doll Summon Coupon (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to summon a doll with the <font color=eeaa22>Zaken Doll Lv. 5</font> effect with a 100% chance. -->
+		<set name="icon" val="icon.doll_summon_1_ticket_fixed_lv5" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="LIQUID" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="RelicSummonCoupon" />
+	</item>
+	<item id="103248" name="W.O.L.F. Word Special Reward Pack (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.etc_pi_box_belief_pack" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="3" />
+		<set name="extractableCountMax" val="3" />
+		<capsuled_items>
+			<item id="94814" min="5" max="5" chance="28.333333" /> <!-- Transformation Scroll (Time-limited) - Sealed -->
+			<item id="95693" min="5" max="5" chance="28.333333" /> <!-- Not used - Sealed -->
+			<item id="103178" min="1" max="1" chance="28.333333" /> <!-- Package: Scroll: Boost Attack/ Defense and XP Scroll (5 pcs.) (Time-limited) - Sealed -->
+			<item id="103153" min="50" max="50" chance="100" /> <!-- Master's Collection Mark - Sealed -->
+			<item id="98471" min="5" max="5" chance="100" /> <!-- Soulshot Ticket (Time-limited) - Sealed -->
+		</capsuled_items>
+	</item>
+	<item id="103249" name="Special W.A.R.G Word Reward Pack (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.etc_pi_box_love_pack" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="3" />
+		<set name="extractableCountMax" val="3" />
+		<capsuled_items>
+			<item id="97597" min="1" max="1" chance="28.333333" /> <!-- Selected Jewel Coupon - Sealed -->
+			<item id="98941" min="2" max="2" chance="28.333333" /> <!-- Package: Hunter's Earring - Sealed -->
+			<item id="98917" min="2" max="2" chance="28.333333" /> <!-- Talisman Coupon (Time-limited) - Sealed -->
+			<item id="103153" min="50" max="50" chance="100" /> <!-- Master's Collection Mark - Sealed -->
+			<item id="98471" min="5" max="5" chance="100" /> <!-- Soulshot Ticket (Time-limited) - Sealed -->
+		</capsuled_items>
+	</item>
+	<item id="103250" name="L.I.N.E.A.G.E.2 Word Special Reward Pack (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.etc_pi_box_wish_pack" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="101587" min="1" max="1" chance="100" /> <!-- Aden's Exploration Report Page - Sealed -->
+			<item id="98471" min="20" max="20" chance="100" /> <!-- Soulshot Ticket (Time-limited) - Sealed -->
+			<item id="100722" min="1" max="1" chance="100" /> <!-- Dye Booster - Sealed -->
+			<item id="103620" min="3" max="3" chance="100" /> <!-- Master's Collection Mark -->
+		</capsuled_items>
+	</item>
+	<item id="103251" name="High Priest Cyrax's Treasure Chest" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.etc_treasure_box_i00" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="PAPER" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="97597" min="2" max="2" chance="5.555556" /> <!-- Selected Jewel Coupon - Sealed -->
+			<item id="97597" min="5" max="5" chance="5.555556" /> <!-- Selected Jewel Coupon - Sealed -->
+			<item id="97597" min="10" max="10" chance="5.555556" /> <!-- Selected Jewel Coupon - Sealed -->
+			<item id="97597" min="50" max="50" chance="5.555556" /> <!-- Selected Jewel Coupon - Sealed -->
+			<item id="97597" min="100" max="100" chance="5.555556" /> <!-- Selected Jewel Coupon - Sealed -->
+			<item id="98040" min="1" max="1" chance="5.555556" /> <!-- Transcendent Upgrade Stone - Sealed -->
+			<item id="98594" min="1" max="1" chance="5.555556" /> <!-- Package: Venir's Talisman Fragment (1000 pcs.) - Sealed -->
+			<item id="98758" min="1" max="1" chance="5.555556" /> <!-- Package: Venir's Talisman Fragment (100 pcs.) - Sealed -->
+			<item id="103038" min="1" max="1" chance="5.555556" /> <!-- Package: Dye Booster (Sealed) (100 pcs.) - Sealed -->
+			<item id="91076" min="2" max="2" chance="5.555556" /> <!-- Venir's Talisman Fragment -->
+			<item id="91076" min="5" max="5" chance="5.555556" /> <!-- Venir's Talisman Fragment -->
+			<item id="91076" min="10" max="10" chance="5.555556" /> <!-- Venir's Talisman Fragment -->
+			<item id="91076" min="20" max="20" chance="5.555556" /> <!-- Venir's Talisman Fragment -->
+			<item id="100053" min="1" max="1" chance="5.555556" /> <!-- Heroic Spellbook Coupon - Sealed -->
+			<item id="100722" min="1" max="1" chance="5.555556" /> <!-- Dye Booster - Sealed -->
+			<item id="100722" min="3" max="3" chance="5.555556" /> <!-- Dye Booster - Sealed -->
+			<item id="100722" min="5" max="5" chance="5.555556" /> <!-- Dye Booster - Sealed -->
+			<item id="100722" min="10" max="10" chance="5.555556" /> <!-- Dye Booster - Sealed -->
+		</capsuled_items>
+	</item>
+	<item id="103252" name="Package: +9 Heavenly Talisman" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.talisman_of_heaven_i00" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="100547" min="1" max="1" minEnchant="9" maxEnchant="9" chance="100" /> <!-- Heavenly Talisman - Sealed -->
+		</capsuled_items>
+	</item>
+	<item id="103253" name="Package: +10 Heavenly Talisman" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.talisman_of_heaven_i00" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="100547" min="1" max="1" minEnchant="10" maxEnchant="10" chance="100" /> <!-- Heavenly Talisman - Sealed -->
+		</capsuled_items>
+	</item>
+	<item id="103254" name="Package: +10 Phantom Mask" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.mask_of_phantom_i00" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="100545" min="1" max="1" minEnchant="10" maxEnchant="10" chance="100" /> <!-- Phantom Mask - Sealed -->
+		</capsuled_items>
+	</item>
+	<item id="103255" name="Sea Boots" type="Armor">
+		<!-- Boots imbued with the power of sea. -->
+		<set name="icon" val="icon.armor_L_light_shoes" />
+		<set name="default_action" val="EQUIP" />
+		<set name="bodypart" val="feet" />
+		<set name="immediate_effect" val="true" />
+		<set name="crystal_type" val="A" />
+		<set name="material" val="LEATHER" />
+		<set name="weight" val="1070" />
+		<set name="ensoulNormalSlots" val="1" />
+		<set name="enchant_enabled" val="true" />
+		<set name="enchant_enabled" val="true" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<stats>
+			<stat type="pDef">75</stat>
+		</stats>
+	</item>
+	<item id="103256" name="Enchant Kit: Phantom Mask (100 pcs.)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.mask_of_phantom_i00" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="100589" min="100" max="100" chance="100" /> <!-- Enchant Kit: Phantom Mask - Sealed -->
+		</capsuled_items>
+	</item>
+	<item id="103257" name="Package: Enchant Kit: Circlet of Hero (2-100 pcs.)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.etc_readybox_gold" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="PAPER" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="94168" min="2" max="2" chance="10" /> <!-- Enchant Kit: Circlet of Hero - Sealed -->
+			<item id="94168" min="3" max="3" chance="10" /> <!-- Enchant Kit: Circlet of Hero - Sealed -->
+			<item id="94168" min="5" max="5" chance="10" /> <!-- Enchant Kit: Circlet of Hero - Sealed -->
+			<item id="94168" min="7" max="7" chance="10" /> <!-- Enchant Kit: Circlet of Hero - Sealed -->
+			<item id="94168" min="10" max="10" chance="10" /> <!-- Enchant Kit: Circlet of Hero - Sealed -->
+			<item id="94168" min="20" max="20" chance="10" /> <!-- Enchant Kit: Circlet of Hero - Sealed -->
+			<item id="94168" min="25" max="25" chance="10" /> <!-- Enchant Kit: Circlet of Hero - Sealed -->
+			<item id="94168" min="30" max="30" chance="10" /> <!-- Enchant Kit: Circlet of Hero - Sealed -->
+			<item id="97796" min="1" max="1" chance="10" /> <!-- Package: Enchant Kit: Circlet of Hero (100 pcs.) - Sealed -->
+			<item id="101356" min="1" max="1" chance="10" /> <!-- Enchant Kit: Circlet of Hero (50 pcs.) - Sealed -->
+		</capsuled_items>
+	</item>
+	<item id="103258" name="Package: Dragon Belt Pack (2-100 pcs.)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.etc_readybox_bronze" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="PAPER" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="91864" min="2" max="2" chance="10" /> <!-- Dragon Belt Pack - Sealed -->
+			<item id="91864" min="3" max="3" chance="10" /> <!-- Dragon Belt Pack - Sealed -->
+			<item id="91864" min="5" max="5" chance="10" /> <!-- Dragon Belt Pack - Sealed -->
+			<item id="91864" min="7" max="7" chance="10" /> <!-- Dragon Belt Pack - Sealed -->
+			<item id="91864" min="10" max="10" chance="10" /> <!-- Dragon Belt Pack - Sealed -->
+			<item id="91864" min="20" max="20" chance="10" /> <!-- Dragon Belt Pack - Sealed -->
+			<item id="91864" min="25" max="25" chance="10" /> <!-- Dragon Belt Pack - Sealed -->
+			<item id="91864" min="30" max="30" chance="10" /> <!-- Dragon Belt Pack - Sealed -->
+			<item id="97649" min="1" max="1" chance="10" /> <!-- Package: Dragon Belt (100 pcs.) - Sealed -->
+			<item id="98339" min="1" max="1" chance="10" /> <!-- Package: Dragon Belt (50 pcs.) - Sealed -->
+		</capsuled_items>
+	</item>
+	<item id="103259" name="Package: Cloak of Protection (2-100 pcs.)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.bm_2018_sayha_cloak_back_i01" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="FISH" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="93303" min="2" max="2" chance="10" /> <!-- Package: Cloak of Protection - Sealed -->
+			<item id="93303" min="3" max="3" chance="10" /> <!-- Package: Cloak of Protection - Sealed -->
+			<item id="93303" min="5" max="5" chance="10" /> <!-- Package: Cloak of Protection - Sealed -->
+			<item id="93303" min="7" max="7" chance="10" /> <!-- Package: Cloak of Protection - Sealed -->
+			<item id="93303" min="10" max="10" chance="10" /> <!-- Package: Cloak of Protection - Sealed -->
+			<item id="93303" min="20" max="20" chance="10" /> <!-- Package: Cloak of Protection - Sealed -->
+			<item id="93303" min="25" max="25" chance="10" /> <!-- Package: Cloak of Protection - Sealed -->
+			<item id="93303" min="30" max="30" chance="10" /> <!-- Package: Cloak of Protection - Sealed -->
+			<item id="98080" min="1" max="1" chance="10" /> <!-- Package: Cloak of Protection (100 pcs.) - Sealed -->
+			<item id="101352" min="1" max="1" chance="10" /> <!-- Package: Cloak of Protection (50 pcs.) - Sealed -->
+		</capsuled_items>
+	</item>
+	<item id="103260" name="Package: Enchant Kit: Phantom Mask (2-100 pcs.)" additionalName="Sealed" type="EtcItem">
+		<!-- Double-click to obtain various items. -->
+		<set name="icon" val="icon.etc_readybox_black" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="PAPER" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_freightable" val="true" />
+		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="extractableCountMin" val="1" />
+		<set name="extractableCountMax" val="1" />
+		<capsuled_items>
+			<item id="100589" min="2" max="2" chance="10" /> <!-- Enchant Kit: Phantom Mask - Sealed -->
+			<item id="100589" min="3" max="3" chance="10" /> <!-- Enchant Kit: Phantom Mask - Sealed -->
+			<item id="100589" min="5" max="5" chance="10" /> <!-- Enchant Kit: Phantom Mask - Sealed -->
+			<item id="100589" min="7" max="7" chance="10" /> <!-- Enchant Kit: Phantom Mask - Sealed -->
+			<item id="100589" min="10" max="10" chance="10" /> <!-- Enchant Kit: Phantom Mask - Sealed -->
+			<item id="100589" min="20" max="20" chance="10" /> <!-- Enchant Kit: Phantom Mask - Sealed -->
+			<item id="100589" min="25" max="25" chance="10" /> <!-- Enchant Kit: Phantom Mask - Sealed -->
+			<item id="100589" min="30" max="30" chance="10" /> <!-- Enchant Kit: Phantom Mask - Sealed -->
+			<item id="101358" min="1" max="1" chance="10" /> <!-- Enchant Kit: Phantom Mask (50 pcs.) - Sealed -->
+			<item id="103256" min="1" max="1" chance="10" /> <!-- Enchant Kit: Phantom Mask (100 pcs.) - Sealed -->
+		</capsuled_items>
+	</item>
+	<item id="103261" name="Full Moon Energy (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- A compounding material to be used to level up Blue Snake Doll. -->
+		<set name="icon" val="icon.etc_condensed_energy_02" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="PAPER" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+		<set name="is_stackable" val="true" />
+	</item>
+	<item id="103262" name="Wolf's Rune Lv. 1 (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Its level can be increased through compounding if <font color=EEAA22>Magic Energy</font> is used as a material. <font color="00FF00"><Base effect></font>. P. Atk. <font color="FFBB00">+10</font>. M. Atk. <font color="FFBB00">+10</font>. P. Def. <font color="FFBB00">+20</font>. M. Def. <font color="FFBB00">+20</font>. Acquired XP/ SP <font color="FFBB00">+1%</font>. MP Recovery Rate <font color="FFBB00">+1</font>. <font color=ff6666><Compounding fee></font>. Blue Snake Doll Lv. 1-4 - 10,000 adena required -->
+		<set name="icon" val="icon.blue_snake_doll_i00" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="PAPER" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+	</item>
+	<item id="103263" name="Wolf's Rune Lv. 2 (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Its level can be increased through compounding if <font color=EEAA22>Magic Energy</font> is used as a material. <font color="00FF00"><Base effect></font>. P. Atk. <font color="FFBB00">+20</font>. M. Atk. <font color="FFBB00">+20</font>. P. Def. <font color="FFBB00">+40</font>. M. Def. <font color="FFBB00">+40</font>. Acquired XP/ SP <font color="FFBB00">+2%</font>. MP Recovery Rate <font color="FFBB00">+2</font>. <font color=ff6666><Compounding fee></font>. Blue Snake Doll Lv. 1-4 - 10,000 adena required -->
+		<set name="icon" val="icon.blue_snake_doll_i00" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="PAPER" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+	</item>
+	<item id="103264" name="Wolf's Rune Lv. 3 (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Its level can be increased through compounding if <font color=EEAA22>Magic Energy</font> is used as a material. <font color="00FF00"><Base effect></font>. P. Atk. <font color="FFBB00">+30</font>. M. Atk. <font color="FFBB00">+30</font>. P. Def. <font color="FFBB00">+60</font>. M. Def. <font color="FFBB00">+60</font>. Acquired XP/ SP <font color="FFBB00">+3%</font>. MP Recovery Rate <font color="FFBB00">+3</font>. <font color=ff6666><Compounding fee></font>. Blue Snake Doll Lv. 1-4 - 10,000 adena required -->
+		<set name="icon" val="icon.blue_snake_doll_i00" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="PAPER" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+	</item>
+	<item id="103265" name="Wolf's Rune Lv. 4 (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Its level can be increased through compounding if <font color=EEAA22>Magic Energy</font> is used as a material. <font color="00FF00"><Base effect></font>. P. Atk. <font color="FFBB00">+40</font>. M. Atk. <font color="FFBB00">+40</font>. P. Def. <font color="FFBB00">+80</font>. M. Def. <font color="FFBB00">+80</font>. Acquired XP/ SP <font color="FFBB00">+4%</font>. MP Recovery Rate <font color="FFBB00">+4</font>. <font color=ff6666><Compounding fee></font>. Blue Snake Doll Lv. 1-4 - 10,000 adena required -->
+		<set name="icon" val="icon.blue_snake_doll_i00" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="PAPER" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+	</item>
+	<item id="103266" name="Wolf's Rune Lv. 5 (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Its level can be increased through compounding if <font color=EEAA22>Magic Energy</font> is used as a material. <font color="00FF00"><Base effect></font>. P. Atk. <font color="FFBB00">+50</font>. M. Atk. <font color="FFBB00">+50</font>. P. Def. <font color="FFBB00">+100</font>. M. Def. <font color="FFBB00">+100</font>. Acquired XP/ SP <font color="FFBB00">+5%</font>. MP Recovery Rate <font color="FFBB00">+5</font>. <font color=ff6666><Compounding fee></font>. Blue Snake Doll Lv. 5-9 - 150,000 adena required -->
+		<set name="icon" val="icon.blue_snake_doll_i00" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="PAPER" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+	</item>
+	<item id="103267" name="Wolf's Rune Lv. 6 (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Its level can be increased through compounding if <font color=EEAA22>Magic Energy</font> is used as a material. <font color="00FF00"><Base effect></font>. P. Atk. <font color="FFBB00">+60</font>. M. Atk. <font color="FFBB00">+60</font>. P. Def. <font color="FFBB00">+120</font>. M. Def. <font color="FFBB00">+120</font>. Acquired XP/ SP <font color="FFBB00">+6%</font>. MP Recovery Rate <font color="FFBB00">+6</font>. <font color=ff6666><Compounding fee></font>. Blue Snake Doll Lv. 5-9 - 150,000 adena required -->
+		<set name="icon" val="icon.blue_snake_doll_i01" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="PAPER" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+	</item>
+	<item id="103268" name="Wolf's Rune Lv. 7 (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Its level can be increased through compounding if <font color=EEAA22>Magic Energy</font> is used as a material. <font color="00FF00"><Base effect></font>. P. Atk. <font color="FFBB00">+70</font>. M. Atk. <font color="FFBB00">+70</font>. P. Def. <font color="FFBB00">+140</font>. M. Def. <font color="FFBB00">+140</font>. Acquired XP/ SP <font color="FFBB00">+7%</font>. MP Recovery Rate <font color="FFBB00">+7</font>. <font color=ff6666><Compounding fee></font>. Blue Snake Doll Lv. 5-9 - 150,000 adena required -->
+		<set name="icon" val="icon.blue_snake_doll_i01" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="PAPER" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+	</item>
+	<item id="103269" name="Wolf's Rune Lv. 8 (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Its level can be increased through compounding if <font color=EEAA22>Magic Energy</font> is used as a material. <font color="00FF00"><Base effect></font>. P. Atk. <font color="FFBB00">+80</font>. M. Atk. <font color="FFBB00">+80</font>. P. Def. <font color="FFBB00">+160</font>. M. Def. <font color="FFBB00">+160</font>. Acquired XP/ SP <font color="FFBB00">+8%</font>. MP Recovery Rate <font color="FFBB00">+8</font>. <font color=ff6666><Compounding fee></font>. Blue Snake Doll Lv. 5-9 - 150,000 adena required -->
+		<set name="icon" val="icon.blue_snake_doll_i01" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="PAPER" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+	</item>
+	<item id="103270" name="Wolf's Rune Lv. 9 (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Its level can be increased through compounding if <font color=EEAA22>Magic Energy</font> is used as a material. <font color="00FF00"><Base effect></font>. P. Atk. <font color="FFBB00">+100</font>. M. Atk. <font color="FFBB00">+100</font>. P. Def. <font color="FFBB00">+180</font>. M. Def. <font color="FFBB00">+180</font>. Acquired XP/ SP <font color="FFBB00">+9%</font>. MP Recovery Rate <font color="FFBB00">+9</font>. <font color=ff6666><Compounding fee></font>. Blue Snake Doll Lv. 5-9 - 150,000 adena required -->
+		<set name="icon" val="icon.blue_snake_doll_i01" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="PAPER" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+	</item>
+	<item id="103271" name="Wolf's Rune Lv. 10 (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Its level can be increased through compounding if <font color=EEAA22>Magic Energy</font> is used as a material. <font color="00FF00"><Base effect></font>. P. Atk. <font color="FFBB00">+120</font>. M. Atk. <font color="FFBB00">+120</font>. P. Def. <font color="FFBB00">+200</font>. M. Def. <font color="FFBB00">+200</font>. Acquired XP/ SP <font color="FFBB00">+10%</font>. MP Recovery Rate <font color="FFBB00">+10</font>. Stun Resistance <font color="FFBB00">+10%</font>. MEN <font color="FFBB00">+1</font>. <font color=ff6666><Compounding fee></font>. Blue Snake Doll Lv. 10-14 - 200,000 adena required -->
+		<set name="icon" val="icon.blue_snake_doll_i01" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="PAPER" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+	</item>
+	<item id="103272" name="Wolf's Rune Lv. 11 (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Its level can be increased through compounding if <font color=EEAA22>Magic Energy</font> is used as a material. <font color="00FF00"><Base effect></font>. P. Atk. <font color="FFBB00">+140</font>. M. Atk. <font color="FFBB00">+140</font>. P. Def. <font color="FFBB00">+280</font>. M. Def. <font color="FFBB00">+280</font>. Acquired XP/ SP <font color="FFBB00">+12%</font>. MP Recovery Rate <font color="FFBB00">+11</font>. Stun Resistance <font color="FFBB00">+10%</font>. PvE damage <font color="FFBB00">+1%</font>. MEN <font color="FFBB00">+1</font>. CON <font color="FFBB00">+1</font>. <font color=ff6666><Compounding fee></font>. Blue Snake Doll Lv. 10-14 - 200,000 adena required -->
+		<set name="icon" val="icon.blue_snake_doll_i02" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="PAPER" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+	</item>
+	<item id="103273" name="Wolf's Rune Lv. 12 (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Its level can be increased through compounding if <font color=EEAA22>Magic Energy</font> is used as a material. <font color="00FF00"><Base effect></font>. P. Atk. <font color="FFBB00">+160</font>. M. Atk. <font color="FFBB00">+160</font>. P. Def. <font color="FFBB00">+320</font>. M. Def. <font color="FFBB00">+320</font>. Acquired XP/ SP <font color="FFBB00">+15%</font>. MP Recovery Rate <font color="FFBB00">+12</font>. Stun Resistance <font color="FFBB00">+10%</font>. PvE damage <font color="FFBB00">+1.5%</font>. MEN <font color="FFBB00">+1</font>. CON <font color="FFBB00">+1</font>. WIT <font color="FFBB00">+1</font>. <font color=ff6666><Compounding fee></font>. Blue Snake Doll Lv. 10-14 - 200,000 adena required -->
+		<set name="icon" val="icon.blue_snake_doll_i02" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="PAPER" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+	</item>
+	<item id="103274" name="Wolf's Rune Lv. 13 (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Its level can be increased through compounding if <font color=EEAA22>Magic Energy</font> is used as a material. <font color="00FF00"><Base effect></font>. P. Atk. <font color="FFBB00">+200</font>. M. Atk. <font color="FFBB00">+200</font>. P. Def. <font color="FFBB00">+400</font>. M. Def. <font color="FFBB00">+400</font>. Acquired XP/ SP <font color="FFBB00">+20%</font>. MP Recovery Rate <font color="FFBB00">+13</font>. Stun Resistance <font color="FFBB00">+10%</font>. PvE damage <font color="FFBB00">+2%</font>. MEN <font color="FFBB00">+1</font>. CON <font color="FFBB00">+1</font>. WIT <font color="FFBB00">+1</font>. DEX <font color="FFBB00">+1</font>. <font color="00FF00"><Special effect></font>. Makes additional hits to the target on attack. Damage is based on your attack type. Trigger rate: <font color="FFBB00">1%</font>. P. Atk.: Power <font color="FFBB00">4000</font>. M. Atk.: Power <font color="FFBB00">150</font>. <font color=ff6666><Compounding fee></font>. Blue Snake Doll Lv. 10-14 - 200,000 adena required -->
+		<set name="icon" val="icon.blue_snake_doll_i02" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="PAPER" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+	</item>
+	<item id="103275" name="Wolf's Rune Lv. 14 (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Its level can be increased through compounding if <font color=EEAA22>Magic Energy</font> is used as a material. <font color="00FF00"><Base effect></font>. P. Atk. <font color="FFBB00">+250</font>. M. Atk. <font color="FFBB00">+250</font>. P. Def. <font color="FFBB00">+500</font>. M. Def. <font color="FFBB00">+500</font>. Acquired XP/ SP <font color="FFBB00">+25%</font>. MP Recovery Rate <font color="FFBB00">+14</font>. Stun Resistance <font color="FFBB00">+10%</font>. PvE damage <font color="FFBB00">+2.5%</font>. MEN <font color="FFBB00">+1</font>. CON <font color="FFBB00">+1</font>. WIT <font color="FFBB00">+1</font>. DEX <font color="FFBB00">+1</font>. INT<font color="FFBB00">+1</font>. <font color="00FF00"><Special effect></font>. Makes additional hits to the target on attack. Damage is based on your attack type. Trigger rate: <font color="FFBB00">2%</font>. P. Atk.: Power <font color="FFBB00">5500</font>. M. Atk.: Power <font color="FFBB00">165</font>.. <font color=ff6666><Compounding fee></font>Blue Snake Doll Lv. 10-14 - 200,000 adena required -->
+		<set name="icon" val="icon.blue_snake_doll_i02" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="PAPER" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+	</item>
+	<item id="103276" name="Wolf's Rune Lv. 15 (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- <font color="00FF00"><Base effect></font>. P. Atk. <font color="FFBB00">+300</font>. M. Atk. <font color="FFBB00">+300</font>. P. Def. <font color="FFBB00">+600</font>. M. Def. <font color="FFBB00">+600</font>. Acquired XP/ SP <font color="FFBB00">+30%</font>. MP Recovery Rate <font color="FFBB00">+15</font>. Stun Resistance <font color="FFBB00">+10%</font>. PvE damage <font color="FFBB00">+3%</font>. MEN <font color="FFBB00">+1</font>. CON <font color="FFBB00">+1</font>. WIT <font color="FFBB00">+1</font>. DEX <font color="FFBB00">+1</font>. INT <font color="FFBB00">+1</font>. STR <font color="FFBB00">+1</font>. <font color="00FF00"><Special effect></font>. Makes additional hits to the target on attack. Damage is based on your attack type. Trigger rate: <font color="FFBB00">3%</font>. P. Atk.: Power <font color="FFBB00">8000</font>. M. Atk.: Power <font color="FFBB00">200</font>. -->
+		<set name="icon" val="icon.blue_snake_doll_i02" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="PAPER" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+	</item>
+	<item id="103277" name="Wolf's Rune Lv. 1 (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Its level can be increased through compounding if <font color=EEAA22>Magic Energy</font> is used as a material. <font color="00FF00"><Base effect></font>. P. Atk. <font color="FFBB00">+10</font>. M. Atk. <font color="FFBB00">+10</font>. P. Def. <font color="FFBB00">+20</font>. M. Def. <font color="FFBB00">+20</font>. Acquired XP/ SP <font color="FFBB00">+1%</font>. MP Recovery Rate <font color="FFBB00">+1</font>. <font color=ff6666><Compounding fee></font>. Blue Snake Doll Lv. 1-4 - 1000 adena required -->
+		<set name="icon" val="icon.blue_snake_doll_i00" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="PAPER" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+	</item>
+	<item id="103278" name="Wolf's Rune Lv. 2 (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Its level can be increased through compounding if <font color=EEAA22>Magic Energy</font> is used as a material. <font color="00FF00"><Base effect></font>. P. Atk. <font color="FFBB00">+20</font>. M. Atk. <font color="FFBB00">+20</font>. P. Def. <font color="FFBB00">+40</font>. M. Def. <font color="FFBB00">+40</font>. Acquired XP/ SP <font color="FFBB00">+2%</font>. MP Recovery Rate <font color="FFBB00">+2</font>. <font color=ff6666><Compounding fee></font>. Blue Snake Doll Lv. 1-4 - 1000 adena required -->
+		<set name="icon" val="icon.blue_snake_doll_i00" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="PAPER" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+	</item>
+	<item id="103279" name="Wolf's Rune Lv. 3 (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Its level can be increased through compounding if <font color=EEAA22>Magic Energy</font> is used as a material. <font color="00FF00"><Base effect></font>. P. Atk. <font color="FFBB00">+30</font>. M. Atk. <font color="FFBB00">+30</font>. P. Def. <font color="FFBB00">+60</font>. M. Def. <font color="FFBB00">+60</font>. Acquired XP/ SP <font color="FFBB00">+3%</font>. MP Recovery Rate <font color="FFBB00">+3</font>. <font color=ff6666><Compounding fee></font>. Blue Snake Doll Lv. 1-4 - 1000 adena required -->
+		<set name="icon" val="icon.blue_snake_doll_i00" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="PAPER" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+	</item>
+	<item id="103280" name="Wolf's Rune Lv. 4 (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Its level can be increased through compounding if <font color=EEAA22>Magic Energy</font> is used as a material. <font color="00FF00"><Base effect></font>. P. Atk. <font color="FFBB00">+40</font>. M. Atk. <font color="FFBB00">+40</font>. P. Def. <font color="FFBB00">+80</font>. M. Def. <font color="FFBB00">+80</font>. Acquired XP/ SP <font color="FFBB00">+4%</font>. MP Recovery Rate <font color="FFBB00">+4</font>. <font color=ff6666><Compounding fee></font>. Blue Snake Doll Lv. 1-4 - 1000 adena required -->
+		<set name="icon" val="icon.blue_snake_doll_i00" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="PAPER" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+	</item>
+	<item id="103281" name="Wolf's Rune Lv. 5 (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Its level can be increased through compounding if <font color=EEAA22>Magic Energy</font> is used as a material. <font color="00FF00"><Base effect></font>. P. Atk. <font color="FFBB00">+50</font>. M. Atk. <font color="FFBB00">+50</font>. P. Def. <font color="FFBB00">+100</font>. M. Def. <font color="FFBB00">+100</font>. Acquired XP/ SP <font color="FFBB00">+5%</font>. MP Recovery Rate <font color="FFBB00">+5</font>. <font color=ff6666><Compounding fee></font>. Blue Snake Doll Lv. 5-9 - 10,000 adena required -->
+		<set name="icon" val="icon.blue_snake_doll_i00" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="PAPER" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+	</item>
+	<item id="103282" name="Wolf's Rune Lv. 6 (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Its level can be increased through compounding if <font color=EEAA22>Magic Energy</font> is used as a material. <font color="00FF00"><Base effect></font>. P. Atk. <font color="FFBB00">+60</font>. M. Atk. <font color="FFBB00">+60</font>. P. Def. <font color="FFBB00">+120</font>. M. Def. <font color="FFBB00">+120</font>. Acquired XP/ SP <font color="FFBB00">+6%</font>. MP Recovery Rate <font color="FFBB00">+6</font></font>. <font color=ff6666><Compounding fee></font>. Blue Snake Doll Lv. 5-9 - 10,000 adena required -->
+		<set name="icon" val="icon.blue_snake_doll_i01" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="PAPER" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+	</item>
+	<item id="103283" name="Wolf's Rune Lv. 7 (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Its level can be increased through compounding if <font color=EEAA22>Magic Energy</font> is used as a material. <font color="00FF00"><Base effect></font>. P. Atk. <font color="FFBB00">+70</font>. M. Atk. <font color="FFBB00">+70</font>. P. Def. <font color="FFBB00">+140</font>. M. Def. <font color="FFBB00">+140</font>. Acquired XP/ SP <font color="FFBB00">+7%</font>. MP Recovery Rate <font color="FFBB00">+7</font>. <font color=ff6666><Compounding fee></font>. Blue Snake Doll Lv. 5-9 - 10,000 adena required -->
+		<set name="icon" val="icon.blue_snake_doll_i01" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="PAPER" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+	</item>
+	<item id="103284" name="Wolf's Rune Lv. 8 (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Its level can be increased through compounding if <font color=EEAA22>Magic Energy</font> is used as a material. <font color="00FF00"><Base effect></font>. P. Atk. <font color="FFBB00">+80</font>. M. Atk. <font color="FFBB00">+80</font>. P. Def. <font color="FFBB00">+160</font>. M. Def. <font color="FFBB00">+160</font>. Acquired XP/ SP <font color="FFBB00">+8%</font>. MP Recovery Rate <font color="FFBB00">+8</font>. <font color=ff6666><Compounding fee></font>. Blue Snake Doll Lv. 5-9 - 10,000 adena required -->
+		<set name="icon" val="icon.blue_snake_doll_i01" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="PAPER" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+	</item>
+	<item id="103285" name="Wolf's Rune Lv. 9 (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Its level can be increased through compounding if <font color=EEAA22>Magic Energy</font> is used as a material. <font color="00FF00"><Base effect></font>. P. Atk. <font color="FFBB00">+100</font>. M. Atk. <font color="FFBB00">+100</font>. P. Def. <font color="FFBB00">+180</font>. M. Def. <font color="FFBB00">+180</font>. Acquired XP/ SP <font color="FFBB00">+9%</font>. MP Recovery Rate <font color="FFBB00">+9</font>. <font color=ff6666><Compounding fee></font>. Blue Snake Doll Lv. 5-9 - 10,000 adena required -->
+		<set name="icon" val="icon.blue_snake_doll_i01" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="PAPER" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+	</item>
+	<item id="103286" name="Wolf's Rune Lv. 10 (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Its level can be increased through compounding if <font color=EEAA22>Magic Energy</font> is used as a material. <font color="00FF00"><Base effect></font>. P. Atk. <font color="FFBB00">+120</font>. M. Atk. <font color="FFBB00">+120</font>. P. Def. <font color="FFBB00">+200</font>. M. Def. <font color="FFBB00">+200</font>. Acquired XP/ SP <font color="FFBB00">+10%</font>. MP Recovery Rate <font color="FFBB00">+10</font>. Stun Resistance <font color="FFBB00">+10%</font>. MEN <font color="FFBB00">+1</font>. <font color=ff6666><Compounding fee></font>. Blue Snake Doll Lv. 10-14 - 25,000 adena required -->
+		<set name="icon" val="icon.blue_snake_doll_i01" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="PAPER" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+	</item>
+	<item id="103287" name="Wolf's Rune Lv. 11 (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Its level can be increased through compounding if <font color=EEAA22>Magic Energy</font> is used as a material. <font color="00FF00"><Base effect></font>. P. Atk. <font color="FFBB00">+140</font>. M. Atk. <font color="FFBB00">+140</font>. P. Def. <font color="FFBB00">+280</font>. M. Def. <font color="FFBB00">+280</font>. Acquired XP/ SP <font color="FFBB00">+12%</font>. MP Recovery Rate <font color="FFBB00">+11</font>. Stun Resistance <font color="FFBB00">+10%</font>. PvE damage <font color="FFBB00">+1%</font>. MEN <font color="FFBB00">+1</font>. CON <font color="FFBB00">+1</font>. <font color=ff6666><Compounding fee></font>. Blue Snake Doll Lv. 10-14 - 25,000 adena required -->
+		<set name="icon" val="icon.blue_snake_doll_i02" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="PAPER" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+	</item>
+	<item id="103288" name="Wolf's Rune Lv. 12 (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Its level can be increased through compounding if <font color=EEAA22>Magic Energy</font> is used as a material. <font color="00FF00"><Base effect></font>. P. Atk. <font color="FFBB00">+160</font>. M. Atk. <font color="FFBB00">+160</font>. P. Def. <font color="FFBB00">+320</font>. M. Def. <font color="FFBB00">+320</font>. Acquired XP/ SP <font color="FFBB00">+15%</font>. MP Recovery Rate <font color="FFBB00">+12</font>. Stun Resistance <font color="FFBB00">+10%</font>. PvE damage <font color="FFBB00">+1.5%</font>. MEN <font color="FFBB00">+1</font>. CON <font color="FFBB00">+1</font>. WIT <font color="FFBB00">+1</font>. <font color=ff6666><Compounding fee></font>. Blue Snake Doll Lv. 10-14 - 25,000 adena required -->
+		<set name="icon" val="icon.blue_snake_doll_i02" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="PAPER" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+	</item>
+	<item id="103289" name="Wolf's Rune Lv. 13 (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Its level can be increased through compounding if <font color=EEAA22>Magic Energy</font> is used as a material. <font color="00FF00"><Base effect></font>. P. Atk. <font color="FFBB00">+200</font>. M. Atk. <font color="FFBB00">+200</font>. P. Def. <font color="FFBB00">+400</font>. M. Def. <font color="FFBB00">+400</font>. Acquired XP/ SP <font color="FFBB00">+20%</font>. MP Recovery Rate <font color="FFBB00">+13</font>. Stun Resistance <font color="FFBB00">+10%</font>. PvE damage <font color="FFBB00">+2%</font>. MEN <font color="FFBB00">+1</font>. CON <font color="FFBB00">+1</font>. WIT <font color="FFBB00">+1</font>. DEX <font color="FFBB00">+1</font>. <font color="00FF00"><Special effect></font>. Makes additional hits to the target on attack. Damage is based on your attack type. Trigger rate: <font color="FFBB00">1%</font>. P. Atk.: Power <font color="FFBB00">4000</font>. M. Atk.: Power <font color="FFBB00">150</font>. <font color=ff6666><Compounding fee></font>. Blue Snake Doll Lv. 10-14 - 25,000 adena required -->
+		<set name="icon" val="icon.blue_snake_doll_i02" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="PAPER" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+	</item>
+	<item id="103290" name="Wolf's Rune Lv. 14 (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Its level can be increased through compounding if <font color=EEAA22>Magic Energy</font> is used as a material. <font color="00FF00"><Base effect></font>. P. Atk. <font color="FFBB00">+250</font>. M. Atk. <font color="FFBB00">+250</font>. P. Def. <font color="FFBB00">+500</font>. M. Def. <font color="FFBB00">+500</font>. Acquired XP/ SP <font color="FFBB00">+25%</font>. MP Recovery Rate <font color="FFBB00">+14</font>. Stun Resistance <font color="FFBB00">+10%</font>. PvE damage <font color="FFBB00">+2.5%</font>. MEN <font color="FFBB00">+1</font>. CON <font color="FFBB00">+1</font>. WIT <font color="FFBB00">+1</font>. DEX <font color="FFBB00">+1</font>. INT<font color="FFBB00">+1</font>. <font color="00FF00"><Special effect></font>. Makes additional hits to the target on attack. Damage is based on your attack type. Trigger rate: <font color="FFBB00">2%</font>. P. Atk.: Power <font color="FFBB00">5500</font>. M. Atk.: Power <font color="FFBB00">165</font>. <font color=ff6666><Compounding fee></font>. Blue Snake Doll Lv. 10-14 - 25,000 adena required -->
+		<set name="icon" val="icon.blue_snake_doll_i02" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="PAPER" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+	</item>
+	<item id="103291" name="Wolf's Rune Lv. 15 (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- <font color="00FF00"><Base effect></font>. P. Atk. <font color="FFBB00">+300</font>. M. Atk. <font color="FFBB00">+300</font>. P. Def. <font color="FFBB00">+600</font>. M. Def. <font color="FFBB00">+600</font>. Acquired XP/ SP <font color="FFBB00">+30%</font>. MP Recovery Rate <font color="FFBB00">+15</font>. Stun Resistance <font color="FFBB00">+10%</font>. PvE damage <font color="FFBB00">+3%</font>. MEN <font color="FFBB00">+1</font>. CON <font color="FFBB00">+1</font>. WIT <font color="FFBB00">+1</font>. DEX <font color="FFBB00">+1</font>. INT <font color="FFBB00">+1</font>. STR <font color="FFBB00">+1</font>. <font color="00FF00"><Special effect></font>. Makes additional hits to the target on attack. Damage is based on your attack type. Trigger rate: <font color="FFBB00">3%</font>. P. Atk.: Power <font color="FFBB00">8000</font>. M. Atk.: Power <font color="FFBB00">200</font>. -->
+		<set name="icon" val="icon.blue_snake_doll_i02" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="PAPER" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+	</item>
+	<item id="103292" name="Wolf's Rune Lv. 1 (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Its level can be increased through compounding if <font color=EEAA22>Full Moon Energy</font> is used as a material. <font color="00FF00"><Base effect></font>. P. Atk. <font color="FFBB00">+10</font>. M. Atk. <font color="FFBB00">+10</font>. P. Def. <font color="FFBB00">+10</font>. M. Def. <font color="FFBB00">+10</font>. Max HP <font color="FFBB00">+10</font>. Max MP <font color="FFBB00">+10</font>. Acquired XP <font color="FFBB00">+1%</font>. Acquired SP <font color="FFBB00">+1%</font>. MP Recovery Rate <font color="FFBB00">+1</font> -->
+		<set name="icon" val="icon.ev_wolf_rune_lv1" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="PAPER" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+	</item>
+	<item id="103293" name="Wolf's Rune Lv. 2 (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Its level can be increased through compounding if <font color=EEAA22>Full Moon Energy</font> is used as a material. <font color="00FF00"><Base effect></font>. P. Atk. <font color="FFBB00">+20</font>. M. Atk. <font color="FFBB00">+20</font>. P. Def. <font color="FFBB00">+20</font>. M. Def. <font color="FFBB00">+20</font>. Max HP <font color="FFBB00">+20</font>. Max MP <font color="FFBB00">+20</font>. Acquired XP <font color="FFBB00">+2%</font>. Acquired SP <font color="FFBB00">+2%</font>. MP Recovery Rate <font color="FFBB00">+2</font> -->
+		<set name="icon" val="icon.ev_wolf_rune_lv1" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="PAPER" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+	</item>
+	<item id="103294" name="Wolf's Rune Lv. 3 (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Its level can be increased through compounding if <font color=EEAA22>Full Moon Energy</font> is used as a material. <font color="00FF00"><Base effect></font>. P. Atk. <font color="FFBB00">+30</font>. M. Atk. <font color="FFBB00">+30</font>. P. Def. <font color="FFBB00">+30</font>. M. Def. <font color="FFBB00">+30</font>. Max HP <font color="FFBB00">+30</font>. Max MP <font color="FFBB00">+30</font>. Acquired XP <font color="FFBB00">+3%</font>. Acquired SP <font color="FFBB00">+3%</font>. MP Recovery Rate <font color="FFBB00">+3</font> -->
+		<set name="icon" val="icon.ev_wolf_rune_lv1" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="PAPER" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+	</item>
+	<item id="103295" name="Wolf's Rune Lv. 4 (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Its level can be increased through compounding if <font color=EEAA22>Full Moon Energy</font> is used as a material. <font color="00FF00"><Base effect></font>. P. Atk. <font color="FFBB00">+40</font>. M. Atk. <font color="FFBB00">+40</font>. P. Def. <font color="FFBB00">+40</font>. M. Def. <font color="FFBB00">+40</font>. Max HP <font color="FFBB00">+40</font>. Max MP <font color="FFBB00">+40</font>. Acquired XP <font color="FFBB00">+4%</font>. Acquired SP <font color="FFBB00">+4%</font>. MP Recovery Rate <font color="FFBB00">+4</font> -->
+		<set name="icon" val="icon.ev_wolf_rune_lv1" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="PAPER" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+	</item>
+	<item id="103296" name="Wolf's Rune Lv. 5 (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Its level can be increased through compounding if <font color=EEAA22>Full Moon Energy</font> is used as a material. <font color="00FF00"><Base effect></font>. P. Atk. <font color="FFBB00">+50</font>. M. Atk. <font color="FFBB00">+50</font>. P. Def. <font color="FFBB00">+50</font>. M. Def. <font color="FFBB00">+50</font>. Max HP <font color="FFBB00">+50</font>. Max MP <font color="FFBB00">+50</font>. Acquired XP <font color="FFBB00">+5%</font>. Acquired SP <font color="FFBB00">+5%</font>. MP Recovery Rate <font color="FFBB00">+5</font> -->
+		<set name="icon" val="icon.ev_wolf_rune_lv1" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="PAPER" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+	</item>
+	<item id="103297" name="Wolf's Rune Lv. 6 (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Its level can be increased through compounding if <font color=EEAA22>Full Moon Energy</font> is used as a material. <font color="00FF00"><Base effect></font>. P. Atk. <font color="FFBB00">+60</font>. M. Atk. <font color="FFBB00">+60</font>. P. Def. <font color="FFBB00">+60</font>. M. Def. <font color="FFBB00">+60</font>. Max HP <font color="FFBB00">+60</font>. Max MP <font color="FFBB00">+60</font>. Acquired XP <font color="FFBB00">+6%</font>. Acquired SP <font color="FFBB00">+6%</font>. MP Recovery Rate <font color="FFBB00">+6</font> -->
+		<set name="icon" val="icon.ev_wolf_rune_lv2" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="PAPER" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+	</item>
+	<item id="103298" name="Wolf's Rune Lv. 7 (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Its level can be increased through compounding if <font color=EEAA22>Full Moon Energy</font> is used as a material. <font color="00FF00"><Base effect></font>. P. Atk. <font color="FFBB00">+70</font>. M. Atk. <font color="FFBB00">+70</font>. P. Def. <font color="FFBB00">+70</font>. M. Def. <font color="FFBB00">+70</font>. Max HP <font color="FFBB00">+70</font>. Max MP <font color="FFBB00">+70</font>. Acquired XP <font color="FFBB00">+7%</font>. Acquired SP <font color="FFBB00">+7%</font>. MP Recovery Rate <font color="FFBB00">+7</font> -->
+		<set name="icon" val="icon.ev_wolf_rune_lv2" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="PAPER" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+	</item>
+	<item id="103299" name="Wolf's Rune Lv. 8 (Time-limited)" additionalName="Sealed" type="EtcItem">
+		<!-- Its level can be increased through compounding if <font color=EEAA22>Full Moon Energy</font> is used as a material. <font color="00FF00"><Base effect></font>. P. Atk. <font color="FFBB00">+80</font>. M. Atk. <font color="FFBB00">+80</font>. P. Def. <font color="FFBB00">+80</font>. M. Def. <font color="FFBB00">+80</font>. Max HP <font color="FFBB00">+80</font>. Max MP <font color="FFBB00">+80</font>. Acquired XP <font color="FFBB00">+8%</font>. Acquired SP <font color="FFBB00">+8%</font>. MP Recovery Rate <font color="FFBB00">+8</font> -->
+		<set name="icon" val="icon.ev_wolf_rune_lv2" />
+		<set name="immediate_effect" val="true" />
+		<set name="material" val="PAPER" />
+		<set name="is_tradable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_sellable" val="false" />
+	</item>
+</list>

@@ -1,6 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <list enabled="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="xsd/LimitShop.xsd">
-	<!-- L2 Kage: products 841-851 (Home tab, bottom bar pages 2-4) sell new items. The client takes icons and prices from here, but card names, limit labels and the LV line from its own product list, which has no entries for these IDs: their cards show no name and "Unlimited" (the limits below still apply). -->
+	<!-- L2 Kage: this file decides what is sold, prices and limits. The client's product list decides each card's name, tab, ribbon and limit label. Build it with tools/lcoin-store after any change here: see docs/LCOIN-STORE.md. -->
+	<!-- L2 Kage: monthly passes -->
+	<product id="860" category="5">
+		<ingredient id="91663" count="800" /> <!-- L-Coin -->
+		<production id="72605" accountMonthlyLimit="1" /> <!-- Samurai's Pass Kit (Time-limited) (Sealed) -->
+	</product>
+	<product id="861" category="5">
+		<ingredient id="91663" count="800" /> <!-- L-Coin -->
+		<production id="72606" accountMonthlyLimit="1" /> <!-- Rare Pass Kit (Time-limited) (Sealed) -->
+	</product>
+	<product id="862" category="5">
+		<ingredient id="91663" count="1500" /> <!-- L-Coin -->
+		<production id="72595" accountMonthlyLimit="1" /> <!-- Samurai's Gift Kit: Essence (Time-limited) (Sealed) -->
+	</product>
+	<product id="863" category="5">
+		<ingredient id="91663" count="1500" /> <!-- L-Coin -->
+		<production id="72596" accountMonthlyLimit="1" /> <!-- Samurai's Gift Kit: Eva (Time-limited) (Sealed) -->
+	</product>
+	<product id="864" category="5">
+		<ingredient id="91663" count="6000" /> <!-- L-Coin -->
+		<production id="72594" accountMonthlyLimit="1" /> <!-- Wolf Pass - Special Update Celebration Box (Time-limited) (Sealed) -->
+	</product>
+	<!-- L2 Kage: lucky packs and one-time growth boxes. The client already has cards for these IDs. -->
+	<product id="326012801" category="5">
+		<ingredient id="91663" count="100" /> <!-- L-Coin -->
+		<production id="104434" /> <!-- Transcendent Might - Spirit Rulers' Treasure (Time-limited) (Sealed) -->
+	</product>
+	<product id="326011501" category="5">
+		<ingredient id="91663" count="100" /> <!-- L-Coin -->
+		<production id="105000" /> <!-- Venir's Supply Pack (Time-limited) (Sealed) -->
+	</product>
+	<product id="100020223" category="12">
+		<ingredient id="91663" count="300" /> <!-- L-Coin -->
+		<production id="105477" accountBuyLimit="1" /> <!-- <Samurai> Growth Support Box (Sealed) -->
+	</product>
 	<product id="13" category="1">
 		<ingredient id="91663" count="20" /> <!-- L-Coin -->
 		<production id="91689" /> <!-- Blessed Scroll of Escape (Sealed) -->
@@ -193,43 +227,43 @@
 		<ingredient id="91663" count="800" /> <!-- L-Coin -->
 		<production id="104471" /> <!-- Kit: Hidden Power Booster -->
 	</product>
-	<product id="841" category="5">
+	<product id="841" category="1">
 		<ingredient id="91663" count="300" /> <!-- L-Coin -->
 		<production id="49674" count="10" /> <!-- XP Growth Scroll (Sealed) x10 -->
 	</product>
-	<product id="842" category="5">
+	<product id="842" category="1">
 		<ingredient id="91663" count="600" /> <!-- L-Coin -->
 		<production id="91641" count="3" accountDailyLimit="3" /> <!-- Sayha's Blessing (Sealed) x3 -->
 	</product>
-	<product id="843" category="5">
+	<product id="843" category="1">
 		<ingredient id="91663" count="300" /> <!-- L-Coin -->
 		<production id="91757" count="3" accountDailyLimit="3" /> <!-- Magic Lamp Charging Potion (Sealed) x3 -->
 	</product>
-	<product id="844" category="5">
+	<product id="844" category="0">
 		<ingredient id="91663" count="2000" /> <!-- L-Coin -->
 		<production id="91745" accountWeeklyLimit="1" /> <!-- Talisman of Aden (Sealed) -->
 	</product>
-	<product id="845" category="5">
+	<product id="845" category="2">
 		<ingredient id="91663" count="200" /> <!-- L-Coin -->
 		<production id="49662" /> <!-- Stylish Color Title (Sealed) -->
 	</product>
-	<product id="846" category="5">
+	<product id="846" category="2">
 		<ingredient id="91663" count="300" /> <!-- L-Coin -->
 		<production id="90405" count="20" /> <!-- My Teleport Scroll (Sealed) x20 -->
 	</product>
-	<product id="847" category="5">
+	<product id="847" category="1">
 		<ingredient id="91663" count="150" /> <!-- L-Coin -->
 		<production id="91689" count="10" /> <!-- Blessed Scroll of Escape (Sealed) x10 -->
 	</product>
-	<product id="848" category="5">
+	<product id="848" category="4">
 		<ingredient id="57" count="20000" /> <!-- Adena -->
 		<production id="91928" count="1000" /> <!-- Spiritshot (Sealed) x1000 -->
 	</product>
-	<product id="850" category="5">
+	<product id="850" category="4">
 		<ingredient id="57" count="100000" /> <!-- Adena -->
 		<production id="70102" count="5" /> <!-- Adventurer's Greater Haste Potion x5 -->
 	</product>
-	<product id="851" category="5">
+	<product id="851" category="4">
 		<ingredient id="57" count="100000" /> <!-- Adena -->
 		<production id="70103" count="5" /> <!-- Adventurer's Greater Magic Haste Potion x5 -->
 	</product>
