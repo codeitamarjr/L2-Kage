@@ -33,7 +33,7 @@ Route::post('/treasury/{slug}', [TreasuryController::class, 'buy'])->middleware(
 // The Treasury's old addresses.
 Route::permanentRedirect('/store', '/treasury');
 Route::permanentRedirect('/passes', '/treasury/kage-pass');
-Route::permanentRedirect('/packages', '/treasury?category=packages');
+Route::permanentRedirect('/packages', '/treasury?category=packages#store');
 
 Route::get('/account', [AccountController::class, 'show'])->name('account');
 Route::get('/account/orders', [AccountController::class, 'show'])->defaults('tab', 'orders')->name('account.orders');

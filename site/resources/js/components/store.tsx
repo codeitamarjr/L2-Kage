@@ -88,7 +88,7 @@ export function ShopBar({ query, onQuery }: { query?: string; onQuery?: (query: 
     };
 
     return (
-        <div className="shop-bar">
+        <div id="store" className="shop-bar">
             <div className="shop-bar-inner">
                 <nav className="shop-tabs" aria-label={t('Treasury', 'Tesouro')}>
                     <Link href="/treasury" className="shop-tab" aria-current={component.startsWith('treasury/') ? 'page' : undefined}>

@@ -266,7 +266,7 @@ export default function TreasuryShow({ product, buyer }: Props) {
             <div className="shop-product">
                 <div className="shop-product-main">
                     <header className="shop-product-head">
-                        <Link href={`/treasury?category=${product.category}`} className="shop-back">
+                        <Link href={`/treasury?category=${product.category}#store`} preserveScroll className="shop-back">
                             <svg viewBox="0 0 24 24" aria-hidden="true">
                                 <path d="M20 12H5m6-6l-6 6 6 6" />
                             </svg>

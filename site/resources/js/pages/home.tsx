@@ -59,7 +59,7 @@ function StoreSection({ pass, packages, giftMinLevel }: { pass: PassOffer; packa
         },
         {
             id: 'packages',
-            href: '/treasury?category=packages',
+            href: '/treasury?category=packages#store',
             art: '/assets/packages-chest.webp',
             kicker: t('Full gear for your class', 'Equipamento completo para sua classe'),
             title: t('Class Packages', 'Pacotes de Classe'),

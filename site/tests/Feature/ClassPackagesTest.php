@@ -183,7 +183,7 @@ class ClassPackagesTest extends TestCase
             ->where('packages.tiers.2.price', 60_000)
             ->has('packages.archetypes', count(config('l2j.packages.archetypes'))));
 
-        $this->get('/packages')->assertRedirect('/treasury?category=packages');
+        $this->get('/packages')->assertRedirect('/treasury?category=packages#store');
         $this->get('/treasury/package-knight-elite')->assertOk()->assertInertia(fn ($page) => $page
             ->component('treasury/show')
             ->where('product.price.count', 60_000)

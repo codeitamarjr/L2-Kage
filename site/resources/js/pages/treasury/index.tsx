@@ -1,5 +1,5 @@
 import { Link } from '@inertiajs/react';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import PageHero from '@/components/page-hero';
 import { ProductCard, ShopBar } from '@/components/store';
 import { languageTag, pick, useLocale, useT, type Localized } from '@/i18n';
@@ -17,6 +17,9 @@ type Props = {
 
 /** The class packages on the front page until a signed-in character says otherwise: this update's own class. */
 const DEFAULT_ARCHETYPE = 'samurai';
+
+/** The fixed site header, which the products stop under when scrolled to. */
+const HEADER_HEIGHT = 69;
 
 /** Where L-Coin comes from and what it buys. It isn't sold here, so this takes the grid's place. */
 function LCoinInfo({ products, lcoin }: Pick<Props, 'products' | 'lcoin'>) {
@@ -72,7 +75,7 @@ function LCoinInfo({ products, lcoin }: Pick<Props, 'products' | 'lcoin'>) {
 }
 
 /**
- * The Treasury (/treasury), under the site's banner and laid out like an official game store: a category tree beside a grid of products, each
+ * The Treasury (/treasury), under the site's banner and laid out like an official game store: category buttons in the banner above a grid of products, each
  * opening its own page with the purchase panel (treasury/show). Filters live in the address so they can be shared and
  * survive the back button; the quick search filters what is already on the page.
  */
@@ -80,16 +83,27 @@ export default function TreasuryIndex({ products, filter, owned, suggested, lcoi
     const locale = useLocale();
     const t = useT();
     const [query, setQuery] = useState(filter.q);
+    // Choosing a category, or arriving from elsewhere (Back from a product, the home page), goes straight to the products, past the banner.
+    useEffect(() => {
+        if (window.location.hash === '#store') {
+            requestAnimationFrame(() => {
+                const top = document.getElementById('store')?.getBoundingClientRect().top ?? 0;
+
+                window.scrollTo({ top: window.scrollY + top - HEADER_HEIGHT, behavior: 'instant' });
+            });
+        }
+    }, [filter.category, filter.group]);
+
     const term = query.trim().toLowerCase();
     const featured = suggested ?? DEFAULT_ARCHETYPE;
 
     const categories: { key: Props['filter']['category']; label: string; href: string }[] = [
-        { key: 'main', label: t('Main', 'Principal'), href: '/treasury' },
-        { key: 'lcoin', label: 'L-Coin', href: '/treasury?category=lcoin' },
-        { key: 'gifts', label: t('Gifts', 'Presentes'), href: '/treasury?category=gifts' },
-        { key: 'passes', label: t('Passes', 'Passes'), href: '/treasury?category=passes' },
-        { key: 'packages', label: t('Class Packages', 'Pacotes de Classe'), href: '/treasury?category=packages' },
-        { key: 'supplies', label: t('Supplies', 'Suprimentos'), href: '/treasury?category=supplies' },
+        { key: 'main', label: t('Main', 'Principal'), href: '/treasury#store' },
+        { key: 'lcoin', label: 'L-Coin', href: '/treasury?category=lcoin#store' },
+        { key: 'gifts', label: t('Gifts', 'Presentes'), href: '/treasury?category=gifts#store' },
+        { key: 'passes', label: t('Passes', 'Passes'), href: '/treasury?category=passes#store' },
+        { key: 'packages', label: t('Class Packages', 'Pacotes de Classe'), href: '/treasury?category=packages#store' },
+        { key: 'supplies', label: t('Supplies', 'Suprimentos'), href: '/treasury?category=supplies#store' },
     ];
 
     // One entry per archetype, in the catalogue's order.
@@ -122,39 +136,31 @@ export default function TreasuryIndex({ products, filter, owned, suggested, lcoi
                     'A gift from Einhasad every week, the pacts of the season and arms forged for every calling of Aden.',
                     'Um presente de Einhasad toda semana, os pactos da temporada e armas forjadas para cada vocação de Aden.',
                 )}
-            />
+            >
+                <nav className="store-nav" aria-label={t('Categories', 'Categorias')}>
+                    {categories.map((category) => (
+                        <Link key={category.key} href={category.href} preserveScroll aria-current={!term && filter.category === category.key ? 'page' : undefined} onClick={() => setQuery('')}>
+                            {category.label}
+                        </Link>
+                    ))}
+                </nav>
+            </PageHero>
             <ShopBar query={query} onQuery={setQuery} />
             <div className="shop-layout">
-                <nav className="shop-side" aria-label={t('Categories', 'Categorias')}>
-                    <ul>
-                        {categories.map((category) => (
-                            <li key={category.key}>
-                                <Link
-                                    href={category.href}
-                                    preserveScroll
-                                    className="shop-side-link"
-                                    aria-current={!term && filter.category === category.key && !filter.group ? 'page' : undefined}
-                                    onClick={() => setQuery('')}
-                                >
-                                    {category.label}
-                                </Link>
-                                {category.key === 'packages' && filter.category === 'packages' && !term ? (
-                                    <ul className="shop-side-sub">
-                                        {groups.map(([key, name]) => (
-                                            <li key={key}>
-                                                <Link href={`/treasury?category=packages&group=${key}`} preserveScroll className="shop-side-link" aria-current={filter.group === key ? 'page' : undefined}>
-                                                    {pick(locale, name)}
-                                                </Link>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                ) : null}
-                            </li>
-                        ))}
-                    </ul>
-                </nav>
 
                 <div className="shop-main">
+                    {filter.category === 'packages' && !term ? (
+                        <nav className="shop-sub" aria-label={t('Archetype', 'Arquétipo')}>
+                            <Link href="/treasury?category=packages#store" preserveScroll aria-current={!filter.group ? 'page' : undefined}>
+                                {t('All', 'Todos')}
+                            </Link>
+                            {groups.map(([key, name]) => (
+                                <Link key={key} href={`/treasury?category=packages&group=${key}#store`} preserveScroll aria-current={filter.group === key ? 'page' : undefined}>
+                                    {pick(locale, name)}
+                                </Link>
+                            ))}
+                        </nav>
+                    ) : null}
                     {filter.category === 'lcoin' && !term ? (
                         <LCoinInfo products={products} lcoin={lcoin} />
                     ) : visible.length ? (
