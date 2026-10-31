@@ -5,7 +5,7 @@ import type { ItemSummary } from '@/types';
  * An item's icon. Real icons (extracted from the game client into public/assets/icons) are used when present;
  * otherwise a drawn placeholder: a glyph for the kind of item in a frame coloured by grade.
  */
-const GLYPHS: Record<string, ReactNode> = {
+export const GLYPHS: Record<string, ReactNode> = {
     sword: <path d="M19 5l-9 9m9-9h-3l-9 9 2 2 9-9V5zM6 15l3 3m-5 2l2-2" />,
     dagger: <path d="M17 7l-6 6m6-6h-2l-6 6 2 2 6-6V7zM8 14l2 2m-5 3l2-2" />,
     dual: <path d="M18 4l-8 8m8-8h-2.5L8 11.5M6 4l8 8M6 4h2.5L16 11.5M8 14l-3 3m11-3l3 3" />,

@@ -2,17 +2,15 @@ import { Form, Link, router, usePage } from '@inertiajs/react';
 import { useEffect, useState } from 'react';
 import { Notice } from '@/components/auth-card';
 import { Divider, Embers, HeroVideo } from '@/components/decor';
-import { GiftBoxPanel } from '@/components/gift-box';
 import { OrdersList } from '@/components/orders';
 import { ItemIcon } from '@/components/item-icon';
 import { languageTag, raceName, useLocale, useT, type Locale } from '@/i18n';
-import type { CharacterDetail, CharacterItem, CharacterSummary, GiftBoxStatus, Order, SharedProps } from '@/types';
+import type { CharacterDetail, CharacterItem, CharacterSummary, Order, SharedProps } from '@/types';
 
 type Props = {
     account: { login: string; gm: boolean; created: string | null; email: string | null } | null;
     characters?: CharacterSummary[];
     character?: CharacterDetail | null;
-    gift?: GiftBoxStatus;
     orders?: Order[];
     tab: 'characters' | 'orders' | 'security';
 };
@@ -55,8 +53,15 @@ function FlashNotice() {
         ],
         'order-placed': [
             t(
-                'Order placed! The items arrive by in-game mail within seconds; a confirmation was sent to your email.',
-                'Pedido realizado! Os itens chegam pelo correio do jogo em segundos; uma confirmação foi enviada para o seu e-mail.',
+                'Order placed! The items arrive by in-game mail within seconds.',
+                'Pedido realizado! Os itens chegam pelo correio do jogo em segundos.',
+            ),
+            'info',
+        ],
+        'gift-opened': [
+            t(
+                'Gift box opened! It arrives by in-game mail within seconds.',
+                'Caixa de presente aberta! Ela chega pelo correio do jogo em segundos.',
             ),
             'info',
         ],
@@ -410,7 +415,7 @@ function PremiumNotice({ premium }: { premium: { until: string; bonuses: string 
     );
 }
 
-export default function Account({ account, characters = [], character, gift, orders, tab }: Props) {
+export default function Account({ account, characters = [], character, orders, tab }: Props) {
     const { emailReady, player } = usePage<SharedProps>().props;
     const t = useT();
     locale = useLocale();
@@ -434,7 +439,7 @@ export default function Account({ account, characters = [], character, gift, ord
                             : tab === 'security'
                               ? t('Keep your account safe: recovery email and password.', 'Mantenha sua conta segura: e-mail de recuperação e senha.')
                               : tab === 'orders'
-                                ? t('Your weekly gift and everything you claimed or bought.', 'Seu presente semanal e tudo o que você resgatou ou comprou.')
+                                ? t('Everything you claimed or bought in the Treasury.', 'Tudo o que você resgatou ou comprou no Tesouro.')
                                 : t('Your heroes of Aden.', 'Seus heróis de Aden.')}
                     </p>
                 </div>
@@ -488,8 +493,6 @@ export default function Account({ account, characters = [], character, gift, ord
                         </div>
 
                         {tab === 'security' ? <SecurityTab account={account} /> : null}
-
-                        {tab === 'orders' && gift ? <GiftBoxPanel gift={gift} /> : null}
 
                         {tab === 'orders' && orders ? <OrdersList orders={orders} /> : null}
 

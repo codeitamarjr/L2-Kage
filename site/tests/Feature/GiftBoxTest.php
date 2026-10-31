@@ -114,14 +114,15 @@ class GiftBoxTest extends TestCase
         }
     }
 
-    public function test_players_open_the_box_from_the_player_area(): void
+    public function test_players_open_the_box_from_the_treasury(): void
     {
-        $this->post('/account/gift', ['character_id' => 1])->assertRedirect('/account');
+        $this->post('/treasury/weekly-gift-box', ['character_id' => 1])->assertRedirect('/account');
         $this->assertSame(0, GiftClaim::count(), 'guests cannot claim');
 
         $this->actingAs($this->account(), 'player')
-            ->post('/account/gift', ['character_id' => 1])
+            ->post('/treasury/weekly-gift-box', ['character_id' => 1])
             ->assertRedirect('/account/orders')
+            ->assertSessionHas('status', 'gift-opened')
             ->assertSessionHasNoErrors();
 
         $status = app(GiftBox::class)->status($this->account());

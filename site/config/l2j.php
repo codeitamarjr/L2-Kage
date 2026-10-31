@@ -126,6 +126,47 @@ return [
     ],
 
     /*
+     * Supply kits (Treasury): consumables anyone can buy again and again, priced in any item the game knows (Adena
+     * here). Paid and mailed like the Kage Pass (the WebBridge "buy_pass" action). Every item must be stackable, because
+     * quantity multiplies the counts. Keep each price at or above the sum of the items' list prices in the datapack, so
+     * a kit can't be bought and resold to an NPC for a profit.
+     */
+    'supplies' => [
+        'enabled' => (bool) env('SUPPLY_KITS_ENABLED', true),
+        'max_per_order' => 10,
+        'mail_subject' => 'Your L2 Kage supply kit',
+        'mail_text' => 'Thank you for your purchase. Take your supplies from the attachments. Good hunting!',
+
+        'kits' => [
+            'traveler' => [
+                'name' => ['en' => 'Traveler\'s Kit', 'pt' => 'Kit do Viajante'],
+                'description' => [
+                    'en' => 'For the long road across Aden: scrolls to get home and potions to move faster.',
+                    'pt' => 'Para a longa estrada por Aden: pergaminhos para voltar para casa e poções para andar mais rápido.',
+                ],
+                'price' => ['item' => 57, 'count' => 20_000],  // Adena; list price 19,000
+                'items' => [
+                    ['item' => 736, 'count' => 10],   // Scroll of Escape
+                    ['item' => 1374, 'count' => 5],   // Greater Wind Walk Potion
+                ],
+            ],
+            'hunter' => [
+                'name' => ['en' => 'Hunter\'s Kit', 'pt' => 'Kit do Caçador'],
+                'description' => [
+                    'en' => 'Everything for a long hunt: healing potions, CP potions and Spirit Ore for your skills.',
+                    'pt' => 'Tudo para uma longa caçada: poções de cura, poções de CP e Minério Espiritual para suas habilidades.',
+                ],
+                'price' => ['item' => 57, 'count' => 100_000],  // Adena; list price 95,000
+                'items' => [
+                    ['item' => 1539, 'count' => 50],  // Top-grade HP Replenishing Potion
+                    ['item' => 5592, 'count' => 20],  // Greater CP Potion
+                    ['item' => 3031, 'count' => 100], // Spirit Ore
+                ],
+            ],
+        ],
+    ],
+
+    /*
      * Class packages (player area, shown on the landing page and /packages): a full set for one archetype (weapon,
      * armor, jewelry) in three tiers, bought with L-Coin from a character's bag like the Kage Pass (the WebBridge
      * "buy_pass" action, which splits more than 8 items into several mails). Each package (tier + archetype) once per

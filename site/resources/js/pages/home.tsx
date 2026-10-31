@@ -20,8 +20,8 @@ type Props = {
 };
 
 /**
- * The store (landing page): the weekly gift box, the Kage Pass and the class packages, each with its art. The pass and
- * packages are bought on /treasury; the gift box is opened in the player area's Orders tab.
+ * The store (landing page): the weekly gift box, the Kage Pass and the class packages, each with its art, linking to
+ * where they are bought in the Treasury.
  */
 function StoreSection({ pass, packages, giftMinLevel }: { pass: PassOffer; packages: PackageOffer; giftMinLevel: number }) {
     const locale = useLocale();
@@ -31,7 +31,7 @@ function StoreSection({ pass, packages, giftMinLevel }: { pass: PassOffer; packa
     const cards = [
         {
             id: 'gift-box',
-            href: '/account/orders#gift-box',
+            href: '/treasury/weekly-gift-box',
             art: '/assets/kage-pass-chest.jpg?v=2',
             kicker: t('Every week, free', 'Toda semana, grátis'),
             title: t('Weekly Gift Box', 'Caixa de Presente Semanal'),
@@ -45,7 +45,7 @@ function StoreSection({ pass, packages, giftMinLevel }: { pass: PassOffer; packa
         },
         {
             id: 'kage-pass',
-            href: '/treasury#kage-pass',
+            href: '/treasury/kage-pass',
             art: '/assets/kage-pass-ticket.jpg',
             kicker: pass.enabled ? `${t('Season pass', 'Passe da temporada')} · ${t('until', 'até')} ${passEnds(pass.ends, languageTag(locale))}` : t('Season pass', 'Passe da temporada'),
             title: pass.name,
@@ -59,7 +59,7 @@ function StoreSection({ pass, packages, giftMinLevel }: { pass: PassOffer; packa
         },
         {
             id: 'packages',
-            href: '/treasury#packages',
+            href: '/treasury?category=packages',
             art: '/assets/packages-chest.webp',
             kicker: t('Full gear for your class', 'Equipamento completo para sua classe'),
             title: t('Class Packages', 'Pacotes de Classe'),
@@ -178,7 +178,7 @@ function GiftBanner() {
 
     return (
         <aside className="gift-banner">
-            <a href="/account/orders#gift-box" className="gift-banner-link">
+            <a href="/treasury/weekly-gift-box" className="gift-banner-link">
                 <img src="/assets/kage-pass-chest.jpg?v=2" width={56} height={56} alt="" />
                 <span>
                     <span className="gift-banner-kicker">{t('Every week, free', 'Toda semana, grátis')}</span>

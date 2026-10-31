@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\NewsPost;
+use App\Services\Treasury;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
@@ -35,15 +36,19 @@ class SeoController extends Controller
     /**
      * The public pages and every item page (25,129: well under the 50,000 a sitemap may hold). Cached for a day.
      */
-    public function sitemap(): Response
+    public function sitemap(Treasury $treasury): Response
     {
-        $xml = Cache::remember('seo.sitemap', now()->addDay(), function (): string {
+        $xml = Cache::remember('seo.sitemap', now()->addDay(), function () use ($treasury): string {
             $itemsUpdated = DB::table('itemdb_meta')->where('key', 'imported_at')->value('value');
             $itemsDate = $itemsUpdated ? substr($itemsUpdated, 0, 10) : null;
             $urls = [
                 ['/', 'daily', '1.0', null], ['/about', 'hourly', '0.8', null], ['/map', 'hourly', '0.8', null],
                 ['/lore', 'monthly', '0.7', null], ['/treasury', 'weekly', '0.8', null], ['/news', 'weekly', '0.8', null], ['/items', 'weekly', '0.8', $itemsDate], ['/register', 'monthly', '0.6', null],
             ];
+
+            foreach ($treasury->cards() as $product) {
+                $urls[] = ["/treasury/{$product['slug']}", 'weekly', '0.6', null];
+            }
 
             foreach (NewsPost::published()->get(['slug', 'updated_at']) as $post) {
                 $urls[] = ["/news/{$post->slug}", 'monthly', '0.6', $post->updated_at?->toDateString()];

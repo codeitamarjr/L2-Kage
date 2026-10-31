@@ -171,10 +171,10 @@ class ClassPackagesTest extends TestCase
         $this->assertSame(1, PackageClaim::count());
     }
 
-    public function test_players_buy_from_the_player_area_and_see_the_packages_on_the_landing_and_store_pages(): void
+    public function test_players_buy_from_the_treasury_and_see_the_packages_on_the_landing_page(): void
     {
         $this->actingAs($this->account(), 'player')
-            ->post('/account/package', ['character_id' => 1, 'tier' => 'advanced', 'archetype' => 'samurai'])
+            ->post('/treasury/package-samurai-advanced', ['character_id' => 1])
             ->assertRedirect('/account/orders');
         $this->assertSame(1, PackageClaim::count());
 
@@ -183,9 +183,10 @@ class ClassPackagesTest extends TestCase
             ->where('packages.tiers.2.price', 60_000)
             ->has('packages.archetypes', count(config('l2j.packages.archetypes'))));
 
-        $this->get('/packages')->assertRedirect('/treasury#packages');
-        $this->get('/treasury')->assertOk()->assertInertia(fn ($page) => $page
-            ->component('treasury')
-            ->has('packages.archetypes.0.contents.elite', 12));
+        $this->get('/packages')->assertRedirect('/treasury?category=packages');
+        $this->get('/treasury/package-knight-elite')->assertOk()->assertInertia(fn ($page) => $page
+            ->component('treasury/show')
+            ->where('product.price.count', 60_000)
+            ->has('product.contents.0.items', 12));
     }
 }

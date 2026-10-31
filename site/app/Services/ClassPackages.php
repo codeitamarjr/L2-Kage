@@ -218,15 +218,6 @@ class ClassPackages
      */
     private function coins(Account $account): array
     {
-        return DB::connection('game')->table('items as i')
-            ->join('characters as c', 'c.charId', '=', 'i.owner_id')
-            ->where('c.account_name', $account->login)
-            ->where('i.item_id', (int) config('l2j.packages.price_item'))
-            ->where('i.loc', 'INVENTORY')
-            ->groupBy('i.owner_id')
-            ->selectRaw('i.owner_id, SUM(i.count) AS total')
-            ->pluck('total', 'owner_id')
-            ->map(fn ($total): int => (int) $total)
-            ->all();
+        return Character::bagCounts($account->login, (int) config('l2j.packages.price_item'));
     }
 }

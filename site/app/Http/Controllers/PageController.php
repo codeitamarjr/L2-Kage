@@ -2,19 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Game\Account;
 use App\Models\NewsPost;
 use App\Services\ClassPackages;
-use App\Services\GiftBox;
 use App\Services\KagePass;
 use App\Services\L2j\EventFeed;
-use App\Services\L2j\GameConfig;
-use App\Services\L2j\GameData;
 use App\Services\L2j\ServerStatus;
 use App\Services\L2j\WorldMap;
-use App\Services\Orders;
 use App\Services\Seo;
-use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -85,48 +79,6 @@ class PageController extends Controller
             'seo' => Seo::make(
                 __('Live World Map of Aden'),
                 __('Live map of Aden: epic and raid bosses, castle sieges, the Grand Olympiad and events, plotted where they happen, with the story of every place.'),
-            ),
-        ]);
-    }
-
-    /**
-     * The Treasury (gifts, passes and packages): where L-Coin comes from (welcome gift, weekly gift box), the Kage Pass (website), the in-game Hunt Pass
-     * and the class packages. Rules come from the server's config and the datapack (HuntPass.ini, HuntPass.xml);
-     * signed-in players buy the pass and packages right here (checkout), and open the gift box in their Orders tab.
-     */
-    public function treasury(KagePass $pass, ClassPackages $packages, Orders $orders, GameConfig $config, GameData $gameData, GiftBox $giftBox): Response
-    {
-        $huntPass = $gameData->huntPass();
-        $premiumItem = (int) $config->number('HuntPass.ini', 'PremiumItemId', 91663);
-        $gift = $giftBox->contents();
-        $giftLCoin = collect($gift['guaranteed'])->firstWhere('name', $gameData->item(91663)['name']);
-
-        return Inertia::render('treasury', [
-            'pass' => $pass->offer(),
-            'packages' => $packages->offer(),
-            'gift' => [...$gift, 'minLevel' => (int) config('l2j.gift_box.min_level')],
-            // Signed in: the characters that can pay, and what this season already holds.
-            'checkout' => function () use ($orders): ?array {
-                /** @var Account|null $account */
-                $account = Auth::guard('player')->user();
-
-                return $account ? $orders->checkout($account) : null;
-            },
-            'hunt' => [
-                'enabled' => $config->flag('HuntPass.ini', 'EnabledHuntPass', false),
-                'pointsForStep' => (int) $config->number('HuntPass.ini', 'PointsForStep', 2400),
-                'premium' => ['name' => $gameData->item($premiumItem)['name'], 'count' => (int) $config->number('HuntPass.ini', 'PremiumItemCount', 3600)],
-                'resetDay' => (int) $config->number('HuntPass.ini', 'DayOfMonth', 1),
-                'steps' => count($huntPass),
-                'firstSteps' => array_slice($huntPass, 0, 10),
-            ],
-            'lcoin' => [
-                'welcome' => (int) config('l2j.welcome_lcoin'),
-                'giftBox' => $giftLCoin ? (int) $giftLCoin['count'] : 0,
-            ],
-            'seo' => Seo::make(
-                __('Treasury: weekly gift box, Kage Pass and class packages'),
-                __('The L2 Kage Treasury: a free weekly gift box, the Kage Pass and the in-game Hunt Pass, and full class gear packages, paid with L-Coin.'),
             ),
         ]);
     }

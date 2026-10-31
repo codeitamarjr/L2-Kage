@@ -144,7 +144,7 @@ class GiftBox
     /**
      * What's inside, for the player area: guaranteed items and each bonus with its chance.
      *
-     * @return array{guaranteed: list<array{name: string, count: int}>, bonus: list<array{name: string, count: int, chance: float}>}
+     * @return array{guaranteed: list<array{id: int|null, name: string, count: int}>, bonus: list<array{id: int|null, name: string, count: int, chance: float}>}
      */
     public function contents(): array
     {
@@ -154,15 +154,28 @@ class GiftBox
 
         return [
             'guaranteed' => array_map(
-                fn (array $entry): array => ['name' => $this->entryName($entry), 'count' => (int) $entry['count']],
+                fn (array $entry): array => ['id' => is_string($entry['item']) ? null : (int) $entry['item'], 'name' => $this->entryName($entry), 'count' => (int) $entry['count']],
                 $template['guaranteed'],
             ),
             'bonus' => array_map(fn (array $entry): array => [
+                'id' => is_string($entry['item']) ? null : (int) $entry['item'],
                 'name' => $this->entryName($entry),
                 'count' => (int) $entry['count'],
                 'chance' => $total === 0 ? 0.0 : round($entry['weight'] / $total * 100, 1),
             ], $bonus),
         ];
+    }
+
+    /**
+     * The active template's name and description, when the admin panel has one running.
+     *
+     * @return array{name: string|null, description: string|null}
+     */
+    public function templateDetails(): array
+    {
+        $template = $this->activeTemplate();
+
+        return ['name' => $template['name'] ?? null, 'description' => $template['description'] ?? null];
     }
 
     /**

@@ -73,11 +73,11 @@ class OrdersTest extends TestCase
         Mail::fake();
 
         $this->actingAs($this->account(), 'player')
-            ->post('/account/package', ['character_id' => 1, 'tier' => 'starter', 'archetype' => 'samurai'])
+            ->post('/treasury/package-samurai-starter', ['character_id' => 1])
             ->assertRedirect('/account/orders')
             ->assertSessionHas('status', 'order-placed');
         $this->actingAs($this->account(), 'player')
-            ->post('/account/pass', ['character_id' => 1])
+            ->post('/treasury/kage-pass', ['character_id' => 1])
             ->assertRedirect('/account/orders');
 
         Mail::assertSent(AccountMail::class, 2);
@@ -86,7 +86,7 @@ class OrdersTest extends TestCase
 
         $this->actingAs($this->account(), 'player')->get('/account/orders')->assertOk()->assertInertia(fn ($page) => $page
             ->where('tab', 'orders')
-            ->has('gift')
+            ->missing('gift')
             ->has('orders', 2)
             ->where('orders.0.status', GameAction::STATUS_PENDING));
     }
@@ -97,7 +97,7 @@ class OrdersTest extends TestCase
         $action->forceFill(['status' => GameAction::STATUS_DONE])->save();
         $gift = GiftClaim::create(['account' => 'hero', 'week_start' => now()->startOfWeek(), 'character_id' => 2, 'character_name' => 'Poor', 'items' => [['id' => 91663, 'name' => 'L-Coin', 'count' => 1000, 'bonus' => false]], 'game_action_id' => $action->id]);
         $gift->forceFill(['created_at' => now()->subDay()])->save();
-        $this->actingAs($this->account(), 'player')->post('/account/package', ['character_id' => 1, 'tier' => 'elite', 'archetype' => 'knight']);
+        $this->actingAs($this->account(), 'player')->post('/treasury/package-knight-elite', ['character_id' => 1]);
 
         $orders = app(Orders::class)->history($this->account());
 
@@ -108,19 +108,6 @@ class OrdersTest extends TestCase
         $this->assertCount(12, $orders[0]['items']);
         $this->assertNull($orders[1]['price']);
         $this->assertSame(GameAction::STATUS_DONE, $orders[1]['status']);
-    }
-
-    public function test_the_treasury_has_a_checkout_only_for_signed_in_players(): void
-    {
-        $this->get('/treasury')->assertOk()->assertInertia(fn ($page) => $page->where('checkout', null));
-
-        $this->actingAs($this->account(), 'player')->post('/account/package', ['character_id' => 1, 'tier' => 'starter', 'archetype' => 'samurai']);
-
-        $this->actingAs($this->account(), 'player')->get('/treasury')->assertInertia(fn ($page) => $page
-            ->where('checkout.characters.0.name', 'Rich')
-            ->where('checkout.characters.0.archetype', 'samurai')
-            ->where('checkout.passClaimed', false)
-            ->where('checkout.packagesBought', ['starter:samurai']));
     }
 
     public function test_the_old_store_addresses_moved(): void

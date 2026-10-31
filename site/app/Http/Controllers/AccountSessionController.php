@@ -64,7 +64,7 @@ class AccountSessionController extends Controller
         RateLimiter::clear($accountKey);
         $request->session()->regenerate();
 
-        return redirect()->route('account');
+        return redirect()->intended(route('account'));
     }
 
     public function destroy(Request $request): RedirectResponse

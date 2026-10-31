@@ -127,26 +127,6 @@ export type CharacterDetail = CharacterSummary & {
 };
 
 /** The weekly gift box in the player area (app/Services/GiftBox.php). */
-export type GiftBoxStatus = {
-    enabled: boolean;
-    minLevel: number;
-    nextAt: string;
-    name?: string | null;
-    description?: string | null;
-    contents: {
-        guaranteed: { name: string; count: number }[];
-        bonus: { name: string; count: number; chance: number }[];
-    };
-    eligible: { id: number; name: string; level: number }[];
-    claim: {
-        characterName: string;
-        items: { id: number; name: string; count: number; bonus: boolean }[];
-        claimedAt: string;
-        status: 'pending' | 'processing' | 'done' | 'failed';
-        result: string | null;
-    } | null;
-};
-
 /** The Kage Pass offer (app/Services/KagePass.php): the landing page banner and the player area. */
 export type PassOffer = {
     enabled: boolean;
@@ -155,42 +135,69 @@ export type PassOffer = {
     /** Last day it can be claimed, YYYY-MM-DD. */
     ends: string;
     price: { name: string; count: number };
-    rewards: { name: string; count: number }[];
+    rewards: { id: number; name: string; count: number }[];
 };
 
 /** Class packages (app/Services/ClassPackages.php): tiers with their price, and each archetype's gear per tier. */
-/** count only when more than one (Kage Pass rewards); id links to the item database. */
-export type PackageItem = { id?: number; name: string; enchant: number; count?: number };
-
 export type PackageOffer = {
     enabled: boolean;
     season: string;
     currency: string;
     tiers: { key: string; name: Localized; grade: string; price: number; enchant: number }[];
-    archetypes: { key: string; name: Localized; role: Localized; armor: 'heavy' | 'light' | 'robe'; contents: Record<string, PackageItem[]> }[];
+    archetypes: { key: string; name: Localized; role: Localized; armor: 'heavy' | 'light' | 'robe' }[];
 };
 
-/** A character that can pay in the store's checkout: its L-Coin in the bag (last save) and suggested archetype. */
-export type CheckoutCharacter = { id: number; name: string; level: number; className: string; archetype: string | null; coins: number };
+/** A product's price: any item the game knows (L-Coin, Adena...). */
+export type StorePrice = { item: number; count: number; name: string };
 
-/** The store page's checkout for a signed-in player (app/Services/Orders.php checkout()). */
-export type StoreCheckout = {
-    characters: CheckoutCharacter[];
-    passClaimed: boolean;
-    /** "tier:archetype" keys bought this season. */
-    packagesBought: string[];
+/** A product on the Treasury's grid (app/Services/Treasury.php cards()). */
+export type StoreCard = {
+    slug: string;
+    key: string;
+    kind: 'gift' | 'pass' | 'hunt' | 'supplies' | 'package';
+    category: 'gifts' | 'passes' | 'packages' | 'supplies';
+    /** Class packages: the archetype and tier. */
+    group: string | null;
+    groupName: Localized | null;
+    tier: string | null;
+    name: Localized;
+    /** null: free. */
+    price: StorePrice | null;
+    open: boolean;
 };
 
-/** One entry of the Orders tab (app/Services/Orders.php history()): a gift box, Kage Pass or class package. */
+export type StoreContentItem = { id?: number | null; name: string; count?: number; enchant?: number; chance?: number };
+
+/** A product's own page (app/Services/Treasury.php find()). */
+export type StoreProduct = StoreCard & {
+    endsAt: string | null;
+    description: Localized[];
+    contents: { title: Localized; items: StoreContentItem[]; note?: Localized }[];
+    steps: Localized[];
+    /** Limit per account, e.g. "1 per week"; null: as many as the player likes. */
+    limit: Localized | null;
+    maxQuantity: number;
+    minLevel: number | null;
+    hunt: { firstSteps: { free: { name: string; count: number }; premium: { name: string; count: number } }[]; steps: number } | null;
+};
+
+/** A signed-in player's side of a product page. balance: what the character holds of the price, as last saved; null when free. */
+export type StoreBuyer = {
+    characters: { id: number; name: string; level: number; className: string; archetype: string | null; balance: number | null }[];
+    /** Already held and can't be bought again for now. */
+    owned: { characterName: string; status: Order['status']; nextAt: string | null } | null;
+};
+
+/** One entry of the Orders tab (app/Services/Orders.php history()): a gift box, Kage Pass, class package or supply kit. */
 export type Order = {
     id: string;
-    type: 'gift' | 'pass' | 'package';
+    type: 'gift' | 'pass' | 'package' | 'supplies';
     name: Localized;
     characterName: string;
     price: { count: number; currency: string } | null;
     status: 'pending' | 'processing' | 'done' | 'failed';
     createdAt: string;
-    items: { name: string; count: number; enchant: number }[];
+    items: { name: string; count: number; enchant: number; bonus?: boolean }[];
 };
 
 /** Item database (app/Services/L2j/ItemDatabase.php). */

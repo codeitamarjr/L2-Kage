@@ -155,28 +155,30 @@ class KagePassTest extends TestCase
         file_put_contents("{$dir}/HuntPass.ini", "EnabledHuntPass = True\nPremiumItemId = 91663\nPremiumItemCount = 1000\nPointsForStep = 300\nDayOfMonth = 16\n");
         config(['l2j.config_dir' => $dir, 'l2j.config_defaults_dir' => null]);
 
-        $this->get('/passes')->assertRedirect('/treasury#passes');
+        $this->get('/passes')->assertRedirect('/treasury/kage-pass');
         $this->get('/treasury')->assertOk()->assertInertia(fn ($page) => $page
-            ->component('treasury')
-            ->has('gift.guaranteed')
-            ->has('packages.tiers', 3)
-            ->where('pass.name', config('l2j.pass.name'))
-            ->where('hunt.enabled', true)
-            ->where('hunt.pointsForStep', 300)
-            ->where('hunt.premium', ['name' => 'L-Coin', 'count' => 1_000])
-            ->where('hunt.resetDay', 16)
-            ->where('hunt.steps', 280)
-            ->has('hunt.firstSteps', 10)
+            ->component('treasury/index')
             ->where('lcoin.welcome', 1_000)
             ->where('lcoin.giftBox', 1_000));
+        $this->get('/treasury/kage-pass')->assertOk()->assertInertia(fn ($page) => $page
+            ->component('treasury/show')
+            ->where('product.name.en', config('l2j.pass.name'))
+            ->where('product.price.count', 1_000));
+        $this->get('/treasury/hunt-pass')->assertOk()->assertInertia(fn ($page) => $page
+            ->where('product.open', true)
+            ->where('product.price', ['item' => 91663, 'count' => 1_000, 'name' => 'L-Coin'])
+            ->where('product.hunt.steps', 280)
+            ->has('product.hunt.firstSteps', 10)
+            ->where('product.description.1.en', fn (string $text): bool => str_contains($text, '300 points complete a step'))
+            ->where('product.steps.2.en', fn (string $text): bool => str_contains($text, 'on day 16')));
 
         array_map('unlink', glob("{$dir}/*"));
         rmdir($dir);
     }
 
-    public function test_players_claim_from_the_player_area_and_see_the_offer_on_the_landing_page(): void
+    public function test_players_claim_from_the_treasury_and_see_the_offer_on_the_landing_page(): void
     {
-        $this->actingAs($this->account(), 'player')->post('/account/pass', ['character_id' => 1])->assertRedirect('/account/orders');
+        $this->actingAs($this->account(), 'player')->post('/treasury/kage-pass', ['character_id' => 1])->assertRedirect('/account/orders');
         $this->assertSame(1, PassClaim::count());
 
         $this->get('/')->assertOk()->assertInertia(fn ($page) => $page

@@ -50,7 +50,7 @@ class GiftBoxTemplateTest extends TestCase
 
         $contents = $box->contents();
         $this->assertSame(['Adena', 'Scroll: Enchant Armor (your grade)'], array_column($contents['guaranteed'], 'name'));
-        $this->assertSame([['name' => 'Spirit Ore', 'count' => 50, 'chance' => 100.0]], $contents['bonus']);
+        $this->assertSame([['id' => 3031, 'name' => 'Spirit Ore', 'count' => 50, 'chance' => 100.0]], $contents['bonus']);
     }
 
     public function test_inactive_or_expired_templates_leave_the_configured_box(): void

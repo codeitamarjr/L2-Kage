@@ -1,11 +1,11 @@
 import { Link, usePoll } from '@inertiajs/react';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { languageTag, pick, useLocale, useT } from '@/i18n';
 import type { Order } from '@/types';
 
 /**
- * The Orders tab's history: every gift box, Kage Pass and class package the account claimed or bought, newest first,
- * with what was sent and its in-game delivery. While one is on its way the list polls for the result.
+ * The Orders tab: every gift box, Kage Pass, class package and supply kit the account claimed or bought in the Treasury,
+ * newest first, with what was sent and its in-game delivery. While one is on its way the list polls for the result.
  */
 export function OrdersList({ orders }: { orders: Order[] }) {
     const locale = useLocale();
@@ -14,6 +14,9 @@ export function OrdersList({ orders }: { orders: Order[] }) {
     const fmt = (n: number) => n.toLocaleString(tag);
     const travelling = orders.some((o) => o.status === 'pending' || o.status === 'processing');
     const { start, stop } = usePoll(4_000, { only: ['orders'] }, { autoStart: false });
+    // Just bought or opened: show what's inside without asking for a click.
+    const [loadedAt] = useState(() => Date.now());
+    const isFresh = (order: Order) => loadedAt - Date.parse(order.createdAt) < 120_000;
 
     useEffect(() => {
         if (travelling) {
@@ -29,6 +32,7 @@ export function OrdersList({ orders }: { orders: Order[] }) {
         gift: t('Gift box', 'Caixa de presente'),
         pass: t('Season pass', 'Passe da temporada'),
         package: t('Class package', 'Pacote de classe'),
+        supplies: t('Supply kit', 'Kit de suprimentos'),
     };
     const statuses = {
         pending: t('On its way', 'A caminho'),
@@ -49,9 +53,9 @@ export function OrdersList({ orders }: { orders: Order[] }) {
             </div>
             {orders.length === 0 ? (
                 <p className="about-empty">
-                    {t('No orders yet. Open your weekly gift box above, or buy a ', 'Nenhum pedido ainda. Abra sua caixa de presente semanal acima, ou compre um ')}
+                    {t('No orders yet. Your weekly gift box and everything else is in the ', 'Nenhum pedido ainda. Sua caixa de presente semanal e todo o resto estão no ')}
                     <Link href="/treasury" className="text-link">
-                        {t('pass or package', 'passe ou pacote')}
+                        {t('Treasury', 'Tesouro')}
                     </Link>
                     .
                 </p>
@@ -59,7 +63,7 @@ export function OrdersList({ orders }: { orders: Order[] }) {
                 <ol className="orders-list">
                     {orders.map((order) => (
                         <li key={order.id} className={`order is-${order.type}`}>
-                            <details>
+                            <details open={isFresh(order)}>
                                 <summary className="order-summary">
                                     <span className="order-kind">{kinds[order.type]}</span>
                                     <span className="order-name">{pick(locale, order.name)}</span>
@@ -74,6 +78,7 @@ export function OrdersList({ orders }: { orders: Order[] }) {
                                         <li key={`${item.name}-${i}`}>
                                             {item.enchant ? <span className="item-enchant">+{item.enchant}</span> : null} {item.name}
                                             {item.count > 1 ? <span className="gift-item-count"> × {fmt(item.count)}</span> : null}
+                                            {item.bonus ? <span className="gift-bonus-tag">{t('Bonus', 'Bônus')}</span> : null}
                                         </li>
                                     ))}
                                 </ul>
