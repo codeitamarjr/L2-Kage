@@ -26,7 +26,9 @@ import org.l2jmobius.gameserver.entity.actor.request.PartyRequest;
 import org.l2jmobius.gameserver.entity.groups.Party;
 import org.l2jmobius.gameserver.entity.groups.PartyMessageType;
 import org.l2jmobius.gameserver.entity.groups.matching.MatchingRoom;
+import org.l2jmobius.gameserver.entity.groups.matching.PartyMatchingRoom;
 import org.l2jmobius.gameserver.network.SystemMessageId;
+import org.l2jmobius.gameserver.network.serverpackets.ExPartyRoomMember;
 import org.l2jmobius.gameserver.network.serverpackets.JoinParty;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
 
@@ -96,7 +98,18 @@ public class RequestAnswerJoinParty extends ClientPacket
 			final MatchingRoom requestorRoom = requestor.getMatchingRoom();
 			if (requestorRoom != null)
 			{
-				requestorRoom.addMember(player);
+				// Already seated: only the membership type changed, do not announce the entry again.
+				if (player.getMatchingRoom() != requestorRoom)
+				{
+					requestorRoom.addMember(player);
+				}
+				else if (requestorRoom instanceof PartyMatchingRoom)
+				{
+					for (Player member : requestorRoom.getMembers())
+					{
+						member.sendPacket(new ExPartyRoomMember(member, (PartyMatchingRoom) requestorRoom));
+					}
+				}
 			}
 		}
 		else if (_response == -1)
