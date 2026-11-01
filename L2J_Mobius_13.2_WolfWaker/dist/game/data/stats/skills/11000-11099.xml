@@ -349,6 +349,19 @@
 				<SLEEP>30</SLEEP>
 				<BLEED>30</BLEED>
 				<DERANGEMENT>30</DERANGEMENT>
+				<!-- Additional individual traits for the four advertised status resistance groups. -->
+				<POISON>30</POISON>
+				<DISARM>30</DISARM>
+				<AGGRESSION>30</AGGRESSION>
+				<HATE>30</HATE>
+				<PHYSICAL_BLOCKADE>30</PHYSICAL_BLOCKADE>
+				<DEPORT>30</DEPORT>
+				<CHANGEBODY>30</CHANGEBODY>
+				<SHOCK>30</SHOCK>
+				<PARALYZE>30</PARALYZE>
+				<AIRBIND>30</AIRBIND>
+				<KNOCKBACK>30</KNOCKBACK>
+				<KNOCKDOWN>30</KNOCKDOWN>
 			</effect>
 			<effect name="StatUp">
 				<amount>2</amount>

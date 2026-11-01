@@ -3022,6 +3022,25 @@
 			<value level="5">115</value>
 		</magicLevel>
 		<effects>
+			<effect name="DefenceTrait">
+				<!-- Individual traits for the four advertised status resistance groups. -->
+				<BLEED>30</BLEED>
+				<POISON>30</POISON>
+				<HOLD>30</HOLD>
+				<DISARM>30</DISARM>
+				<AGGRESSION>30</AGGRESSION>
+				<HATE>30</HATE>
+				<PHYSICAL_BLOCKADE>30</PHYSICAL_BLOCKADE>
+				<DEPORT>30</DEPORT>
+				<SLEEP>30</SLEEP>
+				<CHANGEBODY>30</CHANGEBODY>
+				<DERANGEMENT>30</DERANGEMENT>
+				<SHOCK>30</SHOCK>
+				<PARALYZE>30</PARALYZE>
+				<AIRBIND>30</AIRBIND>
+				<KNOCKBACK>30</KNOCKBACK>
+				<KNOCKDOWN>30</KNOCKDOWN>
+			</effect>
 			<effect name="PhysicalAttack">
 				<amount>
 					<value level="1">18</value>
