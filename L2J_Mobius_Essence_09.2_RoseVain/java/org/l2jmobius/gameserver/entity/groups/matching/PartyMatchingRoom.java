@@ -88,9 +88,12 @@ public class PartyMatchingRoom extends MatchingRoom
 		getMembers().forEach(p ->
 		{
 			p.sendPacket(new PartyRoomInfo(this));
-			p.sendPacket(new ExPartyRoomMember(player, this));
+			p.sendPacket(new ExPartyRoomMember(p, this));
 			p.sendPacket(sm);
-			p.sendPacket(SystemMessageId.THE_LEADER_OF_THE_PARTY_ROOM_HAS_CHANGED);
+			if (leaderChanged)
+			{
+				p.sendPacket(SystemMessageId.THE_LEADER_OF_THE_PARTY_ROOM_HAS_CHANGED);
+			}
 		});
 		
 		player.sendPacket(new SystemMessage(kicked ? SystemMessageId.YOU_HAVE_BEEN_OUSTED_FROM_THE_PARTY_ROOM : SystemMessageId.YOU_HAVE_EXITED_THE_PARTY_ROOM));
