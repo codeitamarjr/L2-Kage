@@ -11902,7 +11902,7 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="30791" toLevel="4" name="Transfer Pain">
+	<skill id="30791" toLevel="5" name="Transfer Pain">
 		<!-- Level 1: P. Def. +20%, M. Def. +2%. Transfers 65% of received damage to a servitor. MP Consumption depends on your level. -->
 		<!-- Level 2: P. Def. +25%, M. Def. +4%. Transfers 70% of received damage to a servitor. MP Consumption depends on your level. -->
 		<!-- Level 3: P. Def. +30%, M. Def. +6%. Transfers 75% of received damage to a servitor. MP Consumption depends on your level. -->
@@ -11917,14 +11917,36 @@
 			<value level="2">90</value>
 			<value level="3">95</value>
 			<value level="4">99</value>
+			<value level="5">115</value>
 		</magicLevel>
 		<mpConsume>
 			<value level="1">15</value>
 			<value level="2">16</value>
 			<value level="3">17</value>
 			<value level="4">18</value>
+			<value level="5">19</value>
 		</mpConsume>
 		<effects>
+			<effect name="PhysicalDefence">
+				<amount>
+					<value level="1">20</value>
+					<value level="2">25</value>
+					<value level="3">30</value>
+					<value level="4">35</value>
+					<value level="5">50</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="MagicalDefence">
+				<amount>
+					<value level="1">2</value>
+					<value level="2">4</value>
+					<value level="3">6</value>
+					<value level="4">8</value>
+					<value level="5">10</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
 			<effect name="MpConsumePerLevel">
 				<power>0.2</power>
 				<ticks>5</ticks>
@@ -11935,6 +11957,7 @@
 					<value level="2">70</value>
 					<value level="3">75</value>
 					<value level="4">80</value>
+					<value level="5">80</value>
 				</amount>
 			</effect>
 		</effects>

@@ -513,6 +513,7 @@
 		<skill skillName="Ultimate Body To Mind" skillId="11064" skillLevel="14" getLevel="114" levelUpSp="436393" />
 		<skill skillName="Magical Charge" skillId="11094" skillLevel="12" getLevel="114" levelUpSp="436393" />
 		
+		<skill skillName="Embody Mana Armor" skillId="19408" skillLevel="3" getLevel="115" levelUpSp="436393" />
 		<skill skillName="Superior Weapon Mastery" skillId="11001" skillLevel="11" getLevel="115" levelUpSp="436393" />
 		<skill skillName="Superior Robe Mastery" skillId="11002" skillLevel="11" getLevel="115" levelUpSp="436393" />
 		<skill skillName="Superior Anti Magic" skillId="11003" skillLevel="11" getLevel="115" levelUpSp="436393" />
