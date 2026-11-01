@@ -6410,7 +6410,7 @@
 		<operateType>A2</operateType>
 		<targetType>SELF</targetType>
 		<abnormalLevel>1</abnormalLevel>
-		<abnormalTime>30</abnormalTime>
+		<abnormalTime>60</abnormalTime>
 		<abnormalType>DC_MOD</abnormalType>
 		<affectScope>SINGLE</affectScope>
 		<basicProperty>NONE</basicProperty>
@@ -6418,7 +6418,7 @@
 		<effectPoint>687</effectPoint>
 		<hitTime>4000</hitTime>
 		<isMagic>1</isMagic>
-		<itemConsumeCount>5</itemConsumeCount>
+		<itemConsumeCount>10</itemConsumeCount>
 		<itemConsumeId>3031</itemConsumeId> <!-- Spirit Ore -->
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
@@ -6429,7 +6429,7 @@
 			<value level="1">168</value>
 			<value level="2">194</value>
 		</mpConsume>
-		<reuseDelay>180000</reuseDelay>
+		<reuseDelay>300000</reuseDelay>
 		<reuseDelayGroup>11068</reuseDelayGroup>
 		<effects>
 			<effect name="ReduceCancel">
@@ -6438,32 +6438,27 @@
 			</effect>
 			<effect name="MagicalSkillPower">
 				<amount>
-					<value level="1">5</value>
-					<value level="2">20</value>
+					<value level="1">26</value>
+					<value level="2">36</value>
 				</amount>
 				<mode>PER</mode>
 			</effect>
 			<effect name="MagicMpCost">
-				<amount>-80</amount>
+				<amount>-70</amount>
 				<mode>PER</mode>
 				<magicType>1</magicType>
 			</effect>
 			<effect name="Reuse">
-				<amount>-20</amount>
+				<amount>-15</amount>
 				<mode>PER</mode>
 				<magicType>1</magicType>
 			</effect>
-			<effect name="PhysicalDefence">
-				<amount>10</amount>
+			<effect name="MagicCriticalRate">
+				<amount>
+					<value level="1">7</value>
+					<value level="2">10</value>
+				</amount>
 				<mode>PER</mode>
-			</effect>
-			<effect name="MagicalDefence">
-				<amount>10</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="CallSkill">
-				<skillId>19315</skillId> <!-- Mana Burst -->
-				<skillLevel>1</skillLevel>
 			</effect>
 		</effects>
 	</skill>

@@ -12391,13 +12391,19 @@
 		<reuseDelay>15000</reuseDelay>
 		<effects>
 			<effect name="MagicalAttack">
-				<amount>25</amount>
+				<amount>
+					<value level="1">25</value>
+					<value level="2">35</value>
+				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicMpCost">
-				<amount>35</amount>
+			<effect name="MagicCriticalRate">
+				<amount>5</amount>
 				<mode>PER</mode>
-				<magicType>1</magicType>
+			</effect>
+			<effect name="MagicalAttackSpeed">
+				<amount>10</amount>
+				<mode>PER</mode>
 			</effect>
 			<effect name="MagicalAttackSpeed" fromLevel="1" toLevel="2" fromSubLevel="2001" toSubLevel="2020">
 				<amount>
@@ -12407,8 +12413,8 @@
 			</effect>
 			<effect name="MagicalSkillPower">
 				<amount>
-					<value level="1">0</value>
-					<value level="2">5</value>
+					<value level="1">16</value>
+					<value level="2">32</value>
 				</amount>
 				<mode>PER</mode>
 			</effect>
