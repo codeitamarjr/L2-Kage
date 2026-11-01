@@ -90,6 +90,7 @@ public abstract class MatchingRoom
 		boolean leaderChanged = false;
 		if (player == _leader)
 		{
+			getMembers().remove(player);
 			if (getMembers().isEmpty())
 			{
 				MatchingRoomManager.getInstance().removeMatchingRoom(this);
@@ -100,7 +101,6 @@ public abstract class MatchingRoom
 				if (iter.hasNext())
 				{
 					_leader = iter.next();
-					iter.remove();
 					leaderChanged = true;
 				}
 			}
