@@ -114,9 +114,11 @@ function PurchasePanel({ product, buyer }: Props) {
     const total = price ? price.count * quantity : 0;
     const characters = buyer?.characters ?? [];
     const meetsLevel = (level: number) => level >= (product.minLevel ?? 0);
+    const suits = (archetype: string | null) => !product.classOnly || archetype === product.group;
+    const className = product.groupName ? pick(locale, product.groupName) : '';
     const canPay = (balance: number | null) => balance === null || balance >= total;
     const selected = characters.find((c) => String(c.id) === characterId);
-    const selectable = selected && meetsLevel(selected.level) && canPay(selected.balance);
+    const selectable = selected && meetsLevel(selected.level) && suits(selected.archetype) && canPay(selected.balance);
     const buyLabel = price ? t(`Buy for ${fmt(total)} ${price.name}`, `Comprar por ${fmt(total)} ${price.name}`) : t('Get it for free', 'Receber grátis');
 
     const limit = product.limit ? (
@@ -166,7 +168,7 @@ function PurchasePanel({ product, buyer }: Props) {
                             <select name="character_id" value={characterId} disabled={!buyer || characters.length === 0} onChange={(e) => setCharacterId(e.target.value)}>
                                 <option value="">{t('Choose character', 'Escolha o personagem')}</option>
                                 {characters.map((c) => (
-                                    <option key={c.id} value={c.id} disabled={!meetsLevel(c.level) || !canPay(c.balance)}>
+                                    <option key={c.id} value={c.id} disabled={!meetsLevel(c.level) || !suits(c.archetype) || !canPay(c.balance)}>
                                         {c.name} · Lv {c.level}
                                         {price ? ` · ${fmt(c.balance ?? 0)} ${price.name}` : ''}
                                     </option>
@@ -193,6 +195,11 @@ function PurchasePanel({ product, buyer }: Props) {
                             </div>
                         ) : null}
                         {limit}
+                        {product.classOnly ? (
+                            <p className="shop-limit">
+                                {t('Only for', 'Apenas para')}: <strong>{className}</strong>
+                            </p>
+                        ) : null}
 
                         {errors.character_id || errors.quantity ? (
                             <p className="form-error" role="alert">
@@ -211,7 +218,9 @@ function PurchasePanel({ product, buyer }: Props) {
                             </p>
                         ) : characters.length === 0 ? (
                             <p className="shop-panel-note">{t('Create a character in the game first.', 'Crie um personagem no jogo primeiro.')}</p>
-                        ) : !characters.some((c) => meetsLevel(c.level) && canPay(c.balance)) ? (
+                        ) : !characters.some((c) => suits(c.archetype)) ? (
+                            <p className="shop-panel-note">{t(`Only ${className} characters can receive this. Create one in the game first.`, `Apenas personagens ${className} podem receber isto. Crie um no jogo primeiro.`)}</p>
+                        ) : !characters.some((c) => suits(c.archetype) && meetsLevel(c.level) && canPay(c.balance)) ? (
                             <p className="shop-panel-note">
                                 {price
                                     ? t(`None of your characters has ${fmt(total)} ${price.name} in the bag yet.`, `Nenhum dos seus personagens tem ${fmt(total)} ${price.name} na bolsa ainda.`)

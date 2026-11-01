@@ -18,7 +18,8 @@ This is not the L-Coin Store inside the game, which is `docs/LCOIN-STORE.md`.
 4. Set the price. Any item can be the currency. Empty means free.
 5. Add the items. **Check each item's `/items` page first**: a name doesn't tell you what it does.
 6. A random bonus is optional. One is rolled by weight for each one bought, which is how a chest works.
-7. Set the limit, if any. `One per season` uses the season name: changing the name lets every account buy it again.
+7. For one class only, open Class, choose the group and turn on **Only this class can get it**.
+8. Set the limit, if any. `One per season` uses the season name: changing the name lets every account buy it again.
 
 The form refuses what the game server would reject or that could be abused:
 
@@ -37,7 +38,7 @@ Each account gets a free order in its Orders tab and a badge on the site header,
 
 ## Seeding
 
-`database/seeders/StoreSeeder.php` holds the 6 categories and the 44 products the Store launched with. A new host gets them by itself, because the migration runs the seeder when the site starts. To add anything missing by hand:
+`database/seeders/StoreSeeder.php` holds the 6 categories and the 45 starting products. A new host gets them by itself, because the migration runs the seeder when the site starts. To add anything missing by hand:
 
 ```bash
 docker compose exec site php artisan db:seed --force
@@ -50,6 +51,7 @@ It matches by web address, so it's safe on a live site: it never changes a produ
 - The hosts have separate databases and uploads, so a product added on the Mac doesn't reach the Pi.
 - Images are in `data/site-uploads`, which isn't in git. Back them up with the database.
 - Deleting a product hides it and keeps its orders. The Deleted filter on Products can restore it. The Weekly Gift Box and Hunt Pass can only be unpublished.
+- Gifts for a True Samurai needs the earring overrides in `overrides/game/data/stats` (`items/105400-105499.xml`, `skills/50900-50999.xml`). The datapack gives Earring of Samurai's Path no slot and an empty skill, so it can't be worn without them.
 - The Hunt Pass is unlocked in the game. Its price and text come from `HuntPass.ini`, so its form is shorter and it can't be sent.
 - Premium time can't be sold yet, because the game server's `add_premium` doesn't charge.
 - `gift_claims`, `pass_claims`, `package_claims` and `supply_purchases` are no longer used. Their rows were copied to `orders`, and they can be dropped in a later release.

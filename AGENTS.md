@@ -76,7 +76,7 @@ Upstream's `SquashEvent`, reactivated through `overrides/game/data/scripts/event
 
 **Store (website)**
 - **Changing it: read [docs/STORE.md](docs/STORE.md) first.** It was the Treasury until 1 Nov 2026.
-- Categories, products and orders are in the database (`store_categories`, `products`, `orders`), edited in the admin panel under Store. `database/seeders/StoreSeeder.php` holds the 44 launch products, and a migration runs it, so a deploy fills the Store and copies past claims into `orders`.
+- Categories, products and orders are in the database (`store_categories`, `products`, `orders`), edited in the admin panel under Store. `database/seeders/StoreSeeder.php` holds the 45 starting products, and a migration runs it, so a deploy fills the Store and copies past claims into `orders`.
 - Pages: `/store` and `/store/{slug}` (`StoreController`, `app/Services/Store.php`, `resources/js/pages/store/`). `/treasury` still shows the page rather than redirecting, because `/store` used to redirect permanently to it and browsers may remember that.
 - Admins can send a product to accounts. It waits in the Orders tab until the player chooses a character.
 

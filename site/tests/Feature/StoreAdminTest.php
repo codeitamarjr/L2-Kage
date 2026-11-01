@@ -159,7 +159,7 @@ class StoreAdminTest extends TestCase
 
     public function test_every_seeded_product_can_be_saved_unchanged(): void
     {
-        foreach (['kage-pass', 'weekly-gift-box', 'supplies-hunter', 'package-knight-elite', 'hunt-pass'] as $slug) {
+        foreach (['kage-pass', 'weekly-gift-box', 'supplies-hunter', 'package-knight-elite', 'hunt-pass', 'gifts-for-a-true-samurai'] as $slug) {
             $product = $this->product($slug);
             $before = $product->only(['price_count', 'items', 'bonus', 'limit_period', 'season']);
 
@@ -251,6 +251,18 @@ class StoreAdminTest extends TestCase
 
         // A second press finds nothing waiting.
         $this->post("/account/orders/{$order->id}/redeem", ['character_id' => 1])->assertNotFound();
+        $this->assertSame(1, GameAction::count());
+    }
+
+    public function test_a_class_only_gift_that_was_sent_still_needs_that_class(): void
+    {
+        app(Store::class)->send($this->product('gifts-for-a-true-samurai'), ['hero'], 'admin', 'Welcome');
+        $order = Order::sole();
+
+        $this->actingAs($this->account(), 'player')->post("/account/orders/{$order->id}/redeem", ['character_id' => 2])->assertSessionHasErrors('character_id');
+        $this->assertSame(0, GameAction::count());
+
+        $this->actingAs($this->account(), 'player')->post("/account/orders/{$order->id}/redeem", ['character_id' => 1])->assertRedirect('/account/orders');
         $this->assertSame(1, GameAction::count());
     }
 

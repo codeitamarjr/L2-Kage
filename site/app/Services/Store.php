@@ -30,7 +30,7 @@ class Store
     public const LCOIN = 91663;
 
     /** What the store grid doesn't need: only a product's own page shows these. */
-    private const DETAIL_FIELDS = ['images', 'description', 'contents', 'steps', 'limit', 'limitPeriod', 'maxQuantity', 'minLevel', 'hunt', 'endsAt'];
+    private const DETAIL_FIELDS = ['images', 'description', 'contents', 'steps', 'limitPeriod', 'maxQuantity', 'minLevel', 'hunt', 'endsAt'];
 
     public function __construct(
         private GameData $gameData,
@@ -83,11 +83,13 @@ class Store
         $images = $product->imageUrls();
         $group = $product->class_group ? config("l2j.store.class_groups.{$product->class_group}.name") : null;
         $isHunt = $product->type === Product::TYPE_HUNT_PASS;
+        $description = $this->description($product);
 
         return [
             'slug' => $product->slug,
             'type' => $product->type,
             'category' => $product->category->slug,
+            'categoryName' => $product->category->localizedName(),
             'featured' => $product->is_featured,
             'name' => $product->localizedName(),
             'price' => $this->price($product),
@@ -99,8 +101,10 @@ class Store
             'tier' => $product->tier,
             'group' => $product->class_group,
             'groupName' => $group,
+            'classOnly' => $product->class_only,
+            'summary' => array_map(fn (string $text): string => explode("\n\n", $text)[0], $description),
             'endsAt' => $product->ends_at?->toIso8601String(),
-            'description' => $this->description($product),
+            'description' => $description,
             'contents' => $isHunt ? [] : $this->contentGroups($product),
             'steps' => $isHunt ? $this->huntSteps($product) : $this->mailSteps($product),
             'limit' => $this->limitLabel($product),
@@ -248,6 +252,10 @@ class Store
             $fail('character_id', __('Choose one of your characters of level :level or higher.', ['level' => $product->min_level]));
         }
 
+        if (! $this->suits($product, $character)) {
+            $fail('character_id', __('Only :class characters can receive this.', ['class' => $this->className($product)]));
+        }
+
         $price = $this->price($product);
         $total = $price ? $price['count'] * $quantity : null;
 
@@ -328,13 +336,17 @@ class Store
             $fail(__('Choose one of your characters.'));
         }
 
+        $product = $order->product;
+
+        if ($product && ! $this->suits($product, $character)) {
+            $fail(__('Only :class characters can receive this.', ['class' => $this->className($product)]));
+        }
+
         $items = $this->contents->roll($order->contents ?? ['items' => [], 'bonus' => []], (int) $character->level);
 
         if ($items === []) {
             $fail(__('This is closed for now.'));
         }
-
-        $product = $order->product;
 
         DB::transaction(function () use ($order, $character, $items, $product, $fail): void {
             $action = GameAction::create([
@@ -462,7 +474,22 @@ class Store
 
     private function ownCharacter(Account $account, int $characterId): ?Character
     {
-        return Character::query()->where('account_name', $account->login)->where('deletetime', 0)->find($characterId, ['charId', 'char_name', 'level']);
+        return Character::query()->where('account_name', $account->login)->where('deletetime', 0)->find($characterId, ['charId', 'char_name', 'level', 'classid']);
+    }
+
+    private function suits(Product $product, Character $character): bool
+    {
+        return ! $product->class_only || $this->classGroupFor((int) $character->classid) === $product->class_group;
+    }
+
+    /**
+     * The name of the product's class group, in the visitor's language.
+     */
+    private function className(Product $product): string
+    {
+        $name = config("l2j.store.class_groups.{$product->class_group}.name");
+
+        return $name[app()->isLocale('pt_BR') ? 'pt' : 'en'] ?? (string) $product->class_group;
     }
 
     /**
@@ -533,7 +560,7 @@ class Store
             Product::LIMIT_WEEK => ['en' => '1 per week', 'pt' => '1 por semana'],
             Product::LIMIT_MONTH => ['en' => '1 per month', 'pt' => '1 por mês'],
             Product::LIMIT_SEASON => ['en' => '1 per season', 'pt' => '1 por temporada'],
-            Product::LIMIT_ONCE => ['en' => '1 per account', 'pt' => '1 por conta'],
+            Product::LIMIT_ONCE => ['en' => 'Once', 'pt' => 'Uma vez'],
             default => null,
         };
     }

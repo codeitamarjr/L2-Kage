@@ -41,6 +41,8 @@ return new class extends Migration
             $table->string('tier', 32)->nullable();
             // The key under config l2j.store.class_groups: its characters are listed first and it can be filtered by.
             $table->string('class_group', 32)->nullable()->index();
+            // Only characters of that class group can receive it.
+            $table->boolean('class_only')->default(false);
             // Null: free.
             $table->unsignedInteger('price_item')->nullable();
             $table->unsignedBigInteger('price_count')->nullable();

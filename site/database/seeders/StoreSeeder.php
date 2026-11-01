@@ -6,6 +6,7 @@ use App\Models\Product;
 use App\Models\StoreCategory;
 use Carbon\CarbonImmutable;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * The Store's starting catalogue: its categories and every product it launched with. Safe to run again at any time with
@@ -159,15 +160,66 @@ class StoreSeeder extends Seeder
 
         $sort = 0;
 
-        foreach ([$this->weeklyGift(), $this->kagePass(), $this->huntPass(), ...$this->supplyKits(), ...$this->classPackages()] as $product) {
+        foreach ([$this->weeklyGift(), $this->kagePass(), $this->huntPass(), ...$this->supplyKits(), ...$this->classPackages(), $this->samuraiGift()] as $product) {
             $category = StoreCategory::where('slug', $product['category'])->firstOrFail();
 
-            Product::withTrashed()->firstOrCreate(['slug' => $product['slug']], [
-                ...collect($product)->except(['slug', 'category'])->all(),
+            $created = Product::withTrashed()->firstOrCreate(['slug' => $product['slug']], [
+                ...collect($product)->except(['slug', 'category', 'seed_image'])->all(),
                 'store_category_id' => $category->id,
-                'sort' => $sort += 10,
+                'sort' => $product['sort'] ?? $sort += 10,
             ]);
+
+            if ($created->wasRecentlyCreated && isset($product['seed_image'])) {
+                $created->update(['images' => [$this->upload($product['seed_image'])]]);
+            }
         }
+    }
+
+    /**
+     * Copies a picture from database/seeders/images to where uploaded images live, so the admin panel can replace it.
+     */
+    private function upload(string $file): string
+    {
+        $path = "store/{$file}";
+
+        if (! Storage::disk('public')->exists($path)) {
+            Storage::disk('public')->put($path, (string) file_get_contents(database_path("seeders/images/{$file}")));
+        }
+
+        return $path;
+    }
+
+    /**
+     * Essence's welcome gift for the Samurai, once per account and only for a Samurai. The items are sealed. The earring
+     * only works through the game server overrides (overrides/game/data/stats), because the datapack leaves it unfinished.
+     *
+     * @return array<string, mixed>
+     */
+    private function samuraiGift(): array
+    {
+        return [
+            'slug' => 'gifts-for-a-true-samurai',
+            'category' => 'gifts',
+            'name_en' => 'Gifts for a True Samurai',
+            'name_pt' => 'Presentes para um Verdadeiro Samurai',
+            'description_en' => "Every Samurai starting out in Aden can claim these once per account: an earring forged for the path, a fox mask and a bento packed for the road.\n\nThe mask and the bento open with a double-click. The mask holds what a guardian fox needs. The bento holds supplies, spellbooks and doll coupons. Everything is sealed, so it can't be traded.",
+            'description_pt' => "Todo Samurai que começa em Aden pode resgatar estes presentes uma vez por conta: um brinco forjado para o caminho, uma máscara de raposa e um bentô preparado para a estrada.\n\nA máscara e o bentô abrem com dois cliques. A máscara traz o que uma raposa guardiã precisa. O bentô traz suprimentos, livros de feitiços e cupons de boneca. Tudo é selado, então não pode ser negociado.",
+            'art' => 'gift',
+            'emblem' => 'samurai',
+            'class_group' => 'samurai',
+            'class_only' => true,
+            'items' => [
+                ['item' => 105435, 'count' => 1],  // Earring of Samurai's Path
+                ['item' => 105498, 'count' => 1],  // Mask of Hidden by the Leaves
+                ['item' => 105499, 'count' => 1],  // Samurai's Bento
+            ],
+            'limit_period' => Product::LIMIT_ONCE,
+            'mail_subject' => 'Gifts for a true Samurai',
+            'mail_text' => 'Welcome to the path of the blade. Take your gifts from the attachments. Good hunting!',
+            'is_featured' => true,
+            'sort' => 15,
+            'seed_image' => 'samurai-gifts.jpg',
+        ];
     }
 
     /**

@@ -85,6 +85,8 @@ export default function StoreIndex({ products, categories, filter, owned, sugges
     const locale = useLocale();
     const t = useT();
     const [query, setQuery] = useState(filter.q);
+    const [price, setPrice] = useState('all');
+    const [sort, setSort] = useState<'recommended' | 'low' | 'high' | 'name'>('recommended');
     // Choosing a category, or arriving from elsewhere (Back from a product, the home page), goes straight to the products, past the banner.
     useEffect(() => {
         if (window.location.hash === '#store') {
@@ -123,6 +125,30 @@ export default function StoreIndex({ products, categories, filter, owned, sugges
         return p.category === filter.category && (!filter.group || p.group === filter.group);
     });
 
+    // Which prices this view has, and the visible products narrowed and ordered by the toolbar.
+    const currencies = [...new Set(visible.flatMap((p) => (p.price ? [p.price.name] : [])))];
+    const hasFree = visible.some((p) => !p.price);
+    const priceFilters = [...(hasFree ? [{ key: 'free', label: t('Free', 'Grátis') }] : []), ...currencies.map((name) => ({ key: name, label: name }))];
+    const shown = visible
+        .filter((p) => price === 'all' || (price === 'free' ? !p.price : p.price?.name === price))
+        .map((p, i) => ({ p, i }))
+        .sort((a, b) => {
+            if (sort === 'name') {
+                return pick(locale, a.p.name).localeCompare(pick(locale, b.p.name), languageTag(locale));
+            }
+
+            if (sort === 'recommended') {
+                return a.i - b.i;
+            }
+
+            // Different currencies can't be compared: free first, then each currency by its count.
+            const currency = (a.p.price?.name ?? '').localeCompare(b.p.price?.name ?? '');
+
+            return currency || ((a.p.price?.count ?? 0) - (b.p.price?.count ?? 0)) * (sort === 'low' ? 1 : -1);
+        })
+        .map(({ p }) => p);
+    const count = shown.length;
+
     return (
         <div className="shop">
             <PageHero
@@ -136,7 +162,7 @@ export default function StoreIndex({ products, categories, filter, owned, sugges
             >
                 <nav className="store-nav" aria-label={t('Categories', 'Categorias')}>
                     {buttons.map((button) => (
-                        <Link key={button.key} href={button.href} preserveScroll aria-current={!term && filter.category === button.key ? 'page' : undefined} onClick={() => setQuery('')}>
+                        <Link key={button.key} href={button.href} preserveScroll aria-current={!term && filter.category === button.key ? 'page' : undefined} onClick={() => { setQuery(''); setPrice('all'); }}>
                             {button.label}
                         </Link>
                     ))}
@@ -146,7 +172,7 @@ export default function StoreIndex({ products, categories, filter, owned, sugges
             <div className="shop-layout">
 
                 <div className="shop-main">
-                    {groups.length > 0 && !term ? (
+                    {groups.length > 1 && !term ? (
                         <nav className="shop-sub" aria-label={t('Class', 'Classe')}>
                             <Link href={`/store?category=${filter.category}#store`} preserveScroll aria-current={!filter.group ? 'page' : undefined}>
                                 {t('All', 'Todos')}
@@ -161,11 +187,41 @@ export default function StoreIndex({ products, categories, filter, owned, sugges
                     {filter.category === 'lcoin' && !term ? (
                         <LCoinInfo products={products} lcoin={lcoin} />
                     ) : visible.length ? (
-                        <div className="shop-grid">
-                            {visible.map((product) => (
-                                <ProductCard key={product.slug} product={product} owned={owned.includes(product.slug)} />
-                            ))}
-                        </div>
+                        <>
+                            <div className="shop-toolbar">
+                                <p className="shop-count">{t(`${count} ${count === 1 ? 'product' : 'products'}`, `${count} ${count === 1 ? 'produto' : 'produtos'}`)}</p>
+                                {priceFilters.length > 1 ? (
+                                    <div className="shop-chips" role="group" aria-label={t('Price', 'Preço')}>
+                                        <button type="button" aria-pressed={price === 'all'} onClick={() => setPrice('all')}>
+                                            {t('All', 'Todos')}
+                                        </button>
+                                        {priceFilters.map((filterOption) => (
+                                            <button key={filterOption.key} type="button" aria-pressed={price === filterOption.key} onClick={() => setPrice(filterOption.key)}>
+                                                {filterOption.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                ) : null}
+                                <label className="shop-sort">
+                                    <span>{t('Sort by', 'Ordenar por')}</span>
+                                    <select value={sort} onChange={(e) => setSort(e.target.value as typeof sort)}>
+                                        <option value="recommended">{t('Recommended', 'Recomendados')}</option>
+                                        <option value="low">{t('Price: low to high', 'Preço: menor para maior')}</option>
+                                        <option value="high">{t('Price: high to low', 'Preço: maior para menor')}</option>
+                                        <option value="name">{t('Name', 'Nome')}</option>
+                                    </select>
+                                </label>
+                            </div>
+                            {count ? (
+                                <div className="shop-grid">
+                                    {shown.map((product) => (
+                                        <ProductCard key={product.slug} product={product} owned={owned.includes(product.slug)} />
+                                    ))}
+                                </div>
+                            ) : (
+                                <p className="shop-empty">{t('Nothing here at this price.', 'Nada aqui neste preço.')}</p>
+                            )}
+                        </>
                     ) : (
                         <p className="shop-empty">{t('Nothing in the Store matches your search.', 'Nada na Loja corresponde à sua busca.')}</p>
                     )}

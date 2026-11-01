@@ -12,6 +12,7 @@ use App\Services\L2j\GameData;
 use Database\Seeders\StoreSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Tests\TestCase;
 
@@ -26,9 +27,9 @@ class StoreSeederTest extends TestCase
 
         $this->seed();
 
-        $this->assertSame(44, Product::count());
+        $this->assertSame(45, Product::count());
         $this->assertSame(['gifts', 'passes', 'packages', 'chests', 'items', 'supplies'], StoreCategory::orderBy('sort')->pluck('slug')->all());
-        $this->assertSame(39, Product::whereNotNull('class_group')->count());
+        $this->assertSame(39, Product::whereNotNull('class_group')->whereNotNull('price_count')->count());
     }
 
     public function test_running_it_again_changes_nothing_an_admin_did(): void
@@ -44,7 +45,7 @@ class StoreSeederTest extends TestCase
         $this->assertTrue(Product::withTrashed()->where('slug', 'supplies-hunter')->firstOrFail()->trashed());
         $this->assertFalse(Product::where('slug', 'supplies-traveler')->firstOrFail()->is_active);
         $this->assertSame('Presents', StoreCategory::where('slug', 'gifts')->value('name_en'));
-        $this->assertSame(44, Product::withTrashed()->count());
+        $this->assertSame(45, Product::withTrashed()->count());
     }
 
     public function test_it_adds_a_missing_product_without_touching_the_rest(): void
@@ -79,6 +80,18 @@ class StoreSeederTest extends TestCase
         }
     }
 
+    public function test_the_samurai_gift_is_seeded_with_its_image_and_a_replaced_one_stays(): void
+    {
+        $gift = Product::where('slug', 'gifts-for-a-true-samurai')->firstOrFail();
+        $this->assertSame(['store/samurai-gifts.jpg'], $gift->images);
+        $this->assertTrue(Storage::disk('public')->exists('store/samurai-gifts.jpg'));
+
+        $gift->forceFill(['images' => null])->saveQuietly();
+        (new StoreSeeder)->run();
+
+        $this->assertNull($gift->fresh()->images);
+    }
+
     public function test_past_claims_become_orders_and_keep_their_limits(): void
     {
         DB::table('orders')->delete();
@@ -95,7 +108,7 @@ class StoreSeederTest extends TestCase
         (include database_path('migrations/2026_11_01_120100_move_claims_to_store_orders.php'))->up();
 
         $this->assertSame(4, Order::count());
-        $this->assertSame(44, Product::withTrashed()->count());
+        $this->assertSame(45, Product::withTrashed()->count());
 
         $gift = Order::where('category', 'gifts')->sole();
         $this->assertSame('week:2026-10-26', $gift->limit_key);

@@ -44,9 +44,10 @@ class StoreTest extends TestCase
             ->where('suggested', null)
             ->where('products.0.slug', 'weekly-gift-box')
             ->where('products.0.price', null)
-            ->where('products.1.slug', 'kage-pass')
-            ->where('products.2.slug', 'hunt-pass')
-            ->has('products', 44)
+            ->where('products.1.slug', 'gifts-for-a-true-samurai')
+            ->where('products.2.slug', 'kage-pass')
+            ->where('products.3.slug', 'hunt-pass')
+            ->has('products', 45)
             ->missing('products.0.contents'));
 
         $this->get('/store/kage-pass')->assertOk()->assertInertia(fn ($page) => $page->where('buyer', null));
@@ -79,7 +80,7 @@ class StoreTest extends TestCase
         $this->get('/store/supplies-hunter')->assertNotFound();
         $this->get('/store/supplies-traveler')->assertNotFound();
         $this->actingAs($this->account(), 'player')->post('/store/supplies-hunter', ['character_id' => 1])->assertNotFound();
-        $this->get('/store')->assertInertia(fn ($page) => $page->has('products', 42));
+        $this->get('/store')->assertInertia(fn ($page) => $page->has('products', 43));
 
         $this->get('/store/kage-pass')->assertOk()->assertInertia(fn ($page) => $page->where('product.open', false));
         $this->actingAs($this->account(), 'player')->post('/store/kage-pass', ['character_id' => 1])->assertSessionHasErrors('character_id');
@@ -242,6 +243,42 @@ class StoreTest extends TestCase
         $this->actingAs($account, 'player')->get('/store/supplies-hunter')->assertInertia(fn ($page) => $page->where('buyer.owned', null));
 
         $this->actingAs($account, 'player')->get('/account/orders')->assertInertia(fn ($page) => $page->has('orders', 3));
+    }
+
+    public function test_only_a_samurai_can_receive_the_samurai_gift_and_only_once(): void
+    {
+        $this->get('/store/gifts-for-a-true-samurai')->assertOk()->assertInertia(fn ($page) => $page
+            ->where('product.classOnly', true)
+            ->where('product.group', 'samurai')
+            ->where('product.price', null)
+            ->where('product.limit.en', 'Once')
+            ->has('product.contents.0.items', 3)
+            ->where('product.image', fn (string $url): bool => str_ends_with($url, '/storage/store/samurai-gifts.jpg')));
+
+        $account = $this->account();
+        // Fresh is a Healer.
+        $this->actingAs($account, 'player')->post('/store/gifts-for-a-true-samurai', ['character_id' => 2])->assertSessionHasErrors('character_id');
+        $this->assertSame(0, GameAction::count());
+
+        $this->actingAs($account, 'player')->post('/store/gifts-for-a-true-samurai', ['character_id' => 1])->assertRedirect('/account/orders');
+        $this->assertSame('105435:1:0;105498:1:0;105499:1:0', GameAction::sole()->items);
+        $this->assertSame(GameAction::ACTION_SEND_MAIL, GameAction::sole()->action);
+
+        $this->actingAs($account, 'player')->post('/store/gifts-for-a-true-samurai', ['character_id' => 1])->assertSessionHasErrors('character_id');
+        $this->assertSame(1, GameAction::count());
+
+        // Stranger is a Healer too, on an account with no Samurai.
+        $this->actingAs($this->account('other'), 'player')->post('/store/gifts-for-a-true-samurai', ['character_id' => 3])->assertSessionHasErrors('character_id');
+    }
+
+    public function test_the_grid_has_what_a_card_shows(): void
+    {
+        $this->get('/store')->assertInertia(fn ($page) => $page
+            ->where('products.1.categoryName.en', 'Gifts')
+            ->where('products.1.classOnly', true)
+            ->where('products.1.limit.en', 'Once')
+            ->where('products.1.summary.en', fn (string $text): bool => str_starts_with($text, 'Every Samurai') && ! str_contains($text, "\n"))
+            ->missing('products.1.description'));
     }
 
     public function test_one_per_season_until_the_season_changes(): void

@@ -144,6 +144,7 @@ export type StoreCard = {
     slug: string;
     type: 'mail' | 'weekly_gift' | 'hunt_pass';
     category: string;
+    categoryName: Localized;
     /** Shown on the Store's front page. */
     featured: boolean;
     name: Localized;
@@ -158,6 +159,12 @@ export type StoreCard = {
     /** A class group: the Store can filter by it. */
     group: string | null;
     groupName: Localized | null;
+    /** Only characters of its class group can receive it. */
+    classOnly: boolean;
+    /** The description's first paragraph. */
+    summary: Localized;
+    /** Limit per account, e.g. "1 per week"; null: as many as the player likes. */
+    limit: Localized | null;
 };
 
 export type StoreContentItem = { id?: number | null; name: string; count?: number; enchant?: number; chance?: number };
@@ -171,8 +178,6 @@ export type StoreProduct = StoreCard & {
     description: Localized;
     contents: { title: Localized; items: StoreContentItem[]; note?: Localized }[];
     steps: Localized[];
-    /** Limit per account, e.g. "1 per week"; null: as many as the player likes. */
-    limit: Localized | null;
     limitPeriod: 'week' | 'month' | 'season' | 'once' | null;
     maxQuantity: number;
     minLevel: number | null;

@@ -28,6 +28,7 @@ use Illuminate\Support\Facades\Storage;
  * @property string|null $emblem
  * @property string|null $tier
  * @property string|null $class_group
+ * @property bool $class_only
  * @property int|null $price_item
  * @property int|null $price_count
  * @property list<array{item: int|string, count: int|string, enchant?: int|string|null}>|null $items
@@ -85,7 +86,7 @@ class Product extends Model
     /** @var list<string> */
     protected $fillable = [
         'slug', 'store_category_id', 'type', 'name_en', 'name_pt', 'description_en', 'description_pt', 'images', 'art', 'emblem', 'tier',
-        'class_group', 'price_item', 'price_count', 'items', 'bonus', 'limit_period', 'season', 'max_per_order', 'min_level',
+        'class_group', 'class_only', 'price_item', 'price_count', 'items', 'bonus', 'limit_period', 'season', 'max_per_order', 'min_level',
         'mail_subject', 'mail_text', 'is_active', 'is_featured', 'starts_at', 'ends_at', 'sort',
     ];
 
@@ -102,6 +103,7 @@ class Product extends Model
             'price_count' => 'integer',
             'max_per_order' => 'integer',
             'min_level' => 'integer',
+            'class_only' => 'boolean',
             'is_active' => 'boolean',
             'is_featured' => 'boolean',
             'starts_at' => 'datetime',

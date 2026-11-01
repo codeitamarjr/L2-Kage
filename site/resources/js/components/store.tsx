@@ -66,16 +66,43 @@ export function Price({ product, className }: { product: Pick<StoreCard, 'price'
     );
 }
 
+/** One product in the grid: its picture, what it is, its tags and price, and what clicking it leads to. */
 export function ProductCard({ product, owned }: { product: StoreCard; owned: boolean }) {
     const locale = useLocale();
     const t = useT();
+    const free = !product.price;
+    const action = owned
+        ? t('See details', 'Ver detalhes')
+        : !product.open
+          ? t('Closed', 'Fechado')
+          : product.type === 'hunt_pass'
+            ? t('In game', 'No jogo')
+            : free
+              ? t('Get it free', 'Receber grátis')
+              : t('Buy', 'Comprar');
 
     return (
-        <Link href={`/store/${product.slug}`} className="shop-card">
-            {owned ? <span className="shop-card-owned">{product.price ? t('Bought', 'Comprado') : t('Received', 'Recebido')}</span> : null}
-            <ProductArt product={product} />
-            <span className="shop-card-name">{pick(locale, product.name)}</span>
-            <Price product={product} className="shop-card-price" />
+        <Link href={`/store/${product.slug}`} className={`shop-card${product.open ? '' : ' is-closed'}`}>
+            <span className="shop-card-media">
+                <ProductArt product={product} />
+                {owned ? <span className="shop-card-owned">{free ? t('Received', 'Recebido') : t('Bought', 'Comprado')}</span> : null}
+                {free && !owned ? <span className="shop-card-free">{t('Free', 'Grátis')}</span> : null}
+            </span>
+            <span className="shop-card-body">
+                <span className="shop-card-category">{pick(locale, product.categoryName)}</span>
+                <span className="shop-card-name">{pick(locale, product.name)}</span>
+                <span className="shop-card-summary">{pick(locale, product.summary)}</span>
+                {product.limit || (product.classOnly && product.groupName) ? (
+                    <span className="shop-card-tags">
+                        {product.classOnly && product.groupName ? <span>{t(`${pick(locale, product.groupName)} only`, `Só ${pick(locale, product.groupName)}`)}</span> : null}
+                        {product.limit ? <span>{t('Limit', 'Limite')}: {pick(locale, product.limit)}</span> : null}
+                    </span>
+                ) : null}
+                <span className="shop-card-foot">
+                    <Price product={product} className="shop-card-price" />
+                    <span className="shop-card-action">{action}</span>
+                </span>
+            </span>
         </Link>
     );
 }

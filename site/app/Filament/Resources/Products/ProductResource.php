@@ -261,7 +261,13 @@ class ProductResource extends Resource
                         ->label('Class group')
                         ->options(fn (): array => collect(config('l2j.store.class_groups'))->map(fn (array $group): string => $group['name']['en'])->all())
                         ->placeholder('None')
+                        ->required(fn (Get $get): bool => (bool) $get('class_only'))
                         ->native(false),
+                    Toggle::make('class_only')
+                        ->label('Only this class can get it')
+                        ->helperText('Off: anyone can, and its class is only listed first.')
+                        ->live()
+                        ->default(false),
                     Select::make('tier')
                         ->label('Tint of the picture')
                         ->options(['starter' => 'Blue (Starter)', 'advanced' => 'Gold (Advanced)', 'elite' => 'Red (Elite)'])

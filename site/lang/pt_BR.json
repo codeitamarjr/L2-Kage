@@ -204,5 +204,6 @@
     "A gift from the staff": "Um presente da equipe",
     "The :site staff sent you :name, :login.": "A equipe do :site enviou :name para você, :login.",
     "Choose the character that receives it in your orders, and it arrives by in-game mail within seconds.": "Escolha nos seus pedidos o personagem que vai receber, e chega pelo correio do jogo em segundos.",
-    "You get this email because the staff sent something to your game account on :site.": "Você recebeu este e-mail porque a equipe enviou algo para sua conta do jogo em :site."
+    "You get this email because the staff sent something to your game account on :site.": "Você recebeu este e-mail porque a equipe enviou algo para sua conta do jogo em :site.",
+    "Only :class characters can receive this.": "Apenas personagens :class podem receber isto."
 }
