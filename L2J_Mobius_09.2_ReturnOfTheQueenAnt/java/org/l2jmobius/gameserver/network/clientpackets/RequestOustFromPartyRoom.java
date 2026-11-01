@@ -59,7 +59,7 @@ public class RequestOustFromPartyRoom extends ClientPacket
 		}
 		
 		final Party playerParty = player.getParty();
-		final Party memberParty = player.getParty();
+		final Party memberParty = member.getParty();
 		if ((playerParty != null) && (memberParty != null) && (playerParty.getLeaderObjectId() == memberParty.getLeaderObjectId()))
 		{
 			player.sendPacket(SystemMessageId.YOU_CANNOT_DISMISS_A_PARTY_MEMBER_BY_FORCE);
