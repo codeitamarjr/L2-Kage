@@ -3,12 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\NewsPost;
-use App\Services\ClassPackages;
-use App\Services\KagePass;
 use App\Services\L2j\EventFeed;
 use App\Services\L2j\ServerStatus;
 use App\Services\L2j\WorldMap;
 use App\Services\Seo;
+use App\Services\Store;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -18,7 +17,7 @@ use Inertia\Response;
  */
 class PageController extends Controller
 {
-    public function home(EventFeed $events, ServerStatus $status, KagePass $pass, ClassPackages $packages): Response
+    public function home(EventFeed $events, ServerStatus $status, Store $store): Response
     {
         $rates = $status->rates();
         $brand = Seo::brand();
@@ -27,9 +26,7 @@ class PageController extends Controller
             'events' => fn (): ?array => rescue(fn (): array => $events->get()),
             'rates' => $rates,
             // The store section: the weekly gift box, the Kage Pass and the class packages.
-            'pass' => $pass->offer(),
-            'packages' => $packages->offer(),
-            'giftMinLevel' => (int) config('l2j.gift_box.min_level'),
+            'store' => rescue(fn (): array => $store->homeOffer(), ['gift' => null, 'pass' => null, 'packages' => null]),
             // Rescued like the game-database reads: the home page still renders without its news.
             'news' => rescue(fn () => NewsPost::published()->limit(3)->get()->map(fn (NewsPost $post): array => $post->card()), []),
             'banner' => rescue(function (): ?array {

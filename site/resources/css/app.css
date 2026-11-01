@@ -1153,16 +1153,22 @@ img.item-icon { object-fit: cover; }
 }
 
 
-/* Orders tab (player area): the history of everything claimed or bought in the Treasury. */
+/* Orders tab (player area): the history of everything bought in the Store or sent by the staff. */
 .orders { margin-top: 2.5rem; }
 .orders-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .75rem; }
 .orders-head .account-heading { margin: 0; }
 .orders-list { list-style: none; display: grid; gap: .5rem; margin-top: 1rem; }
 .order { border: 1px solid var(--border); background: color-mix(in oklab, var(--card) 70%, transparent); }
-.order.is-package { border-left: 3px solid var(--primary); }
-.order.is-pass { border-left: 3px solid var(--crimson); }
-.order.is-gift { border-left: 3px solid oklch(72% .14 150); }
-.order.is-supplies { border-left: 3px solid var(--muted-foreground); }
+.order { border-left: 3px solid var(--muted-foreground); }
+.order.is-packages { border-left-color: var(--primary); }
+.order.is-passes { border-left-color: var(--crimson); }
+.order.is-gifts { border-left-color: oklch(72% .14 150); }
+.order-note { padding: 0 1rem .5rem; font-style: italic; color: var(--muted-foreground); }
+.order-redeem { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem; padding: .25rem 1rem 1rem; }
+.order-redeem select { min-width: 14rem; max-width: 100%; padding: .45rem .6rem; color: var(--foreground); background: var(--card); border: 1px solid var(--border); }
+.order-redeem .form-error { flex-basis: 100%; }
+.order-redeem-note { padding: .25rem 1rem 1rem; color: var(--muted-foreground); }
+.order-status.is-waiting { color: var(--primary); }
 .order-summary { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .2rem 1rem; padding: .85rem 1rem; cursor: pointer; list-style: none; }
 .order-summary::-webkit-details-marker { display: none; }
 .order-kind { grid-column: 1 / -1; font-family: var(--font-display); font-size: .65rem; letter-spacing: .25em; text-transform: uppercase; color: var(--muted-foreground); }
@@ -1189,7 +1195,7 @@ img.item-icon { object-fit: cover; }
 .premium-notice-text { color: var(--muted-foreground); }
 
 /*
- * The Treasury (/treasury, /treasury/{slug}): a game store's layout in the site's own colours and fonts. Built on the
+ * The Store (/store, /store/{slug}): a game store's layout in the site's own colours and fonts. Built on the
  * site's theme tokens, so the light theme follows by itself.
  */
 .shop {
@@ -1209,6 +1215,7 @@ img.item-icon { object-fit: cover; }
 	background: var(--shop-bg);
 	font-size: 1.05rem;
 }
+.header-gifts { position: absolute; top: -.35rem; left: -.35rem; display: grid; place-items: center; min-width: 1.05rem; height: 1.05rem; padding: 0 .2rem; font-size: .62rem; font-weight: 700; line-height: 1; color: #fff; background: var(--crimson); border-radius: 999px; }
 /* A page without the banner starts below the fixed site header. */
 .shop.is-plain { padding-top: 4.35rem; min-height: 100vh; }
 .shop h1, .shop h2, .shop h3 { letter-spacing: .03em; }
@@ -1252,6 +1259,8 @@ img.item-icon { object-fit: cover; }
 
 .shop-art { position: relative; display: block; width: 100%; max-width: 9.5rem; aspect-ratio: 1; }
 .shop-art img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .35s cubic-bezier(.2, .7, .2, 1); -webkit-mask-image: radial-gradient(circle closest-side, #000 48%, transparent 98%); mask-image: radial-gradient(circle closest-side, #000 48%, transparent 98%); }
+.shop-art.has-image { max-width: 100%; overflow: hidden; }
+.shop-art.has-image img { -webkit-mask-image: none; mask-image: none; }
 .shop-art.is-gift img { filter: brightness(1.25) saturate(1.1); }
 .shop-art.is-hunt img { filter: hue-rotate(165deg) saturate(1.15); }
 .shop-art.is-package img { filter: brightness(1.2) saturate(1.1); }
@@ -1282,8 +1291,13 @@ img.item-icon { object-fit: cover; }
 .shop-product-tabs button { padding: .6rem 0; font-family: var(--font-display); font-size: .72rem; font-weight: 500; letter-spacing: .15em; text-transform: uppercase; white-space: nowrap; color: var(--shop-muted); background: none; border: 0; border-bottom: 2px solid transparent; cursor: pointer; }
 .shop-product-tabs button:hover { color: var(--shop-text); }
 .shop-product-tabs button[aria-selected="true"] { color: var(--primary); border-bottom-color: var(--primary); }
-.shop-product-art { display: flex; justify-content: center; padding: 2.25rem 0 1rem; }
+.shop-product-art { display: flex; flex-direction: column; align-items: center; gap: .75rem; padding: 2.25rem 0 1rem; }
 .shop-product-art .shop-art { max-width: 20rem; }
+.shop-product-art .shop-art.has-image { max-width: 26rem; }
+.shop-thumbs { display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem; }
+.shop-thumbs button { width: 4.5rem; height: 4.5rem; padding: 0; overflow: hidden; background: none; border: 1px solid var(--shop-line); cursor: pointer; }
+.shop-thumbs button:hover, .shop-thumbs button[aria-pressed="true"] { border-color: var(--primary); }
+.shop-thumbs img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .shop-product-art .shop-art-emblem { width: 24%; }
 .shop-section { padding-top: 1.75rem; display: grid; gap: .65rem; line-height: 1.6; color: var(--shop-muted); }
 .shop-section h2 { font-size: 1rem; font-weight: 600; color: var(--primary); }

@@ -37,6 +37,26 @@ class ItemDatabase
     }
 
     /**
+     * Whether an item stacks in a bag and a mail, or null when the database doesn't know the item.
+     */
+    public function isStackable(int $id): ?bool
+    {
+        $details = DB::table('itemdb_items')->where('id', $id)->value('details');
+
+        return $details === null ? null : (bool) (json_decode($details, true)['flags']['stackable'] ?? false);
+    }
+
+    /**
+     * What an NPC shop lists an item for, in Adena, or null when the database doesn't know the item.
+     */
+    public function listPrice(int $id): ?int
+    {
+        $price = DB::table('itemdb_items')->where('id', $id)->value('price');
+
+        return $price === null ? null : (int) $price;
+    }
+
+    /**
      * @return LengthAwarePaginator<int, array<string, mixed>>
      */
     public function search(string $term, ?string $category, ?string $grade): LengthAwarePaginator

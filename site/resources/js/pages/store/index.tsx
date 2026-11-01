@@ -3,11 +3,13 @@ import { useEffect, useMemo, useState } from 'react';
 import PageHero from '@/components/page-hero';
 import { ProductCard, ShopBar } from '@/components/store';
 import { languageTag, pick, useLocale, useT, type Localized } from '@/i18n';
-import type { StoreCard } from '@/types';
+import type { StoreCard, StoreCategory } from '@/types';
 
 type Props = {
     products: StoreCard[];
-    filter: { category: 'main' | 'lcoin' | 'gifts' | 'passes' | 'packages' | 'supplies'; group: string | null; q: string };
+    /** The categories with something to show, after the banner's own Main and L-Coin. */
+    categories: StoreCategory[];
+    filter: { category: string; group: string | null; q: string };
     /** Signed in: the products the account already holds. */
     owned: string[];
     /** Signed in: the class of the highest level character, whose packages the front page features. */
@@ -75,11 +77,11 @@ function LCoinInfo({ products, lcoin }: Pick<Props, 'products' | 'lcoin'>) {
 }
 
 /**
- * The Treasury (/treasury), under the site's banner and laid out like an official game store: category buttons in the banner above a grid of products, each
- * opening its own page with the purchase panel (treasury/show). Filters live in the address so they can be shared and
+ * The Store (/store), under the site's banner and laid out like an official game store: category buttons in the banner above a grid of products, each
+ * opening its own page with the purchase panel (store/show). Filters live in the address so they can be shared and
  * survive the back button; the quick search filters what is already on the page.
  */
-export default function TreasuryIndex({ products, filter, owned, suggested, lcoin }: Props) {
+export default function StoreIndex({ products, categories, filter, owned, suggested, lcoin }: Props) {
     const locale = useLocale();
     const t = useT();
     const [query, setQuery] = useState(filter.q);
@@ -95,22 +97,19 @@ export default function TreasuryIndex({ products, filter, owned, suggested, lcoi
     const term = query.trim().toLowerCase();
     const featured = suggested ?? DEFAULT_ARCHETYPE;
 
-    const categories: { key: Props['filter']['category']; label: string; href: string }[] = [
-        { key: 'main', label: t('Main', 'Principal'), href: '/treasury#store' },
-        { key: 'lcoin', label: 'L-Coin', href: '/treasury?category=lcoin#store' },
-        { key: 'gifts', label: t('Gifts', 'Presentes'), href: '/treasury?category=gifts#store' },
-        { key: 'passes', label: t('Passes', 'Passes'), href: '/treasury?category=passes#store' },
-        { key: 'packages', label: t('Class Packages', 'Pacotes de Classe'), href: '/treasury?category=packages#store' },
-        { key: 'supplies', label: t('Supplies', 'Suprimentos'), href: '/treasury?category=supplies#store' },
+    const buttons: { key: string; label: string; href: string }[] = [
+        { key: 'main', label: t('Main', 'Principal'), href: '/store#store' },
+        { key: 'lcoin', label: 'L-Coin', href: '/store?category=lcoin#store' },
+        ...categories.map((category) => ({ key: category.key, label: pick(locale, category.name), href: `/store?category=${category.key}#store` })),
     ];
 
-    // One entry per archetype, in the catalogue's order.
+    // The current category's class groups, in the catalogue's order.
     const groups = useMemo(() => {
         const seen = new Map<string, Localized>();
-        products.forEach((p) => p.group && p.groupName && seen.set(p.group, p.groupName));
+        products.filter((p) => p.category === filter.category).forEach((p) => p.group && p.groupName && seen.set(p.group, p.groupName));
 
         return [...seen];
-    }, [products]);
+    }, [products, filter.category]);
 
     const visible = products.filter((p) => {
         if (term) {
@@ -118,7 +117,7 @@ export default function TreasuryIndex({ products, filter, owned, suggested, lcoi
         }
 
         if (filter.category === 'main') {
-            return p.kind !== 'package' || p.group === featured;
+            return p.featured || p.group === featured;
         }
 
         return p.category === filter.category && (!filter.group || p.group === filter.group);
@@ -129,16 +128,16 @@ export default function TreasuryIndex({ products, filter, owned, suggested, lcoi
             <PageHero
                 video={{ src: '/assets/video/treasury.mp4', poster: '/assets/packages-chest.webp' }}
                 kicker={t('Gifts, passes & packages', 'Presentes, passes e pacotes')}
-                title={t('The Treasury', 'O Tesouro')}
+                title={t('The Store', 'A Loja')}
                 tagline={t(
                     'A gift from Einhasad every week, the pacts of the season and arms forged for every calling of Aden.',
                     'Um presente de Einhasad toda semana, os pactos da temporada e armas forjadas para cada vocação de Aden.',
                 )}
             >
                 <nav className="store-nav" aria-label={t('Categories', 'Categorias')}>
-                    {categories.map((category) => (
-                        <Link key={category.key} href={category.href} preserveScroll aria-current={!term && filter.category === category.key ? 'page' : undefined} onClick={() => setQuery('')}>
-                            {category.label}
+                    {buttons.map((button) => (
+                        <Link key={button.key} href={button.href} preserveScroll aria-current={!term && filter.category === button.key ? 'page' : undefined} onClick={() => setQuery('')}>
+                            {button.label}
                         </Link>
                     ))}
                 </nav>
@@ -147,13 +146,13 @@ export default function TreasuryIndex({ products, filter, owned, suggested, lcoi
             <div className="shop-layout">
 
                 <div className="shop-main">
-                    {filter.category === 'packages' && !term ? (
-                        <nav className="shop-sub" aria-label={t('Archetype', 'Arquétipo')}>
-                            <Link href="/treasury?category=packages#store" preserveScroll aria-current={!filter.group ? 'page' : undefined}>
+                    {groups.length > 0 && !term ? (
+                        <nav className="shop-sub" aria-label={t('Class', 'Classe')}>
+                            <Link href={`/store?category=${filter.category}#store`} preserveScroll aria-current={!filter.group ? 'page' : undefined}>
                                 {t('All', 'Todos')}
                             </Link>
                             {groups.map(([key, name]) => (
-                                <Link key={key} href={`/treasury?category=packages&group=${key}#store`} preserveScroll aria-current={filter.group === key ? 'page' : undefined}>
+                                <Link key={key} href={`/store?category=${filter.category}&group=${key}#store`} preserveScroll aria-current={filter.group === key ? 'page' : undefined}>
                                     {pick(locale, name)}
                                 </Link>
                             ))}
@@ -168,7 +167,7 @@ export default function TreasuryIndex({ products, filter, owned, suggested, lcoi
                             ))}
                         </div>
                     ) : (
-                        <p className="shop-empty">{t('Nothing in the Treasury matches your search.', 'Nada no Tesouro corresponde à sua busca.')}</p>
+                        <p className="shop-empty">{t('Nothing in the Store matches your search.', 'Nada na Loja corresponde à sua busca.')}</p>
                     )}
                 </div>
             </div>

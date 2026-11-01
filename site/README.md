@@ -16,9 +16,9 @@ It started as a copy of the Bartz (High Five) website and was ported to the L2J 
 | Items `/items`, `/items/{id}` | `resources/js/pages/items/` | 25,129 Essence items: stats, drops and spoils at the server's rates, merchants, recipes |
 | About `/about` | `resources/js/pages/about.tsx` | status, events, rates, statistics, rankings, castles, how to connect (clean client link) |
 | Account `/account` | `resources/js/pages/account.tsx` | sign in with the game account: characters, items, order history, security |
-| Treasury `/treasury`, `/treasury/{slug}` | `resources/js/pages/treasury/` | the store: a grid by category, then a page per product with its purchase panel |
+| Store `/store`, `/store/{slug}` | `resources/js/pages/store/` | a grid by category, then a page per product with its images and purchase panel |
 | Register / password | `register.tsx`, `forgot-password.tsx`, `reset-password.tsx` | open only when email is configured |
-| Admin `/admin` | `app/Filament/` | Item Deliveries: send an item to a character in game |
+| Admin `/admin` | `app/Filament/` | Store: products, categories, orders, gift box rotation. Item Deliveries: send an item to a character in game |
 
 ## Where the data comes from
 
@@ -31,8 +31,8 @@ It started as a copy of the Bartz (High Five) website and was ported to the L2J 
 | Characters and items | `app/Services/L2j/CharacterSheet.php` | `characters`, `items`, `clan_data` |
 | Item, class, boss names | `app/Services/L2j/GameData.php` | `resources/data/gamedata.json` (generated, see below) |
 | Item database | `app/Services/L2j/ItemDatabase.php` | `resources/data/itemdb.ndjson.gz`, imported on every start (`php artisan itemdb:import`) |
-| Treasury catalogue | `app/Services/Treasury.php` | describes every product the same way and hands a purchase to the service that owns it |
-| Weekly gift box, Kage Pass, class packages, supply kits | `app/Services/GiftBox.php`, `KagePass.php`, `ClassPackages.php`, `SupplyKits.php`, `config/l2j.php` | queued in `l2web.game_actions`, delivered by the WebBridge script in the game server. A price can be any item the game knows |
+| Store | `app/Services/Store.php`, `Orders.php`, `StoreContents.php`, `database/seeders/StoreSeeder.php` | products and categories from the database, buying, and sending to accounts. See `../docs/STORE.md` |
+| Deliveries | `l2web.game_actions` | everything the Store sells is queued here and delivered by the WebBridge script in the game server. A price can be any item the game knows |
 | Game accounts | `app/Services/GameAccounts.php` | `accounts` (same database as the game); passwords are base64(sha1), like L2J |
 
 The website's own database is `l2web` (admins, sessions, cache, the item database, the game action queue).

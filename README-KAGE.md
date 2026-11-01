@@ -289,17 +289,15 @@ Restart the game server after a change. Keep the rewards in the datapack's
 `data/HuntPass.xml` as they are: the client draws the pass window from its own
 files, so different server rewards would not match what players see.
 
-**Kage Pass (website).** Once per game account per season, a player claims the
-season's rewards in the player area, paying with L-Coin from one of their
-characters' bags. The season, price, last day and rewards (at most 8 stackable
-items, one in-game mail) are `pass` in `site/config/l2j.php`; a new `season`
-key opens a new season for every account. The website queues the claim and the
-game server's WebBridge script takes the L-Coin and mails the rewards in one
-step: from the inventory when the character is online, from its saved bag when
-it is offline. If the character doesn't have enough, nothing is taken and the
-player can claim again. The landing page shows a banner for both passes while
-the Kage Pass is open, and the Passes page (`/passes`) explains both, with
-every number read from the server's config.
+**The Store (website).** `/store` sells the Kage Pass, class packages and supply
+kits and gives away the weekly gift box. Everything in it is edited in the admin
+panel under Store; see [docs/STORE.md](docs/STORE.md). A player pays from one of
+their characters' bags. The website queues the order and the game server's
+WebBridge script takes the price and mails the items in one step: from the
+inventory when the character is online, from its saved bag when it is offline.
+If the character doesn't have enough, nothing is taken and the player can buy
+again. The Hunt Pass page there explains the in-game pass, with every number read
+from the server's config.
 
 **L-Coin Store (in game).** `overrides/game/data/LimitShop.xml` sets what is
 sold, prices and limits, including monthly pass kits. The client's own product

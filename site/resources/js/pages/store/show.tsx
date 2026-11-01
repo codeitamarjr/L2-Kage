@@ -125,9 +125,17 @@ function PurchasePanel({ product, buyer }: Props) {
         </p>
     ) : null;
 
+    const who = buyer?.owned?.characterName ?? '';
+    const ownedText = {
+        week: price ? t(`Bought for ${who} this week.`, `Comprado para ${who} nesta semana.`) : t(`Received by ${who} this week.`, `Recebido por ${who} nesta semana.`),
+        month: price ? t(`Bought for ${who} this month.`, `Comprado para ${who} neste mês.`) : t(`Received by ${who} this month.`, `Recebido por ${who} neste mês.`),
+        season: price ? t(`Bought for ${who} this season.`, `Comprado para ${who} nesta temporada.`) : t(`Received by ${who} this season.`, `Recebido por ${who} nesta temporada.`),
+        once: price ? t(`Bought for ${who}.`, `Comprado para ${who}.`) : t(`Received by ${who}.`, `Recebido por ${who}.`),
+    }[product.limitPeriod ?? 'once'];
+
     let body;
 
-    if (product.kind === 'hunt') {
+    if (product.type === 'hunt_pass') {
         body = (
             <p className="shop-panel-note">
                 {product.open
@@ -139,11 +147,7 @@ function PurchasePanel({ product, buyer }: Props) {
         body = (
             <>
                 {limit}
-                <p className="shop-panel-owned">
-                    {product.kind === 'gift'
-                        ? t(`Opened for ${buyer.owned.characterName} this week.`, `Aberta para ${buyer.owned.characterName} nesta semana.`)
-                        : t(`Bought for ${buyer.owned.characterName} this season.`, `Comprado para ${buyer.owned.characterName} nesta temporada.`)}
-                </p>
+                <p className="shop-panel-owned">{ownedText}</p>
                 {buyer.owned.nextAt ? <NextIn at={buyer.owned.nextAt} /> : null}
                 <Link href="/account/orders" className="shop-buy is-outline">
                     {t('See your orders', 'Ver seus pedidos')}
@@ -154,7 +158,7 @@ function PurchasePanel({ product, buyer }: Props) {
         body = <p className="shop-panel-note">{t('Closed for now. Check back soon.', 'Fechado por enquanto. Volte em breve.')}</p>;
     } else {
         body = (
-            <Form action={`/treasury/${product.slug}`} method="post" className="shop-form" options={{ preserveScroll: true }}>
+            <Form action={`/store/${product.slug}`} method="post" className="shop-form" options={{ preserveScroll: true }}>
                 {({ errors, processing }) => (
                     <>
                         <label className="shop-field">
@@ -190,9 +194,9 @@ function PurchasePanel({ product, buyer }: Props) {
                         ) : null}
                         {limit}
 
-                        {errors.character_id || errors.package || errors.quantity ? (
+                        {errors.character_id || errors.quantity ? (
                             <p className="form-error" role="alert">
-                                {errors.character_id ?? errors.package ?? errors.quantity}
+                                {errors.character_id ?? errors.quantity}
                             </p>
                         ) : null}
 
@@ -203,7 +207,7 @@ function PurchasePanel({ product, buyer }: Props) {
                         {!buyer ? (
                             <p className="shop-panel-note">
                                 {price ? t('To buy this you need to', 'Para comprar, você precisa') : t('To get this you need to', 'Para receber, você precisa')}{' '}
-                                <Link href={`/account?return=/treasury/${product.slug}`}>{t('log in', 'entrar')}</Link>
+                                <Link href={`/account?return=/store/${product.slug}`}>{t('log in', 'entrar')}</Link>
                             </p>
                         ) : characters.length === 0 ? (
                             <p className="shop-panel-note">{t('Create a character in the game first.', 'Crie um personagem no jogo primeiro.')}</p>
@@ -244,13 +248,36 @@ function NextIn({ at }: { at: string }) {
 
     return (
         <p className="shop-panel-note">
-            {t('Next box in', 'Próxima caixa em')} {span(Date.parse(at) - now)}
+            {t('Available again in', 'Disponível novamente em')} {span(Date.parse(at) - now)}
         </p>
     );
 }
 
+/** The product's pictures: the cover, with its other images as thumbnails to switch to. */
+function Gallery({ product }: { product: StoreProduct }) {
+    const locale = useLocale();
+    const t = useT();
+    const [current, setCurrent] = useState(0);
+    const shown = product.images[current];
+
+    return (
+        <div className="shop-product-art">
+            <ProductArt product={product} image={shown} />
+            {product.images.length > 1 ? (
+                <div className="shop-thumbs" role="group" aria-label={t('Images', 'Imagens')}>
+                    {product.images.map((image, i) => (
+                        <button key={image} type="button" aria-pressed={i === current} aria-label={`${pick(locale, product.name)} ${i + 1}`} onClick={() => setCurrent(i)}>
+                            <img src={image} alt="" width={72} height={72} loading="lazy" />
+                        </button>
+                    ))}
+                </div>
+            ) : null}
+        </div>
+    );
+}
+
 /** A product's own page: what it is, what's inside and what to do after buying it, beside the purchase panel. */
-export default function TreasuryShow({ product, buyer }: Props) {
+export default function StoreShow({ product, buyer }: Props) {
     const locale = useLocale();
     const t = useT();
     const [tab, setTab] = useState<Tab>('information');
@@ -266,7 +293,7 @@ export default function TreasuryShow({ product, buyer }: Props) {
             <div className="shop-product">
                 <div className="shop-product-main">
                     <header className="shop-product-head">
-                        <Link href={`/treasury?category=${product.category}#store`} preserveScroll className="shop-back">
+                        <Link href={`/store?category=${product.category}#store`} preserveScroll className="shop-back">
                             <svg viewBox="0 0 24 24" aria-hidden="true">
                                 <path d="M20 12H5m6-6l-6 6 6 6" />
                             </svg>
@@ -286,14 +313,14 @@ export default function TreasuryShow({ product, buyer }: Props) {
                     <div id="shop-tab-panel" role="tabpanel" aria-labelledby={`tab-${tab}`}>
                         {tab === 'information' ? (
                             <>
-                                <div className="shop-product-art">
-                                    <ProductArt product={product} />
-                                </div>
+                                <Gallery product={product} />
                                 <section className="shop-section">
                                     <h2>{t('Description', 'Descrição')}</h2>
-                                    {product.description.map((paragraph) => (
-                                        <p key={paragraph.en}>{pick(locale, paragraph)}</p>
-                                    ))}
+                                    {pick(locale, product.description)
+                                        .split(/\n\s*\n/)
+                                        .map((paragraph) => (
+                                            <p key={paragraph}>{paragraph}</p>
+                                        ))}
                                 </section>
                             </>
                         ) : null}
@@ -306,7 +333,7 @@ export default function TreasuryShow({ product, buyer }: Props) {
                                         <li key={step.en}>{pick(locale, step)}</li>
                                     ))}
                                 </ol>
-                                {product.kind !== 'hunt' ? (
+                                {product.type !== 'hunt_pass' ? (
                                     <p>
                                         {t('Every purchase shows up in', 'Toda compra aparece em')}{' '}
                                         <Link href="/account/orders">{t('your orders', 'seus pedidos')}</Link>

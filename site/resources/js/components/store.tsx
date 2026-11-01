@@ -13,7 +13,7 @@ const EMBLEMS: Record<string, keyof typeof GLYPHS> = {
     archer: 'bow', brawler: 'fist', kamael: 'sword', wizard: 'sigil', healer: 'potion', traveler: 'scroll', hunter: 'potion',
 };
 
-const ART: Record<StoreCard['kind'], string> = {
+const ART: Record<StoreCard['art'], string> = {
     gift: '/assets/store/gift-chest.webp',
     pass: '/assets/store/pass-ticket.webp',
     hunt: '/assets/store/pass-ticket.webp',
@@ -21,13 +21,24 @@ const ART: Record<StoreCard['kind'], string> = {
     supplies: '/assets/store/supply-case.webp',
 };
 
-/** A product's picture: its art faded into the card, tinted by tier, with an emblem for its class or kit. */
-export function ProductArt({ product }: { product: StoreCard }) {
-    const emblem = product.kind === 'package' ? product.group : product.kind === 'supplies' ? product.key : null;
+/** A product's picture: its uploaded image, or else its drawn art faded into the card, tinted by tier, with an emblem. */
+export function ProductArt({ product, image }: { product: StoreCard; image?: string }) {
+    const locale = useLocale();
+    const src = image ?? product.image;
+
+    if (src) {
+        return (
+            <span className="shop-art has-image">
+                <img src={src} alt={pick(locale, product.name)} width={520} height={520} loading="lazy" />
+            </span>
+        );
+    }
+
+    const { emblem } = product;
 
     return (
-        <span className={`shop-art is-${product.kind}${product.tier ? ` tier-${product.tier}` : ''}`}>
-            <img src={ART[product.kind]} alt="" width={520} height={520} loading="lazy" />
+        <span className={`shop-art is-${product.art}${product.tier ? ` tier-${product.tier}` : ''}`}>
+            <img src={ART[product.art]} alt="" width={520} height={520} loading="lazy" />
             {emblem ? (
                 <span className="shop-art-emblem" aria-hidden="true">
                     <svg viewBox="0 0 24 24">{emblem === 'gunner' ? PISTOL : GLYPHS[EMBLEMS[emblem] ?? 'other']}</svg>
@@ -60,8 +71,8 @@ export function ProductCard({ product, owned }: { product: StoreCard; owned: boo
     const t = useT();
 
     return (
-        <Link href={`/treasury/${product.slug}`} className="shop-card">
-            {owned ? <span className="shop-card-owned">{product.kind === 'gift' ? t('Opened', 'Aberta') : t('Bought', 'Comprado')}</span> : null}
+        <Link href={`/store/${product.slug}`} className="shop-card">
+            {owned ? <span className="shop-card-owned">{product.price ? t('Bought', 'Comprado') : t('Received', 'Recebido')}</span> : null}
             <ProductArt product={product} />
             <span className="shop-card-name">{pick(locale, product.name)}</span>
             <Price product={product} className="shop-card-price" />
@@ -83,16 +94,16 @@ export function ShopBar({ query, onQuery }: { query?: string; onQuery?: (query: 
         e.preventDefault();
 
         if (!onQuery && typed.trim()) {
-            router.visit(`/treasury?q=${encodeURIComponent(typed.trim())}`);
+            router.visit(`/store?q=${encodeURIComponent(typed.trim())}`);
         }
     };
 
     return (
         <div id="store" className="shop-bar">
             <div className="shop-bar-inner">
-                <nav className="shop-tabs" aria-label={t('Treasury', 'Tesouro')}>
-                    <Link href="/treasury" className="shop-tab" aria-current={component.startsWith('treasury/') ? 'page' : undefined}>
-                        {t('Treasury', 'Tesouro')}
+                <nav className="shop-tabs" aria-label={t('Store', 'Loja')}>
+                    <Link href="/store" className="shop-tab" aria-current={component.startsWith('store/') ? 'page' : undefined}>
+                        {t('Store', 'Loja')}
                     </Link>
                 </nav>
                 <form className="shop-search" role="search" onSubmit={submit}>
@@ -100,7 +111,7 @@ export function ShopBar({ query, onQuery }: { query?: string; onQuery?: (query: 
                         type="search"
                         value={value}
                         placeholder={t('Quick search', 'Busca rápida')}
-                        aria-label={t('Search the Treasury', 'Buscar no Tesouro')}
+                        aria-label={t('Search the Store', 'Buscar na Loja')}
                         maxLength={60}
                         onChange={(e) => (onQuery ? onQuery(e.target.value) : setTyped(e.target.value))}
                     />

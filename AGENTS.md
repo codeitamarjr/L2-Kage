@@ -14,7 +14,7 @@ Last updated: 31 Oct 2026. Check anything below against the code before relying 
 | `overrides/game/` | Files copied over the game server each time it starts |
 | `site/` | Laravel 13, Inertia, React 19, Filament 5 |
 | `LISTING-KIT.md` | Text and site list for server toplists |
-| `docs/` | Guides for recurring work: writing news, the L-Coin Store |
+| `docs/` | Guides for recurring work: writing news, the website Store, the L-Coin Store |
 | `tools/lcoin-store/` | Builds and checks the client's L-Coin Store list |
 
 Production is the Raspberry Pi. The Mac runs a second copy of the stack. Website: https://l2-kage.itjunior.dev
@@ -73,6 +73,12 @@ Upstream's `SquashEvent`, reactivated through `overrides/game/data/scripts/event
 - **Changing it: read [docs/LCOIN-STORE.md](docs/LCOIN-STORE.md) first.** It has the steps, field meanings, the catalogue and the mistakes to avoid.
 - `overrides/game/data/LimitShop.xml` decides what sells, prices and limits. The client's `LCoinShopProduct_ClassicAden-<lang>.dat` decides card names, tabs, ribbons and limit labels. `tools/lcoin-store/` checks items and can build the second from the first plus `cards.json`.
 - Status: 8 products added on the Pi on 31 Oct 2026. The client rejects rewritten `.dat` files as corrupt (plain, `v211` and `v111` tested through login), so originals are back and no client has new cards. Don't retry this without patching, which this project doesn't do. Products 860-864 and others new to the client show no name and "Unlimited", but still sell with their real limits. Products the client already has cards for display correctly in game, confirmed by the owner's screenshot. Buying in game is not confirmed.
+
+**Store (website)**
+- **Changing it: read [docs/STORE.md](docs/STORE.md) first.** It was the Treasury until 1 Nov 2026.
+- Categories, products and orders are in the database (`store_categories`, `products`, `orders`), edited in the admin panel under Store. `database/seeders/StoreSeeder.php` holds the 44 launch products, and a migration runs it, so a deploy fills the Store and copies past claims into `orders`.
+- Pages: `/store` and `/store/{slug}` (`StoreController`, `app/Services/Store.php`, `resources/js/pages/store/`). `/treasury` still shows the page rather than redirecting, because `/store` used to redirect permanently to it and browsers may remember that.
+- Admins can send a product to accounts. It waits in the Orders tab until the player chooses a character.
 
 **Toplists**
 

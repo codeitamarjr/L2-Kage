@@ -5,13 +5,14 @@ import { Divider, Embers, HeroVideo } from '@/components/decor';
 import { OrdersList } from '@/components/orders';
 import { ItemIcon } from '@/components/item-icon';
 import { languageTag, raceName, useLocale, useT, type Locale } from '@/i18n';
-import type { CharacterDetail, CharacterItem, CharacterSummary, Order, SharedProps } from '@/types';
+import type { CharacterDetail, CharacterItem, CharacterSummary, Order, OrderRecipient, SharedProps } from '@/types';
 
 type Props = {
     account: { login: string; gm: boolean; created: string | null; email: string | null } | null;
     characters?: CharacterSummary[];
     character?: CharacterDetail | null;
     orders?: Order[];
+    recipients?: OrderRecipient[];
     tab: 'characters' | 'orders' | 'security';
 };
 
@@ -415,7 +416,7 @@ function PremiumNotice({ premium }: { premium: { until: string; bonuses: string 
     );
 }
 
-export default function Account({ account, characters = [], character, orders, tab }: Props) {
+export default function Account({ account, characters = [], character, orders, recipients = [], tab }: Props) {
     const { emailReady, player } = usePage<SharedProps>().props;
     const t = useT();
     locale = useLocale();
@@ -439,7 +440,7 @@ export default function Account({ account, characters = [], character, orders, t
                             : tab === 'security'
                               ? t('Keep your account safe: recovery email and password.', 'Mantenha sua conta segura: e-mail de recuperação e senha.')
                               : tab === 'orders'
-                                ? t('Everything you claimed or bought in the Treasury.', 'Tudo o que você resgatou ou comprou no Tesouro.')
+                                ? t('Everything you bought in the Store or received from the staff.', 'Tudo o que você comprou na Loja ou recebeu da equipe.')
                                 : t('Your heroes of Aden.', 'Seus heróis de Aden.')}
                     </p>
                 </div>
@@ -494,7 +495,7 @@ export default function Account({ account, characters = [], character, orders, t
 
                         {tab === 'security' ? <SecurityTab account={account} /> : null}
 
-                        {tab === 'orders' && orders ? <OrdersList orders={orders} /> : null}
+                        {tab === 'orders' && orders ? <OrdersList orders={orders} recipients={recipients} /> : null}
 
                         {tab !== 'characters' ? null : (
                             <>

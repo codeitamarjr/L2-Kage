@@ -6,6 +6,7 @@ use App\Models\Game\Account;
 use App\Services\L2j\CharacterSheet;
 use App\Services\Orders;
 use App\Services\Seo;
+use App\Services\Store;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
@@ -13,20 +14,20 @@ use Inertia\Response;
 
 /**
  * The player area: sign-in form for guests; for signed-in players three tabs, Characters (characters, status and
- * items), Orders (/account/orders: the history of everything claimed or bought in the Treasury) and Security (/account/security: account details, recovery email, password).
+ * items), Orders (/account/orders: the history of everything bought in the Store or sent by an admin) and Security (/account/security: account details, recovery email, password).
  */
 class AccountController extends Controller
 {
-    public function show(Request $request, CharacterSheet $sheet, Orders $orders, string $tab = 'characters'): Response
+    public function show(Request $request, CharacterSheet $sheet, Orders $orders, Store $store, string $tab = 'characters'): Response
     {
         /** @var Account|null $account */
         $account = Auth::guard('player')->user();
 
         if ($account === null) {
-            // "Log in" on a Treasury product comes back to that product after signing in.
+            // "Log in" on a Store product comes back to that product after signing in.
             $return = $request->string('return')->toString();
 
-            if (str_starts_with($return, '/treasury/')) {
+            if (str_starts_with($return, '/store/')) {
                 redirect()->setIntendedUrl(url($return));
             }
 
@@ -50,6 +51,8 @@ class AccountController extends Controller
                 'tab' => 'orders',
                 'seo' => Seo::private(__('Orders')),
                 'orders' => fn (): array => $orders->history($account),
+                // Who can receive what an admin sent.
+                'recipients' => fn (): array => $store->recipients($account),
             ]);
         }
 

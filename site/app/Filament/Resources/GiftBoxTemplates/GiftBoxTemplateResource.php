@@ -6,7 +6,7 @@ use App\Filament\Resources\GiftBoxTemplates\Pages\CreateGiftBoxTemplate;
 use App\Filament\Resources\GiftBoxTemplates\Pages\EditGiftBoxTemplate;
 use App\Filament\Resources\GiftBoxTemplates\Pages\ListGiftBoxTemplates;
 use App\Models\GiftBoxTemplate;
-use App\Rules\GiftBoxItem;
+use App\Rules\StoreItem;
 use BackedEnum;
 use Filament\Actions\EditAction;
 use Filament\Forms\Components\DateTimePicker;
@@ -20,6 +20,7 @@ use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use UnitEnum;
 
 class GiftBoxTemplateResource extends Resource
 {
@@ -27,7 +28,11 @@ class GiftBoxTemplateResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedGift;
 
-    protected static ?string $navigationLabel = 'Gift Boxes';
+    protected static string|UnitEnum|null $navigationGroup = 'Store';
+
+    protected static ?int $navigationSort = 4;
+
+    protected static ?string $navigationLabel = 'Gift Box Rotation';
 
     protected static ?string $modelLabel = 'gift box';
 
@@ -70,7 +75,7 @@ class GiftBoxTemplateResource extends Resource
                             TextInput::make('item')
                                 ->label('Item ID or grade key')
                                 ->required()
-                                ->rule(new GiftBoxItem)
+                                ->rule(new StoreItem)
                                 ->helperText('Example: 57, 1538, or enchant_weapon'),
                             TextInput::make('count')
                                 ->label('Count')
@@ -96,7 +101,7 @@ class GiftBoxTemplateResource extends Resource
                             TextInput::make('item')
                                 ->label('Item ID or grade key')
                                 ->required()
-                                ->rule(new GiftBoxItem)
+                                ->rule(new StoreItem)
                                 ->helperText('Example: 57, 3031, or enchant_weapon'),
                             TextInput::make('count')
                                 ->label('Count')

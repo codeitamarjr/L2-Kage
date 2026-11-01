@@ -129,7 +129,6 @@ services:
       L2J_CONFIG_DIR: /l2j/config
       L2J_CONFIG_DEFAULTS_DIR: /l2j/config-defaults
       L2J_GEODATA_DIR: /l2j/geodata
-      GIFT_BOX_ENABLED: ${GIFT_BOX_ENABLED:-true}
       # Same switch as the login server's, so the site tells players whether logging in creates an account.
       AUTO_CREATE_ACCOUNTS: ${AUTO_CREATE_ACCOUNTS:-True}
       # Email for registration and password resets. With MAIL_MAILER=log (no email service yet) registration and

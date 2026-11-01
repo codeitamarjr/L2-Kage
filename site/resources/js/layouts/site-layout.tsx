@@ -14,7 +14,7 @@ const NAV: NavItem[] = [
     { label: { en: 'Map', pt: 'Mapa' }, href: '/map', page: 'map' },
     { label: { en: 'Items', pt: 'Itens' }, href: '/items', page: 'items' },
     { label: { en: 'Lore', pt: 'História' }, href: '/lore', page: 'lore' },
-    { label: { en: 'Treasury', pt: 'Tesouro' }, href: '/treasury', page: 'treasury' },
+    { label: { en: 'Store', pt: 'Loja' }, href: '/store', page: 'store' },
     { label: { en: 'Features', pt: 'Recursos' }, href: '/#features' },
     { label: { en: 'About', pt: 'Sobre' }, href: '/about', page: 'about' },
 ];
@@ -154,6 +154,11 @@ export default function SiteLayout({ children }: { children: ReactNode }) {
                             title={player.premium ? `${player.login} · Premium` : player.login}
                         >
                             {player.login.charAt(0).toUpperCase()}
+                            {player.gifts > 0 ? (
+                                <span className="header-gifts" aria-label={t(`${player.gifts} waiting in your orders`, `${player.gifts} aguardando nos seus pedidos`)}>
+                                    {player.gifts}
+                                </span>
+                            ) : null}
                             {player.premium ? (
                                 // Premium: a small star on the ring.
                                 <span className="header-avatar-star" aria-hidden="true">

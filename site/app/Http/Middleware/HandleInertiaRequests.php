@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use App\Models\Game\Account;
+use App\Models\Order;
 use App\Rules\Turnstile;
 use App\Services\GameAccounts;
 use App\Services\Premium;
@@ -69,6 +70,8 @@ class HandleInertiaRequests extends Middleware
                     'login' => $account->login,
                     'gm' => $account->isGameMaster(),
                     'premium' => $until ? ['until' => $until->toIso8601String(), 'bonuses' => $premium->bonuses()] : null,
+                    // What an admin sent that still waits for a character (the header's badge).
+                    'gifts' => Order::query()->where('account', $account->login)->whereNull('character_id')->count(),
                 ];
             },
         ];

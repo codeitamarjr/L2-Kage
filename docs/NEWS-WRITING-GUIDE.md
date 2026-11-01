@@ -41,7 +41,7 @@ Every fact must be true of this server today. Check it in the files; never guess
 | Rates | `overrides/game/config/Rates.ini`, then the upstream file in `dist/game/config` |
 | Event dates, NPCs and places | `overrides/game/data/scripts/events/<Event>/`, then upstream `dist/game/data/scripts/events/<Event>/` |
 | Prizes and trade costs | The event's script, `overrides/game/data/multisell/`, then upstream `dist/game/data/multisell/` |
-| Passes, packages and gift box | `site/config/l2j.php`, and Gift Boxes in the admin panel |
+| Store products, passes, packages and gift box | Store in the admin panel (Products and Gift Box Rotation) |
 
 - Never promise a reward, date or feature you haven't confirmed. If unsure, leave it out and tell the owner.
 - Don't create false urgency. "Until 14 November" is fine if true; "last chance" is only for the real last days.
@@ -65,7 +65,7 @@ Assume this may be the reader's first Lineage II post.
 
 - Say where to start: a town or NPC, and the minimum level if there is one.
 - When a post suits beginners, say so.
-- Link to what they need: `/register` to create an account, `/about` for how to connect, `/items` for item details and `/treasury` for rewards.
+- Link to what they need: `/register` to create an account, `/about` for how to connect, `/items` for item details and `/store` for rewards.
 - End event posts for newcomers with an invitation, like "No hero yet? [Create one](/register) and be in Aden tonight."
 
 ## Choosing fields

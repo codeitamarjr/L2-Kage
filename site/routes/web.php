@@ -9,7 +9,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\PasswordResetController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\SeoController;
-use App\Http\Controllers\TreasuryController;
+use App\Http\Controllers\StoreController;
 use App\Http\Middleware\SetLocale;
 use Illuminate\Support\Facades\Route;
 
@@ -27,17 +27,20 @@ Route::get('/map', [PageController::class, 'map'])->name('map');
 Route::get('/about', [PageController::class, 'about'])->name('about');
 Route::get('/news', [NewsController::class, 'index'])->name('news.index');
 Route::get('/news/{slug}', [NewsController::class, 'show'])->name('news.show');
-Route::get('/treasury', [TreasuryController::class, 'index'])->name('treasury');
-Route::get('/treasury/{slug}', [TreasuryController::class, 'show'])->name('treasury.show');
-Route::post('/treasury/{slug}', [TreasuryController::class, 'buy'])->middleware('throttle:10,1')->name('treasury.buy');
-// The Treasury's old addresses.
-Route::permanentRedirect('/store', '/treasury');
-Route::permanentRedirect('/passes', '/treasury/kage-pass');
-Route::permanentRedirect('/packages', '/treasury?category=packages#store');
+Route::get('/store', [StoreController::class, 'index'])->name('store');
+Route::get('/store/{slug}', [StoreController::class, 'show'])->name('store.show');
+Route::post('/store/{slug}', [StoreController::class, 'buy'])->middleware('throttle:10,1')->name('store.buy');
+// The Store's old addresses. /treasury itself shows the page instead of redirecting: /store used to redirect permanently to
+// /treasury, browsers may remember that, and sending them back would loop.
+Route::get('/treasury', [StoreController::class, 'index']);
+Route::permanentRedirect('/treasury/{slug}', '/store/{slug}');
+Route::permanentRedirect('/passes', '/store/kage-pass');
+Route::permanentRedirect('/packages', '/store?category=packages#store');
 
 Route::get('/account', [AccountController::class, 'show'])->name('account');
 Route::get('/account/orders', [AccountController::class, 'show'])->defaults('tab', 'orders')->name('account.orders');
 Route::permanentRedirect('/account/store', '/account/orders');
+Route::post('/account/orders/{order}/redeem', [StoreController::class, 'redeem'])->whereNumber('order')->middleware('throttle:10,1')->name('account.orders.redeem');
 Route::get('/account/security', [AccountController::class, 'show'])->defaults('tab', 'security')->name('account.security');
 Route::post('/account/login', [AccountSessionController::class, 'store'])
     ->middleware('throttle:30,1')

@@ -4,74 +4,63 @@ namespace App\Services;
 
 use App\Mail\AccountMail;
 use App\Models\Game\Account;
-use App\Models\GameAction;
-use App\Models\GiftClaim;
-use App\Models\PackageClaim;
-use App\Models\PassClaim;
-use App\Models\SupplyPurchase;
-use App\Services\L2j\GameData;
+use App\Models\Order;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
+use function Illuminate\Support\defer;
+
 /**
- * A game account's orders: everything it claimed or bought in the Treasury (weekly gift boxes, Kage Passes, class
- * packages, supply kits), as one history for the player area's Orders tab, plus the confirmation email. Each kind keeps
- * its own table (gift_claims, pass_claims, package_claims, supply_purchases) and its in-game delivery (game_actions);
- * this service only reads them. A new kind of order (e.g. a contribution to the server that adds
- * L-Coin) adds its source to history() and, when it is bought on the website, calls confirm().
+ * A game account's orders: everything it bought in the Store or an admin sent it, as one history for the player area's
+ * Orders tab, plus the emails about them.
  */
 class Orders
 {
-    public function __construct(private GameData $gameData) {}
+    public function __construct(private StoreContents $contents) {}
 
     /**
-     * Every order, newest first. The items are what was actually sent (the in-game action), so they stay right
-     * after the store's config changes.
+     * Every order, what's waiting for a character first, then newest first. The items are what was actually sent, so they
+     * stay right after the product changes.
      *
-     * @return list<array{id: string, type: string, name: array{en: string, pt: string}, characterName: string, price: array{count: int, currency: string}|null, status: string, createdAt: string, items: list<array{name: string, count: int, enchant: int, bonus?: bool}>}>
+     * @return list<array{id: int, type: string, typeName: array{en: string, pt: string}, name: array{en: string, pt: string}, characterName: string|null, price: array{count: int, currency: string}|null, status: string, createdAt: string, fromStaff: bool, note: string|null, randomBonus: bool, items: list<array{name: string, count: int, enchant: int, bonus?: bool}>}>
      */
     public function history(Account $account): array
     {
-        $gifts = GiftClaim::with('gameAction')->where('account', $account->login)->get()->map(fn (GiftClaim $claim): array => [
-            'id' => "gift-{$claim->id}",
-            'type' => 'gift',
-            'name' => ['en' => 'Weekly Gift Box', 'pt' => 'Caixa de Presente Semanal'],
-            'characterName' => $claim->character_name,
-            'price' => null,
-            'status' => $claim->gameAction->status ?? GameAction::STATUS_FAILED,
-            'createdAt' => $claim->created_at->toIso8601String(),
-            'items' => array_map(fn (array $item): array => ['name' => $item['name'], 'count' => (int) $item['count'], 'enchant' => 0, 'bonus' => (bool) ($item['bonus'] ?? false)], $claim->items ?? []),
-        ]);
+        return Order::with('gameAction')
+            ->where('account', $account->login)
+            ->orderByRaw('character_id IS NULL DESC')
+            ->orderByDesc('created_at')
+            ->orderByDesc('id')
+            ->get()
+            ->map(function (Order $order): array {
+                $suffix = $order->quantity > 1 ? " × {$order->quantity}" : '';
+                $waiting = $order->isWaiting();
 
-        $passes = PassClaim::with('gameAction')->where('account', $account->login)->get()->map(fn (PassClaim $claim): array => [
-            'id' => "pass-{$claim->id}",
-            'type' => 'pass',
-            'name' => ['en' => $name = $claim->gameAction->item_name ?? 'Kage Pass', 'pt' => $name],
-            ...$this->purchase($claim->gameAction, $claim->character_name, $claim->created_at->toIso8601String()),
-        ]);
-
-        $packages = PackageClaim::with('gameAction')->where('account', $account->login)->get()->map(fn (PackageClaim $claim): array => [
-            'id' => "package-{$claim->id}",
-            'type' => 'package',
-            'name' => $this->packageName($claim->package),
-            ...$this->purchase($claim->gameAction, $claim->character_name, $claim->created_at->toIso8601String()),
-        ]);
-
-        $supplies = SupplyPurchase::with('gameAction')->where('account', $account->login)->get()->map(fn (SupplyPurchase $purchase): array => [
-            'id' => "supply-{$purchase->id}",
-            'type' => 'supplies',
-            'name' => $this->supplyName($purchase),
-            ...$this->purchase($purchase->gameAction, $purchase->character_name, $purchase->created_at->toIso8601String()),
-        ]);
-
-        return $gifts->concat($passes)->concat($packages)->concat($supplies)->sortByDesc('createdAt')->values()->all();
+                return [
+                    'id' => $order->id,
+                    'type' => $order->category,
+                    'typeName' => $order->category_name,
+                    'name' => ['en' => $order->name['en'].$suffix, 'pt' => $order->name['pt'].$suffix],
+                    'characterName' => $order->character_name,
+                    'price' => $order->price_count ? ['count' => $order->price_count, 'currency' => (string) $order->price_name] : null,
+                    'status' => $order->status(),
+                    'createdAt' => $order->created_at->toIso8601String(),
+                    'fromStaff' => $order->source === Order::SOURCE_ADMIN,
+                    'note' => $order->source === Order::SOURCE_ADMIN ? $order->note : null,
+                    'randomBonus' => $waiting && ($order->contents['bonus'] ?? []) !== [],
+                    'items' => $waiting
+                        ? $this->contents->describe($order->contents ?? ['items' => [], 'bonus' => []])['items']
+                        : array_values($order->items ?? []),
+                ];
+            })
+            ->all();
     }
 
     /**
      * Emails the order confirmation to the account's address, when it has one and email is set up. A failed send is
      * logged, never shown: the order itself is already placed.
      */
-    public function confirm(Account $account, string $name, int $price, string $currency, string $characterName, GameAction $action): void
+    public function confirm(Account $account, Order $order): void
     {
         if (! $account->email || ! GameAccounts::emailReady()) {
             return;
@@ -79,80 +68,52 @@ class Orders
 
         $items = implode(', ', array_map(
             fn (array $item): string => ($item['enchant'] ? "+{$item['enchant']} " : '').$item['name'].($item['count'] > 1 ? ' x'.number_format($item['count']) : ''),
-            $this->items($action),
+            $order->items ?? [],
         ));
 
-        try {
-            Mail::to($account->email)->send(new AccountMail(
-                __('Order placed'),
+        $this->mail($account, new AccountMail(
+            __('Order placed'),
+            [
+                __('Thank you for your order, :login.', ['login' => $account->login]),
+                __(':name for :price :currency, paid from :character\'s bag.', ['name' => $order->name['en'], 'price' => number_format((int) $order->price_count), 'currency' => $order->price_name, 'character' => $order->character_name]),
+                __('Items: :items.', ['items' => $items]),
+                __('The game server takes the payment and mails the items to :character within seconds. If the character no longer has enough by then, nothing is taken and the order shows as failed.', ['character' => $order->character_name]),
+            ],
+            [['label' => __('See your orders'), 'url' => route('account.orders')]],
+            [__('You get this email because an order was placed with your game account on :site.', ['site' => config('l2j.server_name')])],
+        ));
+    }
+
+    /**
+     * Tells each account by email, after the admin's request has answered, that something is waiting for it.
+     *
+     * @param  list<string>  $logins
+     */
+    public function announce(array $logins, string $name): void
+    {
+        if (! GameAccounts::emailReady()) {
+            return;
+        }
+
+        defer(function () use ($logins, $name): void {
+            Account::query()->whereIn('login', $logins)->whereNotNull('email')->get(Account::READABLE_COLUMNS)->each(fn (Account $account) => $this->mail($account, new AccountMail(
+                __('A gift from the staff'),
                 [
-                    __('Thank you for your order, :login.', ['login' => $account->login]),
-                    __(':name for :price :currency, paid from :character\'s bag.', ['name' => $name, 'price' => number_format($price), 'currency' => $currency, 'character' => $characterName]),
-                    __('Items: :items.', ['items' => $items]),
-                    __('The game server takes the payment and mails the items to :character within seconds. If the character no longer has enough by then, nothing is taken and the order shows as failed.', ['character' => $characterName]),
+                    __('The :site staff sent you :name, :login.', ['site' => config('l2j.server_name'), 'name' => $name, 'login' => $account->login]),
+                    __('Choose the character that receives it in your orders, and it arrives by in-game mail within seconds.'),
                 ],
                 [['label' => __('See your orders'), 'url' => route('account.orders')]],
-                [__('You get this email because an order was placed with your game account on :site.', ['site' => config('l2j.server_name')])],
-            ));
+                [__('You get this email because the staff sent something to your game account on :site.', ['site' => config('l2j.server_name')])],
+            )));
+        });
+    }
+
+    private function mail(Account $account, AccountMail $mail): void
+    {
+        try {
+            Mail::to($account->email)->send($mail);
         } catch (\Throwable $e) {
-            Log::warning('Order confirmation email failed.', ['account' => $account->login, 'error' => $e->getMessage()]);
+            Log::warning('Store email failed.', ['account' => $account->login, 'error' => $e->getMessage()]);
         }
-    }
-
-    /**
-     * The price, character, delivery status, date and items of a purchase (Kage Pass, class package, supply kit).
-     *
-     * @return array{characterName: string, price: array{count: int, currency: string}|null, status: string, createdAt: string, items: list<array{name: string, count: int, enchant: int}>}
-     */
-    private function purchase(?GameAction $action, string $characterName, string $createdAt): array
-    {
-        return [
-            'characterName' => $characterName,
-            'price' => $action ? ['count' => $action->count, 'currency' => $this->gameData->item((int) $action->item_id)['name']] : null,
-            'status' => $action->status ?? GameAction::STATUS_FAILED,
-            'createdAt' => $createdAt,
-            'items' => $action ? $this->items($action) : [],
-        ];
-    }
-
-    /**
-     * The items an in-game action sends ("itemId:count:enchant" entries joined by ";").
-     *
-     * @return list<array{name: string, count: int, enchant: int}>
-     */
-    private function items(GameAction $action): array
-    {
-        return array_values(array_map(function (string $entry): array {
-            [$id, $count, $enchant] = array_map('intval', explode(':', $entry)) + [0, 1, 0];
-
-            return ['name' => $this->gameData->item($id)['name'], 'count' => $count, 'enchant' => $enchant];
-        }, array_filter(explode(';', (string) $action->items))));
-    }
-
-    /**
-     * "Knight · Elite" from "elite:knight", in both languages.
-     *
-     * @return array{en: string, pt: string}
-     */
-    private function packageName(string $package): array
-    {
-        [$tier, $archetype] = explode(':', $package) + ['', ''];
-        $tierName = config("l2j.packages.tiers.{$tier}.name") ?? ['en' => $tier, 'pt' => $tier];
-        $archetypeName = config("l2j.packages.archetypes.{$archetype}.name") ?? ['en' => $archetype, 'pt' => $archetype];
-
-        return ['en' => "{$archetypeName['en']} · {$tierName['en']}", 'pt' => "{$archetypeName['pt']} · {$tierName['pt']}"];
-    }
-
-    /**
-     * "Hunter's Kit" or "Hunter's Kit × 3", in both languages.
-     *
-     * @return array{en: string, pt: string}
-     */
-    private function supplyName(SupplyPurchase $purchase): array
-    {
-        $name = config("l2j.supplies.kits.{$purchase->kit}.name") ?? ['en' => $purchase->kit, 'pt' => $purchase->kit];
-        $suffix = $purchase->quantity > 1 ? " × {$purchase->quantity}" : '';
-
-        return ['en' => $name['en'].$suffix, 'pt' => $name['pt'].$suffix];
     }
 }

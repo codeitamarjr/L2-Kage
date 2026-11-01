@@ -4,8 +4,8 @@ export type SharedProps = {
     serverName: string;
     /** The visitor's language (see resources/js/i18n.ts). */
     locale: 'en' | 'pt_BR';
-    /** premium: when the account's premium ends and what it gives; null without premium. */
-    player: { login: string; gm: boolean; premium: { until: string; bonuses: string } | null } | null;
+    /** premium: when the account's premium ends and what it gives; null without premium. gifts: what an admin sent that waits for a character. */
+    player: { login: string; gm: boolean; premium: { until: string; bonuses: string } | null; gifts: number } | null;
     /** One-off message after a redirect (see HandleInertiaRequests). */
     flash: { status: string | null; sentTo: string | null; login: string | null };
     /** Cloudflare Turnstile site key, or null when the bot check is off. */
@@ -127,55 +127,53 @@ export type CharacterDetail = CharacterSummary & {
 };
 
 /** The weekly gift box in the player area (app/Services/GiftBox.php). */
-/** The Kage Pass offer (app/Services/KagePass.php): the landing page banner and the player area. */
-export type PassOffer = {
-    enabled: boolean;
-    season: string;
-    name: string;
-    /** Last day it can be claimed, YYYY-MM-DD. */
-    ends: string;
-    price: { name: string; count: number };
-    rewards: { id: number; name: string; count: number }[];
-};
-
-/** Class packages (app/Services/ClassPackages.php): tiers with their price, and each archetype's gear per tier. */
-export type PackageOffer = {
-    enabled: boolean;
-    season: string;
-    currency: string;
-    tiers: { key: string; name: Localized; grade: string; price: number; enchant: number }[];
-    archetypes: { key: string; name: Localized; role: Localized; armor: 'heavy' | 'light' | 'robe' }[];
+/** The home page's store section (app/Services/Store.php homeOffer()); a product that's gone leaves its card out. */
+export type HomeStoreOffer = {
+    gift: { open: boolean; minLevel: number } | null;
+    pass: { open: boolean; name: Localized; endsAt: string | null; price: StorePrice | null } | null;
+    packages: { open: boolean; groups: number; min: number; max: number; currency: string } | null;
 };
 
 /** A product's price: any item the game knows (L-Coin, Adena...). */
 export type StorePrice = { item: number; count: number; name: string };
 
-/** A product on the Treasury's grid (app/Services/Treasury.php cards()). */
+export type StoreCategory = { key: string; name: Localized };
+
+/** A product on the Store's grid (app/Services/Store.php cards()). */
 export type StoreCard = {
     slug: string;
-    key: string;
-    kind: 'gift' | 'pass' | 'hunt' | 'supplies' | 'package';
-    category: 'gifts' | 'passes' | 'packages' | 'supplies';
-    /** Class packages: the archetype and tier. */
-    group: string | null;
-    groupName: Localized | null;
-    tier: string | null;
+    type: 'mail' | 'weekly_gift' | 'hunt_pass';
+    category: string;
+    /** Shown on the Store's front page. */
+    featured: boolean;
     name: Localized;
     /** null: free. */
     price: StorePrice | null;
     open: boolean;
+    /** The cover image, or null for the drawn picture (art, emblem, tier). */
+    image: string | null;
+    art: 'gift' | 'pass' | 'hunt' | 'package' | 'supplies';
+    emblem: string | null;
+    tier: string | null;
+    /** A class group: the Store can filter by it. */
+    group: string | null;
+    groupName: Localized | null;
 };
 
 export type StoreContentItem = { id?: number | null; name: string; count?: number; enchant?: number; chance?: number };
 
-/** A product's own page (app/Services/Treasury.php find()). */
+/** A product's own page (app/Services/Store.php present()). */
 export type StoreProduct = StoreCard & {
+    /** The uploaded images, the cover first. */
+    images: string[];
     endsAt: string | null;
-    description: Localized[];
+    /** Paragraphs separated by a blank line. */
+    description: Localized;
     contents: { title: Localized; items: StoreContentItem[]; note?: Localized }[];
     steps: Localized[];
     /** Limit per account, e.g. "1 per week"; null: as many as the player likes. */
     limit: Localized | null;
+    limitPeriod: 'week' | 'month' | 'season' | 'once' | null;
     maxQuantity: number;
     minLevel: number | null;
     hunt: { firstSteps: { free: { name: string; count: number }; premium: { name: string; count: number } }[]; steps: number } | null;
@@ -185,20 +183,30 @@ export type StoreProduct = StoreCard & {
 export type StoreBuyer = {
     characters: { id: number; name: string; level: number; className: string; archetype: string | null; balance: number | null }[];
     /** Already held and can't be bought again for now. */
-    owned: { characterName: string; status: Order['status']; nextAt: string | null } | null;
+    owned: { characterName: string | null; status: Order['status']; nextAt: string | null } | null;
 };
 
-/** One entry of the Orders tab (app/Services/Orders.php history()): a gift box, Kage Pass, class package or supply kit. */
+/** One entry of the Orders tab (app/Services/Orders.php history()). */
 export type Order = {
-    id: string;
-    type: 'gift' | 'pass' | 'package' | 'supplies';
+    id: number;
+    /** The category when it was ordered. */
+    type: string;
+    typeName: Localized;
     name: Localized;
-    characterName: string;
+    /** null: sent by an admin and waiting for the player to choose. */
+    characterName: string | null;
     price: { count: number; currency: string } | null;
-    status: 'pending' | 'processing' | 'done' | 'failed';
+    status: 'waiting' | 'pending' | 'processing' | 'done' | 'failed';
     createdAt: string;
+    fromStaff: boolean;
+    note: string | null;
+    /** Waiting: one bonus is rolled when a character is chosen. */
+    randomBonus: boolean;
     items: { name: string; count: number; enchant: number; bonus?: boolean }[];
 };
+
+/** Who can receive what an admin sent. */
+export type OrderRecipient = { id: number; name: string; level: number };
 
 /** Item database (app/Services/L2j/ItemDatabase.php). */
 export type ItemSummary = {
