@@ -1294,7 +1294,21 @@
 		<!-- Level 2: When activated, the Tornado skill cooldown -15 sec. -->
 		<!-- Level 3: The Tornado skill cooldown is basic again. -->
 		<icon>icon.skill11137</icon>
-		<operateType>A1</operateType>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
+		<abnormalLevel>
+			<value level="1">1</value>
+			<value level="2">2</value>
+			<value level="3">3</value>
+		</abnormalLevel>
+		<abnormalTime>45</abnormalTime>
+		<isTriggeredSkill>true</isTriggeredSkill>
+		<effects>
+			<effect name="ReuseSkillById" fromLevel="1" toLevel="2">
+				<skillId>11137</skillId> <!-- Tornado -->
+				<amount>15000</amount>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="31025" toLevel="3" name="Repeated Sorcery - Spirit Bomb">
 		<!-- Level 1: When activated, the Spirit Bomb skill cooldown -15 sec. When the Spirit Bomb skill is activated again, applies the cooldown decrease effect as well. -->

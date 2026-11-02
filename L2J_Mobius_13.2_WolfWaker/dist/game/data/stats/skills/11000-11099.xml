@@ -1001,6 +1001,7 @@
 					<value fromLevel="7" toLevel="15" fromSubLevel="1019" toSubLevel="1019">{base + (base / 100 * (7 + 0.7 * (subIndex - 18)))}</value>
 					<value fromLevel="7" toLevel="15" fromSubLevel="1020" toSubLevel="1020">{base + (base / 100 * (8 + 0.1 * (subIndex - 19)))}</value>
 				</power>
+				<overHit>true</overHit>
 			</effect>
 		</effects>
 	</skill>
@@ -1503,6 +1504,7 @@
 					<value fromLevel="7" toLevel="15" fromSubLevel="1019" toSubLevel="1019">{base + (base / 100 * (7 + 0.7 * (subIndex - 18)))}</value>
 					<value fromLevel="7" toLevel="15" fromSubLevel="1020" toSubLevel="1020">{base + (base / 100 * (8 + 0.1 * (subIndex - 19)))}</value>
 				</power>
+				<overHit>true</overHit>
 			</effect>
 		</effects>
 	</skill>
@@ -2005,6 +2007,7 @@
 					<value fromLevel="7" toLevel="15" fromSubLevel="1019" toSubLevel="1019">{base + (base / 100 * (7 + 0.7 * (subIndex - 18)))}</value>
 					<value fromLevel="7" toLevel="15" fromSubLevel="1020" toSubLevel="1020">{base + (base / 100 * (8 + 0.1 * (subIndex - 19)))}</value>
 				</power>
+				<overHit>true</overHit>
 			</effect>
 		</effects>
 	</skill>
@@ -2507,6 +2510,7 @@
 					<value fromLevel="7" toLevel="15" fromSubLevel="1019" toSubLevel="1019">{base + (base / 100 * (7 + 0.7 * (subIndex - 18)))}</value>
 					<value fromLevel="7" toLevel="15" fromSubLevel="1020" toSubLevel="1020">{base + (base / 100 * (8 + 0.1 * (subIndex - 19)))}</value>
 				</power>
+				<overHit>true</overHit>
 			</effect>
 		</effects>
 	</skill>
@@ -3009,6 +3013,7 @@
 					<value fromLevel="7" toLevel="15" fromSubLevel="1019" toSubLevel="1019">{base + (base / 100 * (7 + 0.7 * (subIndex - 18)))}</value>
 					<value fromLevel="7" toLevel="15" fromSubLevel="1020" toSubLevel="1020">{base + (base / 100 * (8 + 0.1 * (subIndex - 19)))}</value>
 				</power>
+				<overHit>true</overHit>
 			</effect>
 		</effects>
 	</skill>
@@ -3511,6 +3516,7 @@
 					<value fromLevel="7" toLevel="15" fromSubLevel="1019" toSubLevel="1019">{base + (base / 100 * (7 + 0.7 * (subIndex - 18)))}</value>
 					<value fromLevel="7" toLevel="15" fromSubLevel="1020" toSubLevel="1020">{base + (base / 100 * (8 + 0.1 * (subIndex - 19)))}</value>
 				</power>
+				<overHit>true</overHit>
 			</effect>
 		</effects>
 	</skill>
@@ -4018,6 +4024,7 @@
 					<value fromLevel="7" toLevel="15" fromSubLevel="1019" toSubLevel="1019">{base + (base / 100 * (7 + 0.7 * (subIndex - 18)))}</value>
 					<value fromLevel="7" toLevel="15" fromSubLevel="1020" toSubLevel="1020">{base + (base / 100 * (8 + 0.1 * (subIndex - 19)))}</value>
 				</power>
+				<overHit>true</overHit>
 			</effect>
 		</effects>
 	</skill>
@@ -4515,6 +4522,7 @@
 					<value fromLevel="7" toLevel="15" fromSubLevel="1019" toSubLevel="1019">{base + (base / 100 * (7 + 0.7 * (subIndex - 18)))}</value>
 					<value fromLevel="7" toLevel="15" fromSubLevel="1020" toSubLevel="1020">{base + (base / 100 * (8 + 0.1 * (subIndex - 19)))}</value>
 				</power>
+				<overHit>true</overHit>
 			</effect>
 			<effect name="CallSkill">
 				<skillId>11139</skillId> <!-- Ignite -->
@@ -5017,6 +5025,7 @@
 					<value fromLevel="7" toLevel="15" fromSubLevel="1019" toSubLevel="1019">{base + (base / 100 * (7 + 0.7 * (subIndex - 18)))}</value>
 					<value fromLevel="7" toLevel="15" fromSubLevel="1020" toSubLevel="1020">{base + (base / 100 * (8 + 0.1 * (subIndex - 19)))}</value>
 				</power>
+				<overHit>true</overHit>
 			</effect>
 			<effect name="CallSkill">
 				<skillId>11188</skillId> <!-- Freeze - Slow -->
@@ -5519,6 +5528,7 @@
 					<value fromLevel="7" toLevel="15" fromSubLevel="1019" toSubLevel="1019">{base + (base / 100 * (7 + 0.7 * (subIndex - 18)))}</value>
 					<value fromLevel="7" toLevel="15" fromSubLevel="1020" toSubLevel="1020">{base + (base / 100 * (8 + 0.1 * (subIndex - 19)))}</value>
 				</power>
+				<overHit>true</overHit>
 			</effect>
 			<effect name="KnockBack">
 				<speed>600</speed>
@@ -6030,6 +6040,7 @@
 					<value fromLevel="7" toLevel="15" fromSubLevel="1019" toSubLevel="1019">{base + (base / 100 * (7 + 0.7 * (subIndex - 18)))}</value>
 					<value fromLevel="7" toLevel="15" fromSubLevel="1020" toSubLevel="1020">{base + (base / 100 * (8 + 0.1 * (subIndex - 19)))}</value>
 				</power>
+				<overHit>true</overHit>
 			</effect>
 			<effect name="Root" />
 		</effects>
@@ -6540,6 +6551,7 @@
 					<value fromLevel="7" toLevel="15" fromSubLevel="1019" toSubLevel="1019">{base + (base / 100 * (7 + 0.7 * (subIndex - 18)))}</value>
 					<value fromLevel="7" toLevel="15" fromSubLevel="1020" toSubLevel="1020">{base + (base / 100 * (8 + 0.1 * (subIndex - 19)))}</value>
 				</power>
+				<overHit>true</overHit>
 			</effect>
 			<effect name="BlockActions">
 				<allowedSkills>10279;10517;10025;10776;11770;1904;11264;11093;13314;1912;7002;18721;18722;28203;30516;35190</allowedSkills>

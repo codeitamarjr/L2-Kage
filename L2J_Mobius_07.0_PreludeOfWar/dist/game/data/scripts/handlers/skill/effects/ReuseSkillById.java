@@ -20,7 +20,6 @@
  */
 package handlers.skill.effects;
 
-import org.l2jmobius.gameserver.data.xml.SkillData;
 import org.l2jmobius.gameserver.entity.actor.Creature;
 import org.l2jmobius.gameserver.entity.actor.Player;
 import org.l2jmobius.gameserver.entity.item.instance.Item;
@@ -55,28 +54,24 @@ public class ReuseSkillById extends AbstractEffect
 		final Player player = effector.asPlayer();
 		if (player != null)
 		{
-			final int skillLevel = player.getSkillLevel(_skillId);
-			if (skillLevel > 0)
+			final Skill s = player.getKnownSkill(_skillId);
+			if (s != null)
 			{
-				final Skill s = SkillData.getInstance().getSkill(_skillId, skillLevel);
-				if (s != null)
+				if (_amount > 0)
 				{
-					if (_amount > 0)
-					{
-						final long reuse = player.getSkillRemainingReuseTime(s.getReuseHashCode());
-						if (reuse > 0)
-						{
-							player.removeTimeStamp(s);
-							player.addTimeStamp(s, Math.max(0, reuse - _amount));
-							player.sendPacket(new SkillCoolTime(player));
-						}
-					}
-					else
+					final long reuse = player.getSkillRemainingReuseTime(s.getReuseHashCode());
+					if (reuse > 0)
 					{
 						player.removeTimeStamp(s);
-						player.enableSkill(s);
+						player.addTimeStamp(s, Math.max(0, reuse - _amount));
 						player.sendPacket(new SkillCoolTime(player));
 					}
+				}
+				else
+				{
+					player.removeTimeStamp(s);
+					player.enableSkill(s);
+					player.sendPacket(new SkillCoolTime(player));
 				}
 			}
 		}
