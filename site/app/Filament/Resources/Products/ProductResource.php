@@ -93,7 +93,7 @@ class ProductResource extends Resource
                         ->helperText('Off: hidden from players.')
                         ->default(true),
                     Toggle::make('is_featured')
-                        ->label('On the Store\'s front page')
+                        ->label('List first on the Store\'s main page')
                         ->default(false),
                     DateTimePicker::make('starts_at')
                         ->label('Available from')
@@ -309,7 +309,7 @@ class ProductResource extends Resource
                     ->toggleable(),
                 TextColumn::make('orders_count')->label('Orders')->counts('orders')->sortable(),
                 IconColumn::make('is_active')->label('Published')->boolean(),
-                IconColumn::make('is_featured')->label('Front page')->boolean()->toggleable(),
+                IconColumn::make('is_featured')->label('Listed first')->boolean()->toggleable(),
             ])
             ->filters([
                 SelectFilter::make('store_category_id')->label('Category')->relationship('category', 'name_en'),

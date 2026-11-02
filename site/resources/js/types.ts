@@ -145,7 +145,7 @@ export type StoreCard = {
     type: 'mail' | 'weekly_gift' | 'hunt_pass';
     category: string;
     categoryName: Localized;
-    /** Shown on the Store's front page. */
+    /** Listed first on the Store's main page. */
     featured: boolean;
     name: Localized;
     /** null: free. */

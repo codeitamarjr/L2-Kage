@@ -36,7 +36,7 @@ class StoreController extends Controller
                 'group' => $request->string('group')->toString() ?: null,
                 'q' => $request->string('q')->limit(60, '')->toString(),
             ],
-            // Signed in: what the account already holds, and the class packages to feature for its main character.
+            // Signed in: what the account already holds, and the class packages to list early for its main character.
             'owned' => function () use ($store): array {
                 $account = $this->account();
 

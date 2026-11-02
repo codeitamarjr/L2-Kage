@@ -1248,7 +1248,7 @@ img.item-icon { object-fit: cover; }
 .shop .shop-sub a { padding: .25rem .8rem; font-size: 1rem; color: var(--shop-muted); border: 1px solid var(--shop-line); transition: border-color .15s, color .15s; }
 .shop .shop-sub a:hover, .shop .shop-sub a[aria-current="page"] { color: var(--primary); border-color: var(--primary); }
 .shop-toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem 1rem; margin-bottom: 1rem; }
-.shop-count { color: var(--shop-muted); white-space: nowrap; }
+.shop-count { padding: 1.5rem 0 .5rem; text-align: center; color: var(--shop-muted); }
 .shop-chips { display: flex; flex-wrap: wrap; gap: .35rem; }
 .shop-chips button { padding: .2rem .7rem; font: inherit; font-size: .95rem; color: var(--shop-muted); background: none; border: 1px solid var(--shop-line); cursor: pointer; transition: border-color .15s, color .15s; }
 .shop-chips button:hover, .shop-chips button[aria-pressed="true"] { color: var(--primary); border-color: var(--primary); }

@@ -1,5 +1,5 @@
-import { Link } from '@inertiajs/react';
-import { useEffect, useMemo, useState } from 'react';
+import { Link, useRemember } from '@inertiajs/react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import PageHero from '@/components/page-hero';
 import { ProductCard, ShopBar } from '@/components/store';
 import { languageTag, pick, useLocale, useT, type Localized } from '@/i18n';
@@ -12,13 +12,16 @@ type Props = {
     filter: { category: string; group: string | null; q: string };
     /** Signed in: the products the account already holds. */
     owned: string[];
-    /** Signed in: the class of the highest level character, whose packages the front page features. */
+    /** Signed in: the class of the highest level character, whose packages come right after what's listed first. */
     suggested: string | null;
     lcoin: { welcome: number; giftBox: number };
 };
 
-/** The class packages on the front page until a signed-in character says otherwise: this update's own class. */
+/** The class packages listed first on the main page until a signed-in character says otherwise: this update's own class. */
 const DEFAULT_ARCHETYPE = 'samurai';
+
+/** How many more cards appear each time the player nears the end of the grid. */
+const PAGE_SIZE = 12;
 
 /** The fixed site header, which the products stop under when scrolled to. */
 const HEADER_HEIGHT = 69;
@@ -79,14 +82,18 @@ function LCoinInfo({ products, lcoin }: Pick<Props, 'products' | 'lcoin'>) {
 /**
  * The Store (/store), under the site's banner and laid out like an official game store: category buttons in the banner above a grid of products, each
  * opening its own page with the purchase panel (store/show). Filters live in the address so they can be shared and
- * survive the back button; the quick search filters what is already on the page.
+ * survive the back button; the quick search filters what is already on the page. Every product is already on the page
+ * too, so the grid only adds its cards as the player scrolls, which keeps the images from loading all at once.
  */
 export default function StoreIndex({ products, categories, filter, owned, suggested, lcoin }: Props) {
     const locale = useLocale();
     const t = useT();
     const [query, setQuery] = useState(filter.q);
-    const [price, setPrice] = useState('all');
-    const [sort, setSort] = useState<'recommended' | 'low' | 'high' | 'name'>('recommended');
+    // Remembered with how far the grid was scrolled, so Back from a product returns to the same place.
+    const [price, setPrice] = useRemember('all', 'store-price');
+    const [sort, setSort] = useRemember<'recommended' | 'low' | 'high' | 'name'>('recommended', 'store-sort');
+    const [loaded, setLoaded] = useRemember({ view: '', count: PAGE_SIZE }, 'store-loaded');
+    const endOfGrid = useRef<HTMLDivElement>(null);
     // Choosing a category, or arriving from elsewhere (Back from a product, the home page), goes straight to the products, past the banner.
     useEffect(() => {
         if (window.location.hash === '#store') {
@@ -119,7 +126,7 @@ export default function StoreIndex({ products, categories, filter, owned, sugges
         }
 
         if (filter.category === 'main') {
-            return p.featured || p.group === featured;
+            return true;
         }
 
         return p.category === filter.category && (!filter.group || p.group === filter.group);
@@ -129,7 +136,9 @@ export default function StoreIndex({ products, categories, filter, owned, sugges
     const currencies = [...new Set(visible.flatMap((p) => (p.price ? [p.price.name] : [])))];
     const hasFree = visible.some((p) => !p.price);
     const priceFilters = [...(hasFree ? [{ key: 'free', label: t('Free', 'Grátis') }] : []), ...currencies.map((name) => ({ key: name, label: name }))];
-    const shown = visible
+    // On the main page: what's listed first, then the packages for the player's class, then everything else.
+    const rank = (p: StoreCard) => (filter.category !== 'main' || term ? 0 : p.featured ? 0 : p.group === featured ? 1 : 2);
+    const matching = visible
         .filter((p) => price === 'all' || (price === 'free' ? !p.price : p.price?.name === price))
         .map((p, i) => ({ p, i }))
         .sort((a, b) => {
@@ -138,7 +147,7 @@ export default function StoreIndex({ products, categories, filter, owned, sugges
             }
 
             if (sort === 'recommended') {
-                return a.i - b.i;
+                return rank(a.p) - rank(b.p) || a.i - b.i;
             }
 
             // Different currencies can't be compared: free first, then each currency by its count.
@@ -147,7 +156,35 @@ export default function StoreIndex({ products, categories, filter, owned, sugges
             return currency || ((a.p.price?.count ?? 0) - (b.p.price?.count ?? 0)) * (sort === 'low' ? 1 : -1);
         })
         .map(({ p }) => p);
-    const count = shown.length;
+    const count = matching.length;
+
+    // Any change to what's listed starts again from the first cards.
+    const view = [filter.category, filter.group, term, price, sort].join('|');
+    const limit = loaded.view === view ? loaded.count : PAGE_SIZE;
+    const shown = matching.slice(0, limit);
+
+    // Watches again after each load, so a screen tall enough to still show the end of the grid keeps loading.
+    useEffect(() => {
+        const end = endOfGrid.current;
+
+        if (!end || limit >= count) {
+            return;
+        }
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                if (entries[0].isIntersecting) {
+                    setLoaded({ view, count: limit + PAGE_SIZE });
+                }
+            },
+            { rootMargin: '400px' },
+        );
+
+        observer.observe(end);
+
+        return () => observer.disconnect();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [view, limit, count]);
 
     return (
         <div className="shop">
@@ -189,7 +226,6 @@ export default function StoreIndex({ products, categories, filter, owned, sugges
                     ) : visible.length ? (
                         <>
                             <div className="shop-toolbar">
-                                <p className="shop-count">{t(`${count} ${count === 1 ? 'product' : 'products'}`, `${count} ${count === 1 ? 'produto' : 'produtos'}`)}</p>
                                 {priceFilters.length > 1 ? (
                                     <div className="shop-chips" role="group" aria-label={t('Price', 'Preço')}>
                                         <button type="button" aria-pressed={price === 'all'} onClick={() => setPrice('all')}>
@@ -213,11 +249,18 @@ export default function StoreIndex({ products, categories, filter, owned, sugges
                                 </label>
                             </div>
                             {count ? (
-                                <div className="shop-grid">
-                                    {shown.map((product) => (
-                                        <ProductCard key={product.slug} product={product} owned={owned.includes(product.slug)} />
-                                    ))}
-                                </div>
+                                <>
+                                    <div className="shop-grid">
+                                        {shown.map((product) => (
+                                            <ProductCard key={product.slug} product={product} owned={owned.includes(product.slug)} />
+                                        ))}
+                                    </div>
+                                    <div ref={endOfGrid} className="shop-count" aria-live="polite">
+                                        {shown.length < count
+                                            ? t(`Showing ${shown.length} of ${count} products`, `Mostrando ${shown.length} de ${count} produtos`)
+                                            : t(`${count} ${count === 1 ? 'product' : 'products'}`, `${count} ${count === 1 ? 'produto' : 'produtos'}`)}
+                                    </div>
+                                </>
                             ) : (
                                 <p className="shop-empty">{t('Nothing here at this price.', 'Nada aqui neste preço.')}</p>
                             )}

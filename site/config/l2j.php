@@ -72,7 +72,7 @@ return [
         ],
 
         // A product of a class group lists the characters of these class ids (the whole class tree) first, and a signed-in
-        // player's front page features the group of their highest level character.
+        // player's main Store page lists the group of their highest level character early.
         'class_groups' => [
             'knight' => ['name' => ['en' => 'Knight', 'pt' => 'Cavaleiro'], 'classes' => [0, 4, 5, 6, 18, 19, 20, 21, 31, 32, 33, 90, 91, 99, 100, 106, ...range(196, 207), ...range(240, 243)]],
             'samurai' => ['name' => ['en' => 'Samurai', 'pt' => 'Samurai'], 'classes' => range(260, 263)],

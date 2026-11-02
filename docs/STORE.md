@@ -48,6 +48,7 @@ It matches by web address, so it's safe on a live site: it never changes a produ
 
 ## Things to know
 
+- The main page lists every product: those set to **List first**, then the packages for the player's class (Samurai for guests), then the rest. Cards appear 12 at a time as the player scrolls, and the count sits under the grid.
 - The hosts have separate databases and uploads, so a product added on the Mac doesn't reach the Pi.
 - Images are in `data/site-uploads`, which isn't in git. Back them up with the database.
 - Deleting a product hides it and keeps its orders. The Deleted filter on Products can restore it. The Weekly Gift Box and Hunt Pass can only be unpublished.
