@@ -6253,10 +6253,7 @@
 			<effect name="TriggerSkillBySkill">
 				<castSkillId>400</castSkillId> <!-- Aqua Strike -->
 				<skillId>45375</skillId> <!-- Eva's Help -->
-				<skillLevel>
-					<value level="1">1</value>
-					<value level="2">2</value>
-				</skillLevel>
+				<skillLevel>1</skillLevel>
 				<chance>
 					<value level="1">50</value>
 					<value level="2">50</value>
@@ -6269,10 +6266,7 @@
 			<effect name="TriggerSkillBySkill">
 				<castSkillId>88054</castSkillId> <!-- Aqua Shiled Throwing -->
 				<skillId>45375</skillId> <!-- Eva's Help -->
-				<skillLevel>
-					<value level="1">1</value>
-					<value level="2">2</value>
-				</skillLevel>
+				<skillLevel>1</skillLevel>
 				<chance>
 					<value level="1">50</value>
 					<value level="2">50</value>
@@ -6285,10 +6279,7 @@
 			<effect name="TriggerSkillBySkill">
 				<castSkillId>88009</castSkillId> <!-- Templar Assault -->
 				<skillId>45375</skillId> <!-- Eva's Help -->
-				<skillLevel>
-					<value level="1">1</value>
-					<value level="2">2</value>
-				</skillLevel>
+				<skillLevel>1</skillLevel>
 				<chance>
 					<value level="1">50</value>
 					<value level="2">50</value>
@@ -6370,10 +6361,7 @@
 			<effect name="TriggerSkillBySkill">
 				<castSkillId>401</castSkillId> <!-- Abyss Strike -->
 				<skillId>45376</skillId> <!-- Shillien's Help -->
-				<skillLevel>
-					<value level="1">1</value>
-					<value level="2">2</value>
-				</skillLevel>
+				<skillLevel>1</skillLevel>
 				<chance>
 					<value level="1">50</value>
 					<value level="2">50</value>
@@ -6386,10 +6374,7 @@
 			<effect name="TriggerSkillBySkill">
 				<castSkillId>88056</castSkillId> <!-- Dark Shield Throwing -->
 				<skillId>45376</skillId> <!-- Shillien's Help -->
-				<skillLevel>
-					<value level="1">1</value>
-					<value level="2">2</value>
-				</skillLevel>
+				<skillLevel>1</skillLevel>
 				<chance>
 					<value level="1">50</value>
 					<value level="2">50</value>
@@ -6402,10 +6387,7 @@
 			<effect name="TriggerSkillBySkill">
 				<castSkillId>88010</castSkillId> <!-- Templar Assault -->
 				<skillId>45376</skillId> <!-- Shillien's Help -->
-				<skillLevel>
-					<value level="1">1</value>
-					<value level="2">2</value>
-				</skillLevel>
+				<skillLevel>1</skillLevel>
 				<chance>
 					<value level="1">50</value>
 					<value level="2">50</value>
