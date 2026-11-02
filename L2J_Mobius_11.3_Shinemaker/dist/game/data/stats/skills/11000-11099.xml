@@ -19463,7 +19463,7 @@
 		<targetType>ENEMY</targetType>
 		<abnormalLevel>7</abnormalLevel>
 		<abnormalTime>7</abnormalTime>
-		<abnormalType>BLEEDING</abnormalType>
+		<abnormalType>SPEED_DOWN</abnormalType>
 		<activateRate>
 			<value fromLevel="1" toLevel="8">60</value>
 			<value fromLevel="1" toLevel="8" fromSubLevel="2001" toSubLevel="2020">{base + (base / 100 * subIndex)}</value>
@@ -19480,6 +19480,8 @@
 		<hitTime>6750</hitTime>
 		<isDebuff>true</isDebuff>
 		<isMagic>1</isMagic>
+		<itemConsumeCount>2</itemConsumeCount>
+		<itemConsumeId>3031</itemConsumeId> <!-- Spirit Ore -->
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">95</value>
@@ -19529,6 +19531,7 @@
 					<value fromLevel="1" toLevel="8" fromSubLevel="1019" toSubLevel="1019">{base + (base / 100 * (7 + 0.7 * (subIndex - 18)))}</value>
 					<value fromLevel="1" toLevel="8" fromSubLevel="1020" toSubLevel="1020">{base + (base / 100 * (8 + 0.1 * (subIndex - 19)))}</value>
 				</power>
+				<overHit>true</overHit>
 			</effect>
 			<effect name="Speed">
 				<amount>-80</amount>

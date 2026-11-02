@@ -16240,7 +16240,7 @@
 		<targetType>ENEMY</targetType>
 		<abnormalLevel>7</abnormalLevel>
 		<abnormalTime>7</abnormalTime>
-		<abnormalType>BLEEDING</abnormalType>
+		<abnormalType>SPEED_DOWN</abnormalType>
 		<activateRate>
 			<value fromLevel="1" toLevel="6">100</value>
 			<value fromLevel="1" toLevel="6" fromSubLevel="2001" toSubLevel="2020">{base + (base / 100 * subIndex)}</value>
@@ -16300,6 +16300,7 @@
 					<value fromLevel="1" toLevel="6" fromSubLevel="1019" toSubLevel="1019">{base + (base / 100 * (7 + 0.7 * (subIndex - 18)))}</value>
 					<value fromLevel="1" toLevel="6" fromSubLevel="1020" toSubLevel="1020">{base + (base / 100 * (8 + 0.1 * (subIndex - 19)))}</value>
 				</power>
+				<overHit>true</overHit>
 			</effect>
 			<effect name="Speed">
 				<amount>-80</amount>
