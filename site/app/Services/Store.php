@@ -80,7 +80,6 @@ class Store
      */
     public function present(Product $product): array
     {
-        $images = $product->imageUrls();
         $group = $product->class_group ? config("l2j.store.class_groups.{$product->class_group}.name") : null;
         $isHunt = $product->type === Product::TYPE_HUNT_PASS;
         $description = $this->description($product);
@@ -94,8 +93,8 @@ class Store
             'name' => $product->localizedName(),
             'price' => $this->price($product),
             'open' => $this->isOpen($product),
-            'image' => $images[0] ?? $product->category->imageUrl(),
-            'images' => $images,
+            'image' => $this->cover($product),
+            'images' => $product->imageUrls(),
             'art' => $product->art,
             'emblem' => $product->emblem,
             'tier' => $product->tier,
@@ -199,23 +198,25 @@ class Store
     /**
      * For the home page's store section; a product that's gone leaves its card out.
      *
-     * @return array{gift: array{open: bool, minLevel: int}|null, pass: array{open: bool, name: array{en: string, pt: string}, endsAt: string|null, price: array{item: int, count: int, name: string}|null}|null, packages: array{open: bool, groups: int, min: int, max: int, currency: string}|null}
+     * @return array{gift: array{open: bool, minLevel: int, image: string|null}|null, pass: array{open: bool, name: array{en: string, pt: string}, endsAt: string|null, price: array{item: int, count: int, name: string}|null, image: string|null}|null, packages: array{open: bool, groups: int, min: int, max: int, currency: string, image: string|null}|null}
      */
     public function homeOffer(): array
     {
-        $gift = Product::query()->listed()->where('type', Product::TYPE_WEEKLY_GIFT)->first();
-        $pass = Product::query()->listed()->where('slug', 'kage-pass')->first();
-        $packages = Product::query()->listed()->whereNotNull('class_group')->whereNotNull('price_count')->get();
+        $gift = Product::query()->listed()->with('category')->where('type', Product::TYPE_WEEKLY_GIFT)->first();
+        $pass = Product::query()->listed()->with('category')->where('slug', 'kage-pass')->first();
+        $packages = Product::query()->listed()->with('category')->whereNotNull('class_group')->whereNotNull('price_count')->get();
 
         return [
-            'gift' => $gift ? ['open' => $this->isOpen($gift), 'minLevel' => (int) $gift->min_level] : null,
-            'pass' => $pass ? ['open' => $this->isOpen($pass), 'name' => $pass->localizedName(), 'endsAt' => $pass->ends_at?->toIso8601String(), 'price' => $this->price($pass)] : null,
+            'gift' => $gift ? ['open' => $this->isOpen($gift), 'minLevel' => (int) $gift->min_level, 'image' => $this->cover($gift)] : null,
+            'pass' => $pass ? ['open' => $this->isOpen($pass), 'name' => $pass->localizedName(), 'endsAt' => $pass->ends_at?->toIso8601String(), 'price' => $this->price($pass), 'image' => $this->cover($pass)] : null,
             'packages' => $packages->isEmpty() ? null : [
                 'open' => $packages->contains(fn (Product $product): bool => $this->isOpen($product)),
                 'groups' => $packages->pluck('class_group')->unique()->count(),
                 'min' => (int) $packages->min('price_count'),
                 'max' => (int) $packages->max('price_count'),
                 'currency' => $this->gameData->item((int) $packages->first()->price_item)['name'],
+                // The cards stand for all the packages, so only their category's image fits.
+                'image' => $packages->first()->category->imageUrl(),
             ],
         ];
     }
@@ -475,6 +476,14 @@ class Store
     private function ownCharacter(Account $account, int $characterId): ?Character
     {
         return Character::query()->where('account_name', $account->login)->where('deletetime', 0)->find($characterId, ['charId', 'char_name', 'level', 'classid']);
+    }
+
+    /**
+     * The product's first uploaded image, or else its category's; null when the page should draw its own picture.
+     */
+    private function cover(Product $product): ?string
+    {
+        return $product->imageUrls()[0] ?? $product->category->imageUrl();
     }
 
     private function suits(Product $product, Character $character): bool

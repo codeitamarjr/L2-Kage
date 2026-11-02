@@ -437,6 +437,25 @@ class StoreTest extends TestCase
         $this->get('/')->assertInertia(fn ($page) => $page->where('store.pass', null));
     }
 
+    public function test_the_home_page_uses_the_images_uploaded_in_the_admin_panel(): void
+    {
+        $url = fn (string $path): string => Storage::disk('public')->url($path);
+
+        $this->get('/')->assertInertia(fn ($page) => $page
+            ->where('store.gift.image', null)
+            ->where('store.pass.image', null)
+            ->where('store.packages.image', null));
+
+        $this->product('weekly-gift-box')->update(['images' => ['store/gift.png', 'store/other.png']]);
+        $this->product('kage-pass')->update(['images' => ['store/pass.png']]);
+        DB::table('store_categories')->where('slug', 'packages')->update(['image' => 'store/packages.png']);
+
+        $this->get('/')->assertInertia(fn ($page) => $page
+            ->where('store.gift.image', $url('store/gift.png'))
+            ->where('store.pass.image', $url('store/pass.png'))
+            ->where('store.packages.image', $url('store/packages.png')));
+    }
+
     public function test_every_product_page_renders_and_the_sitemap_lists_them(): void
     {
         foreach (['weekly-gift-box', 'kage-pass', 'hunt-pass', 'supplies-traveler', 'package-gunner-elite'] as $slug) {

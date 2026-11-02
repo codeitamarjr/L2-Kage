@@ -16,6 +16,9 @@ type Props = {
     banner: NewsBanner | null;
 };
 
+/** The Weekly Gift Box's picture until one is uploaded in the admin panel. */
+const GIFT_ART = '/assets/kage-pass-chest.jpg?v=2';
+
 /**
  * The Store on the landing page: the weekly gift box, the Kage Pass and the class packages, each with its art, linking to
  * where they are bought.
@@ -33,7 +36,7 @@ function StoreSection({ store }: { store: HomeStoreOffer }) {
                   {
                       id: 'gift-box',
                       href: '/store/weekly-gift-box',
-                      art: '/assets/kage-pass-chest.jpg?v=2',
+                      art: gift.image ?? GIFT_ART,
                       kicker: t('Every week, free', 'Toda semana, grátis'),
                       title: t('Weekly Gift Box', 'Caixa de Presente Semanal'),
                       text: t(
@@ -51,7 +54,7 @@ function StoreSection({ store }: { store: HomeStoreOffer }) {
                   {
                       id: 'kage-pass',
                       href: '/store/kage-pass',
-                      art: '/assets/kage-pass-ticket.jpg',
+                      art: pass.image ?? '/assets/kage-pass-ticket.jpg',
                       kicker: pass.open && passEnds ? `${t('Season pass', 'Passe da temporada')} · ${t('until', 'até')} ${passEnds}` : t('Season pass', 'Passe da temporada'),
                       title: pick(locale, pass.name),
                       text: t(
@@ -69,7 +72,7 @@ function StoreSection({ store }: { store: HomeStoreOffer }) {
                   {
                       id: 'packages',
                       href: '/store?category=packages#store',
-                      art: '/assets/packages-chest.webp',
+                      art: packages.image ?? '/assets/packages-chest.webp',
                       kicker: t('Full gear for your class', 'Equipamento completo para sua classe'),
                       title: t('Class Packages', 'Pacotes de Classe'),
                       text: t(
@@ -162,7 +165,7 @@ function NewsSection({ posts }: { posts: NewsCardData[] }) {
 const GIFT_BANNER_KEY = 'gift-banner-closed';
 
 /** A corner banner for the weekly gift box. Closing it is remembered in this browser. */
-function GiftBanner() {
+function GiftBanner({ image }: { image: string | null }) {
     const t = useT();
     const [open, setOpen] = useState(false);
 
@@ -190,7 +193,7 @@ function GiftBanner() {
     return (
         <aside className="gift-banner">
             <a href="/store/weekly-gift-box" className="gift-banner-link">
-                <img src="/assets/kage-pass-chest.jpg?v=2" width={56} height={56} alt="" />
+                <img src={image ?? GIFT_ART} width={56} height={56} alt="" />
                 <span>
                     <span className="gift-banner-kicker">{t('Every week, free', 'Toda semana, grátis')}</span>
                     <span className="gift-banner-title text-gold">{t('Weekly Gift Box', 'Caixa de Presente Semanal')}</span>
@@ -244,7 +247,7 @@ export default function Home({ events, rates, store, news, banner }: Props) {
 
     return (
         <>
-            <GiftBanner />
+            {store.gift ? <GiftBanner image={store.gift.image} /> : null}
             <section className="hero">
                 <div className="hero-media" data-parallax="hero">
                     {/* The Samurai Crow update's intro: the Kamael Samurai, the server's current chapter. */}

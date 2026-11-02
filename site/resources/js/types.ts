@@ -127,11 +127,11 @@ export type CharacterDetail = CharacterSummary & {
 };
 
 /** The weekly gift box in the player area (app/Services/GiftBox.php). */
-/** The home page's store section (app/Services/Store.php homeOffer()); a product that's gone leaves its card out. */
+/** The home page's store section (app/Services/Store.php homeOffer()); a product that's gone leaves its card out. image: what the admin panel uploaded; null keeps the page's own art. */
 export type HomeStoreOffer = {
-    gift: { open: boolean; minLevel: number } | null;
-    pass: { open: boolean; name: Localized; endsAt: string | null; price: StorePrice | null } | null;
-    packages: { open: boolean; groups: number; min: number; max: number; currency: string } | null;
+    gift: { open: boolean; minLevel: number; image: string | null } | null;
+    pass: { open: boolean; name: Localized; endsAt: string | null; price: StorePrice | null; image: string | null } | null;
+    packages: { open: boolean; groups: number; min: number; max: number; currency: string; image: string | null } | null;
 };
 
 /** A product's price: any item the game knows (L-Coin, Adena...). */
