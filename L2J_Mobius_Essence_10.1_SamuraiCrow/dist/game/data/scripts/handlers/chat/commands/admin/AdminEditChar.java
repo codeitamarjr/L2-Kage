@@ -644,6 +644,8 @@ public class AdminEditChar implements IAdminCommandHandler
 							member.sendPacket(new PartySmallWindowAll(member, party));
 						}
 					}
+					
+					party.refreshPartyEffectIcons();
 				}
 				
 				final Clan clan = player.getClan();

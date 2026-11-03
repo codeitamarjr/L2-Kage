@@ -110,6 +110,8 @@ public class ClassChange extends AbstractEffect
 						member.sendPacket(new PartySmallWindowAll(member, party));
 					}
 				}
+				
+				party.refreshPartyEffectIcons();
 			}
 		}, 500);
 	}
