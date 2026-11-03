@@ -605,7 +605,7 @@ public class Party extends AbstractPlayerGroup
 				broadcastPacket(new ExPartyPetWindowDelete(pet));
 			}
 			
-			player.getServitors().values().forEach(s -> player.sendPacket(new ExPartyPetWindowDelete(s)));
+			player.getServitors().values().forEach(s -> broadcastPacket(new ExPartyPetWindowDelete(s)));
 			
 			// Close the CCInfoWindow
 			if (isInCommandChannel())
