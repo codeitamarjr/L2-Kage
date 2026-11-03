@@ -38,7 +38,7 @@ public class AbnormalStatusUpdate extends ServerPacket
 	
 	public void addSkill(BuffInfo info)
 	{
-		if (!info.getSkill().isHealingPotionSkill())
+		if ((info != null) && info.isInUse() && !info.getSkill().isHealingPotionSkill())
 		{
 			_effects.add(info);
 		}
@@ -51,15 +51,12 @@ public class AbnormalStatusUpdate extends ServerPacket
 		buffer.writeShort(_effects.size());
 		for (BuffInfo info : _effects)
 		{
-			if ((info != null) && info.isInUse())
-			{
-				final Skill skill = info.getSkill();
-				buffer.writeInt(skill.getDisplayId());
-				buffer.writeShort(skill.getDisplayLevel());
-				// buffer.writeShort(skill.getSubLevel());
-				buffer.writeInt(skill.getAbnormalType().getClientId());
-				writeOptionalInt(skill.isAura() || skill.isToggle() ? -1 : info.getTime(), buffer);
-			}
+			final Skill skill = info.getSkill();
+			buffer.writeInt(skill.getDisplayId());
+			buffer.writeShort(skill.getDisplayLevel());
+			// buffer.writeShort(skill.getSubLevel());
+			buffer.writeInt(skill.getAbnormalType().getClientId());
+			writeOptionalInt(skill.isAura() || skill.isToggle() ? -1 : info.getTime(), buffer);
 		}
 	}
 }

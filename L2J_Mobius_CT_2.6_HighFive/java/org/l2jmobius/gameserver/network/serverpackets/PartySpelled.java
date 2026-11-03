@@ -41,7 +41,10 @@ public class PartySpelled extends ServerPacket
 	
 	public void addSkill(BuffInfo info)
 	{
-		_effects.add(info);
+		if ((info != null) && info.isInUse())
+		{
+			_effects.add(info);
+		}
 	}
 	
 	@Override
@@ -53,12 +56,9 @@ public class PartySpelled extends ServerPacket
 		buffer.writeInt(_effects.size());
 		for (BuffInfo info : _effects)
 		{
-			if ((info != null) && info.isInUse())
-			{
-				buffer.writeInt(info.getSkill().getDisplayId());
-				buffer.writeShort(info.getSkill().getDisplayLevel());
-				buffer.writeInt(info.getTime());
-			}
+			buffer.writeInt(info.getSkill().getDisplayId());
+			buffer.writeShort(info.getSkill().getDisplayLevel());
+			buffer.writeInt(info.getTime());
 		}
 	}
 }
