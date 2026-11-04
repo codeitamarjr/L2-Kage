@@ -51,6 +51,8 @@ class ServerStatus
                 'loginPort' => (int) config('l2j.login_port'),
                 'gamePort' => (int) config('l2j.game_port'),
                 'geodataRegions' => $this->geodataRegions(),
+                // The game server's clock: events and daily resets follow it.
+                'timezone' => (string) config('app.timezone'),
                 'autoCreateAccounts' => (bool) config('l2j.accounts.auto_create'),
             ],
             'status' => [

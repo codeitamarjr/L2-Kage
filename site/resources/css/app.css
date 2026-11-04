@@ -378,6 +378,7 @@ img, video { display: block; max-width: 100%; }
 .toplist-button { display: inline-block; line-height: 0; }
 /* The same in both themes: a banner stays a night scene. The theme class sets its colours. */
 .featured-banner { --accent: #d4a94f; --accent-hover: #edc76f; --kicker: #e6c67e; --title: #fff3d1; --glow: 212 169 79; --glow-end: 120 60 30; position: relative; border-block: 1px solid var(--accent); background: radial-gradient(ellipse 45% 160% at 12% 50%, rgb(var(--glow) / .34), transparent 70%), radial-gradient(ellipse 40% 140% at 92% 50%, rgb(var(--glow-end) / .38), transparent 70%), #120d0a; box-shadow: 0 0 44px -14px var(--accent); }
+.featured-banner.is-winter { --accent: #6cc4f5; --accent-hover: #9fd8ff; --kicker: #b8e4ff; --title: #f0f9ff; --glow: 108 196 245; --glow-end: 190 40 50; background-color: #0a0f18; }
 .featured-banner.is-halloween { --accent: #e06c14; --accent-hover: #f59a3c; --kicker: #ffb45c; --title: #ffe9c4; --glow: 224 108 20; --glow-end: 122 40 150; background-color: #120a10; }
 .featured-inner { max-width: 72rem; margin: 0 auto; padding: 1.75rem 1.5rem; display: flex; align-items: center; gap: 1.75rem; }
 .featured-art { flex: none; width: 6.5rem; height: auto; filter: drop-shadow(0 0 18px rgb(var(--glow) / .75)); animation: featured-glow 2.8s ease-in-out infinite; }
@@ -607,7 +608,7 @@ img, video { display: block; max-width: 100%; }
 .connect-steps pre { margin-top: .75rem; padding: .75rem 1rem; border: 1px solid var(--border); background: var(--card); overflow-x: auto; color: var(--gold-bright); }
 
 @media (min-width: 768px) {
-	.status-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+	.status-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 	.status-grid > :last-child:nth-child(odd) { grid-column: auto; }
 	.about-rates { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 	.rankings-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }

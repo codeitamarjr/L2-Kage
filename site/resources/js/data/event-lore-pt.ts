@@ -45,6 +45,14 @@ export const EVENT_LORE_PT: EventLoreSet = {
                 'Quebre a abóbora para pegar os prêmios. Abóboras grandes só podem ser quebradas com um instrumento chrono e podem conter Halloween Kits.',
             ],
         },
+        HolidayOutOfSchedule: {
+            lore: ['O Papai Noel veio passar o inverno em Aden, mas no caminho um feitiço transformou sua rena, Rudolph, em homem. Sem ninguém para puxar o trenó, o Papai Noel percorre os campos de caça a pé, e Rudolph manda os heróis atrás dele.'],
+            howItWorks: [
+                'Fale com o Humanized Rudolph em qualquer cidade. Todo dia às 12:00 e às 19:00 (horário de Brasília), o Papai Noel aparece por uma hora em um campo de caça diferente, e Rudolph pode teleportar você até ele.',
+                'Peça seu presente ao Papai Noel: um L-Coin Pouch, um Giant\'s Shining Relic Pouch, um New Year Gift Box, Dye Powder e 10 de cada Scroll: Boost Attack e Scroll: Boost Defense. Um presente por conta por dia; o dia vira às 21:00 de Brasília (00:00 UTC).',
+                'Fique perto de uma árvore de Natal, em Aden, em Giran ou ao lado do Papai Noel, para receber a Holiday Blessing: +100 de HP e MP e +10% de XP e SP por 30 minutos.',
+            ],
+        },
         LeonasDungeonEvent: {
             lore: [
                 'Leona Blackbird é uma guerreira lendária. Sua masmorra é um espaço que se desdobra com seu poder e sua memória: uma reencenação do momento em que ela despertou, onde cada batalha treina aventureiros para se tornarem heróis.',

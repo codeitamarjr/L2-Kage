@@ -100,6 +100,12 @@ class EventFeed
             'headline' => 'Strange pumpkins are sprouting across Aden. Gather Nectar, grow them and break them open for prizes.',
             'detail' => 'All levels, Halloween Kits inside',
         ],
+        'HolidayOutOfSchedule' => [
+            'title' => "Santa's Visit",
+            'place' => 'Rudolph in every town',
+            'headline' => 'Santa Claus is in Aden for one hour at 15:00 and 22:00 UTC. Rudolph will take you to him for a daily gift.',
+            'detail' => 'All levels, one gift per account each day',
+        ],
     ];
 
     /** Events further away than this show "Happening now" instead of a countdown to their end. */

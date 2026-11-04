@@ -31,7 +31,7 @@ class NewsPost extends Model
 {
     public const CATEGORIES = ['event' => 'Event', 'quest' => 'Quest', 'update' => 'Update', 'announcement' => 'Announcement'];
 
-    public const BANNER_THEMES = ['gold' => 'Gold', 'halloween' => 'Halloween'];
+    public const BANNER_THEMES = ['gold' => 'Gold', 'halloween' => 'Halloween', 'winter' => 'Winter'];
 
     /**
      * @var list<string>

@@ -56,6 +56,23 @@ Upstream's `SquashEvent`, reactivated through `overrides/game/data/scripts/event
 - Home page: its banner is the seeded post `halloween-pumpkin-harvest` (`site/database/seeders/HalloweenNewsSeeder.php`), which ends by itself on 14 Nov.
 - Status: loads on both servers with no errors in the logs. Not yet played through in the game client, so the NPC spawns, trades, planting and drops are unconfirmed.
 
+**Winter event: Santa's Visit** (12 Dec 2026 to 6 Jan 2027; the config's end date, `07 01 2027`, closes it at 00:00 UTC on the 7th)
+
+Upstream's Essence event `HolidayOutOfSchedule`, reactivated through `overrides/game/data/scripts/events/HolidayOutOfSchedule/`:
+
+| File | Change from upstream |
+|---|---|
+| `config.xml` | New dates and join and end messages |
+| `HolidayOutOfSchedule.java` | Santa visits at 15:00 and 22:00 UTC (12:00 and 19:00 in Brasília) instead of 11:00 and 21:00 |
+| `*.htm` | Rewritten Rudolph and Santa text, with the new times |
+| `overrides/game/data/stats/skills/48500-48599.xml` | Holiday Blessing (48596), the Christmas tree buff, had no effects upstream. Now +100 HP and MP, +10% XP and SP, 30 min |
+
+- Play: Humanized Rudolph in 13 towns teleports players to Santa, who spends one hour in a random hunting ground at each visit. Santa gives one gift per account per day (the day changes at 00:00 UTC): L-Coin Pouch, Giant's Shining Relic Pouch, New Year Gift Box, Dye Powder, 10 each of Scroll: Boost Attack and Boost Defense. Trees in Aden, Giran and beside Santa cast the Holiday Blessing on players within 300.
+- Item 97147 is Dye Powder. Capsule comments elsewhere in the datapack call it Hidden Power Booster; they're wrong.
+- Website: `SEASONAL` in `EventFeed.php`, `lang/pt_BR.json`, `event-lore.ts` and `event-lore-pt.ts`. Map markers use the default event icon. News post: `ChristmasNewsSeeder` (slug `santa-visits-aden`, published 12 Dec, banner look `winter` until 6 Jan).
+- Times: English text gives UTC only, because players may be in Europe. Portuguese gives Brasília time. The About page's Server Time card shows the server clock (`server.timezone` from `ServerStatus`) beside the visitor's local time.
+- Status: deployed to the Pi on 3 Nov 2026. The game log shows `Event Holiday out of Schedule will be started at Sat Dec 12`, with no errors from the script or skill file. The news post is seeded there and publishes by itself on 12 Dec. Not on the Mac yet, and not played in the client.
+
 **News**
 - **Writing a post: read [docs/NEWS-WRITING-GUIDE.md](docs/NEWS-WRITING-GUIDE.md) first.** It covers voice, lore, fact-checking, both languages and publishing.
 - Posts are in `news_posts` (`site/app/Models/NewsPost.php`), edited in the admin panel under News (`site/app/Filament/Resources/NewsPosts/`). Each has English and Portuguese text in Markdown. No publish date means draft; a future date schedules it.

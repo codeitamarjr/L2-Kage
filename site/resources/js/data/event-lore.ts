@@ -69,6 +69,14 @@ const SEASONAL: Record<string, EventLore> = {
             'Break the pumpkin to claim its prizes. Large pumpkins can only be broken with a chrono instrument, and they can hold Halloween Kits.',
         ],
     },
+    HolidayOutOfSchedule: {
+        lore: ['Santa Claus has come to Aden for the winter, but on the way a spell turned his reindeer, Rudolph, into a man. With no one to pull the sleigh, Santa walks the hunting grounds on foot, and Rudolph sends heroes to find him.'],
+        howItWorks: [
+            'Talk to Humanized Rudolph in any town. Every day at 15:00 and 22:00 UTC (server time), Santa appears for one hour in a different hunting ground, and Rudolph can teleport you to him.',
+            'Ask Santa for your gift: an L-Coin Pouch, a Giant\'s Shining Relic Pouch, a New Year Gift Box, Dye Powder and 10 each of Scroll: Boost Attack and Scroll: Boost Defense. One gift per account each day; the day changes at 00:00 UTC.',
+            'Stand near a Christmas tree, in Aden, in Giran or beside Santa, for the Holiday Blessing: +100 HP and MP and +10% XP and SP for 30 minutes.',
+        ],
+    },
     LeonasDungeonEvent: {
         lore: [
             'Leona Blackbird is a warrior of legend. Her dungeon is a space that unfolds with her power and memory: a reenactment of the moment she awakened, where every battle trains adventurers to become heroes.',

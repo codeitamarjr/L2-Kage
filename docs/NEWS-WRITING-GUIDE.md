@@ -77,7 +77,7 @@ Assume this may be the reader's first Lineage II post.
 | Image | Optional, up to 2 MB, wide. Only use images the owner supplied or is allowed to use |
 | Publish at | In UTC. Empty keeps a draft; a future date schedules it |
 | Banner | Only for one big event at a time. Set "Until" to the last moment of the event |
-| Banner look | `gold` by default; `halloween` adds a jack-o'-lantern. A new look needs a CSS theme in `site/resources/css/app.css` |
+| Banner look | `gold` by default; `halloween` adds a jack-o'-lantern; `winter` adds a snowflake. A new look needs a CSS theme in `site/resources/css/app.css` |
 
 ## English and Portuguese
 

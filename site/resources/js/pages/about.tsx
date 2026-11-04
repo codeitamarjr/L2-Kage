@@ -1,4 +1,5 @@
 import { Link, usePoll } from '@inertiajs/react';
+import { useEffect, useState } from 'react';
 import { Divider } from '@/components/decor';
 import PageHero from '@/components/page-hero';
 import { HappeningSection } from '@/components/happening';
@@ -102,6 +103,33 @@ function Ranking({ title, rows }: { title: string; rows: { name: string; race: s
     );
 }
 
+/** The game server's clock, which event times and daily resets follow, with the visitor's own time beside it. */
+function ServerClock({ timezone }: { timezone: string }) {
+    const locale = useLocale();
+    const t = useT();
+    const [now, setNow] = useState(() => new Date());
+
+    useEffect(() => {
+        const timer = window.setInterval(() => setNow(new Date()), 1_000);
+
+        return () => window.clearInterval(timer);
+    }, []);
+
+    const time = (timeZone?: string) => now.toLocaleTimeString(languageTag(locale), { hour: '2-digit', minute: '2-digit', hourCycle: 'h23', timeZone });
+
+    return (
+        <div className="status-card">
+            <p className="status-label">{t('Server Time', 'Horário do Servidor')}</p>
+            <p className="status-value status-number text-gold">
+                <time dateTime={now.toISOString()}>{time(timezone)}</time>
+            </p>
+            <p className="status-note">
+                {timezone} · {t('your time', 'seu horário')} {time()}
+            </p>
+        </div>
+    );
+}
+
 export default function About({ status, events }: Props) {
     usePoll(30_000, { only: ['status', 'events'] });
     const locale = useLocale();
@@ -143,6 +171,7 @@ export default function About({ status, events }: Props) {
                             <p className="status-value status-number text-gold">{fmt(server.geodataRegions)}</p>
                             <p className="status-note">{t('Regions loaded', 'Regiões carregadas')}</p>
                         </div>
+                        <ServerClock timezone={server.timezone} />
                     </div>
                 </div>
             </section>

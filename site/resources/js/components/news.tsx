@@ -47,6 +47,19 @@ export function Pumpkin({ className }: { className?: string }) {
     );
 }
 
+export function Snowflake({ className }: { className?: string }) {
+    return (
+        <svg className={className} viewBox="0 0 120 120" aria-hidden="true" fill="none" stroke="#dff3ff" strokeWidth="6" strokeLinecap="round">
+            {[0, 60, 120].map((r) => (
+                <g key={r} transform={`rotate(${r} 60 60)`}>
+                    <path d="M60 8v104M60 26l-12-12M60 26l12-12M60 94l-12 12M60 94l12 12" />
+                </g>
+            ))}
+            <circle cx="60" cy="60" r="9" fill="#9fd8ff" stroke="none" />
+        </svg>
+    );
+}
+
 /** The home page's banner: the featured post, until its end date. Written in the admin panel (News). */
 export function FeaturedBanner({ banner }: { banner?: NewsBanner | null }) {
     const locale = useLocale();
@@ -61,7 +74,7 @@ export function FeaturedBanner({ banner }: { banner?: NewsBanner | null }) {
     return (
         <section className={`featured-banner is-${banner.theme}`} aria-label={banner.title}>
             <div className="featured-inner">
-                {banner.image ? <img className="featured-art featured-image" src={banner.image} alt="" /> : banner.theme === 'halloween' ? <Pumpkin className="featured-art" /> : null}
+                {banner.image ? <img className="featured-art featured-image" src={banner.image} alt="" /> : banner.theme === 'halloween' ? <Pumpkin className="featured-art" /> : banner.theme === 'winter' ? <Snowflake className="featured-art" /> : null}
                 <div className="featured-copy">
                     <p className="featured-kicker">
                         {category ? category[locale === 'pt_BR' ? 'pt' : 'en'] : banner.category}

@@ -60,6 +60,7 @@ export type ServerStatus = {
         loginPort: number;
         gamePort: number;
         geodataRegions: number;
+        timezone: string;
         autoCreateAccounts: boolean;
     };
     status: { login: boolean; game: boolean; database: boolean };
