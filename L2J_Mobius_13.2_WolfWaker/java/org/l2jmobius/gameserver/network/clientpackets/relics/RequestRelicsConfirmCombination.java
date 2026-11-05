@@ -64,8 +64,17 @@ public class RequestRelicsConfirmCombination extends ClientPacket
 			return;
 		}
 		
+		if ((_grade != RelicGrade.CGRADE.ordinal()) && (_grade != RelicGrade.BGRADE.ordinal()))
+		{
+			return;
+		}
+		
 		// final int maxPoints = RelicData.getInstance().getGuaranteedCompoundMaxPoints();
 		final int pointsPerAttempt = RelicData.getInstance().getGuaranteedCompoundPointsPerAttempt();
+		if (pointsPerAttempt <= 0)
+		{
+			return;
+		}
 		final String pityKey = (_grade == RelicGrade.CGRADE.ordinal()) ? PlayerVariables.RELICS_COMPOUNDING_POINTS_C_GRADE : PlayerVariables.RELICS_COMPOUNDING_POINTS_B_GRADE;
 		final int currentPity = player.getVariables().getInt(pityKey, 0);
 		
@@ -85,12 +94,22 @@ public class RequestRelicsConfirmCombination extends ClientPacket
 		}
 		
 		final ArrayList<Integer> successIds = new ArrayList<>();
-		
+		final RelicGrade inputGrade = RelicGrade.values()[_grade];
+		final RelicGrade rewardGrade = (_grade == RelicGrade.CGRADE.ordinal()) ? RelicGrade.BGRADE : RelicGrade.AGRADE;
 		for (int i = 0; i < availableAttempts; i++)
 		{
-			final int obtainedRelicId = RelicData.getInstance().getGuaranteedRelicByCompound(RelicGrade.values()[_grade]);
-			successIds.add(obtainedRelicId);
+			final int obtainedRelicId = RelicData.getInstance().getGuaranteedRelicByCompound(inputGrade);
+			final RelicDataHolder obtainedRelic = RelicData.getInstance().getRelic(obtainedRelicId);
+			if ((obtainedRelic == null) || (obtainedRelic.getGrade() != rewardGrade))
+			{
+				return;
+			}
 			
+			successIds.add(obtainedRelicId);
+		}
+		
+		for (int obtainedRelicId : successIds)
+		{
 			// Guaranteed B/A rewards also require confirmation.
 			final RelicDataHolder obtainedRelic = RelicData.getInstance().getRelic(obtainedRelicId);
 			if ((obtainedRelic != null) && ((obtainedRelic.getGrade() == RelicGrade.BGRADE) || (obtainedRelic.getGrade() == RelicGrade.AGRADE)))

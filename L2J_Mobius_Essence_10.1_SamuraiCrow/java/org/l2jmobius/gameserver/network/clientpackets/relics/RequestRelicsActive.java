@@ -48,7 +48,7 @@ public class RequestRelicsActive extends ClientPacket
 	protected void runImpl()
 	{
 		final Player player = getPlayer();
-		int relicLevel = 0;
+		int relicLevel = -1;
 		if (player == null)
 		{
 			return;
@@ -56,22 +56,27 @@ public class RequestRelicsActive extends ClientPacket
 		
 		for (PlayerRelicData relic : player.getRelics())
 		{
-			if (relic.getRelicId() == _relicId)
+			if ((relic.getRelicId() == _relicId) && (relic.getRelicIndex() == 0))
 			{
 				relicLevel = relic.getRelicLevel();
 				break;
 			}
 		}
 		
+		if ((relicLevel < 0) || (RelicData.getInstance().getRelic(_relicId) == null))
+		{
+			return;
+		}
+		
 		final int skillId = RelicData.getInstance().getRelicSkillId(_relicId, 0);
 		final int skillLevel = relicLevel + 1;
-		player.sendPacket(new ExRelicsActiveInfo(_relicId, relicLevel));
-		player.getVariables().set(PlayerVariables.ACTIVE_RELIC, _relicId);
-		player.getVariables().storeMe();
-		
 		final Skill relicSkill = SkillData.getInstance().getSkill(skillId, skillLevel);
 		if (relicSkill != null)
 		{
+			player.sendPacket(new ExRelicsActiveInfo(_relicId, relicLevel));
+			player.getVariables().set(PlayerVariables.ACTIVE_RELIC, _relicId);
+			player.getVariables().storeMe();
+			
 			// Remove previous active relic skill.
 			for (RelicDataHolder relic : RelicData.getInstance().getRelics())
 			{

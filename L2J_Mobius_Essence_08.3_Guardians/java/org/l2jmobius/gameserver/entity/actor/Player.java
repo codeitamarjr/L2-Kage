@@ -97,6 +97,7 @@ import org.l2jmobius.gameserver.data.holders.PetData;
 import org.l2jmobius.gameserver.data.holders.PetLevelData;
 import org.l2jmobius.gameserver.data.holders.PreparedMultisellListHolder;
 import org.l2jmobius.gameserver.data.holders.RelicCollectionDataHolder;
+import org.l2jmobius.gameserver.data.holders.RelicCollectionInfoHolder;
 import org.l2jmobius.gameserver.data.holders.RelicDataHolder;
 import org.l2jmobius.gameserver.data.holders.SellBuffHolder;
 import org.l2jmobius.gameserver.data.holders.TimedHuntingZoneHolder;
@@ -18264,17 +18265,18 @@ public class Player extends Playable
 	
 	public boolean isRelicRegistered(int relicId, int relicLevel)
 	{
-		final Set<Integer> result = new HashSet<>();
-		for (PlayerRelicCollectionData collectionData : _relicCollections)
+		for (RelicCollectionDataHolder collection : RelicCollectionData.getInstance().getRelicCollections())
 		{
-			if ((collectionData.getRelicId() == relicId) && (collectionData.getRelicLevel() == relicLevel))
+			for (RelicCollectionInfoHolder requiredRelic : collection.getRelics())
 			{
-				result.add(collectionData.getRelicCollectionId());
+				if ((requiredRelic.getRelicId() == relicId) && (relicLevel >= requiredRelic.getEnchantLevel()) && !isRelicRegisteredInCollection(relicId, collection.getCollectionId()))
+				{
+					return false;
+				}
 			}
-			continue;
 		}
 		
-		return result.contains(relicId);
+		return true;
 	}
 	
 	public boolean isCompleteRelicCollection(int relicCollectionId)
