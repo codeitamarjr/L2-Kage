@@ -23,7 +23,6 @@ import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.enums.UserInfoType;
 import org.l2jmobius.gameserver.network.serverpackets.ExClosePartyRoom;
 import org.l2jmobius.gameserver.network.serverpackets.ExPartyRoomMember;
-import org.l2jmobius.gameserver.network.serverpackets.ListPartyWaiting;
 import org.l2jmobius.gameserver.network.serverpackets.PartyRoomInfo;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
 
@@ -41,7 +40,6 @@ public class PartyMatchingRoom extends MatchingRoom
 	protected void onRoomCreation(Player player)
 	{
 		player.broadcastUserInfo(UserInfoType.CLAN);
-		player.sendPacket(new ListPartyWaiting(PartyMatchingRoomLevelType.ALL, -1, 1, player.getLevel()));
 		player.sendPacket(SystemMessageId.YOU_HAVE_CREATED_A_PARTY_ROOM);
 	}
 	
