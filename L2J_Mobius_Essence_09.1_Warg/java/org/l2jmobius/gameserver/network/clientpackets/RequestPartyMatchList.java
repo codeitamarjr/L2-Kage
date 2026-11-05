@@ -72,7 +72,7 @@ public class RequestPartyMatchList extends ClientPacket
 		else
 		{
 			final MatchingRoom room = player.getMatchingRoom();
-			if ((room.getId() == _roomId) && (room.getRoomType() == MatchingRoomType.PARTY) && room.isLeader(player))
+			if ((room != null) && (room.getId() == _roomId) && (room.getRoomType() == MatchingRoomType.PARTY) && room.isLeader(player))
 			{
 				room.setLootType(_lootType);
 				room.setMinLevel(_minLevel);
