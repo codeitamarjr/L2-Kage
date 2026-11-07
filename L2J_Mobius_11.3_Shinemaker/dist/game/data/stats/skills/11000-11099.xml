@@ -20080,7 +20080,7 @@
 			<value level="7">206</value>
 			<value level="8">216</value>
 		</mpConsume>
-		<reuseDelay>45000</reuseDelay>
+		<reuseDelay>35000</reuseDelay>
 		<trait>DERANGEMENT</trait>
 		<effects>
 			<effect name="MagicalDamage">
