@@ -20108,6 +20108,7 @@
 					<value fromLevel="1" toLevel="8" fromSubLevel="1019" toSubLevel="1019">{base + (base / 100 * (7 + 0.7 * (subIndex - 18)))}</value>
 					<value fromLevel="1" toLevel="8" fromSubLevel="1020" toSubLevel="1020">{base + (base / 100 * (8 + 0.1 * (subIndex - 19)))}</value>
 				</power>
+				<overHit>true</overHit>
 			</effect>
 			<effect name="MagicalDefence" fromLevel="1" toLevel="8" fromSubLevel="3001" toSubLevel="3020">
 				<amount>
@@ -20138,6 +20139,22 @@
 			<effect name="CallSkill" fromLevel="4" toLevel="4">
 				<skillId>19420</skillId> <!-- Quadruple Elemental Blast -->
 				<skillLevel>4</skillLevel>
+			</effect>
+			<effect name="CallSkill" fromLevel="5" toLevel="5">
+				<skillId>19420</skillId> <!-- Quadruple Elemental Blast -->
+				<skillLevel>5</skillLevel>
+			</effect>
+			<effect name="CallSkill" fromLevel="6" toLevel="6">
+				<skillId>19420</skillId> <!-- Quadruple Elemental Blast -->
+				<skillLevel>6</skillLevel>
+			</effect>
+			<effect name="CallSkill" fromLevel="7" toLevel="7">
+				<skillId>19420</skillId> <!-- Quadruple Elemental Blast -->
+				<skillLevel>7</skillLevel>
+			</effect>
+			<effect name="CallSkill" fromLevel="8" toLevel="8">
+				<skillId>19420</skillId> <!-- Quadruple Elemental Blast -->
+				<skillLevel>8</skillLevel>
 			</effect>
 		</effects>
 	</skill>
