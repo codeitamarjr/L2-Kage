@@ -26,6 +26,7 @@ import java.sql.ResultSet;
 import java.util.ArrayDeque;
 import java.util.Collection;
 import java.util.Deque;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.l2jmobius.commons.database.DatabaseFactory;
@@ -40,6 +41,7 @@ public class PartyMatchingHistoryTable
 	
 	private static final String RESTORE_PARTY_HISTORY = "SELECT title, leader FROM party_matching_history ORDER BY id DESC LIMIT 100"; // Maximum size according to retail is 100.
 	private static final String DELETE_PARTY_HISTORY = "DELETE FROM party_matching_history";
+	private static final int TITLE_MAX_LENGTH = 21; // Size of party_matching_history.title.
 	private static final String INSERT_PARTY_HISTORY = "INSERT INTO party_matching_history (title,leader) values (?,?)";
 	
 	private static final Deque<MatchingRoomHistory> HISTORY = new ArrayDeque<>(100);
@@ -90,7 +92,8 @@ public class PartyMatchingHistoryTable
 			
 			for (MatchingRoomHistory history : HISTORY)
 			{
-				ps2.setString(1, history.getTitle());
+				final String title = history.getTitle();
+				ps2.setString(1, ((title != null) && (title.length() > TITLE_MAX_LENGTH)) ? title.substring(0, TITLE_MAX_LENGTH) : title);
 				ps2.setString(2, history.getLeader());
 				ps2.addBatch();
 			}
@@ -99,7 +102,7 @@ public class PartyMatchingHistoryTable
 		}
 		catch (Exception e)
 		{
-			LOGGER.warning(getClass().getSimpleName() + ": PartyMatchingHistoryTable: Problem inserting room history!");
+			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": PartyMatchingHistoryTable: Problem inserting room history!", e);
 		}
 	}
 	
