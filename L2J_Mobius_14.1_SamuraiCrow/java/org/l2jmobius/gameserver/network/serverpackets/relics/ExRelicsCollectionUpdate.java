@@ -20,7 +20,9 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets.relics;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import org.l2jmobius.commons.network.buffer.WriteBuffer;
 import org.l2jmobius.gameserver.config.RelicSystemConfig;
@@ -71,6 +73,7 @@ public class ExRelicsCollectionUpdate extends ServerPacket
 		}
 		
 		// Check if obtained relic is required in some collection.
+		final List<Integer> completedCollectionIds = new ArrayList<>();
 		if (existingRelic != null)
 		{
 			final int relicId = existingRelic.getRelicId();
@@ -106,6 +109,24 @@ public class ExRelicsCollectionUpdate extends ServerPacket
 									_player.getRelicCollections().add(new PlayerRelicCollectionData(neededRelicCollectionId, existingRelic.getRelicId(), neededRelicLevel, neededRelicIndex));
 									_player.storeRelicCollections();
 									_player.sendPacket(new ExRelicsCollectionInfo(_player));
+									
+									// Activate the reward when this relic completes the collection.
+									if (_player.isCompleteRelicCollection(neededRelicCollectionId))
+									{
+										completedCollectionIds.add(neededRelicCollectionId);
+										_player.sendPacket(new ExRelicsCollectionCompleteAnnounce(neededRelicCollectionId));
+										
+										final Options options = OptionData.getInstance().getOptions(cRelicCollectionHolder.getOptionId());
+										if (options != null)
+										{
+											options.apply(_player);
+											if (RelicSystemConfig.RELIC_SYSTEM_DEBUG_ENABLED)
+											{
+												_player.sendMessage("Added Skill for complete collection: " + options.getPassiveSkills());
+											}
+										}
+									}
+									
 									if (RelicSystemConfig.RELIC_SYSTEM_DEBUG_ENABLED)
 									{
 										_player.sendMessage("Added Relic Id: " + existingRelic.getRelicId() + " into Collection Id: " + neededRelicCollectionId);
@@ -116,35 +137,17 @@ public class ExRelicsCollectionUpdate extends ServerPacket
 					}
 				}
 			}
-			
-			if ((neededRelicCollectionId != 0) && !_player.isRelicRegistered(existingRelic.getRelicId(), existingRelic.getRelicLevel()))
-			{
-				// Check if collection is complete and give skills.
-				if (_player.isCompleteRelicCollection(neededRelicCollectionId))
-				{
-					// Announce Collection Complete.
-					_player.sendPacket(new ExRelicsCollectionCompleteAnnounce(neededRelicCollectionId));
-					
-					// Apply collection option if all requirements are met.
-					final Options options = OptionData.getInstance().getOptions(RelicCollectionData.getInstance().getRelicCollection(neededRelicCollectionId).getOptionId());
-					if (options != null)
-					{
-						options.apply(_player);
-						if (RelicSystemConfig.RELIC_SYSTEM_DEBUG_ENABLED)
-						{
-							_player.sendMessage("Added Skill for complete collection: " + options.getPassiveSkills());
-						}
-					}
-					
-					buffer.writeInt(1); // Collection array size.
-					buffer.writeInt(neededRelicCollectionId); // Collection id.
-					buffer.writeByte(_player.isCompleteRelicCollection(neededRelicCollectionId)); // Collection is complete?
-					buffer.writeInt(1); // Registered relics in collection size.
-					buffer.writeInt(1); // Array position.
-					buffer.writeInt(_relicId); // Relic id.
-					buffer.writeInt(_relicLevel); // Relic level.
-				}
-			}
+		}
+		
+		buffer.writeInt(completedCollectionIds.size()); // Collection array size.
+		for (int completedCollectionId : completedCollectionIds)
+		{
+			buffer.writeInt(completedCollectionId); // Collection id.
+			buffer.writeByte(true); // Collection is complete.
+			buffer.writeInt(1); // Registered relics in collection size.
+			buffer.writeInt(1); // Array position.
+			buffer.writeInt(_relicId); // Relic id.
+			buffer.writeInt(_relicLevel); // Relic level.
 		}
 	}
 }

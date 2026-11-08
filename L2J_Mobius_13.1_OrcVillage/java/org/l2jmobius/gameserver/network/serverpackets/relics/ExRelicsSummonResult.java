@@ -113,7 +113,7 @@ public class ExRelicsSummonResult extends ServerPacket
 						}
 					}
 					
-					newRelic.setRelicIndex(300 + unconfirmedRelics.size());
+					newRelic.setRelicIndex(_player.getNextPendingRelicIndex(newRelic.getRelicId()));
 					
 					// Increase the unconfirmed relics variable count.
 					_player.getAccountVariables().set(AccountVariables.UNCONFIRMED_RELICS_COUNT, _player.getAccountVariables().getInt(AccountVariables.UNCONFIRMED_RELICS_COUNT, 0) + 1);
@@ -410,7 +410,7 @@ public class ExRelicsSummonResult extends ServerPacket
 						}
 						
 						newRelic.setRelicCount(1);
-						newRelic.setRelicIndex(300 + unconfirmedRelics.size());
+						newRelic.setRelicIndex(_player.getNextPendingRelicIndex(newRelic.getRelicId()));
 						newRelic.setRelicSummonTime(System.currentTimeMillis());
 						storedRelics.add(newRelic);
 						

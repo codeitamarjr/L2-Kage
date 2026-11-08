@@ -23,11 +23,15 @@ package org.l2jmobius.gameserver.network.clientpackets.relics;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import org.l2jmobius.gameserver.config.RelicSystemConfig;
+import org.l2jmobius.gameserver.data.holders.RelicDataHolder;
 import org.l2jmobius.gameserver.data.xml.RelicData;
 import org.l2jmobius.gameserver.entity.actor.Player;
 import org.l2jmobius.gameserver.entity.actor.enums.player.RelicGrade;
 import org.l2jmobius.gameserver.entity.actor.holders.player.PlayerRelicData;
+import org.l2jmobius.gameserver.mechanics.variables.AccountVariables;
 import org.l2jmobius.gameserver.mechanics.variables.PlayerVariables;
+import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.clientpackets.ClientPacket;
 import org.l2jmobius.gameserver.network.serverpackets.relics.ExRelicsAnnounce;
 import org.l2jmobius.gameserver.network.serverpackets.relics.ExRelicsCollectionUpdate;
@@ -60,8 +64,17 @@ public class RequestRelicsConfirmCombination extends ClientPacket
 			return;
 		}
 		
+		if ((_grade != RelicGrade.CGRADE.ordinal()) && (_grade != RelicGrade.BGRADE.ordinal()))
+		{
+			return;
+		}
+		
 		// final int maxPoints = RelicData.getInstance().getGuaranteedCompoundMaxPoints();
 		final int pointsPerAttempt = RelicData.getInstance().getGuaranteedCompoundPointsPerAttempt();
+		if (pointsPerAttempt <= 0)
+		{
+			return;
+		}
 		final String pityKey = (_grade == RelicGrade.CGRADE.ordinal()) ? PlayerVariables.RELICS_COMPOUNDING_POINTS_C_GRADE : PlayerVariables.RELICS_COMPOUNDING_POINTS_B_GRADE;
 		final int currentPity = player.getVariables().getInt(pityKey, 0);
 		
@@ -73,12 +86,40 @@ public class RequestRelicsConfirmCombination extends ClientPacket
 		
 		final Collection<PlayerRelicData> storedRelics = player.getRelics();
 		final int availableAttempts = currentPity / pointsPerAttempt;
-		final ArrayList<Integer> successIds = new ArrayList<>();
+		final long unconfirmedCount = storedRelics.stream().filter(relic -> (relic.getRelicIndex() >= 300) && (relic.getRelicCount() == 1)).count();
+		if (availableAttempts > (RelicSystemConfig.RELIC_UNCONFIRMED_LIST_LIMIT - unconfirmedCount))
+		{
+			player.sendPacket(SystemMessageId.SUMMON_COMPOUND_IS_UNAVAILABLE_AS_YOU_HAVE_MORE_THAN_100_UNCONFIRMED_RELICS);
+			return;
+		}
 		
+		final ArrayList<Integer> successIds = new ArrayList<>();
+		final RelicGrade inputGrade = RelicGrade.values()[_grade];
+		final RelicGrade rewardGrade = (_grade == RelicGrade.CGRADE.ordinal()) ? RelicGrade.BGRADE : RelicGrade.AGRADE;
 		for (int i = 0; i < availableAttempts; i++)
 		{
-			final int obtainedRelicId = RelicData.getInstance().getGuaranteedRelicByCompound(RelicGrade.values()[_grade]);
+			final int obtainedRelicId = RelicData.getInstance().getGuaranteedRelicByCompound(inputGrade);
+			final RelicDataHolder obtainedRelic = RelicData.getInstance().getRelic(obtainedRelicId);
+			if ((obtainedRelic == null) || (obtainedRelic.getGrade() != rewardGrade))
+			{
+				return;
+			}
+			
 			successIds.add(obtainedRelicId);
+		}
+		
+		for (int obtainedRelicId : successIds)
+		{
+			// Guaranteed B/A rewards also require confirmation.
+			final RelicDataHolder obtainedRelic = RelicData.getInstance().getRelic(obtainedRelicId);
+			if ((obtainedRelic != null) && ((obtainedRelic.getGrade() == RelicGrade.BGRADE) || (obtainedRelic.getGrade() == RelicGrade.AGRADE)))
+			{
+				storedRelics.add(new PlayerRelicData(obtainedRelicId, 0, 1, player.getNextPendingRelicIndex(obtainedRelicId), System.currentTimeMillis()));
+				player.getAccountVariables().set(AccountVariables.UNCONFIRMED_RELICS_COUNT, player.getAccountVariables().getInt(AccountVariables.UNCONFIRMED_RELICS_COUNT, 0) + 1);
+				player.getAccountVariables().storeMe();
+				player.sendPacket(new ExRelicsAnnounce(player, obtainedRelicId));
+				continue;
+			}
 			
 			PlayerRelicData existingRelic = null;
 			for (PlayerRelicData relic : storedRelics)

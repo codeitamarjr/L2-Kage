@@ -267,6 +267,29 @@ public class Party extends AbstractPlayerGroup
 				member.broadcastUserInfo();
 			}
 		}
+		
+		refreshPartyEffectIcons();
+	}
+	
+	/**
+	 * Resends the party buff icons of all members and their summons, cleared on the client by PartySmallWindowDeleteAll.
+	 */
+	public void refreshPartyEffectIcons()
+	{
+		for (Player member : _members)
+		{
+			if (member != null)
+			{
+				member.updateEffectIcons(true);
+				final Summon pet = member.getPet();
+				if (pet != null)
+				{
+					pet.updateEffectIcons();
+				}
+				
+				member.getServitors().values().forEach(Summon::updateEffectIcons);
+			}
+		}
 	}
 	
 	/**
@@ -579,7 +602,7 @@ public class Party extends AbstractPlayerGroup
 				broadcastPacket(new ExPartyPetWindowDelete(pet));
 			}
 			
-			player.getServitors().values().forEach(s -> player.sendPacket(new ExPartyPetWindowDelete(s)));
+			player.getServitors().values().forEach(s -> broadcastPacket(new ExPartyPetWindowDelete(s)));
 			
 			// Close the CCInfoWindow
 			if (isInCommandChannel())

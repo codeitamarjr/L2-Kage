@@ -471,6 +471,11 @@ public class PlayerStat extends PlayableStat
 	@Override
 	public int getMaxCp()
 	{
+		if (PlayerConfig.DISABLE_CP)
+		{
+			return 0;
+		}
+		
 		// Get the Max CP (base+modifier) of the Player.
 		final Player player = getActiveChar();
 		final int val = (player == null) ? 1 : (int) calcStat(Stat.MAX_CP, player.getTemplate().getBaseCpMax(player.getLevel()));

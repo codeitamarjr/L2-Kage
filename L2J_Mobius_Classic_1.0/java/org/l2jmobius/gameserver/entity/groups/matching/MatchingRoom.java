@@ -70,6 +70,12 @@ public abstract class MatchingRoom
 	
 	public void addMember(Player player)
 	{
+		// A player in another room (accepted room invite, party join) would stay listed there too.
+		if ((player.getMatchingRoom() != null) && (player.getMatchingRoom() != this))
+		{
+			return;
+		}
+		
 		if ((player.getLevel() < _minLevel) || (player.getLevel() > _maxLevel) || ((_members != null) && (_members.size() >= _maxCount)))
 		{
 			notifyInvalidCondition(player);
@@ -88,6 +94,7 @@ public abstract class MatchingRoom
 		boolean leaderChanged = false;
 		if (player == _leader)
 		{
+			getMembers().remove(player);
 			if (getMembers().isEmpty())
 			{
 				MatchingRoomManager.getInstance().removeMatchingRoom(this);
@@ -98,7 +105,6 @@ public abstract class MatchingRoom
 				if (iter.hasNext())
 				{
 					_leader = iter.next();
-					iter.remove();
 					leaderChanged = true;
 				}
 			}

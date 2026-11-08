@@ -20,6 +20,9 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.l2jmobius.commons.network.buffer.WriteBuffer;
 import org.l2jmobius.gameserver.entity.actor.Player;
 import org.l2jmobius.gameserver.entity.groups.Party;
@@ -43,24 +46,30 @@ public class PartySmallWindowAll extends ServerPacket
 		ServerPackets.PARTY_SMALL_WINDOW_ALL.writeId(this, buffer);
 		buffer.writeInt(_party.getLeaderObjectId());
 		buffer.writeInt(_party.getDistributionType().getId());
-		buffer.writeInt(_party.getMemberCount() - 1);
+		final List<Player> members = new ArrayList<>();
 		for (Player member : _party.getMembers())
 		{
 			if ((member != null) && (member != _exclude))
 			{
-				buffer.writeInt(member.getObjectId());
-				buffer.writeString(member.getName());
-				buffer.writeInt((int) member.getCurrentCp()); // c4
-				buffer.writeInt(member.getMaxCp()); // c4
-				buffer.writeInt((int) member.getCurrentHp());
-				buffer.writeInt(member.getMaxHp());
-				buffer.writeInt((int) member.getCurrentMp());
-				buffer.writeInt(member.getMaxMp());
-				buffer.writeInt(member.getLevel());
-				buffer.writeInt(member.getPlayerClass().getId());
-				buffer.writeInt(0); // buffer.writeInt(1); ??
-				buffer.writeInt(member.getRace().ordinal());
+				members.add(member);
 			}
+		}
+		
+		buffer.writeInt(members.size());
+		for (Player member : members)
+		{
+			buffer.writeInt(member.getObjectId());
+			buffer.writeString(member.getName());
+			buffer.writeInt((int) member.getCurrentCp()); // c4
+			buffer.writeInt(member.getMaxCp()); // c4
+			buffer.writeInt((int) member.getCurrentHp());
+			buffer.writeInt(member.getMaxHp());
+			buffer.writeInt((int) member.getCurrentMp());
+			buffer.writeInt(member.getMaxMp());
+			buffer.writeInt(member.getLevel());
+			buffer.writeInt(member.getPlayerClass().getId());
+			buffer.writeInt(0); // buffer.writeInt(1); ??
+			buffer.writeInt(member.getRace().ordinal());
 		}
 	}
 }

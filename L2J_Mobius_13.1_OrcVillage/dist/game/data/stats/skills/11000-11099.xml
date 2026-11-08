@@ -349,6 +349,19 @@
 				<SLEEP>30</SLEEP>
 				<BLEED>30</BLEED>
 				<DERANGEMENT>30</DERANGEMENT>
+				<!-- Additional individual traits for the four advertised status resistance groups. -->
+				<POISON>30</POISON>
+				<DISARM>30</DISARM>
+				<AGGRESSION>30</AGGRESSION>
+				<HATE>30</HATE>
+				<PHYSICAL_BLOCKADE>30</PHYSICAL_BLOCKADE>
+				<DEPORT>30</DEPORT>
+				<CHANGEBODY>30</CHANGEBODY>
+				<SHOCK>30</SHOCK>
+				<PARALYZE>30</PARALYZE>
+				<AIRBIND>30</AIRBIND>
+				<KNOCKBACK>30</KNOCKBACK>
+				<KNOCKDOWN>30</KNOCKDOWN>
 			</effect>
 			<effect name="StatUp">
 				<amount>2</amount>
@@ -988,6 +1001,7 @@
 					<value fromLevel="7" toLevel="15" fromSubLevel="1019" toSubLevel="1019">{base + (base / 100 * (7 + 0.7 * (subIndex - 18)))}</value>
 					<value fromLevel="7" toLevel="15" fromSubLevel="1020" toSubLevel="1020">{base + (base / 100 * (8 + 0.1 * (subIndex - 19)))}</value>
 				</power>
+				<overHit>true</overHit>
 			</effect>
 		</effects>
 	</skill>
@@ -1490,6 +1504,7 @@
 					<value fromLevel="7" toLevel="15" fromSubLevel="1019" toSubLevel="1019">{base + (base / 100 * (7 + 0.7 * (subIndex - 18)))}</value>
 					<value fromLevel="7" toLevel="15" fromSubLevel="1020" toSubLevel="1020">{base + (base / 100 * (8 + 0.1 * (subIndex - 19)))}</value>
 				</power>
+				<overHit>true</overHit>
 			</effect>
 		</effects>
 	</skill>
@@ -1992,6 +2007,7 @@
 					<value fromLevel="7" toLevel="15" fromSubLevel="1019" toSubLevel="1019">{base + (base / 100 * (7 + 0.7 * (subIndex - 18)))}</value>
 					<value fromLevel="7" toLevel="15" fromSubLevel="1020" toSubLevel="1020">{base + (base / 100 * (8 + 0.1 * (subIndex - 19)))}</value>
 				</power>
+				<overHit>true</overHit>
 			</effect>
 		</effects>
 	</skill>
@@ -2494,6 +2510,7 @@
 					<value fromLevel="7" toLevel="15" fromSubLevel="1019" toSubLevel="1019">{base + (base / 100 * (7 + 0.7 * (subIndex - 18)))}</value>
 					<value fromLevel="7" toLevel="15" fromSubLevel="1020" toSubLevel="1020">{base + (base / 100 * (8 + 0.1 * (subIndex - 19)))}</value>
 				</power>
+				<overHit>true</overHit>
 			</effect>
 		</effects>
 	</skill>
@@ -2996,6 +3013,7 @@
 					<value fromLevel="7" toLevel="15" fromSubLevel="1019" toSubLevel="1019">{base + (base / 100 * (7 + 0.7 * (subIndex - 18)))}</value>
 					<value fromLevel="7" toLevel="15" fromSubLevel="1020" toSubLevel="1020">{base + (base / 100 * (8 + 0.1 * (subIndex - 19)))}</value>
 				</power>
+				<overHit>true</overHit>
 			</effect>
 		</effects>
 	</skill>
@@ -3498,6 +3516,7 @@
 					<value fromLevel="7" toLevel="15" fromSubLevel="1019" toSubLevel="1019">{base + (base / 100 * (7 + 0.7 * (subIndex - 18)))}</value>
 					<value fromLevel="7" toLevel="15" fromSubLevel="1020" toSubLevel="1020">{base + (base / 100 * (8 + 0.1 * (subIndex - 19)))}</value>
 				</power>
+				<overHit>true</overHit>
 			</effect>
 		</effects>
 	</skill>
@@ -4005,6 +4024,7 @@
 					<value fromLevel="7" toLevel="15" fromSubLevel="1019" toSubLevel="1019">{base + (base / 100 * (7 + 0.7 * (subIndex - 18)))}</value>
 					<value fromLevel="7" toLevel="15" fromSubLevel="1020" toSubLevel="1020">{base + (base / 100 * (8 + 0.1 * (subIndex - 19)))}</value>
 				</power>
+				<overHit>true</overHit>
 			</effect>
 		</effects>
 	</skill>
@@ -4502,6 +4522,7 @@
 					<value fromLevel="7" toLevel="15" fromSubLevel="1019" toSubLevel="1019">{base + (base / 100 * (7 + 0.7 * (subIndex - 18)))}</value>
 					<value fromLevel="7" toLevel="15" fromSubLevel="1020" toSubLevel="1020">{base + (base / 100 * (8 + 0.1 * (subIndex - 19)))}</value>
 				</power>
+				<overHit>true</overHit>
 			</effect>
 			<effect name="CallSkill">
 				<skillId>11139</skillId> <!-- Ignite -->
@@ -5004,6 +5025,7 @@
 					<value fromLevel="7" toLevel="15" fromSubLevel="1019" toSubLevel="1019">{base + (base / 100 * (7 + 0.7 * (subIndex - 18)))}</value>
 					<value fromLevel="7" toLevel="15" fromSubLevel="1020" toSubLevel="1020">{base + (base / 100 * (8 + 0.1 * (subIndex - 19)))}</value>
 				</power>
+				<overHit>true</overHit>
 			</effect>
 			<effect name="CallSkill">
 				<skillId>11188</skillId> <!-- Freeze - Slow -->
@@ -5506,6 +5528,7 @@
 					<value fromLevel="7" toLevel="15" fromSubLevel="1019" toSubLevel="1019">{base + (base / 100 * (7 + 0.7 * (subIndex - 18)))}</value>
 					<value fromLevel="7" toLevel="15" fromSubLevel="1020" toSubLevel="1020">{base + (base / 100 * (8 + 0.1 * (subIndex - 19)))}</value>
 				</power>
+				<overHit>true</overHit>
 			</effect>
 			<effect name="KnockBack">
 				<speed>600</speed>
@@ -6017,6 +6040,7 @@
 					<value fromLevel="7" toLevel="15" fromSubLevel="1019" toSubLevel="1019">{base + (base / 100 * (7 + 0.7 * (subIndex - 18)))}</value>
 					<value fromLevel="7" toLevel="15" fromSubLevel="1020" toSubLevel="1020">{base + (base / 100 * (8 + 0.1 * (subIndex - 19)))}</value>
 				</power>
+				<overHit>true</overHit>
 			</effect>
 			<effect name="Root" />
 		</effects>
@@ -6527,6 +6551,7 @@
 					<value fromLevel="7" toLevel="15" fromSubLevel="1019" toSubLevel="1019">{base + (base / 100 * (7 + 0.7 * (subIndex - 18)))}</value>
 					<value fromLevel="7" toLevel="15" fromSubLevel="1020" toSubLevel="1020">{base + (base / 100 * (8 + 0.1 * (subIndex - 19)))}</value>
 				</power>
+				<overHit>true</overHit>
 			</effect>
 			<effect name="BlockActions">
 				<allowedSkills>10279;10517;10025;10776;11770;1904;11264;11093;13314;1912;7002;18721;18722;28203;30516;35190</allowedSkills>
@@ -19457,7 +19482,7 @@
 		<targetType>ENEMY</targetType>
 		<abnormalLevel>7</abnormalLevel>
 		<abnormalTime>7</abnormalTime>
-		<abnormalType>BLEEDING</abnormalType>
+		<abnormalType>SPEED_DOWN</abnormalType>
 		<activateRate>
 			<value fromLevel="1" toLevel="8">60</value>
 			<value fromLevel="1" toLevel="8" fromSubLevel="2001" toSubLevel="2020">{base + (base / 100 * subIndex)}</value>
@@ -19474,6 +19499,8 @@
 		<hitTime>6750</hitTime>
 		<isDebuff>true</isDebuff>
 		<isMagic>1</isMagic>
+		<itemConsumeCount>2</itemConsumeCount>
+		<itemConsumeId>3031</itemConsumeId> <!-- Spirit Ore -->
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLevel>
 			<value level="1">95</value>
@@ -19496,7 +19523,6 @@
 			<value level="8">1419</value>
 		</mpConsume>
 		<reuseDelay>30000</reuseDelay>
-		<trait>DERANGEMENT</trait>
 		<effects>
 			<effect name="MagicalDamage">
 				<power>
@@ -19523,6 +19549,7 @@
 					<value fromLevel="1" toLevel="8" fromSubLevel="1019" toSubLevel="1019">{base + (base / 100 * (7 + 0.7 * (subIndex - 18)))}</value>
 					<value fromLevel="1" toLevel="8" fromSubLevel="1020" toSubLevel="1020">{base + (base / 100 * (8 + 0.1 * (subIndex - 19)))}</value>
 				</power>
+				<overHit>true</overHit>
 			</effect>
 			<effect name="Speed">
 				<amount>-80</amount>
@@ -20071,7 +20098,7 @@
 			<value level="7">206</value>
 			<value level="8">216</value>
 		</mpConsume>
-		<reuseDelay>45000</reuseDelay>
+		<reuseDelay>35000</reuseDelay>
 		<trait>DERANGEMENT</trait>
 		<effects>
 			<effect name="MagicalDamage">
@@ -20099,6 +20126,7 @@
 					<value fromLevel="1" toLevel="8" fromSubLevel="1019" toSubLevel="1019">{base + (base / 100 * (7 + 0.7 * (subIndex - 18)))}</value>
 					<value fromLevel="1" toLevel="8" fromSubLevel="1020" toSubLevel="1020">{base + (base / 100 * (8 + 0.1 * (subIndex - 19)))}</value>
 				</power>
+				<overHit>true</overHit>
 			</effect>
 			<effect name="MagicalDefence" fromLevel="1" toLevel="8" fromSubLevel="3001" toSubLevel="3020">
 				<amount>
@@ -20129,6 +20157,22 @@
 			<effect name="CallSkill" fromLevel="4" toLevel="4">
 				<skillId>19420</skillId> <!-- Quadruple Elemental Blast -->
 				<skillLevel>4</skillLevel>
+			</effect>
+			<effect name="CallSkill" fromLevel="5" toLevel="5">
+				<skillId>19420</skillId> <!-- Quadruple Elemental Blast -->
+				<skillLevel>5</skillLevel>
+			</effect>
+			<effect name="CallSkill" fromLevel="6" toLevel="6">
+				<skillId>19420</skillId> <!-- Quadruple Elemental Blast -->
+				<skillLevel>6</skillLevel>
+			</effect>
+			<effect name="CallSkill" fromLevel="7" toLevel="7">
+				<skillId>19420</skillId> <!-- Quadruple Elemental Blast -->
+				<skillLevel>7</skillLevel>
+			</effect>
+			<effect name="CallSkill" fromLevel="8" toLevel="8">
+				<skillId>19420</skillId> <!-- Quadruple Elemental Blast -->
+				<skillLevel>8</skillLevel>
 			</effect>
 		</effects>
 	</skill>

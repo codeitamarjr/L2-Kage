@@ -58,6 +58,7 @@ public class PlayerConfig
 	public static double HP_REGEN_MULTIPLIER;
 	public static double MP_REGEN_MULTIPLIER;
 	public static double CP_REGEN_MULTIPLIER;
+	public static boolean DISABLE_CP;
 	public static boolean ENABLE_MODIFY_SKILL_DURATION;
 	public static Map<Integer, Integer> SKILL_DURATION_LIST;
 	public static boolean ENABLE_MODIFY_SKILL_REUSE;
@@ -258,6 +259,7 @@ public class PlayerConfig
 		HP_REGEN_MULTIPLIER = config.getDouble("HpRegenMultiplier", 100) / 100;
 		MP_REGEN_MULTIPLIER = config.getDouble("MpRegenMultiplier", 100) / 100;
 		CP_REGEN_MULTIPLIER = config.getDouble("CpRegenMultiplier", 100) / 100;
+		DISABLE_CP = config.getBoolean("DisableCp", false);
 		ENABLE_MODIFY_SKILL_DURATION = config.getBoolean("EnableModifySkillDuration", false);
 		if (ENABLE_MODIFY_SKILL_DURATION)
 		{

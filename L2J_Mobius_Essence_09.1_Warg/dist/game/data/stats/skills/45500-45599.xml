@@ -2956,6 +2956,90 @@
 		<operateType>A1</operateType>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
+		<basicProperty>MAGIC</basicProperty>
+		<castRange>700</castRange>
+		<effectPoint>
+			<value level="1">-760</value>
+			<value level="2">-770</value>
+			<value level="3">-780</value>
+			<value level="4">-790</value>
+			<value level="5">-800</value>
+			<value level="6">-810</value>
+			<value level="7">-820</value>
+			<value level="8">-830</value>
+			<value level="9">-840</value>
+			<value level="10">-850</value>
+			<value level="11">-860</value>
+			<value level="12">-870</value>
+			<value level="13">-880</value>
+			<value level="14">-890</value>
+			<value level="15">-900</value>
+			<value level="16">-910</value>
+			<value level="17">-920</value>
+			<value level="18">-930</value>
+			<value level="19">-940</value>
+			<value level="20">-950</value>
+		</effectPoint>
+		<effectRange>1200</effectRange>
+		<hitTime>3000</hitTime>
+		<isMagic>1</isMagic> <!-- Magic Skill -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<reuseDelay>1000</reuseDelay>
+		<effects>
+			<effect name="MagicalDamage">
+				<power>
+					<value level="1">126</value>
+					<value level="2">131</value>
+					<value level="3">136</value>
+					<value level="4">142</value>
+					<value level="5">147</value>
+					<value level="6">153</value>
+					<value level="7">159</value>
+					<value level="8">166</value>
+					<value level="9">172</value>
+					<value level="10">179</value>
+					<value level="11">187</value>
+					<value level="12">194</value>
+					<value level="13">202</value>
+					<value level="14">210</value>
+					<value level="15">218</value>
+					<value level="16">227</value>
+					<value level="17">236</value>
+					<value level="18">245</value>
+					<value level="19">255</value>
+					<value level="20">265</value>
+				</power>
+				<raceModifier>1.1</raceModifier>
+				<races>DEMONIC;UNDEAD</races>
+				<debuffModifier>1.1</debuffModifier>
+			</effect>
+		</effects>
+	</skill>
+	<skill id="45567" toLevel="20" name="Sea Beam">
+		<!-- Level 1: Cleanses the target with the power of water granted by the unbreakable oath. Attacks 3 enemies with magic. Power 126. PvP: attacks up to 3 enemies. PvE: attacks up to 3 enemies. Deals heavy damage to demons/ undead. -->
+		<!-- Level 2: Cleanses the target with the power of water granted by the unbreakable oath. Attacks 3 enemies with magic. Power 128. PvP: attacks up to 3 enemies. PvE: attacks up to 3 enemies. Deals heavy damage to demons/ undead. -->
+		<!-- Level 3: Cleanses the target with the power of water granted by the unbreakable oath. Attacks 3 enemies with magic. Power 130. PvP: attacks up to 3 enemies. PvE: attacks up to 3 enemies. Deals heavy damage to demons/ undead. -->
+		<!-- Level 4: Cleanses the target with the power of water granted by the unbreakable oath. Attacks 3 enemies with magic. Power 134. PvP: attacks up to 3 enemies. PvE: attacks up to 3 enemies. Deals heavy damage to demons/ undead. -->
+		<!-- Level 5: Cleanses the target with the power of water granted by the unbreakable oath. Attacks 3 enemies with magic. Power 137. PvP: attacks up to 3 enemies. PvE: attacks up to 3 enemies. Deals heavy damage to demons/ undead. -->
+		<!-- Level 6: Cleanses the target with the power of water granted by the unbreakable oath. Attacks 3 enemies with magic. Power 140. PvP: attacks up to 3 enemies. PvE: attacks up to 3 enemies. Deals heavy damage to demons/ undead. -->
+		<!-- Level 7: Cleanses the target with the power of water granted by the unbreakable oath. Attacks 3 enemies with magic. Power 144. PvP: attacks up to 3 enemies. PvE: attacks up to 3 enemies. Deals heavy damage to demons/ undead. -->
+		<!-- Level 8: Cleanses the target with the power of water granted by the unbreakable oath. Attacks 3 enemies with magic. Power 147. PvP: attacks up to 3 enemies. PvE: attacks up to 3 enemies. Deals heavy damage to demons/ undead. -->
+		<!-- Level 9: Cleanses the target with the power of water granted by the unbreakable oath. Attacks 3 enemies with magic. Power 150. PvP: attacks up to 3 enemies. PvE: attacks up to 3 enemies. Deals heavy damage to demons/ undead. -->
+		<!-- Level 10: Cleanses the target with the power of water granted by the unbreakable oath. Attacks 3 enemies with magic. Power 154. PvP: attacks up to 3 enemies. PvE: attacks up to 3 enemies. Deals heavy damage to demons/ undead. -->
+		<!-- Level 11: Cleanses the target with the power of water granted by the unbreakable oath. Attacks 3 enemies with magic. Power 158. PvP: attacks up to 3 enemies. PvE: attacks up to 3 enemies. Deals heavy damage to demons/ undead. -->
+		<!-- Level 12: Cleanses the target with the power of water granted by the unbreakable oath. Attacks 3 enemies with magic. Power 162. PvP: attacks up to 3 enemies. PvE: attacks up to 3 enemies. Deals heavy damage to demons/ undead. -->
+		<!-- Level 13: Cleanses the target with the power of water granted by the unbreakable oath. Attacks 3 enemies with magic. Power 167. PvP: attacks up to 3 enemies. PvE: attacks up to 3 enemies. Deals heavy damage to demons/ undead. -->
+		<!-- Level 14: Cleanses the target with the power of water granted by the unbreakable oath. Attacks 3 enemies with magic. Power 170. PvP: attacks up to 3 enemies. PvE: attacks up to 3 enemies. Deals heavy damage to demons/ undead. -->
+		<!-- Level 15: Cleanses the target with the power of water granted by the unbreakable oath. Attacks 3 enemies with magic. Power 176. PvP: attacks up to 3 enemies. PvE: attacks up to 3 enemies. Deals heavy damage to demons/ undead. -->
+		<!-- Level 16: Cleanses the target with the power of water granted by the unbreakable oath. Attacks 3 enemies with magic. Power 181. PvP: attacks up to 3 enemies. PvE: attacks up to 3 enemies. Deals heavy damage to demons/ undead. -->
+		<!-- Level 17: Cleanses the target with the power of water granted by the unbreakable oath. Attacks 3 enemies with magic. Power 187. PvP: attacks up to 3 enemies. PvE: attacks up to 3 enemies. Deals heavy damage to demons/ undead. -->
+		<!-- Level 18: Cleanses the target with the power of water granted by the unbreakable oath. Attacks 3 enemies with magic. Power 192. PvP: attacks up to 3 enemies. PvE: attacks up to 3 enemies. Deals heavy damage to demons/ undead. -->
+		<!-- Level 19: Cleanses the target with the power of water granted by the unbreakable oath. Attacks 3 enemies with magic. Power 198. PvP: attacks up to 3 enemies. PvE: attacks up to 3 enemies. Deals heavy damage to demons/ undead. -->
+		<!-- Level 20: Cleanses the target with the power of water granted by the unbreakable oath. Attacks 3 enemies with magic. Power 203. PvP: attacks up to 3 enemies. PvE: attacks up to 3 enemies. Deals heavy damage to demons/ undead. -->
+		<icon>icon.s_aquatic_ray</icon>
+		<operateType>A1</operateType>
+		<targetType>ENEMY</targetType>
+		<affectScope>SINGLE</affectScope>
 		<attributeType>HOLY</attributeType>
 		<attributeValue>20</attributeValue>
 		<castRange>700</castRange>
@@ -3032,90 +3116,6 @@
 				</power>
 				<raceModifier>1.3</raceModifier>
 				<races>DEMONIC;UNDEAD</races>
-			</effect>
-		</effects>
-	</skill>
-	<skill id="45566" toLevel="20" name="Shining Beam">
-		<!-- Level 1: Cleanses the target with the power of light granted by the unbreakable oath. Attacks 3 enemies with magic. Power 126. PvP: attacks up to 3 enemies. PvE: attacks up to 3 enemies. Deals heavy damage to demons/ undead. -->
-		<!-- Level 2: Cleanses the target with the power of light granted by the unbreakable oath. Attacks 3 enemies with magic. Power 128. PvP: attacks up to 3 enemies. PvE: attacks up to 3 enemies. Deals heavy damage to demons/ undead. -->
-		<!-- Level 3: Cleanses the target with the power of light granted by the unbreakable oath. Attacks 3 enemies with magic. Power 130. PvP: attacks up to 3 enemies. PvE: attacks up to 3 enemies. Deals heavy damage to demons/ undead. -->
-		<!-- Level 4: Cleanses the target with the power of light granted by the unbreakable oath. Attacks 3 enemies with magic. Power 134. PvP: attacks up to 3 enemies. PvE: attacks up to 3 enemies. Deals heavy damage to demons/ undead. -->
-		<!-- Level 5: Cleanses the target with the power of light granted by the unbreakable oath. Attacks 3 enemies with magic. Power 137. PvP: attacks up to 3 enemies. PvE: attacks up to 3 enemies. Deals heavy damage to demons/ undead. -->
-		<!-- Level 6: Cleanses the target with the power of light granted by the unbreakable oath. Attacks 3 enemies with magic. Power 140. PvP: attacks up to 3 enemies. PvE: attacks up to 3 enemies. Deals heavy damage to demons/ undead. -->
-		<!-- Level 7: Cleanses the target with the power of light granted by the unbreakable oath. Attacks 3 enemies with magic. Power 144. PvP: attacks up to 3 enemies. PvE: attacks up to 3 enemies. Deals heavy damage to demons/ undead. -->
-		<!-- Level 8: Cleanses the target with the power of light granted by the unbreakable oath. Attacks 3 enemies with magic. Power 147. PvP: attacks up to 3 enemies. PvE: attacks up to 3 enemies. Deals heavy damage to demons/ undead. -->
-		<!-- Level 9: Cleanses the target with the power of light granted by the unbreakable oath. Attacks 3 enemies with magic. Power 150. PvP: attacks up to 3 enemies. PvE: attacks up to 3 enemies. Deals heavy damage to demons/ undead. -->
-		<!-- Level 10: Cleanses the target with the power of light granted by the unbreakable oath. Attacks 3 enemies with magic. Power 154. PvP: attacks up to 3 enemies. PvE: attacks up to 3 enemies. Deals heavy damage to demons/ undead. -->
-		<!-- Level 11: Cleanses the target with the power of light granted by the unbreakable oath. Attacks 3 enemies with magic. Power 158. PvP: attacks up to 3 enemies. PvE: attacks up to 3 enemies. Deals heavy damage to demons/ undead. -->
-		<!-- Level 12: Cleanses the target with the power of light granted by the unbreakable oath. Attacks 3 enemies with magic. Power 162. PvP: attacks up to 3 enemies. PvE: attacks up to 3 enemies. Deals heavy damage to demons/ undead. -->
-		<!-- Level 13: Cleanses the target with the power of light granted by the unbreakable oath. Attacks 3 enemies with magic. Power 167. PvP: attacks up to 3 enemies. PvE: attacks up to 3 enemies. Deals heavy damage to demons/ undead. -->
-		<!-- Level 14: Cleanses the target with the power of light granted by the unbreakable oath. Attacks 3 enemies with magic. Power 170. PvP: attacks up to 3 enemies. PvE: attacks up to 3 enemies. Deals heavy damage to demons/ undead. -->
-		<!-- Level 15: Cleanses the target with the power of light granted by the unbreakable oath. Attacks 3 enemies with magic. Power 176. PvP: attacks up to 3 enemies. PvE: attacks up to 3 enemies. Deals heavy damage to demons/ undead. -->
-		<!-- Level 16: Cleanses the target with the power of light granted by the unbreakable oath. Attacks 3 enemies with magic. Power 181. PvP: attacks up to 3 enemies. PvE: attacks up to 3 enemies. Deals heavy damage to demons/ undead. -->
-		<!-- Level 17: Cleanses the target with the power of light granted by the unbreakable oath. Attacks 3 enemies with magic. Power 187. PvP: attacks up to 3 enemies. PvE: attacks up to 3 enemies. Deals heavy damage to demons/ undead. -->
-		<!-- Level 18: Cleanses the target with the power of light granted by the unbreakable oath. Attacks 3 enemies with magic. Power 192. PvP: attacks up to 3 enemies. PvE: attacks up to 3 enemies. Deals heavy damage to demons/ undead. -->
-		<!-- Level 19: Cleanses the target with the power of light granted by the unbreakable oath. Attacks 3 enemies with magic. Power 198. PvP: attacks up to 3 enemies. PvE: attacks up to 3 enemies. Deals heavy damage to demons/ undead. -->
-		<!-- Level 20: Cleanses the target with the power of light granted by the unbreakable oath. Attacks 3 enemies with magic. Power 203. PvP: attacks up to 3 enemies. PvE: attacks up to 3 enemies. Deals heavy damage to demons/ undead. -->
-		<icon>icon.s_shining_ray</icon>
-		<operateType>A1</operateType>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
-		<basicProperty>MAGIC</basicProperty>
-		<castRange>700</castRange>
-		<effectPoint>
-			<value level="1">-760</value>
-			<value level="2">-770</value>
-			<value level="3">-780</value>
-			<value level="4">-790</value>
-			<value level="5">-800</value>
-			<value level="6">-810</value>
-			<value level="7">-820</value>
-			<value level="8">-830</value>
-			<value level="9">-840</value>
-			<value level="10">-850</value>
-			<value level="11">-860</value>
-			<value level="12">-870</value>
-			<value level="13">-880</value>
-			<value level="14">-890</value>
-			<value level="15">-900</value>
-			<value level="16">-910</value>
-			<value level="17">-920</value>
-			<value level="18">-930</value>
-			<value level="19">-940</value>
-			<value level="20">-950</value>
-		</effectPoint>
-		<effectRange>1200</effectRange>
-		<hitTime>3000</hitTime>
-		<isMagic>1</isMagic> <!-- Magic Skill -->
-		<magicCriticalRate>5</magicCriticalRate>
-		<reuseDelay>1000</reuseDelay>
-		<effects>
-			<effect name="MagicalDamage">
-				<power>
-					<value level="1">126</value>
-					<value level="2">131</value>
-					<value level="3">136</value>
-					<value level="4">142</value>
-					<value level="5">147</value>
-					<value level="6">153</value>
-					<value level="7">159</value>
-					<value level="8">166</value>
-					<value level="9">172</value>
-					<value level="10">179</value>
-					<value level="11">187</value>
-					<value level="12">194</value>
-					<value level="13">202</value>
-					<value level="14">210</value>
-					<value level="15">218</value>
-					<value level="16">227</value>
-					<value level="17">236</value>
-					<value level="18">245</value>
-					<value level="19">255</value>
-					<value level="20">265</value>
-				</power>
-				<raceModifier>1.1</raceModifier>
-				<races>DEMONIC;UNDEAD</races>
-				<debuffModifier>1.1</debuffModifier>
 			</effect>
 		</effects>
 	</skill>

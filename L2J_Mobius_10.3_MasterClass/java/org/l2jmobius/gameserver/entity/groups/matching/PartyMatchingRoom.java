@@ -23,7 +23,6 @@ import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.enums.UserInfoType;
 import org.l2jmobius.gameserver.network.serverpackets.ExClosePartyRoom;
 import org.l2jmobius.gameserver.network.serverpackets.ExPartyRoomMember;
-import org.l2jmobius.gameserver.network.serverpackets.ListPartyWaiting;
 import org.l2jmobius.gameserver.network.serverpackets.PartyRoomInfo;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
 
@@ -41,7 +40,6 @@ public class PartyMatchingRoom extends MatchingRoom
 	protected void onRoomCreation(Player player)
 	{
 		player.broadcastUserInfo(UserInfoType.CLAN);
-		player.sendPacket(new ListPartyWaiting(PartyMatchingRoomLevelType.ALL, -1, 1, player.getLevel()));
 		player.sendPacket(SystemMessageId.YOU_HAVE_CREATED_A_PARTY_ROOM);
 	}
 	
@@ -88,9 +86,12 @@ public class PartyMatchingRoom extends MatchingRoom
 		getMembers().forEach(p ->
 		{
 			p.sendPacket(new PartyRoomInfo(this));
-			p.sendPacket(new ExPartyRoomMember(player, this));
+			p.sendPacket(new ExPartyRoomMember(p, this));
 			p.sendPacket(sm);
-			p.sendPacket(SystemMessageId.THE_LEADER_OF_THE_PARTY_ROOM_HAS_CHANGED);
+			if (leaderChanged)
+			{
+				p.sendPacket(SystemMessageId.THE_LEADER_OF_THE_PARTY_ROOM_HAS_CHANGED);
+			}
 		});
 		
 		player.sendPacket(new SystemMessage(kicked ? SystemMessageId.YOU_HAVE_BEEN_OUSTED_FROM_THE_PARTY_ROOM : SystemMessageId.YOU_HAVE_EXITED_THE_PARTY_ROOM));

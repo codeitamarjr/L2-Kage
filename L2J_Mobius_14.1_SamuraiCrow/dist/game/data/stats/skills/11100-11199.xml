@@ -575,6 +575,7 @@
 					<value fromLevel="3" toLevel="11" fromSubLevel="1019" toSubLevel="1019">{base + (base / 100 * (7 + 0.7 * (subIndex - 18)))}</value>
 					<value fromLevel="3" toLevel="11" fromSubLevel="1020" toSubLevel="1020">{base + (base / 100 * (8 + 0.1 * (subIndex - 19)))}</value>
 				</power>
+				<overHit>true</overHit>
 			</effect>
 			<effect name="DispelBySlotProbability">
 				<!-- Detonates Elemental Destruction -->
@@ -1027,17 +1028,17 @@
 		<effects>
 			<effect name="MagicalDamage">
 				<power>
-					<value level="1">523</value>
-					<value level="2">563</value>
-					<value level="3">603</value>
-					<value level="4">635</value>
-					<value level="5">651</value>
-					<value level="6">667</value>
-					<value level="7">683</value>
-					<value level="8">703</value>
-					<value level="9">723</value>
-					<value level="10">795</value>
-					<value level="11">875</value>
+					<value level="1">601</value>
+					<value level="2">647</value>
+					<value level="3">693</value>
+					<value level="4">730</value>
+					<value level="5">749</value>
+					<value level="6">767</value>
+					<value level="7">785</value>
+					<value level="8">808</value>
+					<value level="9">831</value>
+					<value level="10">914</value>
+					<value level="11">1006</value>
 					<value fromLevel="3" toLevel="11" fromSubLevel="1001" toSubLevel="1005">{base + (base / 100 * (1 + 0.4 * (subIndex - 1)))}</value>
 					<value fromLevel="3" toLevel="11" fromSubLevel="1006" toSubLevel="1006">{base + (base / 100 * (2 + 0.8 * (subIndex - 5)))}</value>
 					<value fromLevel="3" toLevel="11" fromSubLevel="1007" toSubLevel="1007">{base + (base / 100 * (3 + 0.3 * (subIndex - 6)))}</value>
@@ -1053,6 +1054,7 @@
 					<value fromLevel="3" toLevel="11" fromSubLevel="1019" toSubLevel="1019">{base + (base / 100 * (7 + 0.7 * (subIndex - 18)))}</value>
 					<value fromLevel="3" toLevel="11" fromSubLevel="1020" toSubLevel="1020">{base + (base / 100 * (8 + 0.1 * (subIndex - 19)))}</value>
 				</power>
+				<overHit>true</overHit>
 			</effect>
 			<effect name="CallSkill">
 				<skillId>11139</skillId> <!-- Ignite -->
@@ -1511,17 +1513,17 @@
 		<effects>
 			<effect name="MagicalDamage">
 				<power>
-					<value level="1">609</value>
-					<value level="2">659</value>
-					<value level="3">709</value>
-					<value level="4">749</value>
-					<value level="5">769</value>
-					<value level="6">789</value>
-					<value level="7">809</value>
-					<value level="8">833</value>
-					<value level="9">857</value>
-					<value level="10">943</value>
-					<value level="11">1037</value>
+					<value level="1">523</value>
+					<value level="2">563</value>
+					<value level="3">603</value>
+					<value level="4">635</value>
+					<value level="5">651</value>
+					<value level="6">667</value>
+					<value level="7">683</value>
+					<value level="8">703</value>
+					<value level="9">723</value>
+					<value level="10">795</value>
+					<value level="11">875</value>
 					<value fromLevel="3" toLevel="11" fromSubLevel="1001" toSubLevel="1005">{base + (base / 100 * (1 + 0.4 * (subIndex - 1)))}</value>
 					<value fromLevel="3" toLevel="11" fromSubLevel="1006" toSubLevel="1006">{base + (base / 100 * (2 + 0.8 * (subIndex - 5)))}</value>
 					<value fromLevel="3" toLevel="11" fromSubLevel="1007" toSubLevel="1007">{base + (base / 100 * (3 + 0.3 * (subIndex - 6)))}</value>
@@ -1537,6 +1539,7 @@
 					<value fromLevel="3" toLevel="11" fromSubLevel="1019" toSubLevel="1019">{base + (base / 100 * (7 + 0.7 * (subIndex - 18)))}</value>
 					<value fromLevel="3" toLevel="11" fromSubLevel="1020" toSubLevel="1020">{base + (base / 100 * (8 + 0.1 * (subIndex - 19)))}</value>
 				</power>
+				<overHit>true</overHit>
 			</effect>
 			<effect name="DispelBySlotProbability">
 				<!-- Detonates Elemental Destruction -->
@@ -2058,6 +2061,7 @@
 					<value fromLevel="3" toLevel="11" fromSubLevel="1019" toSubLevel="1019">{base + (base / 100 * (7 + 0.7 * (subIndex - 18)))}</value>
 					<value fromLevel="3" toLevel="11" fromSubLevel="1020" toSubLevel="1020">{base + (base / 100 * (8 + 0.1 * (subIndex - 19)))}</value>
 				</power>
+				<overHit>true</overHit>
 			</effect>
 			<effect name="DispelBySlotProbability">
 				<!-- Detonates Elemental Destruction -->
@@ -2498,8 +2502,8 @@
 		<hitTime>2280</hitTime>
 		<isMagic>1</isMagic>
 		<magicCriticalRate>
-			<value fromLevel="1" toLevel="9">6</value>
-			<value fromLevel="3" toLevel="9" fromSubLevel="2001" toSubLevel="2020">{base + (base / 100 * subIndex)}</value>
+			<value fromLevel="1" toLevel="11">6</value>
+			<value fromLevel="3" toLevel="11" fromSubLevel="2001" toSubLevel="2020">{base + (base / 100 * subIndex)}</value>
 		</magicCriticalRate>
 		<magicLevel>
 			<value level="1">85</value>
@@ -2511,8 +2515,8 @@
 			<value level="7">105</value>
 			<value level="8">107</value>
 			<value level="9">109</value>
-			<value level="10">109</value> <!-- FIXME: AUTO GENERATED LEVEL -->
-			<value level="11">109</value> <!-- FIXME: AUTO GENERATED LEVEL -->
+			<value level="10">111</value>
+			<value level="11">116</value>
 		</magicLevel>
 		<mpConsume>
 			<value level="1">110</value>
@@ -2559,23 +2563,26 @@
 					<value level="5">651</value>
 					<value level="6">667</value>
 					<value level="7">683</value>
-					<value level="8">833</value>
-					<value level="9">857</value>
-					<value fromLevel="3" toLevel="9" fromSubLevel="1001" toSubLevel="1005">{base + (base / 100 * (1 + 0.4 * (subIndex - 1)))}</value>
-					<value fromLevel="3" toLevel="9" fromSubLevel="1006" toSubLevel="1006">{base + (base / 100 * (2 + 0.8 * (subIndex - 5)))}</value>
-					<value fromLevel="3" toLevel="9" fromSubLevel="1007" toSubLevel="1007">{base + (base / 100 * (3 + 0.3 * (subIndex - 6)))}</value>
-					<value fromLevel="3" toLevel="9" fromSubLevel="1008" toSubLevel="1008">{base + (base / 100 * (3 + 0.3 * (subIndex - 7)))}</value>
-					<value fromLevel="3" toLevel="9" fromSubLevel="1009" toSubLevel="1011">{base + (base / 100 * (4 + 0.4 * (subIndex - 8)))}</value>
-					<value fromLevel="3" toLevel="9" fromSubLevel="1012" toSubLevel="1012">{base + (base / 100 * (5 + 0.1 * (subIndex - 11)))}</value>
-					<value fromLevel="3" toLevel="9" fromSubLevel="1013" toSubLevel="1013">{base + (base / 100 * (5 + 0.5 * (subIndex - 12)))}</value>
-					<value fromLevel="3" toLevel="9" fromSubLevel="1014" toSubLevel="1014">{base + (base / 100 * (5 + 0.9 * (subIndex - 13)))}</value>
-					<value fromLevel="3" toLevel="9" fromSubLevel="1015" toSubLevel="1015">{base + (base / 100 * (6 + 0.2 * (subIndex - 14)))}</value>
-					<value fromLevel="3" toLevel="9" fromSubLevel="1016" toSubLevel="1016">{base + (base / 100 * (6 + 0.6 * (subIndex - 15)))}</value>
-					<value fromLevel="3" toLevel="9" fromSubLevel="1017" toSubLevel="1017">{base + (base / 100 * (7 + 0.2 * (subIndex - 16)))}</value>
-					<value fromLevel="3" toLevel="9" fromSubLevel="1018" toSubLevel="1018">{base + (base / 100 * (7 + 0.4 * (subIndex - 17)))}</value>
-					<value fromLevel="3" toLevel="9" fromSubLevel="1019" toSubLevel="1019">{base + (base / 100 * (7 + 0.7 * (subIndex - 18)))}</value>
-					<value fromLevel="3" toLevel="9" fromSubLevel="1020" toSubLevel="1020">{base + (base / 100 * (8 + 0.1 * (subIndex - 19)))}</value>
+					<value level="8">703</value>
+					<value level="9">723</value>
+					<value level="10">795</value>
+					<value level="11">875</value>
+					<value fromLevel="3" toLevel="11" fromSubLevel="1001" toSubLevel="1005">{base + (base / 100 * (1 + 0.4 * (subIndex - 1)))}</value>
+					<value fromLevel="3" toLevel="11" fromSubLevel="1006" toSubLevel="1006">{base + (base / 100 * (2 + 0.8 * (subIndex - 5)))}</value>
+					<value fromLevel="3" toLevel="11" fromSubLevel="1007" toSubLevel="1007">{base + (base / 100 * (3 + 0.3 * (subIndex - 6)))}</value>
+					<value fromLevel="3" toLevel="11" fromSubLevel="1008" toSubLevel="1008">{base + (base / 100 * (3 + 0.3 * (subIndex - 7)))}</value>
+					<value fromLevel="3" toLevel="11" fromSubLevel="1009" toSubLevel="1011">{base + (base / 100 * (4 + 0.4 * (subIndex - 8)))}</value>
+					<value fromLevel="3" toLevel="11" fromSubLevel="1012" toSubLevel="1012">{base + (base / 100 * (5 + 0.1 * (subIndex - 11)))}</value>
+					<value fromLevel="3" toLevel="11" fromSubLevel="1013" toSubLevel="1013">{base + (base / 100 * (5 + 0.5 * (subIndex - 12)))}</value>
+					<value fromLevel="3" toLevel="11" fromSubLevel="1014" toSubLevel="1014">{base + (base / 100 * (5 + 0.9 * (subIndex - 13)))}</value>
+					<value fromLevel="3" toLevel="11" fromSubLevel="1015" toSubLevel="1015">{base + (base / 100 * (6 + 0.2 * (subIndex - 14)))}</value>
+					<value fromLevel="3" toLevel="11" fromSubLevel="1016" toSubLevel="1016">{base + (base / 100 * (6 + 0.6 * (subIndex - 15)))}</value>
+					<value fromLevel="3" toLevel="11" fromSubLevel="1017" toSubLevel="1017">{base + (base / 100 * (7 + 0.2 * (subIndex - 16)))}</value>
+					<value fromLevel="3" toLevel="11" fromSubLevel="1018" toSubLevel="1018">{base + (base / 100 * (7 + 0.4 * (subIndex - 17)))}</value>
+					<value fromLevel="3" toLevel="11" fromSubLevel="1019" toSubLevel="1019">{base + (base / 100 * (7 + 0.7 * (subIndex - 18)))}</value>
+					<value fromLevel="3" toLevel="11" fromSubLevel="1020" toSubLevel="1020">{base + (base / 100 * (8 + 0.1 * (subIndex - 19)))}</value>
 				</power>
+				<overHit>true</overHit>
 			</effect>
 			<effect name="DispelBySlotProbability">
 				<!-- Detonates Elemental Destruction -->
@@ -2919,6 +2926,7 @@
 					<value fromLevel="3" toLevel="7" fromSubLevel="1019" toSubLevel="1019">{base + (base / 100 * (7 + 0.7 * (subIndex - 18)))}</value>
 					<value fromLevel="3" toLevel="7" fromSubLevel="1020" toSubLevel="1020">{base + (base / 100 * (8 + 0.1 * (subIndex - 19)))}</value>
 				</power>
+				<overHit>true</overHit>
 			</effect>
 			<effect name="DispelBySlotProbability">
 				<!-- Detonates Elemental Destruction -->
@@ -3395,6 +3403,7 @@
 					<value fromLevel="3" toLevel="11" fromSubLevel="1019" toSubLevel="1019">{base + (base / 100 * (7 + 0.7 * (subIndex - 18)))}</value>
 					<value fromLevel="3" toLevel="11" fromSubLevel="1020" toSubLevel="1020">{base + (base / 100 * (8 + 0.1 * (subIndex - 19)))}</value>
 				</power>
+				<overHit>true</overHit>
 			</effect>
 			<effect name="DispelBySlotProbability">
 				<!-- Detonates Elemental Destruction -->
@@ -3845,17 +3854,17 @@
 		<effects>
 			<effect name="MagicalDamage">
 				<power>
-					<value level="1">523</value>
-					<value level="2">563</value>
-					<value level="3">603</value>
-					<value level="4">635</value>
-					<value level="5">651</value>
-					<value level="6">667</value>
-					<value level="7">683</value>
-					<value level="8">703</value>
-					<value level="9">723</value>
-					<value level="10">795</value>
-					<value level="11">875</value>
+					<value level="1">601</value>
+					<value level="2">647</value>
+					<value level="3">693</value>
+					<value level="4">730</value>
+					<value level="5">749</value>
+					<value level="6">767</value>
+					<value level="7">785</value>
+					<value level="8">808</value>
+					<value level="9">831</value>
+					<value level="10">914</value>
+					<value level="11">1006</value>
 					<value fromLevel="3" toLevel="11" fromSubLevel="1001" toSubLevel="1005">{base + (base / 100 * (1 + 0.4 * (subIndex - 1)))}</value>
 					<value fromLevel="3" toLevel="11" fromSubLevel="1006" toSubLevel="1006">{base + (base / 100 * (2 + 0.8 * (subIndex - 5)))}</value>
 					<value fromLevel="3" toLevel="11" fromSubLevel="1007" toSubLevel="1007">{base + (base / 100 * (3 + 0.3 * (subIndex - 6)))}</value>
@@ -3871,6 +3880,7 @@
 					<value fromLevel="3" toLevel="11" fromSubLevel="1019" toSubLevel="1019">{base + (base / 100 * (7 + 0.7 * (subIndex - 18)))}</value>
 					<value fromLevel="3" toLevel="11" fromSubLevel="1020" toSubLevel="1020">{base + (base / 100 * (8 + 0.1 * (subIndex - 19)))}</value>
 				</power>
+				<overHit>true</overHit>
 			</effect>
 			<effect name="DispelBySlotProbability">
 				<!-- Detonates Elemental Destruction -->
@@ -4357,17 +4367,17 @@
 		<effects>
 			<effect name="MagicalDamage">
 				<power>
-					<value level="1">542</value>
-					<value level="2">587</value>
-					<value level="3">632</value>
-					<value level="4">668</value>
-					<value level="5">686</value>
-					<value level="6">704</value>
-					<value level="7">722</value>
-					<value level="8">744</value>
-					<value level="9">766</value>
-					<value level="10">843</value>
-					<value level="11">927</value>
+					<value level="1">523</value>
+					<value level="2">563</value>
+					<value level="3">603</value>
+					<value level="4">635</value>
+					<value level="5">651</value>
+					<value level="6">667</value>
+					<value level="7">683</value>
+					<value level="8">703</value>
+					<value level="9">723</value>
+					<value level="10">795</value>
+					<value level="11">875</value>
 					<value fromLevel="3" toLevel="11" fromSubLevel="1001" toSubLevel="1005">{base + (base / 100 * (1 + 0.4 * (subIndex - 1)))}</value>
 					<value fromLevel="3" toLevel="11" fromSubLevel="1006" toSubLevel="1006">{base + (base / 100 * (2 + 0.8 * (subIndex - 5)))}</value>
 					<value fromLevel="3" toLevel="11" fromSubLevel="1007" toSubLevel="1007">{base + (base / 100 * (3 + 0.3 * (subIndex - 6)))}</value>
@@ -4383,6 +4393,7 @@
 					<value fromLevel="3" toLevel="11" fromSubLevel="1019" toSubLevel="1019">{base + (base / 100 * (7 + 0.7 * (subIndex - 18)))}</value>
 					<value fromLevel="3" toLevel="11" fromSubLevel="1020" toSubLevel="1020">{base + (base / 100 * (8 + 0.1 * (subIndex - 19)))}</value>
 				</power>
+				<overHit>true</overHit>
 			</effect>
 			<effect name="DispelBySlotProbability">
 				<!-- Detonates Elemental Destruction -->
@@ -4891,6 +4902,7 @@
 					<value fromLevel="3" toLevel="11" fromSubLevel="1019" toSubLevel="1019">{base + (base / 100 * (7 + 0.7 * (subIndex - 18)))}</value>
 					<value fromLevel="3" toLevel="11" fromSubLevel="1020" toSubLevel="1020">{base + (base / 100 * (8 + 0.1 * (subIndex - 19)))}</value>
 				</power>
+				<overHit>true</overHit>
 			</effect>
 			<effect name="DispelBySlotProbability">
 				<!-- Detonates Elemental Destruction -->
@@ -5341,17 +5353,17 @@
 		<effects>
 			<effect name="MagicalDamage">
 				<power>
-					<value level="1">523</value>
-					<value level="2">563</value>
-					<value level="3">603</value>
-					<value level="4">635</value>
-					<value level="5">651</value>
-					<value level="6">667</value>
-					<value level="7">683</value>
-					<value level="8">703</value>
-					<value level="9">723</value>
-					<value level="10">795</value>
-					<value level="11">875</value>
+					<value level="1">601</value>
+					<value level="2">647</value>
+					<value level="3">693</value>
+					<value level="4">730</value>
+					<value level="5">749</value>
+					<value level="6">767</value>
+					<value level="7">785</value>
+					<value level="8">808</value>
+					<value level="9">831</value>
+					<value level="10">914</value>
+					<value level="11">1006</value>
 					<value fromLevel="3" toLevel="11" fromSubLevel="1001" toSubLevel="1005">{base + (base / 100 * (1 + 0.4 * (subIndex - 1)))}</value>
 					<value fromLevel="3" toLevel="11" fromSubLevel="1006" toSubLevel="1006">{base + (base / 100 * (2 + 0.8 * (subIndex - 5)))}</value>
 					<value fromLevel="3" toLevel="11" fromSubLevel="1007" toSubLevel="1007">{base + (base / 100 * (3 + 0.3 * (subIndex - 6)))}</value>
@@ -5367,6 +5379,7 @@
 					<value fromLevel="3" toLevel="11" fromSubLevel="1019" toSubLevel="1019">{base + (base / 100 * (7 + 0.7 * (subIndex - 18)))}</value>
 					<value fromLevel="3" toLevel="11" fromSubLevel="1020" toSubLevel="1020">{base + (base / 100 * (8 + 0.1 * (subIndex - 19)))}</value>
 				</power>
+				<overHit>true</overHit>
 			</effect>
 			<effect name="CallSkill">
 				<skillId>11139</skillId> <!-- Ignite -->
@@ -5822,17 +5835,17 @@
 		<effects>
 			<effect name="MagicalDamage">
 				<power>
-					<value level="1">637</value>
-					<value level="2">687</value>
-					<value level="3">737</value>
-					<value level="4">777</value>
-					<value level="5">797</value>
-					<value level="6">817</value>
-					<value level="7">837</value>
-					<value level="8">863</value>
-					<value level="9">889</value>
-					<value level="10">978</value>
-					<value level="11">1076</value>
+					<value level="1">601</value>
+					<value level="2">647</value>
+					<value level="3">693</value>
+					<value level="4">730</value>
+					<value level="5">749</value>
+					<value level="6">767</value>
+					<value level="7">785</value>
+					<value level="8">808</value>
+					<value level="9">831</value>
+					<value level="10">914</value>
+					<value level="11">1006</value>
 					<value fromLevel="3" toLevel="11" fromSubLevel="1001" toSubLevel="1005">{base + (base / 100 * (1 + 0.4 * (subIndex - 1)))}</value>
 					<value fromLevel="3" toLevel="11" fromSubLevel="1006" toSubLevel="1006">{base + (base / 100 * (2 + 0.8 * (subIndex - 5)))}</value>
 					<value fromLevel="3" toLevel="11" fromSubLevel="1007" toSubLevel="1007">{base + (base / 100 * (3 + 0.3 * (subIndex - 6)))}</value>
@@ -5848,6 +5861,7 @@
 					<value fromLevel="3" toLevel="11" fromSubLevel="1019" toSubLevel="1019">{base + (base / 100 * (7 + 0.7 * (subIndex - 18)))}</value>
 					<value fromLevel="3" toLevel="11" fromSubLevel="1020" toSubLevel="1020">{base + (base / 100 * (8 + 0.1 * (subIndex - 19)))}</value>
 				</power>
+				<overHit>true</overHit>
 			</effect>
 			<effect name="TeleportToTarget" />
 			<effect name="TargetCancel">
@@ -6324,6 +6338,7 @@
 					<value fromLevel="3" toLevel="11" fromSubLevel="1019" toSubLevel="1019">{base + (base / 100 * (7 + 0.7 * (subIndex - 18)))}</value>
 					<value fromLevel="3" toLevel="11" fromSubLevel="1020" toSubLevel="1020">{base + (base / 100 * (8 + 0.1 * (subIndex - 19)))}</value>
 				</power>
+				<overHit>true</overHit>
 			</effect>
 			<effect name="DispelBySlotProbability">
 				<!-- Detonates Elemental Destruction -->
@@ -6800,6 +6815,7 @@
 					<value fromLevel="3" toLevel="11" fromSubLevel="1019" toSubLevel="1019">{base + (base / 100 * (7 + 0.7 * (subIndex - 18)))}</value>
 					<value fromLevel="3" toLevel="11" fromSubLevel="1020" toSubLevel="1020">{base + (base / 100 * (8 + 0.1 * (subIndex - 19)))}</value>
 				</power>
+				<overHit>true</overHit>
 			</effect>
 			<effect name="DispelBySlotProbability">
 				<!-- Detonates Elemental Destruction -->
@@ -7295,17 +7311,17 @@
 		<effects>
 			<effect name="MagicalDamage">
 				<power>
-					<value level="1">609</value>
-					<value level="2">659</value>
-					<value level="3">709</value>
-					<value level="4">749</value>
-					<value level="5">769</value>
-					<value level="6">789</value>
-					<value level="7">809</value>
-					<value level="8">833</value>
-					<value level="9">857</value>
-					<value level="10">943</value>
-					<value level="11">1037</value>
+					<value level="1">601</value>
+					<value level="2">647</value>
+					<value level="3">693</value>
+					<value level="4">730</value>
+					<value level="5">749</value>
+					<value level="6">767</value>
+					<value level="7">785</value>
+					<value level="8">808</value>
+					<value level="9">831</value>
+					<value level="10">914</value>
+					<value level="11">1006</value>
 					<value fromLevel="3" toLevel="11" fromSubLevel="1001" toSubLevel="1005">{base + (base / 100 * (1 + 0.4 * (subIndex - 1)))}</value>
 					<value fromLevel="3" toLevel="11" fromSubLevel="1006" toSubLevel="1006">{base + (base / 100 * (2 + 0.8 * (subIndex - 5)))}</value>
 					<value fromLevel="3" toLevel="11" fromSubLevel="1007" toSubLevel="1007">{base + (base / 100 * (3 + 0.3 * (subIndex - 6)))}</value>
@@ -7321,15 +7337,12 @@
 					<value fromLevel="3" toLevel="11" fromSubLevel="1019" toSubLevel="1019">{base + (base / 100 * (7 + 0.7 * (subIndex - 18)))}</value>
 					<value fromLevel="3" toLevel="11" fromSubLevel="1020" toSubLevel="1020">{base + (base / 100 * (8 + 0.1 * (subIndex - 19)))}</value>
 				</power>
+				<overHit>true</overHit>
 			</effect>
 			<effect name="DispelBySlotProbability">
 				<!-- Detonates Elemental Destruction -->
 				<dispel>BODY_DESTRUCTION</dispel>
 				<rate>100</rate>
-			</effect>
-			<effect name="DefenceMagicCriticalRate">
-				<amount>20</amount> <!-- Guessed -->
-				<mode>PER</mode>
 			</effect>
 		</effects>
 	</skill>
@@ -7797,6 +7810,7 @@
 					<value fromLevel="3" toLevel="11" fromSubLevel="1019" toSubLevel="1019">{base + (base / 100 * (7 + 0.7 * (subIndex - 18)))}</value>
 					<value fromLevel="3" toLevel="11" fromSubLevel="1020" toSubLevel="1020">{base + (base / 100 * (8 + 0.1 * (subIndex - 19)))}</value>
 				</power>
+				<overHit>true</overHit>
 			</effect>
 			<effect name="DispelBySlotProbability">
 				<!-- Detonates Elemental Destruction -->
@@ -8273,6 +8287,7 @@
 					<value fromLevel="3" toLevel="11" fromSubLevel="1019" toSubLevel="1019">{base + (base / 100 * (7 + 0.7 * (subIndex - 18)))}</value>
 					<value fromLevel="3" toLevel="11" fromSubLevel="1020" toSubLevel="1020">{base + (base / 100 * (8 + 0.1 * (subIndex - 19)))}</value>
 				</power>
+				<overHit>true</overHit>
 			</effect>
 			<effect name="DispelBySlotProbability">
 				<!-- Detonates Elemental Destruction -->
@@ -8767,17 +8782,17 @@
 		<effects>
 			<effect name="MagicalDamage">
 				<power>
-					<value level="1">609</value>
-					<value level="2">659</value>
-					<value level="3">709</value>
-					<value level="4">749</value>
-					<value level="5">769</value>
-					<value level="6">789</value>
-					<value level="7">809</value>
-					<value level="8">833</value>
-					<value level="9">857</value>
-					<value level="10">943</value>
-					<value level="11">1037</value>
+					<value level="1">601</value>
+					<value level="2">647</value>
+					<value level="3">693</value>
+					<value level="4">730</value>
+					<value level="5">749</value>
+					<value level="6">767</value>
+					<value level="7">785</value>
+					<value level="8">808</value>
+					<value level="9">831</value>
+					<value level="10">914</value>
+					<value level="11">1006</value>
 					<value fromLevel="3" toLevel="11" fromSubLevel="1001" toSubLevel="1005">{base + (base / 100 * (1 + 0.4 * (subIndex - 1)))}</value>
 					<value fromLevel="3" toLevel="11" fromSubLevel="1006" toSubLevel="1006">{base + (base / 100 * (2 + 0.8 * (subIndex - 5)))}</value>
 					<value fromLevel="3" toLevel="11" fromSubLevel="1007" toSubLevel="1007">{base + (base / 100 * (3 + 0.3 * (subIndex - 6)))}</value>
@@ -8793,6 +8808,7 @@
 					<value fromLevel="3" toLevel="11" fromSubLevel="1019" toSubLevel="1019">{base + (base / 100 * (7 + 0.7 * (subIndex - 18)))}</value>
 					<value fromLevel="3" toLevel="11" fromSubLevel="1020" toSubLevel="1020">{base + (base / 100 * (8 + 0.1 * (subIndex - 19)))}</value>
 				</power>
+				<overHit>true</overHit>
 			</effect>
 			<effect name="DispelBySlotProbability">
 				<!-- Detonates Elemental Destruction -->
@@ -9727,7 +9743,7 @@
 		<!-- Level 4 - SubLevel 1019 (+7.7% Power): Creates a tornado in the selected area, dealing great damage to enemies. Additionally inflicts a Wind Binding state that decreases Speed. The higher the level of the debuff, the greater the damage. Applies Aerial Yoke on enemies at the maximum level. When used, the Repeated Sorcery and Last Sorcery effects are applied decreasing the cooldown by 15 sec. Consumes 1 Spirit Ore. Wind Binding. Speed -60~80. The effect stacks up to 3 times for 5 sec. Once there are 3 stacks, an Aerial Yoke effect is triggered. -->
 		<!-- Level 4 - SubLevel 1020 (+8.1% Power): Creates a tornado in the selected area, dealing great damage to enemies. Additionally inflicts a Wind Binding state that decreases Speed. The higher the level of the debuff, the greater the damage. Applies Aerial Yoke on enemies at the maximum level. When used, the Repeated Sorcery and Last Sorcery effects are applied decreasing the cooldown by 15 sec. Consumes 1 Spirit Ore. Wind Binding. Speed -60~80. The effect stacks up to 3 times for 5 sec. Once there are 3 stacks, an Aerial Yoke effect is triggered. -->
 		<icon>icon.skill11137</icon>
-		<operateType>CA1</operateType>
+		<operateType>A1</operateType>
 		<targetType>GROUND</targetType>
 		<affectObject>NOT_FRIEND</affectObject>
 		<affectRange>250</affectRange>
@@ -9735,20 +9751,26 @@
 		<attributeType>WIND</attributeType>
 		<attributeValue>100</attributeValue>
 		<castRange>800</castRange>
-		<channelingStart>2</channelingStart>
-		<channelingTickInterval>1</channelingTickInterval>
 		<effectPoint>-676</effectPoint>
 		<hitCancelTime>4</hitCancelTime>
 		<hitTime>6750</hitTime>
 		<isMagic>2</isMagic>
-		<itemConsumeCount>5</itemConsumeCount>
+		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>3031</itemConsumeId> <!-- Spirit Ore -->
-		<mpConsume>153</mpConsume>
-		<reuseDelay>120000</reuseDelay>
-		<channelingEffects>
+		<mpConsume>
+			<value level="1">153</value>
+			<value level="2">163</value>
+			<value level="3">173</value>
+			<value level="4">183</value>
+		</mpConsume>
+		<reuseDelay>45000</reuseDelay>
+		<effects>
 			<effect name="MagicalDamage">
 				<power>
-					<value fromLevel="1" toLevel="4">550</value>
+					<value level="1">364</value>
+					<value level="2">382</value>
+					<value level="3">420</value>
+					<value level="4">462</value>
 					<value fromLevel="1" toLevel="4" fromSubLevel="1001" toSubLevel="1005">{base + (base / 100 * (1 + 0.4 * (subIndex - 1)))}</value>
 					<value fromLevel="1" toLevel="4" fromSubLevel="1006" toSubLevel="1006">{base + (base / 100 * (2 + 0.8 * (subIndex - 5)))}</value>
 					<value fromLevel="1" toLevel="4" fromSubLevel="1007" toSubLevel="1007">{base + (base / 100 * (3 + 0.3 * (subIndex - 6)))}</value>
@@ -9769,9 +9791,16 @@
 				<!-- Wind Binding -->
 				<skillId>11144</skillId> <!-- Wind Binding -->
 				<skillLevel>1</skillLevel>
-				<skillLevelScaleTo>5</skillLevelScaleTo>
+				<skillLevelScaleTo>3</skillLevelScaleTo>
 			</effect>
-		</channelingEffects>
+		</effects>
+		<selfEffects>
+			<effect name="CallSkill">
+				<skillId>31024</skillId> <!-- Repeated Sorcery - Tornado -->
+				<skillLevel>1</skillLevel>
+				<skillLevelScaleTo>3</skillLevelScaleTo>
+			</effect>
+		</selfEffects>
 	</skill>
 	<skill id="11138" toLevel="4" name="Spirit Bomb">
 		<!-- Detonates the soul in the selected location to deal great damage to nearby enemies. Additionally inflicts a Soul Weakness effect that increases received PvP damage. The higher the level of the debuff, the greater the effect. The character gets temporarily the Immortal Soul effect that protects from damage. When used, the Repeated Sorcery and Last Sorcery effects are applied decreasing the cooldown by 15 sec. Consumes 1 Spirit Ore. Soul Weakness. Received damage +5~10%. The effect stacks up to 3 times for 10 sec. Immortal Soul. Protects from damage for 2 sec. -->
@@ -10105,7 +10134,7 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="11144" toLevel="5" name="Wind Binding">
+	<skill id="11144" toLevel="3" name="Wind Binding">
 		<!-- Level 1: Speed has decreased due to the gust. -->
 		<!-- Level 2: Speed has decreased due to the gust. -->
 		<!-- Level 3: Speed has decreased due to the gust. -->
@@ -10118,17 +10147,13 @@
 			<value level="1">1</value>
 			<value level="2">2</value>
 			<value level="3">3</value>
-			<value level="4">4</value>
-			<value level="5">5</value>
 		</abnormalLevel>
 		<abnormalTime>5</abnormalTime> <!-- Guessed -->
 		<abnormalType>AIRBIND</abnormalType>
 		<abnormalVisualEffect>
 			<value level="1">TORNADO_SLOW</value>
-			<value level="2">TORNADO_SLOW;AIRBIND</value>
-			<value level="3">TORNADO_SLOW;AIRBIND</value>
-			<value level="4">TORNADO_SLOW;AIRBIND</value>
-			<value level="5">TORNADO;AIRBIND</value>
+			<value level="2">TORNADO_SLOW</value>
+			<value level="3">TORNADO;AIRBIND</value>
 		</abnormalVisualEffect>
 		<activateRate>30</activateRate>
 		<affectScope>SINGLE</affectScope>
@@ -10139,20 +10164,18 @@
 		<isMagic>4</isMagic>
 		<trait>AIRBIND</trait>
 		<effects>
-			<effect name="AirBind" />
-			<effect name="BlockActions">
+			<effect name="AirBind" fromLevel="3" toLevel="3" />
+			<effect name="BlockActions" fromLevel="3" toLevel="3">
 				<allowedSkills>10279;10517;10025;10776;11770;1904;11264;11093;13314;1912;7002;18721;18722;28203;30516;35190</allowedSkills>
 			</effect>
-			<effect name="BlockControl" />
+			<effect name="BlockControl" fromLevel="3" toLevel="3" />
 			<effect name="Speed">
 				<amount>
-					<value level="1">-10</value>
-					<value level="2">-20</value>
-					<value level="3">-30</value>
-					<value level="4">-40</value>
-					<value level="5">-100</value>
+					<value level="1">-60</value>
+					<value level="2">-70</value>
+					<value level="3">-80</value>
 				</amount>
-				<mode>PER</mode>
+				<mode>DIFF</mode>
 			</effect>
 		</effects>
 	</skill>
@@ -10722,6 +10745,7 @@
 					<value fromLevel="7" toLevel="15" fromSubLevel="1019" toSubLevel="1019">{base + (base / 100 * (7 + 0.7 * (subIndex - 18)))}</value>
 					<value fromLevel="7" toLevel="15" fromSubLevel="1020" toSubLevel="1020">{base + (base / 100 * (8 + 0.1 * (subIndex - 19)))}</value>
 				</power>
+				<overHit>true</overHit>
 			</effect>
 			<effect name="MagicalDefence">
 				<amount>-25</amount>

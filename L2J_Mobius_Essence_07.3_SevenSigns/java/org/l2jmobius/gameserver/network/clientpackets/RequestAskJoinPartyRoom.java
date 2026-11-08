@@ -49,7 +49,12 @@ public class RequestAskJoinPartyRoom extends ClientPacket
 		final Player target = World.getPlayer(_name);
 		if (target != null)
 		{
-			if (!target.isProcessingRequest())
+			// A second invite would overwrite the shared request expiry of the first one.
+			if (player.isProcessingRequest())
+			{
+				player.sendPacket(SystemMessageId.WAITING_FOR_ANOTHER_REPLY);
+			}
+			else if (!target.isProcessingRequest())
 			{
 				player.onTransactionRequest(target);
 				target.sendPacket(new ExAskJoinPartyRoom(player));

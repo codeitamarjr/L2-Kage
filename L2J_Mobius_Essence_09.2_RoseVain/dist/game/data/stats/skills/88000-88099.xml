@@ -2920,7 +2920,7 @@
 					<value level="7">3</value>
 					<value level="8">3</value>
 					<value level="9">3</value>
-					<value level="10">5</value>
+					<value level="10">4</value>
 				</skillLevel>
 			</effect>
 			<effect name="TriggerSkillByKill">

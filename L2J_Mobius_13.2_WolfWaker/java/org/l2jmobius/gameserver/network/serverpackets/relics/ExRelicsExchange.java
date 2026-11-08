@@ -35,9 +35,7 @@ import org.l2jmobius.gameserver.data.xml.RelicData;
 import org.l2jmobius.gameserver.entity.actor.Player;
 import org.l2jmobius.gameserver.entity.actor.enums.player.RelicGrade;
 import org.l2jmobius.gameserver.entity.actor.holders.player.PlayerRelicData;
-import org.l2jmobius.gameserver.entity.item.enums.ItemProcessType;
 import org.l2jmobius.gameserver.entity.item.holders.ItemHolder;
-import org.l2jmobius.gameserver.mechanics.variables.AccountVariables;
 import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
@@ -65,52 +63,34 @@ public class ExRelicsExchange extends ServerPacket
 	{
 		ServerPackets.EX_RELICS_EXCHANGE.writeId(this, buffer);
 		
-		final RelicGrade unconfirmedRelicGrade = RelicData.getInstance().getRelic(_relicId).getGrade();
-		
-		// Read max attempts and current remaining from XML data + account variables.
-		final int maxAttempts = RelicData.getInstance().getReplaceAttempts(unconfirmedRelicGrade);
-		final String attemptsVar = unconfirmedRelicGrade == RelicGrade.BGRADE ? AccountVariables.B_GRADE_RELIC_ATEMPTS : AccountVariables.A_GRADE_RELIC_ATEMPTS;
-		int attemptsRemaining = _player.getAccountVariables().getInt(attemptsVar, maxAttempts);
-		
-		final int obtainedRelicId = getRandomRelicId(_relicId, unconfirmedRelicGrade);
-		_success = obtainedRelicId != 0;
-		
-		final PlayerRelicData newRelic = new PlayerRelicData(obtainedRelicId, 0, 1, 300, System.currentTimeMillis());
-		final PlayerRelicData unconfirmedRelic = _player.getRelics().stream().filter(r -> (r.getRelicId() == _relicId) && (r.getRelicIndex() >= 300) && (r.getRelicCount() != 0)).findFirst().orElse(null);
-		
-		if (unconfirmedRelic != null)
+		final PlayerRelicData pendingRelic = _player.getPendingRelic(_index, _relicId);
+		int maxAttempts = 0;
+		int attemptsRemaining = 0;
+		if (pendingRelic != null)
 		{
-			// Swap out the old unconfirmed relic for the new one.
-			unconfirmedRelic.setRelicCount(unconfirmedRelic.getRelicCount() - 1);
-			_relicId = newRelic.getRelicId();
-			_player.getRelics().add(newRelic);
-			
-			// Decrement remaining attempts.
-			_player.getAccountVariables().set(attemptsVar, attemptsRemaining - 1);
-			attemptsRemaining = attemptsRemaining - 1;
-			_player.getAccountVariables().storeMe();
-			_player.storeRelics();
-			
-			// Determine fee for this attempt from the XML fee list.
-			// The fee list is ordered 1st-use → last-use.
-			// After decrement, currentRemaining tells us how many are left.
-			// Fee index = maxAttempts - currentRemaining - 1 (0-based, capped to list size).
-			final int currentRemaining = _player.getAccountVariables().getInt(attemptsVar, maxAttempts);
-			final List<ItemHolder> feeList = RelicData.getInstance().getReplaceFees(unconfirmedRelicGrade);
-			if (!feeList.isEmpty())
+			final RelicDataHolder relicData = RelicData.getInstance().getRelic(_relicId);
+			if (relicData != null)
 			{
-				final int feeIndex = Math.min(maxAttempts - currentRemaining - 1, feeList.size() - 1);
-				if (feeIndex >= 0)
+				final RelicGrade grade = relicData.getGrade();
+				maxAttempts = RelicData.getInstance().getReplaceAttempts(grade);
+				final int usedAttempts = pendingRelic.getReplaceAttemptsUsed();
+				attemptsRemaining = Math.max(0, maxAttempts - usedAttempts);
+				final List<ItemHolder> feeList = RelicData.getInstance().getReplaceFees(grade);
+				if ((attemptsRemaining > 0) && !feeList.isEmpty())
 				{
+					final int feeIndex = Math.min(usedAttempts, feeList.size() - 1);
 					final ItemHolder fee = feeList.get(feeIndex);
+					final int obtainedRelicId = getRandomRelicId(_relicId, grade);
+					if ((obtainedRelicId != 0) && _player.replacePendingRelic(pendingRelic, obtainedRelicId, fee, usedAttempts))
+					{
+						_relicId = obtainedRelicId;
+						attemptsRemaining--;
+						_success = true;
+					}
 					if (RelicSystemConfig.RELIC_SYSTEM_DEBUG_ENABLED)
 					{
-						_player.sendMessage("Replace fee list size: " + feeList.size());
-						_player.sendMessage("currentRemaining: " + currentRemaining + ", feeIndex: " + feeIndex);
-						_player.sendMessage("Fee item: " + fee.getId() + " x" + fee.getCount());
+						_player.sendMessage("Replace fee index: " + feeIndex + ", item: " + fee.getId() + " x" + fee.getCount());
 					}
-					_player.destroyItemByItemId(ItemProcessType.FEE, fee.getId(), fee.getCount(), _player, true);
-					_player.getAccountVariables().storeMe();
 				}
 			}
 		}

@@ -188,11 +188,10 @@
 		<skill skillName="Superior Arcane Lore" skillId="11184" skillLevel="1" getLevel="85" levelUpSp="0" />
 		<skill skillName="Superior Mana Boost" skillId="11185" skillLevel="1" getLevel="85" levelUpSp="0" />
 		<skill skillName="Superior Fast MP Recovery" skillId="11186" skillLevel="1" getLevel="85" levelUpSp="0" />
-		<skill skillName="Superior Clear Mind" skillId="11187" skillLevel="1" getLevel="85" levelUpSp="0" />
-		<skill skillName="Dark Stance" skillId="19313" skillLevel="1" getLevel="85" levelUpSp="0" />
-		<skill skillName="Essence of Mana" skillId="19407" skillLevel="1" getLevel="85" levelUpSp="0">
+		<skill skillName="Superior Clear Mind" skillId="11187" skillLevel="1" getLevel="85" levelUpSp="0">
 			<removeSkill id="30648" /> <!-- Novice Essence of Mana -->
 		</skill>
+		<skill skillName="Dark Stance" skillId="19313" skillLevel="1" getLevel="85" levelUpSp="0" />
 		<skill skillName="Summon Reanimated Man" skillId="30789" skillLevel="1" getLevel="85" levelUpSp="0" />
 		<skill skillName="Transfer Pain" skillId="30791" skillLevel="1" getLevel="85" levelUpSp="0" />
 		<skill skillName="Summon Cursed Man" skillId="30792" skillLevel="1" getLevel="85" levelUpSp="0" />
@@ -297,7 +296,6 @@
 		<skill skillName="Superior Mana Boost" skillId="11185" skillLevel="3" getLevel="95" levelUpSp="100" />
 		<skill skillName="Superior Fast MP Recovery" skillId="11186" skillLevel="3" getLevel="95" levelUpSp="100" />
 		<skill skillName="Superior Clear Mind" skillId="11187" skillLevel="3" getLevel="95" levelUpSp="100" />
-		<skill skillName="Essence of Mana" skillId="19407" skillLevel="2" getLevel="95" levelUpSp="100" />
 		<skill skillName="Summon Reanimated Man" skillId="30789" skillLevel="3" getLevel="95" levelUpSp="100" />
 		<skill skillName="Transfer Pain" skillId="30791" skillLevel="3" getLevel="95" levelUpSp="100" />
 		<skill skillName="Summon Cursed Man" skillId="30792" skillLevel="3" getLevel="95" levelUpSp="100" />
@@ -380,7 +378,6 @@
 			<item id="39738,81887" count="8" /> <!-- Rune Stone -->
 		</skill>
 		<skill skillName="Discarded Wizard's Soul" skillId="19405" skillLevel="2" getLevel="101" levelUpSp="21143" />
-		<skill skillName="Essence of Mana" skillId="19407" skillLevel="3" getLevel="101" levelUpSp="21143" />
 		<skill skillName="Summon Reanimated Man" skillId="30789" skillLevel="5" getLevel="101" levelUpSp="21143" />
 		<skill skillName="Summon Cursed Man" skillId="30792" skillLevel="5" getLevel="101" levelUpSp="21143" />
 		
@@ -547,6 +544,7 @@
 		<skill skillName="Ultimate Body To Mind" skillId="11064" skillLevel="14" getLevel="114" levelUpSp="436393" />
 		<skill skillName="Magical Charge" skillId="11094" skillLevel="12" getLevel="114" levelUpSp="436393" />
 		
+		<skill skillName="Transfer Pain" skillId="30791" skillLevel="5" getLevel="115" levelUpSp="436393" />
 		<skill skillName="Superior Weapon Mastery" skillId="11001" skillLevel="11" getLevel="115" levelUpSp="436393" />
 		<skill skillName="Superior Robe Mastery" skillId="11002" skillLevel="11" getLevel="115" levelUpSp="436393" />
 		<skill skillName="Superior Anti Magic" skillId="11003" skillLevel="11" getLevel="115" levelUpSp="436393" />

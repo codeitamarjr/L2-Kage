@@ -190,8 +190,7 @@
 		<skill skillName="Superior Arcane Lore" skillId="11184" skillLevel="1" getLevel="85" levelUpSp="0" />
 		<skill skillName="Superior Mana Boost" skillId="11185" skillLevel="1" getLevel="85" levelUpSp="0" />
 		<skill skillName="Superior Fast MP Recovery" skillId="11186" skillLevel="1" getLevel="85" levelUpSp="0" />
-		<skill skillName="Superior Clear Mind" skillId="11187" skillLevel="1" getLevel="85" levelUpSp="0" />
-		<skill skillName="Essence of Mana" skillId="19407" skillLevel="1" getLevel="85" levelUpSp="0">
+		<skill skillName="Superior Clear Mind" skillId="11187" skillLevel="1" getLevel="85" levelUpSp="0">
 			<removeSkill id="30648" /> <!-- Novice Essence of Mana -->
 		</skill>
 		<skill skillName="Embody Mana Armor" skillId="19408" skillLevel="1" getLevel="85" levelUpSp="0" />
@@ -293,7 +292,6 @@
 		<skill skillName="Superior Mana Boost" skillId="11185" skillLevel="3" getLevel="95" levelUpSp="100" />
 		<skill skillName="Superior Fast MP Recovery" skillId="11186" skillLevel="3" getLevel="95" levelUpSp="100" />
 		<skill skillName="Superior Clear Mind" skillId="11187" skillLevel="3" getLevel="95" levelUpSp="100" />
-		<skill skillName="Essence of Mana" skillId="19407" skillLevel="2" getLevel="95" levelUpSp="100" />
 		
 		<skill skillName="Elemental Spike" skillId="11011" skillLevel="7" getLevel="96" levelUpSp="497" />
 		<skill skillName="Elemental Crash" skillId="11017" skillLevel="7" getLevel="96" levelUpSp="497" />
@@ -371,7 +369,6 @@
 		<skill skillName="Meteor" skillId="11134" skillLevel="1" getLevel="101" levelUpSp="21143">
 			<item id="39738,81887" count="8" /> <!-- Rune Stone -->
 		</skill>
-		<skill skillName="Essence of Mana" skillId="19407" skillLevel="3" getLevel="101" levelUpSp="21143" />
 		<skill skillName="Embody Mana Armor" skillId="19408" skillLevel="2" getLevel="101" levelUpSp="21143" />
 		
 		<skill skillName="Superior Weapon Mastery" skillId="11001" skillLevel="6" getLevel="102" levelUpSp="25372" />
@@ -525,6 +522,7 @@
 		<skill skillName="Ultimate Body To Mind" skillId="11064" skillLevel="14" getLevel="114" levelUpSp="436393" />
 		<skill skillName="Magical Charge" skillId="11094" skillLevel="12" getLevel="114" levelUpSp="436393" />
 		
+		<skill skillName="Embody Mana Armor" skillId="19408" skillLevel="3" getLevel="115" levelUpSp="436393" />
 		<skill skillName="Superior Weapon Mastery" skillId="11001" skillLevel="11" getLevel="115" levelUpSp="436393" />
 		<skill skillName="Superior Robe Mastery" skillId="11002" skillLevel="11" getLevel="115" levelUpSp="436393" />
 		<skill skillName="Superior Anti Magic" skillId="11003" skillLevel="11" getLevel="115" levelUpSp="436393" />

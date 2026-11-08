@@ -24,6 +24,7 @@ import org.l2jmobius.gameserver.entity.actor.Player;
 import org.l2jmobius.gameserver.entity.groups.matching.MatchingRoom;
 import org.l2jmobius.gameserver.entity.groups.matching.MatchingRoomType;
 import org.l2jmobius.gameserver.entity.groups.matching.PartyMatchingRoom;
+import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.PartyRoomInfo;
 
 /**
@@ -60,13 +61,18 @@ public class RequestPartyMatchList extends ClientPacket
 		
 		if ((_roomId <= 0) && (player.getMatchingRoom() == null))
 		{
-			final PartyMatchingRoom room = new PartyMatchingRoom(_roomTitle, _lootType, _minLevel, _maxLevel, _maxMembers, player);
-			player.setMatchingRoom(room);
+			if ((player.getLevel() < _minLevel) || (player.getLevel() > _maxLevel) || (_maxMembers < 1))
+			{
+				player.sendPacket(SystemMessageId.YOU_DON_T_MEET_THE_REQUIREMENTS_TO_ENTER_A_PARTY_ROOM);
+				return;
+			}
+			
+			new PartyMatchingRoom(_roomTitle, _lootType, _minLevel, _maxLevel, _maxMembers, player);
 		}
 		else
 		{
 			final MatchingRoom room = player.getMatchingRoom();
-			if ((room.getId() == _roomId) && (room.getRoomType() == MatchingRoomType.PARTY) && room.isLeader(player))
+			if ((room != null) && (room.getId() == _roomId) && (room.getRoomType() == MatchingRoomType.PARTY) && room.isLeader(player))
 			{
 				room.setLootType(_lootType);
 				room.setMinLevel(_minLevel);

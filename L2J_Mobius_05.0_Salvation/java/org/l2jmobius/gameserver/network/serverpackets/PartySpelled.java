@@ -46,12 +46,18 @@ public class PartySpelled extends ServerPacket
 	
 	public void addSkill(BuffInfo info)
 	{
-		_effects.add(info);
+		if ((info != null) && info.isInUse())
+		{
+			_effects.add(info);
+		}
 	}
 	
 	public void addSkill(Skill skill)
 	{
-		_effects2.add(skill);
+		if (skill != null)
+		{
+			_effects2.add(skill);
+		}
 	}
 	
 	@Override
@@ -63,26 +69,20 @@ public class PartySpelled extends ServerPacket
 		buffer.writeInt(_effects.size() + _effects2.size());
 		for (BuffInfo info : _effects)
 		{
-			if ((info != null) && info.isInUse())
-			{
-				buffer.writeInt(info.getSkill().getDisplayId());
-				buffer.writeShort(info.getSkill().getDisplayLevel());
-				buffer.writeShort(0); // Sub level
-				buffer.writeInt(info.getSkill().getAbnormalType().getClientId());
-				writeOptionalInt(info.getTime(), buffer);
-			}
+			buffer.writeInt(info.getSkill().getDisplayId());
+			buffer.writeShort(info.getSkill().getDisplayLevel());
+			buffer.writeShort(0); // Sub level
+			buffer.writeInt(info.getSkill().getAbnormalType().getClientId());
+			writeOptionalInt(info.getTime(), buffer);
 		}
 		
 		for (Skill skill : _effects2)
 		{
-			if (skill != null)
-			{
-				buffer.writeInt(skill.getDisplayId());
-				buffer.writeShort(skill.getDisplayLevel());
-				buffer.writeShort(0); // Sub level
-				buffer.writeInt(skill.getAbnormalType().getClientId());
-				buffer.writeShort(-1);
-			}
+			buffer.writeInt(skill.getDisplayId());
+			buffer.writeShort(skill.getDisplayLevel());
+			buffer.writeShort(0); // Sub level
+			buffer.writeInt(skill.getAbnormalType().getClientId());
+			buffer.writeShort(-1);
 		}
 	}
 }

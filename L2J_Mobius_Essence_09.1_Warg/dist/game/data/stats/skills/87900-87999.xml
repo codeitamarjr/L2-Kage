@@ -680,6 +680,7 @@
 		<icon>icon.s_st_privilege_str</icon>
 		<operateType>A5</operateType>
 		<targetType>SELF</targetType>
+		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>-1</abnormalTime>
 		<abnormalType>STAT_SKILL_STR</abnormalType>
 		<affectScope>SINGLE</affectScope>
@@ -763,6 +764,7 @@
 		<icon>icon.s_st_privilege_con</icon>
 		<operateType>A5</operateType>
 		<targetType>SELF</targetType>
+		<abnormalLevel>1</abnormalLevel>
 		<abnormalTime>-1</abnormalTime>
 		<abnormalType>STAT_SKILL_CON</abnormalType>
 		<affectScope>SINGLE</affectScope>

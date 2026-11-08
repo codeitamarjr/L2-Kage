@@ -263,7 +263,7 @@ public class CreatureStat
 	
 	public int getMaxCp()
 	{
-		return (int) getValue(Stat.MAX_CP);
+		return PlayerConfig.DISABLE_CP ? 0 : (int) getValue(Stat.MAX_CP);
 	}
 	
 	public int getMaxRecoverableCp()

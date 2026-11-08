@@ -58,6 +58,7 @@ public class PlayerConfig
 	public static double HP_REGEN_MULTIPLIER;
 	public static double MP_REGEN_MULTIPLIER;
 	public static double CP_REGEN_MULTIPLIER;
+	public static boolean DISABLE_CP;
 	public static boolean RESURRECT_BY_PAYMENT_ENABLED;
 	public static int RESURRECT_BY_PAYMENT_MAX_FREE_TIMES;
 	public static int RESURRECT_BY_PAYMENT_FIRST_RESURRECT_ITEM;
@@ -258,6 +259,7 @@ public class PlayerConfig
 		HP_REGEN_MULTIPLIER = config.getDouble("HpRegenMultiplier", 100) / 100;
 		MP_REGEN_MULTIPLIER = config.getDouble("MpRegenMultiplier", 100) / 100;
 		CP_REGEN_MULTIPLIER = config.getDouble("CpRegenMultiplier", 100) / 100;
+		DISABLE_CP = config.getBoolean("DisableCp", false);
 		RESURRECT_BY_PAYMENT_ENABLED = config.getBoolean("EnabledResurrectByPay", true);
 		if (RESURRECT_BY_PAYMENT_ENABLED)
 		{

@@ -112,7 +112,7 @@ public class MatchingRoomManager
 			for (MatchingRoom room : rooms.values())
 			{
 				if (((location < 0) || (room.getLocation() == location)) //
-					&& ((type == PartyMatchingRoomLevelType.ALL) || ((room.getMinLevel() >= requestorLevel) && (room.getMaxLevel() <= requestorLevel))))
+					&& ((type == PartyMatchingRoomLevelType.ALL) || ((room.getMinLevel() <= requestorLevel) && (room.getMaxLevel() >= requestorLevel))))
 				{
 					result.add(room);
 				}
