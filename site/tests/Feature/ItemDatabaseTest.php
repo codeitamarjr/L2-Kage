@@ -17,12 +17,12 @@ class ItemDatabaseTest extends TestCase
     {
         parent::setUp();
 
-        // The server's rates: drop and spoil x3, raid x1, Adena amount x5 (as in overrides/game/config).
+        // The server's rates: drop and spoil x3, raid x1, Adena amount x4 (as in overrides/game/config).
         $this->configDir = sys_get_temp_dir().'/itemdb-test-'.uniqid();
         mkdir($this->configDir);
         file_put_contents("{$this->configDir}/Rates.ini", implode("\n", [
             'DeathDropChanceMultiplier = 3', 'SpoilDropChanceMultiplier = 3', 'RaidDropChanceMultiplier = 1',
-            'DropAmountMultiplierByItemId = 57,5', 'DropChanceMultiplierByItemId = 57,1',
+            'DropAmountMultiplierByItemId = 57,4', 'DropChanceMultiplierByItemId = 57,1',
         ]));
         config(['l2j.config_dir' => $this->configDir, 'l2j.config_defaults_dir' => null]);
     }
@@ -85,8 +85,8 @@ class ItemDatabaseTest extends TestCase
 
     public function test_adena_uses_its_own_rates(): void
     {
-        // Adena: chance x1, amount x5.
-        $this->assertSame(['chance' => 20.0, 'min' => 5, 'max' => 10], $this->roll([['chance' => 40, 'item' => 57], ['chance' => 20]], 50));
+        // Adena: chance x1, amount x4.
+        $this->assertSame(['chance' => 20.0, 'min' => 4, 'max' => 8], $this->roll([['chance' => 40, 'item' => 57], ['chance' => 20]], 50));
     }
 
     public function test_search_and_item_pages(): void

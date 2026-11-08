@@ -10,7 +10,7 @@ Details to paste into Lineage II server lists. Fill in the Discord TODO if you h
 | Website | https://l2-kage.itjunior.dev |
 | Chronicle | Essence (Samurai Crow, protocol 542) |
 | Platform | L2J (L2J Mobius) |
-| Rates | XP x5, SP x5, Adena x3, Drop x2, Spoil x2, Raid x1 (enter 5 if a form takes one number) |
+| Rates | XP x7, SP x7, Adena x4, Drop x3, Spoil x3, Raid x1 (enter 7 if a form takes one number) |
 | Server type | Low rate; not custom, not multiproff, not multicraft |
 | Languages | English and Portuguese (website) |
 | Opening date | 31 Oct 2026 (already open) |
@@ -20,11 +20,11 @@ Only tick an option in a form if it is true of the server.
 
 ## Short description (English)
 
-> L2 Kage is a free Lineage II Essence server on the Samurai Crow update, with x5 XP and SP, x3 Adena and x2 Drop. A free gift box every week, the Kage Pass and Hunt Pass, full gear packages for every class, a live world map and an item database. Premium is optional. Aden calls for heroes once more.
+> L2 Kage is a free Lineage II Essence server on the Samurai Crow update, with x7 XP and SP, x4 Adena and x3 Drop. A free gift box every week, the Kage Pass and Hunt Pass, full gear packages for every class, a live world map and an item database. Premium is optional. Aden calls for heroes once more.
 
 ## Short description (Portuguese)
 
-> O L2 Kage é um servidor gratuito de Lineage II Essence na atualização Samurai Crow, com XP e SP x5, Adena x3 e Drop x2. Caixa de presente grátis toda semana, Kage Pass e Hunt Pass, pacotes completos de equipamento para cada classe, mapa do mundo ao vivo e banco de dados de itens. O Premium é opcional. Aden chama por heróis mais uma vez.
+> O L2 Kage é um servidor gratuito de Lineage II Essence na atualização Samurai Crow, com XP e SP x7, Adena x4 e Drop x3. Caixa de presente grátis toda semana, Kage Pass e Hunt Pass, pacotes completos de equipamento para cada classe, mapa do mundo ao vivo e banco de dados de itens. O Premium é opcional. Aden chama por heróis mais uma vez.
 
 ## Images
 

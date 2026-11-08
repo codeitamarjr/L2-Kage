@@ -25,7 +25,7 @@ It started as a copy of the Bartz (High Five) website and was ported to the L2J 
 | Data | Service | Source |
 |---|---|---|
 | Server status, rankings, castles | `app/Services/L2j/ServerStatus.php` | game database (read-only user `web`), ports from `L2J_LOGIN_PORT` / `L2J_GAME_PORT` |
-| Rates | `ServerStatus::rates()`, `ItemDatabase` | `Rates.ini`: `overrides/game/config` over the sources' `dist/game/config` (`GameConfig`) |
+| Rates | `ServerStatus::rates()`, `ItemDatabase` | `Rates.ini`: `overrides/game/config` over the sources' `dist/game/config` (`GameConfig`); current live settings are XP/SP x7, Adena x4, Drop/Spoil x3, Raid x1 |
 | Happening Now | `app/Services/L2j/EventFeed.php` | `grandboss_data` (6 epic bosses), `npc_respawns` (raid bosses), `castle`, `olympiad_data` + `Olympiad.ini`, seasonal events from `data/scripts/events/*/config.xml` |
 | Map pins | `app/Services/L2j/WorldMap.php` | raid boss spawns projected on the map image |
 | Characters and items | `app/Services/L2j/CharacterSheet.php` | `characters`, `items`, `clan_data` |
@@ -73,6 +73,20 @@ php artisan test         # 39 tests
 In Docker the site is built and started by the root `docker-compose.yml` (`docker compose up -d --build site`). The
 container waits for the database, runs the migrations and the item import, then serves on port 80 (`SITE_PORT` on the
 host).
+
+The home page, About page, SEO metadata, and item database read rates from the
+game configuration at runtime. After changing `overrides/game/config/Rates.ini`,
+restart the game server first, then rebuild and recreate the site so the
+website and its generated item-rate data are refreshed:
+
+```bash
+docker compose up -d --no-deps --build site
+docker compose restart game
+```
+
+Verify the values on the About page and with the site's item database tests
+before deploying to the Pi. Keep `LISTING-KIT.md` and the rate summary in
+`AGENTS.md` synchronized with the live configuration.
 
 ## Admins and email
 

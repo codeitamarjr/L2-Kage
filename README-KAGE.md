@@ -130,6 +130,34 @@ docker compose restart game
 docker compose down
 ```
 
+### Changing game rates
+
+Edit [`overrides/game/config/Rates.ini`](overrides/game/config/Rates.ini), not
+the upstream source. The current settings are XP/SP x7, Adena x4,
+Drop/Spoil x3, and Raid x1. Update [`LISTING-KIT.md`](LISTING-KIT.md),
+[`AGENTS.md`](AGENTS.md), and the website's rate test fixture when changing
+these values.
+
+On the Mac, check the recent game log and online players before restarting:
+
+```bash
+docker compose restart game
+docker compose logs --tail=100 game
+docker compose exec game grep -E '^(RateXp|RateSp|RatePartyXp|RatePartySp|DeathDropChanceMultiplier|SpoilDropChanceMultiplier|DropAmountMultiplierByItemId)' /opt/l2j/game/config/Rates.ini
+```
+
+The website reads the configuration dynamically. Rebuild the website after the
+game restart so the item database and displayed rates are refreshed:
+
+```bash
+docker compose up -d --no-deps --build site
+```
+
+For the Pi, build the website image for `linux/arm64`, transfer it with the
+normal image-save/load process, copy the changed rate file to the matching
+path under `~/l2-kage/`, and restart `game` only after checking who is online.
+Verify the values in the game container and on the website after deployment.
+
 The website is available at:
 
 ```text
@@ -177,14 +205,52 @@ do not blindly trust arbitrary client-supplied proxy headers.
 `build-pi.sh` builds both images for Linux ARM64 and creates a `dist/` folder
 containing the images and runtime files. It does not copy `.env` or `data/`.
 
-On an ARM64-capable build machine:
+For the normal Mac-to-Pi deployment, run this from the repository root:
 
 ```bash
 ./build-pi.sh
+rsync -a dist/ junior@server.local:l2-kage/
 ```
 
-Copy `dist/` to the target host using your preferred secure method. On the
-target host:
+The `rsync` command intentionally has no `--delete`: the Pi's `.env` and
+`data/` are local and must never be removed by a deployment. Before restarting
+the game, check who is online and the recent log. Then run:
+
+```bash
+ssh junior@server.local 'cd ~/l2-kage && \
+  docker compose ps && \
+  docker compose logs --tail=80 game'
+ssh junior@server.local 'cd ~/l2-kage && \
+  docker load -i l2jmobius-arm64.tar.gz && \
+  docker compose up -d --no-deps login game site'
+ssh junior@server.local 'cd ~/l2-kage && \
+  docker compose ps && \
+  docker compose exec game grep -E \
+  "^(RateXp|RateSp|RatePartyXp|RatePartySp|DeathDropChanceMultiplier|SpoilDropChanceMultiplier|DropAmountMultiplierByItemId)" \
+  /opt/l2j/game/config/Rates.ini && \
+  docker compose exec site grep -E \
+  "^(RateXp|RateSp|RatePartyXp|RatePartySp|DeathDropChanceMultiplier|SpoilDropChanceMultiplier|DropAmountMultiplierByItemId)" \
+  /l2j/config/Rates.ini && \
+  docker compose logs --tail=80 game'
+```
+
+`docker compose up -d --no-deps login game site` recreates the containers with
+the loaded images and applies changed mounted overrides without touching the
+database, uploads, or environment file. It disconnects players when `game` is
+recreated, so postpone the command if players are online. The final commands
+confirm that the services are running and that both the game and website
+containers have the expected rates. Finally, verify the public website payload:
+
+```bash
+curl -fsSL https://l2-kage.itjunior.dev/about | grep -o '"rates"[^}]*}' | head -1
+```
+
+The output must contain the same values as the game configuration, for example:
+`"xp":7,"sp":7,"adena":4,"drop":3,"spoil":3,"raid":1`. If the public payload
+still shows old values, do not announce the deployment: check the site
+container, recreate `site`, and inspect the recent site logs.
+
+For a first installation on a new host, use the full setup instead:
 
 ```bash
 cp .env.example .env

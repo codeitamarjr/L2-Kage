@@ -25,14 +25,14 @@ Production is the Raspberry Pi. The Mac runs a second copy of the stack. Website
 
 | Setting | Value |
 |---|---|
-| XP and SP, solo and party | x5 |
-| Adena (`DropAmountMultiplierByItemId = 57,3`) | x3 |
-| Drop and Spoil chance | x2 |
+| XP and SP, solo and party | x7 |
+| Adena (`DropAmountMultiplierByItemId = 57,4`) | x4 |
+| Drop and Spoil chance | x3 |
 | Raid, herbs, quest rewards | x1 |
 | Premium (`Custom/PremiumSystem.ini`) | Doubles XP, SP, Adena; drop and spoil amount x2 |
 
 The website reads these files through `ServerStatus::rates()`, so it needs no change when rates change.
-Rates moved from x1 to these values on 31 Oct 2026 because x1 is the most crowded rate on l2list (30 of 88 Essence listings).
+Rates moved from x5/x3/x2 to these values on 4 Nov 2026 after comparing current Essence server listings and choosing a modest progression increase.
 That count is of listings, not players: l2list publishes no player numbers.
 
 **Home page**
@@ -106,11 +106,11 @@ Upstream's Essence event `HolidayOutOfSchedule`, reactivated through `overrides/
 
 ## Apply a change
 
-- **Website:** rebuild the `site` image and run `docker compose up -d --no-deps site` on the Mac. For the Pi, build for `linux/arm64`, `docker save`, copy it over, `docker load`, then `docker compose up -d site` in `~/l2-kage`.
-- **Game config or scripts:** copy the file to the same path under `~/l2-kage/` on the Pi, then `docker compose restart game` on each host. A restart disconnects players, so check who is online first and tell the owner.
+- **Website:** rebuild the `site` image and run `docker compose up -d --no-deps --build site` on the Mac. For the Pi, run `./build-pi.sh`, `rsync -a dist/ junior@server.local:l2-kage/` (never `--delete`), then load the archive and recreate `login game site` with `docker compose up -d --no-deps`. The website reads rates dynamically, but changing `Rates.ini` also requires recreating `game` and refreshing the item database through the site image.
+- **Game config or scripts:** for a standalone override, copy the file to the same path under `~/l2-kage/` on the Pi, then `docker compose up -d --no-deps game` to apply it. For a full bundle, use `build-pi.sh` and recreate `login game site` as documented in `README-KAGE.md`. A game recreation disconnects players, so check who is online first and tell the owner.
 - **L-Coin Store or other client data:** follow `docs/LCOIN-STORE.md`. A server restart alone doesn't change what the client shows, and the client's files can't be changed.
 - **Java scripts:** compile-check first. A failed script can stop features such as website deliveries. Copy the file into the game container, then run `javac -proc:none -nowarn -d /tmp/x -cp /opt/l2j/libs/GameServer.jar <file>`.
-- **Verify rates:** `grep RateXp /opt/l2j/game/config/Rates.ini` in the game container, and read `rates` on the home page's Inertia data.
+- **Verify rates:** compare the same `grep -E '^(RateXp|RateSp|RatePartyXp|RatePartySp|DeathDropChanceMultiplier|SpoilDropChanceMultiplier|DropAmountMultiplierByItemId)' /opt/l2j/game/config/Rates.ini` output in both `game` and `site` (`/l2j/config/Rates.ini`), then run `curl -fsSL https://l2-kage.itjunior.dev/about | grep -o '"rates"[^}]*}' | head -1`. Do not call a deployment complete until the public payload matches.
 
 ## Rules for AI agents
 

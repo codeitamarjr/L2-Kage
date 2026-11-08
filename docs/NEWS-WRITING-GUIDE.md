@@ -47,6 +47,7 @@ Every fact must be true of this server today. Check it in the files; never guess
 - Don't create false urgency. "Until 14 November" is fine if true; "last chance" is only for the real last days.
 - Don't call anything "tested" or "balanced" unless it was.
 - L2 Kage is a free fan server, not affiliated with NCSOFT. Never suggest otherwise.
+- If a post mentions rates, use the live values from `Rates.ini` (currently XP/SP x7, Adena x4, Drop/Spoil x3, Raid x1). The website reads these values dynamically, but update `LISTING-KIT.md` and `AGENTS.md` whenever they change.
 
 ## Structure
 
