@@ -14,12 +14,17 @@ Last updated: 31 Oct 2026. Check anything below against the code before relying 
 | `overrides/game/` | Files copied over the game server each time it starts |
 | `site/` | Laravel 13, Inertia, React 19, Filament 5 |
 | `LISTING-KIT.md` | Text and site list for server toplists |
-| `docs/` | Guides for recurring work: writing news, the website Store, the L-Coin Store |
+| `docs/` | Guides for recurring work: writing news, the website Store, the L-Coin Store, updating L2J Mobius |
 | `tools/lcoin-store/` | Builds and checks the client's L-Coin Store list |
 
 Production is the Raspberry Pi. The Mac runs a second copy of the stack. Website: https://l2-kage.itjunior.dev
 
 ## Current state
+
+**L2J Mobius version**
+- Both hosts run upstream `ff9ef39bb` (8 Nov 2026), merged into `master` on 8 Nov 2026. Deployed to the Pi on 8 Nov 2026 with nobody online, and no errors in the game log.
+- Rollback on the Pi: images tagged `before-upstream-2026-11-08`, database dump `data/backup-before-upstream-2026-11-08.sql.gz`. On the Mac: `l2jmobius-essence:previous`.
+- Not yet played in the client after the update.
 
 **Rates** (`overrides/game/config/Rates.ini`, a full copy of the default file with these values changed):
 
@@ -109,6 +114,7 @@ Upstream's Essence event `HolidayOutOfSchedule`, reactivated through `overrides/
 - **Website:** rebuild the `site` image and run `docker compose up -d --no-deps --build site` on the Mac. For the Pi, run `./build-pi.sh`, `rsync -a dist/ junior@server.local:l2-kage/` (never `--delete`), then load the archive and recreate `login game site` with `docker compose up -d --no-deps`. The website reads rates dynamically, but changing `Rates.ini` also requires recreating `game` and refreshing the item database through the site image.
 - **Game config or scripts:** for a standalone override, copy the file to the same path under `~/l2-kage/` on the Pi, then `docker compose up -d --no-deps game` to apply it. For a full bundle, use `build-pi.sh` and recreate `login game site` as documented in `README-KAGE.md`. A game recreation disconnects players, so check who is online first and tell the owner.
 - **L-Coin Store or other client data:** follow `docs/LCOIN-STORE.md`. A server restart alone doesn't change what the client shows, and the client's files can't be changed.
+- **L2J Mobius update:** follow `docs/UPSTREAM-UPDATE.md`. Run `tools/upstream-check.sh` first; merge on a branch, test on the Mac, back up the Pi database before deploying.
 - **Java scripts:** compile-check first. A failed script can stop features such as website deliveries. Copy the file into the game container, then run `javac -proc:none -nowarn -d /tmp/x -cp /opt/l2j/libs/GameServer.jar <file>`.
 - **Verify rates:** compare the same `grep -E '^(RateXp|RateSp|RatePartyXp|RatePartySp|DeathDropChanceMultiplier|SpoilDropChanceMultiplier|DropAmountMultiplierByItemId)' /opt/l2j/game/config/Rates.ini` output in both `game` and `site` (`/l2j/config/Rates.ini`), then run `curl -fsSL https://l2-kage.itjunior.dev/about | grep -o '"rates"[^}]*}' | head -1`. Do not call a deployment complete until the public payload matches.
 
